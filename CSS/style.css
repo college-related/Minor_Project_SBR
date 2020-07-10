@@ -1,0 +1,139 @@
+/* main styling css for header footer */
+
+* {
+    margin: 0;
+    font-family: 'Mukta Malar', sans-serif;
+}
+
+/* divisions with grid display and full column length */
+body, header , .hero-div, footer, main, svg, .review-section{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column: 1/13;
+}
+
+/* body part */
+body {
+    background-color: #EFF0F2;
+}
+
+/* heading part */
+header{
+    padding: 20px;
+    background-color: #7293B5;
+}
+
+/* Big hero text and sub headings */
+.headings {
+    font-family: 'kalam';
+}
+
+/* logo */
+#logo{
+    grid-column: 2/5;
+    color: whitesmoke;
+}
+
+/* navigation for desktop version */
+.web-navigation {
+    grid-column: 9/12;
+    word-spacing: 2rem;
+}
+
+/* Links */
+a{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: medium;
+    font-family: 'ZCOOL XiaoWei', serif; 
+}
+
+a:hover {
+    color: #EFF0F2;
+    text-decoration: underline;
+}
+
+/* navigation for mobile version */
+.mobile-navigation {
+    display: none;
+}
+
+/* hero-text = big hero text, hero-link = btn link that is big */
+.hero-text, .hero-link {
+    color: whitesmoke;
+    margin: 30px 0 20px 0;
+}
+
+.hero-text {
+    grid-column: 3/11;
+    font-size: 68px;
+    margin-top: 90px;
+}
+
+/* sub-text = sub heading */
+.sub-text, .hero-link {
+    grid-column: 5/9;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.sub-text {
+    font-size: 25px;
+    color: lightgray;
+    margin: 0 20px;
+    font-family: 'Muli', sans-serif;
+}
+
+/* hero-btn = bigger btn */
+.hero-link, #hero-btn, input[type="submit"], #logOutBtn {
+    background-color: #111672;
+    color: whitesmoke;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* foot of the website */
+footer {
+    background-color: #201E1F;
+    color: white;
+    padding: 20px;
+}
+
+/* contact and about section */
+.contact-section, .about-section {
+    padding: 10px;
+    line-height: 2rem;
+}
+
+.contact-section {
+    grid-column: 2/7;
+    border-right: 1px solid white;
+}
+
+.about-section {
+    grid-column: 7/12;
+}
+
+/* review section */
+.review-section {
+    background-color: #7293B5;
+    padding: 30px 10px;
+}
+
+.avatar-img {
+    grid-column: 3/5;
+}
+
+.avatar-img>img {
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 150px;
+}
+
+/* comment on review section */
+.review-comment {
+    grid-column: 6/11;
+}
