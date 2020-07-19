@@ -32,10 +32,10 @@
 
                     }
                     elseif(isset($_GET['isLogged'])=="false"){
-                        echo "<a href='../landing.php'>Home</a> <a href='../landing.php?LoggedIn>SignUp</a>";
+                        echo "<a href='../landing.php'>Home</a> <a href='../landing.php#signupForm>SignUp</a>"; 
                     }
                     else{
-                        header("../landing.php");
+                        header("Location: ../landing.php");
                     }
                 }
            
