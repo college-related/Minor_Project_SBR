@@ -32,9 +32,10 @@
 
         <!-- navigation bar for desktop view -->
         <nav class="web-navigation">
-            <a href="#">Home</a>
-            <a href="./FRONT_END/HTML/information.html">Infos</a>
-            <a href="#signupForm">SignUp</a>
+            <a href="./home.html">Home</a>
+            <a href="./information.php?isLogged=true">Infos</a>
+            <a href="./form.html">Form</a>
+            <a href="../Landing.php?LoggedOut">LogOut</a>
             <!-- <a href="#loginForm">LogIn</a> -->
         </nav>
 
