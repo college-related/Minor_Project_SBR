@@ -1,0 +1,95 @@
+*{
+    margin: 0px;
+}
+main{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    grid-template-rows: repeat(3,1fr);
+    grid-gap: 20px;
+}
+#detail_related{
+    grid-column: 3/7;
+    grid-row: 1/2;
+}
+#insurance_related{
+    grid-row: 1/3;
+    grid-column: 7/11;
+    padding: 10px;
+    text-align: justify;
+  
+}
+#payment_related{
+    grid-column: 3/7;
+    grid-row: 2/3;
+}
+#document_related{
+    grid-row: 3/4;
+    grid-column: 3/11;
+}
+#detail_related,#insurance_related,#payment_related,#document_related{
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin:10px 10px;
+    padding: 5px;
+    margin-left: 20px;
+
+}
+h3,li{
+    padding: 5px 30px 20px 3px;
+}
+.photo{
+    border-radius: 50%;
+    background-color: beige;
+    height: 90px;
+    width: 90px;
+    grid-column: 1/2;
+    /* padding-left: 10px */
+    margin-left: 10px;
+
+}
+.text{
+    grid-column: 2/5;
+    padding-top: 5px;
+    text-align: justify;
+    padding: 5px;
+}
+.payment_section{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.document_section_text{
+    grid-column: 1/4;
+    padding: 5px;
+    text-align: justify;
+    padding: 5px;
+    
+}
+.document_section_photo{
+    grid-column: 4/5;
+    border-radius: 5px;
+    height: 90px; 
+    margin-left: 10px;
+    background-color: cornsilk;
+    
+}
+.document_section_photo_left{
+    grid-column: 1/2;
+    height: 90px;
+    margin-left: 10px;
+    background-color: cornsilk;
+}
+.document_section_text_right{
+    grid-column: 2/5;
+    text-align: justify;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.document_section_text,.document_section_photo,.document_section_photo_left.document_section_text_right{
+    border-radius: 5px;
+    padding-top: 5px;
+    margin: 10px 10px;   
+}
+
+
+
