@@ -27,11 +27,13 @@
            <?php
            
                 if(isset($_GET['isLogged'])){
-                    if(isset($_GET['isLogged']=="true")){
+
+                    $log = $_GET['isLogged'];
+                    if($log=="true")){
                         echo "<a href='./home.html'>Home</a> <a href='./form.html'>Form</a> <a href='./profile.php?Logged'>Profile</a>";
 
                     }
-                    elseif(isset($_GET['isLogged'])=="false"){
+                    elseif($log=="false"){
                         echo "<a href='../landing.php'>Home</a> <a href='../landing.php#signupForm>SignUp</a>"; 
                     }
                     else{
