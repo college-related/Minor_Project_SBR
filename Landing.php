@@ -4,7 +4,7 @@
         echo '<script type="text/Javascript">
                 alert("Sign up or Log in First");
                 </script>';
-    }else if(isset($_GET['logedOut'])){
+    }else if(isset($_GET['LoggedOut'])){
         echo '<script type="text/Javascript">
                 alert("Loged out Successfully");
                 </script>';
@@ -111,7 +111,7 @@
         <!-- navigation bar for desktop view -->
         <nav class="web-navigation">
             <a href="#">Home</a>
-            <a href="./FRONT_END/HTML/information.html">Infos</a>
+            <a href="./PAGES/information.php?isLogged=false">Infos</a>
             <a href="#signupForm">SignUp</a>
             <!-- <a href="#loginForm">LogIn</a> -->
         </nav>
@@ -197,15 +197,12 @@
 
         <!-- sign up form -->
         <div class="form" id="signupForm">
-        <form action="./BACK_END/handleUser.php" method="POST">
+        <form action="./PHP/handleUser.php" method="POST">
             <h2>Sign Up</h2>
-            <input type="email" placeholder="Email" name="Email"/>
+            <input type="email" placeholder="Email" name="Email"/><br/>
             <input type="text" placeholder="Username" name="Uname"/><br/>
-            <input type="number" placeholder="Phone Number" name="Phn" />
-            <input type="text" placeholder="Address" name="Address" /><br/>
-            <label for="dob">Date of Birth : </label>
-            <input type="date" placeholder="Date of Birth" name="DOB" id="dob"/><br/>
-            <input type="password" placeholder="Password" name="Password"/>
+            <input type="number" placeholder="Phone Number" name="Phn" /><br/>
+            <input type="password" placeholder="Password" name="Password"/><br/>
             <input type="password" placeholder="Confrim Password" name="Repass"/><br/>
             <input type="submit" value="Sign Up" name="signup"/><br/>
         </form>
