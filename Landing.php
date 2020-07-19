@@ -214,7 +214,7 @@
 
         <!-- log in form -->
         <div class="form" id="loginForm">
-        <form action="./BACK_END/handleLogUser.php" method="POST">
+        <form action="./PHP/handleLogUser.php" method="POST">
             <h2>Log In</h2>
             <input type="text" placeholder="Username" name="Uname"/><br/>
             <input type="password" placeholder="Password" name="Password"/><br/>
