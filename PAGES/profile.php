@@ -35,7 +35,7 @@
             <a href="./home.html">Home</a>
             <a href="./information.php?isLogged=true">Infos</a>
             <a href="./form.html">Form</a>
-            <a href="../Landing.php?LoggedOut">LogOut</a>
+            <a href="../PHP/logout.php">LogOut</a>
             <!-- <a href="#loginForm">LogIn</a> -->
         </nav>
 
