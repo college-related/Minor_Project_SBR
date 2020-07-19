@@ -29,16 +29,18 @@
                 if(isset($_GET['isLogged'])){
 
                     $log = $_GET['isLogged'];
-                    if($log=="true")){
-                        echo "<a href='./home.html'>Home</a> <a href='./form.html'>Form</a> <a href='./profile.php?Logged'>Profile</a>";
+
+                    if($log=="true"){
+                        echo "<a href='./home.html'>Home</a><a href='./form.html'>Form</a><a href='./profile.php?Logged'>Profile</a>";
 
                     }
                     elseif($log=="false"){
-                        echo "<a href='../landing.php'>Home</a> <a href='../landing.php#signupForm>SignUp</a>"; 
+                        echo "<a href='../landing.php'>Home</a><a href='../landing.php#signupForm'>SignUp</a>";
+                        
                     }
-                    else{
-                        header("Location: ../landing.php");
-                    }
+
+                }else{
+                    header("Location: ../landing.php");
                 }
            
            ?>
