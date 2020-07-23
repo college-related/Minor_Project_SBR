@@ -69,16 +69,8 @@
         <div id="detail_related">
             <h3>
                 Details Related
-            </h3>
-
-        </div>
-
-        <div id="insurance_related">
-            <h3>
-                Insurance Related
-            </h3>
-            <ul>
-                <li>
+                
+                
                     <b>Insurance Type:</b>
                     We usually have two types of insurance : First Party Insurance and Third Party Insurance.</br>
                     <b>First Party Insurance </b>is obtained for the policyholder to cover losses or damages to the policyholder’s property or themselves.</br>
