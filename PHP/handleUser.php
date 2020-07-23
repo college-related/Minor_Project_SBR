@@ -24,6 +24,9 @@ if(isset($_POST['signup'])){
         }else{
             header("location: ../Landing.php");
         }
+    }else 
+    {
+        header("location:../Landing.php");
     }
 }else{
     header("location:../Landing.php");
