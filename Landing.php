@@ -22,6 +22,8 @@
 
     <link rel="stylesheet" href="./CSS/style.css">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
     <!-- font links -->
     <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar&display=swap" rel="stylesheet">
@@ -199,11 +201,11 @@
         <div class="form" id="signupForm">
         <form action="./PHP/handleUser.php" method="POST">
             <h2>Sign Up</h2>
-            <input type="email" placeholder="Email" name="Email"/><br/>
-            <input type="text" placeholder="Username" name="Uname"/><br/>
-            <input type="number" placeholder="Phone Number" name="Phn" /><br/>
-            <input type="password" placeholder="Password" name="Password"/><br/>
-            <input type="password" placeholder="Confrim Password" name="Repass"/><br/>
+            <input type="email" placeholder="Email" name="Email" required/><br/>
+            <input type="text" placeholder="Username" name="Uname" required/><br/>
+            <input type="number" placeholder="Phone Number" name="Phn" required/><br/>
+            <input type="password" placeholder="Password" name="Password" required/><br/>
+            <input type="password" placeholder="Confrim Password" name="Repass" required/><br/>
             <input type="submit" value="Sign Up" name="signup"/><br/>
         </form>
         <button id="toLogLink">Log in</button>
@@ -213,8 +215,8 @@
         <div class="form" id="loginForm">
         <form action="./PHP/handleLogUser.php" method="POST">
             <h2>Log In</h2>
-            <input type="text" placeholder="Username" name="Uname"/><br/>
-            <input type="password" placeholder="Password" name="Password"/><br/>
+            <input type="text" placeholder="Username" name="Uname" required/><br/>
+            <input type="password" placeholder="Password" name="Password" required/><br/>
             <input type="submit" value="Log In" name="login"/><br/>
         </form>
         <button id="toSignLink">Sign Up</button>
@@ -254,9 +256,15 @@ Email: liscense@email.com
 Fax: 01-001212
 </pre>
             </address>
-            <span>F</span>
-            <span>E</span>
-            <span>W</span>
+            <span>
+                 <i class="fab fa-facebook"></i>
+             </span>
+             <span>
+                 <i class="fab fa-chrome"></i>
+             </span>
+             <span>
+                 <i class="fas fa-fax"></i>
+             </span>
         </div>
 
         <!-- about part -->
