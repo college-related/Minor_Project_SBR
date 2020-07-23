@@ -16,13 +16,16 @@
     <title>Profile</title>
 
     <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="./profile.css">
+    <link rel="stylesheet" href="../CSS/profile.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <!-- font links -->
     <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
 
+    <script defer src="../JS/category_type.js"></script>
 </head>
 <body>
     <header>
@@ -82,25 +85,31 @@
                         <td>
                             <label for="vehicle-type">Vehicle Type</label>
                         </td>
-                        <td><input type="text" name="VType" id="vehicle-type"></td>
+                        <td>
+                        <select name="Vtype" id="vehicle-type" onchange="changingType('vehicle-type', 'vehicle-name')" required>
+                                <option value="none"></option>
+                                <option value="twoWheel">Two wheeler</option>
+                                <option value="fourWheel">Four wheeler</option>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="engine-cc">Engine cc</label>
                         </td>
-                        <td><input type="number" name="ECC" id="engine-cc"></td>
+                        <td><input type="number" name="ECC" id="engine-cc" placeholder="Ex: 150"></td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="vehicle-name">Vehicle Name</label>
+                            <label for="vehicle-name">Vehicle Category</label>
                         </td>
-                        <td><input type="text" name="VName" id="vehicle-name"></td>
+                        <td><select name="Vcategory" id="vehicle-name" required></select></td>
                     </tr>
                     <tr>
                         <td>
                             <label for="registration-no">Vehicle Registration Number </label>
                         </td>
-                        <td><input type="number" name="regNo" id="registration-no"></td>
+                        <td><input type="text" name="regNo" id="registration-no" placeholder="GA 16 PA 4381"></td>
                     </tr>
                     <tr>
                         <td class="btn-td">  <input type="submit" name="savebtn" class="editsavebtn" value="SAVE" >
@@ -155,9 +164,15 @@
  Fax: 01-001212
  </pre>
              </address>
-             <span>F</span>
-             <span>E</span>
-             <span>W</span>
+             <span>
+                 <i class="fab fa-facebook"></i>
+             </span>
+             <span>
+                 <i class="fab fa-chrome"></i>
+             </span>
+             <span>
+                 <i class="fas fa-fax"></i>
+             </span>
          </div>
  
          <!-- about part -->

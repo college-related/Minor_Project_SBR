@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/information_style.css">
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
     <!-- font links -->
     <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar&display=swap" rel="stylesheet">
@@ -29,16 +31,18 @@
                 if(isset($_GET['isLogged'])){
 
                     $log = $_GET['isLogged'];
-                    if($log=="true")){
-                        echo "<a href='./home.html'>Home</a> <a href='./form.html'>Form</a> <a href='./profile.php?Logged'>Profile</a>";
+
+                    if($log=="true"){
+                        echo "<a href='./home.html'>Home</a><a href='./form.html'>Form</a><a href='./profile.php?Logged'>Profile</a>";
 
                     }
                     elseif($log=="false"){
-                        echo "<a href='../landing.php'>Home</a> <a href='../landing.php#signupForm>SignUp</a>"; 
+                        echo "<a href='../landing.php'>Home</a><a href='../landing.php#signupForm'>SignUp</a>";
+                        
                     }
-                    else{
-                        header("Location: ../landing.php");
-                    }
+
+                }else{
+                    header("Location: ../landing.php");
                 }
            
            ?>
@@ -192,9 +196,15 @@
  Fax: 01-001212
  </pre>
              </address>
-             <span>F</span>
-             <span>E</span>
-             <span>W</span>
+             <span>
+                 <i class="fab fa-facebook"></i>
+             </span>
+             <span>
+                 <i class="fab fa-chrome"></i>
+             </span>
+             <span>
+                 <i class="fas fa-fax"></i>
+             </span>
          </div>
  
          <!-- about part -->

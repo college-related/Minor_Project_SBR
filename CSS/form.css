@@ -1,0 +1,19 @@
+form{
+    grid-column: 3/11;
+    background-color: whitesmoke;
+    padding: 30px;
+}
+
+form>fieldset {
+    margin: 10px 0;
+    padding: 20px;
+    line-height: 2rem;
+}
+
+table, input, select {
+    width: 100%;
+}
+
+input[type="file"] {
+    width: fit-content;
+}

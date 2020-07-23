@@ -15,7 +15,7 @@ if(isset($_POST['login'])){
     if(mysqli_num_rows($query)){
         header("location: ../PAGES/profile.php?Logged");
     }else{
-        header("location: ../Landing.php");
+        header("location: ../Landing.php#loginForm");
     }
 
 }else{

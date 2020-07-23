@@ -4,7 +4,7 @@
         echo '<script type="text/Javascript">
                 alert("Sign up or Log in First");
                 </script>';
-    }else if(isset($_GET['logedOut'])){
+    }else if(isset($_GET['LoggedOut'])){
         echo '<script type="text/Javascript">
                 alert("Loged out Successfully");
                 </script>';
@@ -21,6 +21,8 @@
     <title>SWIFT BLUEBOOK RENEW</title>
 
     <link rel="stylesheet" href="./CSS/style.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <!-- font links -->
     <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
@@ -111,7 +113,7 @@
         <!-- navigation bar for desktop view -->
         <nav class="web-navigation">
             <a href="#">Home</a>
-            <a href="./FRONT_END/HTML/information.html">Infos</a>
+            <a href="./PAGES/information.php?isLogged=false">Infos</a>
             <a href="#signupForm">SignUp</a>
             <!-- <a href="#loginForm">LogIn</a> -->
         </nav>
@@ -197,16 +199,13 @@
 
         <!-- sign up form -->
         <div class="form" id="signupForm">
-        <form action="./BACK_END/handleUser.php" method="POST">
+        <form action="./PHP/handleUser.php" method="POST">
             <h2>Sign Up</h2>
-            <input type="email" placeholder="Email" name="Email"/>
-            <input type="text" placeholder="Username" name="Uname"/><br/>
-            <input type="number" placeholder="Phone Number" name="Phn" />
-            <input type="text" placeholder="Address" name="Address" /><br/>
-            <label for="dob">Date of Birth : </label>
-            <input type="date" placeholder="Date of Birth" name="DOB" id="dob"/><br/>
-            <input type="password" placeholder="Password" name="Password"/>
-            <input type="password" placeholder="Confrim Password" name="Repass"/><br/>
+            <input type="email" placeholder="Email" name="Email" required/><br/>
+            <input type="text" placeholder="Username" name="Uname" required/><br/>
+            <input type="number" placeholder="Phone Number" name="Phn" required/><br/>
+            <input type="password" placeholder="Password" name="Password" required/><br/>
+            <input type="password" placeholder="Confrim Password" name="Repass" required/><br/>
             <input type="submit" value="Sign Up" name="signup"/><br/>
         </form>
         <button id="toLogLink">Log in</button>
@@ -216,8 +215,8 @@
         <div class="form" id="loginForm">
         <form action="./PHP/handleLogUser.php" method="POST">
             <h2>Log In</h2>
-            <input type="text" placeholder="Username" name="Uname"/><br/>
-            <input type="password" placeholder="Password" name="Password"/><br/>
+            <input type="text" placeholder="Username" name="Uname" required/><br/>
+            <input type="password" placeholder="Password" name="Password" required/><br/>
             <input type="submit" value="Log In" name="login"/><br/>
         </form>
         <button id="toSignLink">Sign Up</button>
@@ -257,9 +256,15 @@ Email: liscense@email.com
 Fax: 01-001212
 </pre>
             </address>
-            <span>F</span>
-            <span>E</span>
-            <span>W</span>
+            <span>
+                 <i class="fab fa-facebook"></i>
+             </span>
+             <span>
+                 <i class="fab fa-chrome"></i>
+             </span>
+             <span>
+                 <i class="fas fa-fax"></i>
+             </span>
         </div>
 
         <!-- about part -->

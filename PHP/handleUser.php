@@ -12,6 +12,9 @@ if(isset($_POST['signup'])){
     if($password == $confirmpassword){
         require_once "./connection.php";
 
+        session_start();
+        $_SESSION['Uname'] = $username;
+
         $sql = "INSERT INTO users(USERNAME, EMAIL, PASSWORD, PHN) VALUES('$username', '$email', '$password', '$phonenumber')";
 
         mysqli_query($connect, $sql);
@@ -21,6 +24,9 @@ if(isset($_POST['signup'])){
         }else{
             header("location: ../Landing.php");
         }
+    }else 
+    {
+        header("location:../Landing.php");
     }
 }else{
     header("location:../Landing.php");

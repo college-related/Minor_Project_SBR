@@ -17,8 +17,8 @@ main{
 }
 
 .maindiv{
-    background-color: azure;
-    border-radius:5px ;
+    background-color: white;
+    border-radius: 5px;
     margin: 0 5px 20px 5px;
     height: 400px;
 }
