@@ -66,22 +66,27 @@
         .form {
             grid-column: 5/9;
             background-color: #7293B5;
-            padding: 20px 10px;
+            padding: 20px 50px;
             margin-top: 150px;
             color: white;
             text-align: center;
             box-shadow: 
                 0 15px 40px 0 rgba(166, 173, 201, .2)
                 0 5px 10px 0 rgba(154, 160, 185, .05);
+            line-height: 4rem;
+        }
+
+        form>table{
+            width: 100%;
         }
 
         /* input field */
         input {
             margin: 5px auto;
-            padding: 10px;
+            padding: 10px 30px;
             border: none;
             border-radius: 10px;
-            width: max-content;
+            width: 80%;
         }
 
         /* log in form */
@@ -201,12 +206,26 @@
         <div class="form" id="signupForm">
         <form action="./PHP/handleUser.php" method="POST">
             <h2>Sign Up</h2>
-            <input type="email" placeholder="Email" name="Email" required/><br/>
-            <input type="text" placeholder="Username" name="Uname" required/><br/>
-            <input type="number" placeholder="Phone Number" name="Phn" required/><br/>
-            <input type="password" placeholder="Password" name="Password" required/><br/>
-            <input type="password" placeholder="Confrim Password" name="Repass" required/><br/>
-            <input type="submit" value="Sign Up" name="signup"/><br/>
+            <table>
+                <tr>
+                    <td><input type="email" placeholder="Email" name="Email" required/></td>
+                </tr>
+                <tr>
+                    <td><input type="text" placeholder="Username" name="Uname" required/></td>
+                </tr>
+                <tr>
+                    <td><input type="number" placeholder="Phone Number" name="Phn" required/></td>
+                </tr>
+                <tr>
+                    <td><input type="password" placeholder="Password" name="Password" required/></td>
+                </tr>
+                <tr>
+                    <td><input type="password" placeholder="Confrim Password" name="Repass" required/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Sign Up" name="signup"/></td>
+                </tr>
+            </table>
         </form>
         <button id="toLogLink">Log in</button>
         </div>
@@ -215,9 +234,17 @@
         <div class="form" id="loginForm">
         <form action="./PHP/handleLogUser.php" method="POST">
             <h2>Log In</h2>
-            <input type="text" placeholder="Username" name="Uname" required/><br/>
-            <input type="password" placeholder="Password" name="Password" required/><br/>
-            <input type="submit" value="Log In" name="login"/><br/>
+            <table>
+                <tr>
+                    <td><input type="text" placeholder="Username" name="Uname" required/></td>
+                </tr>
+                <tr>
+                    <td><input type="password" placeholder="Password" name="Password" required/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Log In" name="login"/></td>
+                </tr>
+            </table>
         </form>
         <button id="toSignLink">Sign Up</button>
         </div>
