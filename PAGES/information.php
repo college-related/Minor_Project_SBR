@@ -73,7 +73,15 @@
         <div id="detail_related">
             <h3>
                 Details Related
-                
+            </h3>
+        </div>
+
+        <div id="insurance_related">
+            <h3>
+                Insurance Related
+            </h3>
+            <ul>
+                <li>    
                 
                     <b>Insurance Type:</b>
                     We usually have two types of insurance : First Party Insurance and Third Party Insurance.</br>
