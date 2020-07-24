@@ -4,9 +4,9 @@
     margin: 0;
     font-family: 'Mukta Malar', sans-serif;
 }
-
+ 
 /* divisions with grid display and full column length */
-body, header , .hero-div, footer, main, svg, .review-section{
+body, header , .hero-div, footer, main, svg, .review-section, .nav-hero{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column: 1/13;
@@ -18,11 +18,17 @@ body {
 }
 
 /* heading part */
-header{
+header, .nav-hero{
     padding: 20px;
-    background-color: #7293B5;
 }
 
+header{
+    background-color: black;
+}
+
+.nav-hero{
+    background-color: #7293B5;
+}
 /* Big hero text and sub headings */
 .headings {
     font-family: 'kalam';
