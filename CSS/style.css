@@ -21,6 +21,8 @@ body {
 header{
     padding: 20px;
     background-color: black;
+    position: sticky;
+    top: 0;
 }
 
 .nav-hero{
@@ -97,6 +99,10 @@ a:hover {
     border: none;
     padding: 10px;
     cursor: pointer;
+}
+
+main {
+    margin-bottom: 50px;
 }
 
 /* foot of the website */
