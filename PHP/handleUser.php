@@ -29,7 +29,7 @@ if(isset($_POST['signup'])){
             mysqli_query($connect, $sql);
 
             if(mysqli_affected_rows($connect)){
-                header("location: ../PAGES/profile.php?Logged");
+                header("location: ../PAGES/profile.php?Logged&signed");
             }else{
                 header("location: ../Landing.php");
             }
