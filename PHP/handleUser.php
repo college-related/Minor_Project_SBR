@@ -23,6 +23,7 @@ if(isset($_POST['signup'])){
         }else{
             session_start();
             $_SESSION['Uname'] = $username;
+            $_SESSION['phone'] = $phonenumber;
 
             $sql = "INSERT INTO users(USERNAME, EMAIL, PASSWORD, PHN) VALUES('$username', '$email', '$password', '$phonenumber')";
 
