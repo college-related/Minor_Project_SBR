@@ -4,9 +4,13 @@
     margin: 0;
     font-family: 'Mukta Malar', sans-serif;
 }
+
+html {
+    scroll-behavior: smooth;
+}
  
 /* divisions with grid display and full column length */
-body, header , .hero-div, footer, main, svg, .review-section, .nav-hero{
+body, header , .hero-div, footer, main, svg, .review-section{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column: 1/13;
@@ -18,15 +22,17 @@ body {
 }
 
 /* heading part */
-header, .nav-hero{
-    padding: 20px;
-}
-
 header{
+    padding: 20px;
     background-color: black;
+    position: sticky;
+    top: 0;
 }
 
 .nav-hero{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column: 1/13;
     background-color: #7293B5;
 }
 /* Big hero text and sub headings */
@@ -97,6 +103,10 @@ a:hover {
     border: none;
     padding: 10px;
     cursor: pointer;
+}
+
+main {
+    margin-bottom: 50px;
 }
 
 /* foot of the website */

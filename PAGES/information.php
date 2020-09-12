@@ -33,11 +33,13 @@
                     $log = $_GET['isLogged'];
 
                     if($log=="true"){
-                        echo "<a href='./home.html'>Home</a> <a href='./form.html'>Form</a> <a href='./profile.php?Logged'>Profile</a>";
+
+                        echo "<a href='./form.html'>Form</a> <a href='./profile.php?Logged'>Profile</a> <a href='../php/logout.php'>LogOut</a>";
 
                     }
                     elseif($log=="false"){
-                        echo "<a href='../landing.php'>Home</a> <a href='../landing.php#signupForm'>SignUp</a>";
+                        echo "<a href='../landing.php#signupForm'>SignUp</a> <a href='../landing.php?logBox#loginForm'>LogIn</a>";
+
                         
                     }
 
@@ -52,22 +54,23 @@
         <!-- navigation bar for mobile view -->
         <nav class="mobile-navigation">
             <ul>
-                <li>Home</li>
                 <li>Infos</li>  
                 <li>SignUp</li>
                 <li>LogIn</li>
             </ul>
         </nav>
 
-        <!-- hero text(website name) -->
-        <h1 class="hero-text headings">
-            INFORMATON
-        </h1>
-
     </header>
 
+    <!-- <div class="nav-hero"> -->
+        <!-- hero text(website name) -->
+        <!-- <h1 class="hero-text headings">
+            INFORMATON
+        </h1>
+    </div> -->
+
     <!-- wave sturcture below header-->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#7293b5" fill-opacity="1" d="M0,224L48,197.3C96,171,192,117,288,96C384,75,480,85,576,101.3C672,117,768,139,864,160C960,181,1056,203,1152,202.7C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#7293b5" fill-opacity="1" d="M0,224L48,197.3C96,171,192,117,288,96C384,75,480,85,576,101.3C672,117,768,139,864,160C960,181,1056,203,1152,202.7C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg> -->
 
     <main>
         <div id="detail_related">
@@ -172,9 +175,6 @@
         </div>
     </main>
 
-     <!-- wave structure above footer-->
-     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#7293b5" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,202.7C384,192,480,160,576,133.3C672,107,768,85,864,96C960,107,1056,149,1152,144C1248,139,1344,85,1392,58.7L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-    
      <!-- review section -->
      <div class="review-section">
  
