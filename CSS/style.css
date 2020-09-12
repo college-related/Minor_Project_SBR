@@ -4,6 +4,10 @@
     margin: 0;
     font-family: 'Mukta Malar', sans-serif;
 }
+
+html {
+    scroll-behavior: smooth;
+}
  
 /* divisions with grid display and full column length */
 body, header , .hero-div, footer, main, svg, .review-section{
