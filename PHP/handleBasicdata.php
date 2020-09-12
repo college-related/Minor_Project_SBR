@@ -11,16 +11,15 @@ if( isset($_POST['savebtn'])){
    $vType=$_POST['vType'];
    $vCat=$_POST['vCategory'];
    $vReg=$_POST['regNo'];
-   $engineCC=$_POST['ECC'];
-   $renew=$_POST['RenewDate'];   
+   $engineCC=$_POST['ECC']; 
 
     $sql_phn_check = "SELECT * FROM basic_data WHERE PHN = '$phn';";
     $Phn = mysqli_query($connect,$sql_phn_check);
 
     if(mysqli_num_rows($Phn) > 0 ){
-        header("location: ../PAGES/profile.php?Logged&Error");
+        header("location: ../PAGES/profile.php?Logged&Err");
     }else{
-        $sql = "INSERT INTO basic_data(PHN, NAME, VEHICLE_TYPE, VEHICLE_CAT, VEHICLE_REG, ENGINE_CC, INITIAL_RENEW_DATE) VALUES ('$phn', '$name', '$vType', '$vCat', '$vReg', '$engineCC', '$renew')";
+        $sql = "INSERT INTO basic_data(PHN, NAME, VEHICLE_TYPE, VEHICLE_CAT, VEHICLE_REG, ENGINE_CC) VALUES ('$phn', '$name', '$vType', '$vCat', '$vReg', '$engineCC')";
         
         $query = mysqli_query($connect, $sql);
 

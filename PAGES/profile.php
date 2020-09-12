@@ -128,7 +128,7 @@
                             <label for="vehicle-type">Vehicle Type</label>
                         </td>
                         <td>
-                        <select name="Vtype" id="vehicle-type" onchange="changingType('vehicle-type', 'vehicle-name')" required>
+                        <select name="vType" id="vehicle-type" onchange="changingType('vehicle-type', 'vehicle-name')" required>
                                 <option value="none"></option>
                                 <option value="twoWheel">Two wheeler</option>
                                 <option value="fourWheel">Four wheeler</option>
@@ -139,7 +139,7 @@
                         <td>
                             <label for="vehicle-name">Vehicle Category</label>
                         </td>
-                        <td><select name="Vcategory" id="vehicle-name" required></select></td>
+                        <td><select name="vCategory" id="vehicle-name" required></select></td>
                     </tr>
                     <tr>
                         <td>
