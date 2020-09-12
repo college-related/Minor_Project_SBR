@@ -33,11 +33,11 @@
                     $log = $_GET['isLogged'];
 
                     if($log=="true"){
-                        echo "<a href='./home.html'>Home</a><a href='./form.html'>Form</a><a href='./profile.php?Logged'>Profile</a>";
+                        echo "<a href='./home.html'>Home</a> <a href='./form.html'>Form</a> <a href='./profile.php?Logged'>Profile</a>";
 
                     }
                     elseif($log=="false"){
-                        echo "<a href='../landing.php'>Home</a><a href='../landing.php#signupForm'>SignUp</a>";
+                        echo "<a href='../landing.php'>Home</a> <a href='../landing.php#signupForm'>SignUp</a>";
                         
                     }
 
@@ -108,18 +108,18 @@
                 Payment Related
             </h3>
             <div class="payment_section">
-                <div class="photo">
-                    <img src="#" alt="Insurance payment photo">
-                </div>
+                <!-- <div class="photo"> -->
+                    <img src="../ASSETS/IMAGES/insuranceimage.jpg" alt="Insurance payment photo" class="PaymentRelatedImage" width="120px" height="120px" style="border-radius:50%;">
+                <!-- </div> -->
                 <div class="text">
                     <h4>Insurance Payment</h4>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, quod sunt porro quos odio exercitationem sint iste consectetur non accusamus error eum facere dolores nisi nostrum libero nobis. Illo, a?</div>
             </div>
 
             <div class="payment_section">
-                <div class="photo">
-                    <img src="#" alt="Road tax payment photo">
-                </div>
+                <!-- <div class="photo"> -->
+                    <img src="../ASSETS/IMAGES/roadtaxphoto.jpg" alt="Road tax payment photo"  class="PaymentRelatedImage"  width="120px" height="120px" style="border-radius:50%;">
+               <!-- </div> -->
                 <div class="text">
                     <h4>Road Tax Payment</h4>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae laboriosam possimus iure quo, quos porro placeat, nobis dolores maiores cumque saepe vel consequatur. A facere magni sunt natus ipsa quos!
@@ -127,9 +127,9 @@
             </div>
 
             <div class="payment_section"> 
-                <div class="photo">
-                    <img src="#" alt="Billbook renew photo">
-                </div>
+                <!-- <div class="photo"> -->
+                    <img src="../ASSETS/IMAGES/bluebookcartooneephoto.png" alt="Billbook renew photo" class="PaymentRelatedImage"  width="120px" height="120px" style="border-radius:50%;">
+                <!-- </div> -->
                 <div class="text">
                     <h4>BillBook Renew Payment</h4>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti, officia adipisci voluptatibus nemo laborum soluta nisi optio neque consectetur labore obcaecati vitae pariatur sapiente voluptate error at aut quod sequi!
@@ -146,14 +146,14 @@
                     <h4>Insurance Payment Document</h4>
                     The slip which has been given by insurance company had to be scanned and upload to its palce where needed. Further more we will add the method of online payment of the insurance in future.
                 </div>
-                <div class="document_section_photo">
-                    <img src="#" alt="Insurance payment document model photo">
-                </div>
+                <!-- <div class="document_section_photo"> -->
+                    <img src="../ASSETS/IMAGES/insurancepaymentreceipt.jpg" alt="Insurance payment document model photo" width="200px" height="150px">
+                <!-- </div> -->
             </div>
             <div class="payment_section"> 
-                <div class="document_section_photo_left">
-                    <img src="#" alt="Cittizenship Certificate document model photo">
-                </div>
+                <!-- <div class="document_section_photo_left"> -->
+                    <img src="../ASSETS/IMAGES/citizenshipdocument.jpg" alt="Cittizenship Certificate document model photo"  width="200px" height="150px">
+                <!-- </div> -->
                 <div class="document_section_text_right">
                     <h4>Citizenship Certificate Document</h4>
                     We also need the citizentship certificate for confirmation purposes.
@@ -164,9 +164,9 @@
                     <h4>Billbook Renew Registration Document</h4>
                     We need the bill book document for confirming the registration number provided by the user.
                 </div>
-                <div class="document_section_photo">
-                    <img src="#" alt="Billbook renew regstration document model photo">
-                </div>
+                <!-- <div class="document_section_photo"> -->
+                    <img src="../ASSETS/IMAGES/bluebookphoto.jpg" alt="Billbook renew regstration document model photo"  width="200px" height="150px">
+                <!-- </div> -->
             </div>
             
         </div>
