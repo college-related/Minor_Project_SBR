@@ -249,6 +249,7 @@
                     </table>
                 <?php } ?>
             </div>
+            
         </div>
     </main> 
      <!-- foot of the website -->
