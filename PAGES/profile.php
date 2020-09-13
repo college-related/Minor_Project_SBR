@@ -12,11 +12,17 @@
 
     $sql_form = "SELECT * FROM form WHERE PHN = '$ph';";
     $form_result = mysqli_query($connect,$sql_form);
+
     $sql_basic = "SELECT * FROM basic_data WHERE PHN = '$ph';";
     $basic_result = mysqli_query($connect,$sql_basic);
 
+    $sql_tax="SELECT * FROM tax_table WHERE PHN ='$ph';";
+    $tax_result=mysqli_query($connect,$sql_tax);
+
+
     $formArray = mysqli_fetch_all($form_result,MYSQLI_ASSOC);
     $basicArray = mysqli_fetch_all($basic_result,MYSQLI_ASSOC);
+    $taxArray = mysqli_fetch_all($tax_result,MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -249,7 +255,46 @@
                     </table>
                 <?php } ?>
             </div>
-            
+            <div class="tax-info">
+                    <table>
+                        <tr>
+                            <th>YEAR</th>
+                            <th>FINE</th>
+                            <th>TAX AMMOUNT</th>
+                        </tr>
+                     <?php 
+                     if(sizeof($taxArray) < 3){
+                        foreach($taxArray as $data) {?>
+                            <tr>
+                                <td>
+                                    <?= $data['year']?>
+                                </td>
+                                <td>
+                                    <?= $data['fine']?>
+                                </td>
+                                <td>
+                                    <?= $data['amount']?>
+                                </td>
+                            </tr>
+                     
+                        <?php }
+                     }else{
+                         for($i= sizeof($taxArray)-1; $i > sizeof($taxArray)-4;$i--){ ?>
+                             <tr>
+                                <td>
+                                    <?= $taxArray[$i]['year']?>
+                                </td>
+                                <td>
+                                    <?= $taxArray[$i]['fine']?>
+                                </td>
+                                <td>
+                                    <?= $taxArray[$i]['amount']?>
+                                </td>
+                            </tr>
+                     
+                         <?php }  } ?>
+                    </table>
+            </div>
         </div>
     </main> 
      <!-- foot of the website -->
