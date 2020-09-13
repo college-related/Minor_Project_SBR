@@ -17,7 +17,15 @@ if( isset($_POST['savebtn'])){
     $Phn = mysqli_query($connect,$sql_phn_check);
 
     if(mysqli_num_rows($Phn) > 0 ){
+      $sql = "UPDATE basic_data SET VEHICLE_TYPE = '$vType', VEHICLE_CAT = '$vCat', VEHICLE_REG = '$vReg', ENGINE_CC = '$engineCC' WHERE PHN = '$phn' && NAME = '$name';";
+
+      $query = mysqli_query($connect,$sql);
+
+      if(mysqli_affected_rows($connect)){
+          header("location: ../PAGES/profile.php?Logged");
+      }else{
         header("location: ../PAGES/profile.php?Logged&Err");
+      }
     }else{
         $sql = "INSERT INTO basic_data(PHN, NAME, VEHICLE_TYPE, VEHICLE_CAT, VEHICLE_REG, ENGINE_CC) VALUES ('$phn', '$name', '$vType', '$vCat', '$vReg', '$engineCC')";
         
