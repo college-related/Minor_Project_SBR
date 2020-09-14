@@ -16,7 +16,7 @@
     $sql_basic = "SELECT * FROM basic_data WHERE PHN = '$ph';";
     $basic_result = mysqli_query($connect,$sql_basic);
 
-    $sql_tax="SELECT * FROM tax_table WHERE PHN ='$ph';";
+    $sql_tax="SELECT * FROM fine WHERE PHN ='$ph';";
     $tax_result=mysqli_query($connect,$sql_tax);
 
 
@@ -260,7 +260,7 @@
                         <tr>
                             <th>YEAR</th>
                             <th>FINE</th>
-                            <th>TAX AMMOUNT</th>
+                            <th>TAX AMOUNT</th>
                         </tr>
                      <?php 
                      if(sizeof($taxArray) < 3){
