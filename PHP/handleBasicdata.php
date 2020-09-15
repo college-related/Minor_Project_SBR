@@ -22,7 +22,7 @@ if( isset($_POST['savebtn'])){
       $query = mysqli_query($connect,$sql);
 
       if(mysqli_affected_rows($connect)){
-          header("location: ../PAGES/profile.php?Logged1");
+          header("location: ../PAGES/profile.php?Logged");
       }else{
         header("location: ../PAGES/profile.php?Logged&Err");
       }
