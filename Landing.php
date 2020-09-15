@@ -206,19 +206,19 @@
             <h2>Sign Up</h2>
             <table>
                 <tr>
-                    <td><input type="email" placeholder="Email" name="Email" required/></td>
+                    <td><input type="email" placeholder="Email" name="Email" value="lol@gmail.com" required/></td>
                 </tr>
                 <tr>
-                    <td><input type="text" placeholder="Username" name="Uname" required/></td>
+                    <td><input type="text" placeholder="Username" name="Uname" value="lol" required/></td>
                 </tr>
                 <tr>
-                    <td><input type="number" placeholder="Phone Number" name="Phn" required/></td>
+                    <td><input type="number" placeholder="Phone Number" name="Phn" value="9846049156" required/></td>
                 </tr>
                 <tr>
-                    <td><input type="password" placeholder="Password" name="Password" required/></td>
+                    <td><input type="password" placeholder="Password" name="Password" value="12345" required/></td>
                 </tr>
                 <tr>
-                    <td><input type="password" placeholder="Confrim Password" name="Repass" required/></td>
+                    <td><input type="password" placeholder="Confrim Password" name="Repass" value="12345" required/></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="Sign Up" name="signup"/></td>
