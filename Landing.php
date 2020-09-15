@@ -90,8 +90,27 @@
         }
 
         /* log in form */
-        #loginForm {
-            display: none;
+        <?php
+            if(isset($_GET['logBox'])){
+                echo "#loginForm {
+                        display: block;
+                    }
+                    #signupForm {
+                        display: none;
+                    }";
+            }else{
+                echo "#loginForm {
+                        display: none;
+                    }";
+            }
+        ?>
+
+        #form-wrapper {
+            grid-column: 5/9;
+        }
+
+        #loginForm, #signupForm {
+            padding-top: 5px;
         }
 
         #toLogLink, #toSignLink {
@@ -146,7 +165,7 @@
         <a href="#signupForm" class="hero-link">
             <button id="hero-btn" onclick="signPopUp()">GET STARTED</button>
         </a>
-        </div>
+    </div>
        
     <!-- wave sturcture below header-->
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#7293b5" fill-opacity="1" d="M0,224L48,197.3C96,171,192,117,288,96C384,75,480,85,576,101.3C672,117,768,139,864,160C960,181,1056,203,1152,202.7C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
@@ -200,51 +219,57 @@
             </div>
         </div>
 
-        <!-- sign up form -->
-        <div class="form" id="signupForm">
-        <form action="./PHP/handleUser.php" method="POST">
-            <h2>Sign Up</h2>
-            <table>
-                <tr>
-                    <td><input type="email" placeholder="Email" name="Email" value="lol@gmail.com" required/></td>
-                </tr>
-                <tr>
-                    <td><input type="text" placeholder="Username" name="Uname" value="lol" required/></td>
-                </tr>
-                <tr>
-                    <td><input type="number" placeholder="Phone Number" name="Phn" value="9846049156" required/></td>
-                </tr>
-                <tr>
-                    <td><input type="password" placeholder="Password" name="Password" value="12345" required/></td>
-                </tr>
-                <tr>
-                    <td><input type="password" placeholder="Confrim Password" name="Repass" value="12345" required/></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Sign Up" name="signup"/></td>
-                </tr>
-            </table>
-        </form>
-        <button id="toLogLink">Log in</button>
-        </div>
+        <div id="form-wrapper">
+            <!-- sign up form -->
+            <div id="signupForm">
+                <div class="form">
+                <form action="./PHP/handleUser.php" method="POST">
+                    <h2>Sign Up</h2>
+                    <table>
+                        <tr>
+                            <td><input type="email" placeholder="Email" name="Email" value="lol@gmail.com" required/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" placeholder="Username" name="Uname" value="lol" required/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="number" placeholder="Phone Number" name="Phn" value="9846049156" required/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="password" placeholder="Password" name="Password" value="12345" required/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="password" placeholder="Confrim Password" name="Repass" value="12345" required/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Sign Up" name="signup"/></td>
+                        </tr>
+                    </table>
+                </form>
+                <button id="toLogLink">Log in</button>
+                </div>
+            </div>
 
-        <!-- log in form -->
-        <div class="form" id="loginForm">
-        <form action="./PHP/handleLogUser.php" method="POST">
-            <h2>Log In</h2>
-            <table>
-                <tr>
-                    <td><input type="text" placeholder="Username" name="Uname" required/></td>
-                </tr>
-                <tr>
-                    <td><input type="password" placeholder="Password" name="Password" required/></td>
-                </tr>
-                <tr>
-                    <td><input type="submit" value="Log In" name="login"/></td>
-                </tr>
-            </table>
-        </form>
-        <button id="toSignLink">Sign Up</button>
+            <!-- log in form -->
+            <div id="loginForm">
+                <div class="form">
+                <form action="./PHP/handleLogUser.php" method="POST">
+                    <h2>Log In</h2>
+                    <table>
+                        <tr>
+                            <td><input type="text" placeholder="Username" name="Uname" required/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="password" placeholder="Password" name="Password" required/></td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Log In" name="login"/></td>
+                        </tr>
+                    </table>
+                </form>
+                <button id="toSignLink">Sign Up</button>
+                </div>
+            </div>
         </div>
 
     </main>
