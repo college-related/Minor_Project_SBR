@@ -14,6 +14,16 @@ table, input, select {
     width: 100%;
 }
 
-input[type="file"] {
+input[type="checkbox"] {
     width: fit-content;
+}
+
+.btns {
+    grid-column: 6/10;
+    text-align: center;
+    word-spacing: 10px;
+}
+
+.others-info {
+    display: none;
 }
