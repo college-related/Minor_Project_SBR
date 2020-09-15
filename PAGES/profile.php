@@ -160,10 +160,7 @@
                         </td>
                         <td><input type="text" name="regNo" id="registration-no" placeholder="GA 16 PA 4381"></td>
                     </tr>
-                    <tr>
-                        <td><label for="renewDate">Last Renew Date:</label></td>
-                        <td><input type="date" name="RenewDate" id="renewDate" /></td>
-                    </tr>
+                   
                     <tr>
                         <td > 
                       </td>
