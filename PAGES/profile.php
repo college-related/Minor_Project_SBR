@@ -10,14 +10,21 @@
 
     $ph = $_SESSION['phone'];
 
-    $sql_detail = "SELECT form.*, basic_data.* FROM form JOIN basic_data ON form.PHN = basic_data.PHN WHERE form.PHN = '$ph' && basic_data.PHN = '$ph';";
-    $detail_result = mysqli_query($connect, $sql_detail);
+    // $sql_detail = "SELECT form.*, basic_data.* FROM form JOIN basic_data ON form.PHN = basic_data.PHN WHERE form.PHN = '$ph' && basic_data.PHN = '$ph';";
+    // $detail_result = mysqli_query($connect, $sql_detail);
 
-    $detailArray = mysqli_fetch_all($detail_result, MYSQLI_ASSOC);
+    // $detailArray = mysqli_fetch_all($detail_result, MYSQLI_ASSOC);
+    $sql_form = "SELECT * FROM form WHERE PHN='$ph';";
+    $form_result = mysqli_query($connect, $sql_form);
+
+    $sql_detail= "SELECT * FROM basic_data WHERE PHN1='$ph';";
+    $detail_result = mysqli_query($connect, $sql_detail);
 
     $sql_tax="SELECT * FROM fine WHERE PHN ='$ph';";
     $tax_result=mysqli_query($connect,$sql_tax);
 
+    $formArray = mysqli_fetch_all($form_result,MYSQLI_ASSOC);
+    $detailArray = mysqli_fetch_all($detail_result,MYSQLI_ASSOC);
     $taxArray = mysqli_fetch_all($tax_result,MYSQLI_ASSOC);
 ?>
 
@@ -187,23 +194,23 @@
                 <table>
                     <tr>
                         <td>Phone number :</td>
-                        <td> <?=$detailArray[0]['PHN']?> </td>
+                        <td> <?=$detailArray[0]['PHN1']?> </td>
                     </tr>
                     <tr>
                         <td>Vehicle Type:</td>
-                        <td> <?=$detailArray[0]['VEHICLE_TYPE']?></td>
+                        <td> <?=$detailArray[0]['VEHICLE_TYPE1']?></td>
                     </tr>
                     <tr>
                         <td>Vehicle Category :</td>
-                        <td> <?=$detailArray[0]['VEHICLE_CAT']?></td>
+                        <td> <?=$detailArray[0]['VEHICLE_CAT1']?></td>
                     </tr>
                     <tr>
                         <td>ENGINE_CC :</td>
-                        <td> <?=$detailArray[0]['ENGINE_CC']?></td>
+                        <td> <?=$detailArray[0]['ENGINE_CC1']?></td>
                     </tr>
                     <tr>
                         <td>Vehicle Registration no. :</td>
-                        <td> <?=$detailArray[0]['VEHICLE_REG']?></td>
+                        <td> <?=$detailArray[0]['VEHICLE_REG1']?></td>
                     </tr>
                 </table>
           <div class="editBtn">
@@ -217,7 +224,7 @@
             <h3><u> MORE DETAILS</u></h3>
             <div id="latest-form">
                 <h4>Latest Form</h4>
-                <?php foreach($detailArray as $data) { ?>
+                <?php foreach($formArray as $data) { ?>
                     <table class="form-table">
                         <tr>
                             <td>Name :</td>
