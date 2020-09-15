@@ -46,11 +46,15 @@ main{
     padding: 30px 400px;
 }
 
+#details, #more-details{
+    text-align: center;
+}
+
 .maindiv{
     background-color: white;
     border-radius: 5px;
     margin: 0 5px 20px 5px;
-    height: 400px;
+    padding: 20px;
 }
 
 #user-name{
@@ -64,7 +68,6 @@ main{
 }
 
 h3{
-    margin-top: 80px;
    text-align: center;
 }
 
@@ -81,7 +84,6 @@ h3{
 #latest-form{
     margin-top: 20px;
    text-align: center;
-
 }
 
 .editsavebtn{
@@ -96,4 +98,8 @@ td{
 .btn-td{
     text-align: right;
     border-radius: 10px;
+}
+
+.form-table{
+    width: 80%;
 }
