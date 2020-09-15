@@ -77,6 +77,46 @@
             <h3>
                 Details Related
             </h3>
+            <ul>
+               
+                It consists of the details after login or signup to our webpage. What kind of features does it have and what of its use for users.
+                <li>
+                    <b>Vehicle Type</b>
+                    There are various types of vehicles.Our website include two of them:  <b>Two Wheeler</b> and <b>Four Wheeler</b>.We have to choose of it give some information about our vehicle.
+                </li>
+                <li>
+                    <b>Vehicle Catagories</b>
+                    Different types of vehicle are covered by different licence categories, and have varying minimum age restrictions.</br>
+                    Such as:</br>
+                    Category fo car is 'B',</br>
+                    Category fo scoter is 'k',</br>
+                    Category fo bike is 'A' and so on.
+                </li>
+                <li>
+                    <b>Engine CC</b>
+                    The term cc in any engine is the displacement of the motor measured in cubic centimeters. It includes the details that what type of engine cc is yours.So we can evaluate your tax.
+                </li>
+                <li>
+                    <b>Vehicle Registration</b>
+                    All road vehicles with or without a motor (except bicycles) are tagged with a registration number.Licence plates are commonly known as number plates. 
+                    The licence plate number is issued by the state-level Transport Management Office, a government agency under the Department of Transport Management.
+                    For the purpose of vehicle registration Vehicle & Transport Management Act, 2049 (1992) and Vehicle & Transport Management Rule, 2054 (1997) of Nepal, classifies vehicles into the following 5 main categories on the basis of size and capacity.
+                    Those classifications of vehicles are indicated by the color of their license plates. 
+                    So,<b>Vehicle Registration</b> number means the lisence plate number which have to be provided by users to confirm their own vehicle.
+                </li>
+                <li>
+                    <b>Last Renew Date</b>
+                    We include last renew date to assume your road tax and fine tax(if needed) compared with the current time.So it will make you easy to know how much you pay for your own vehicle. 
+                </li>
+                <li
+                ><b>Insurance</b>
+                We include insurance details question because if you had not paid insurance when you visit with our details to the main office.You have to pay more than our road tax payment slip.
+                </li>
+                <li>
+                    <b>QR Code</b>
+                    Its for the easiest method for you to take details to the main office.It makes you data turn to the QR code and after scanned in the main office to will be fast to do your transiction.
+                </li>
+            </ul>
         </div>
 
         <div id="insurance_related">
@@ -116,7 +156,8 @@
                 <!-- </div> -->
                 <div class="text">
                     <h4>Insurance Payment</h4>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, quod sunt porro quos odio exercitationem sint iste consectetur non accusamus error eum facere dolores nisi nostrum libero nobis. Illo, a?</div>
+                    You can make payments by some online methods or by personally going to those company which deals with insurance for vehicle.
+                </div>
             </div>
 
             <div class="payment_section">
@@ -125,8 +166,8 @@
                <!-- </div> -->
                 <div class="text">
                     <h4>Road Tax Payment</h4>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae laboriosam possimus iure quo, quos porro placeat, nobis dolores maiores cumque saepe vel consequatur. A facere magni sunt natus ipsa quos!
-                </div>
+                    Its is the payment that should be paid by every individual to the goverment  as Road tax.Some of the vehicle types,catagories have its own road tax assigned by goverment.
+                    </div>
             </div>
 
             <div class="payment_section"> 
@@ -135,7 +176,7 @@
                 <!-- </div> -->
                 <div class="text">
                     <h4>BillBook Renew Payment</h4>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti, officia adipisci voluptatibus nemo laborum soluta nisi optio neque consectetur labore obcaecati vitae pariatur sapiente voluptate error at aut quod sequi!
+                Its the payment for renewing the blue book per year.   
                 </div>
             </div>
         </div>
