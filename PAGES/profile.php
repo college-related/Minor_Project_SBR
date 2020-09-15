@@ -10,18 +10,14 @@
 
     $ph = $_SESSION['phone'];
 
-    $sql_form = "SELECT * FROM form WHERE PHN = '$ph';";
-    $form_result = mysqli_query($connect,$sql_form);
+    $sql_detail = "SELECT form.*, basic_data.* FROM form JOIN basic_data ON form.PHN = basic_data.PHN WHERE form.PHN = '$ph' && basic_data.PHN = '$ph';";
+    $detail_result = mysqli_query($connect, $sql_detail);
 
-    $sql_basic = "SELECT * FROM basic_data WHERE PHN = '$ph';";
-    $basic_result = mysqli_query($connect,$sql_basic);
+    $detailArray = mysqli_fetch_all($detail_result, MYSQLI_ASSOC);
 
     $sql_tax="SELECT * FROM fine WHERE PHN ='$ph';";
     $tax_result=mysqli_query($connect,$sql_tax);
 
-
-    $formArray = mysqli_fetch_all($form_result,MYSQLI_ASSOC);
-    $basicArray = mysqli_fetch_all($basic_result,MYSQLI_ASSOC);
     $taxArray = mysqli_fetch_all($tax_result,MYSQLI_ASSOC);
 ?>
 
@@ -188,32 +184,28 @@
         <div id="details" class="maindiv">
             <h3><u> DETAILS</u></h3>
             <div id="detail-form">
-                <?php
-                foreach($basicArray as $data){
-                ?>
                 <table>
                     <tr>
                         <td>Phone number :</td>
-                        <td> <?=$data['PHN']?> </td>
+                        <td> <?=$detailArray[0]['PHN']?> </td>
                     </tr>
                     <tr>
                         <td>Vehicle Type:</td>
-                        <td> <?=$data['VEHICLE_TYPE']?></td>
+                        <td> <?=$detailArray[0]['VEHICLE_TYPE']?></td>
                     </tr>
                     <tr>
                         <td>Vehicle Category :</td>
-                        <td> <?=$data['VEHICLE_CAT']?></td>
+                        <td> <?=$detailArray[0]['VEHICLE_CAT']?></td>
                     </tr>
                     <tr>
                         <td>ENGINE_CC :</td>
-                        <td> <?=$data['ENGINE_CC']?></td>
+                        <td> <?=$detailArray[0]['ENGINE_CC']?></td>
                     </tr>
                     <tr>
                         <td>Vehicle Registration no. :</td>
-                        <td> <?=$data['VEHICLE_REG']?></td>
+                        <td> <?=$detailArray[0]['VEHICLE_REG']?></td>
                     </tr>
                 </table>
-                <?php } ?>
           <div class="editBtn">
           <i class="fa fa-edit" onclick="openEditPopup()">Edit</i>
           </div>
@@ -225,8 +217,8 @@
             <h3><u> MORE DETAILS</u></h3>
             <div id="latest-form">
                 <h4>Latest Form</h4>
-                <?php foreach($formArray as $data) { ?>
-                    <table>
+                <?php foreach($detailArray as $data) { ?>
+                    <table class="form-table">
                         <tr>
                             <td>Name :</td>
                             <td> <?=$data['NAME']?></td>
@@ -264,13 +256,13 @@
                         foreach($taxArray as $data) {?>
                             <tr>
                                 <td>
-                                    <?= $data['year']?>
+                                    <?= $data['YEAR']?>
                                 </td>
                                 <td>
-                                    <?= $data['fine']?>
+                                    <?= $data['FINE']?>
                                 </td>
                                 <td>
-                                    <?= $data['amount']?>
+                                    <?= $data['TAX_AMOUNT']?>
                                 </td>
                             </tr>
                      
@@ -279,13 +271,13 @@
                          for($i= sizeof($taxArray)-1; $i > sizeof($taxArray)-4;$i--){ ?>
                              <tr>
                                 <td>
-                                    <?= $taxArray[$i]['year']?>
+                                    <?= $taxArray[$i]['YEAR']?>
                                 </td>
                                 <td>
-                                    <?= $taxArray[$i]['fine']?>
+                                    <?= $taxArray[$i]['FINE']?>
                                 </td>
                                 <td>
-                                    <?= $taxArray[$i]['amount']?>
+                                    <?= $taxArray[$i]['TAX_AMOUNT']?>
                                 </td>
                             </tr>
                      
