@@ -7,7 +7,6 @@ if( isset($_POST['savebtn'])){
    $name=$_SESSION['Uname'];
    $phn=$_SESSION['phone'];
 
-
    $vType=$_POST['vType'];
    $vCat=$_POST['vCategory'];
    $vReg=$_POST['regNo'];
@@ -27,10 +26,10 @@ if( isset($_POST['savebtn'])){
         header("location: ../PAGES/profile.php?Logged&Err");
       }
     }else{
-        $sql = "INSERT INTO basic_data(PHN1, NAME1, VEHICLE_TYPE1, VEHICLE_CAT1, VEHICLE_REG1, ENGINE_CC1) VALUES ('$phn', '$name', '$vType', '$vCat', '$vReg', '$engineCC')";
+        $sql = "INSERT INTO basic_data(PHN1, NAME1, VEHICLE_TYPE1, VEHICLE_CAT1, VEHICLE_REG1, ENGINE_CC1) VALUES ('$phn', '$name', '$vType', '$vCat', '$vReg', '$engineCC');";
         
         $query = mysqli_query($connect, $sql);
-
+        
             if(mysqli_affected_rows($connect)){
                 header("location: ../PAGES/profile.php?Logged");
             }else{
