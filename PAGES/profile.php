@@ -25,6 +25,9 @@
 
     $formArray = mysqli_fetch_all($form_result,MYSQLI_ASSOC);
     $detailArray = mysqli_fetch_all($detail_result,MYSQLI_ASSOC);
+    // print_r($detailArray);
+    // die();
+
     $taxArray = mysqli_fetch_all($tax_result,MYSQLI_ASSOC);
 ?>
 
@@ -194,23 +197,63 @@
                 <table>
                     <tr>
                         <td>Phone number :</td>
-                        <td> <?=$detailArray[0]['PHN1']?> </td>
+                        <td> <?php 
+                        
+                        if(empty($detailArray)){
+                            echo "???";
+                        }else{
+                            echo $detailArray[0]['PHN1'];
+                        }
+                        
+                        ?> </td>
                     </tr>
                     <tr>
                         <td>Vehicle Type:</td>
-                        <td> <?=$detailArray[0]['VEHICLE_TYPE1']?></td>
+                        <td> 
+                            <?php    
+                                if(empty($detailArray) || $detailArray[0]['VEHICLE_TYPE1'] == ""){
+                                    echo "???";
+                                }else{
+                                    echo $detailArray[0]['VEHICLE_TYPE1'];
+                                }
+                            ?>
+                        </td>
                     </tr>
                     <tr>
                         <td>Vehicle Category :</td>
-                        <td> <?=$detailArray[0]['VEHICLE_CAT1']?></td>
+                        <td>
+                            <?php
+                                if(empty($detailArray) || $detailArray[0]['VEHICLE_CAT1'] == ""){
+                                    echo "???";
+                                }else{
+                                    echo $detailArray[0]['VEHICLE_CAT1'];
+                                }
+                            ?>
+                        </td>
                     </tr>
                     <tr>
                         <td>ENGINE_CC :</td>
-                        <td> <?=$detailArray[0]['ENGINE_CC1']?></td>
+                        <td> 
+                            <?php
+                                 if(empty($detailArray) || $detailArray[0]['ENGINE_CC1'] == ""){
+                                    echo "???";
+                                }else{
+                                    echo $detailArray[0]['ENGINE_CC1'];
+                                }
+                            ?>
+                        </td>
                     </tr>
                     <tr>
                         <td>Vehicle Registration no. :</td>
-                        <td> <?=$detailArray[0]['VEHICLE_REG1']?></td>
+                        <td> 
+                            <?php
+                                 if(empty($detailArray) || $detailArray[0]['VEHICLE_REG1'] == ""){
+                                    echo "???";
+                                }else{
+                                    echo $detailArray[0]['VEHICLE_REG1'];
+                                }
+                            ?>
+                       </td>
                     </tr>
                 </table>
           <div class="editBtn">
