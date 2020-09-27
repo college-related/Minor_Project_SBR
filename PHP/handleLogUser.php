@@ -6,10 +6,11 @@ if(isset($_POST['login'])){
     $Uname = $_POST['Uname'];
     $Password = $_POST['Password'];
     
-    $phn_sql = "SELECT PHN FROM users WHERE USERNAME = '$Uname' && PASSWORD = '$Password';";
+    $phn_sql = "SELECT PHN, EMAIL, EMAIL_STATUS FROM users WHERE USERNAME = '$Uname' && PASSWORD = '$Password';";
     $result = mysqli_query($connect, $phn_sql);
     $row = mysqli_fetch_assoc($result);
     $phn = $row['PHN'];
+    $email = $row['EMAIL'];
     $emailStat = $row['EMAIL_STATUS'];
 
         if($emailStat == "not verified"){
@@ -19,6 +20,7 @@ if(isset($_POST['login'])){
     session_start();
     $_SESSION['Uname'] = $Uname;
     $_SESSION['phone'] = $phn;
+    $_SESSION['Email'] = $email;
 
     $sql = "SELECT * FROM users WHERE USERNAME = '$Uname' && PASSWORD = '$Password'";
     $query = mysqli_query($connect, $sql);

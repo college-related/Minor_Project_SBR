@@ -7,12 +7,12 @@ session_start();
 $email = $_SESSION['Email'];
 $user = $_SESSION['Uname'];
 
-$sql = "SELECT * FROM users WHERE EMAIL = $email";
+$sql = "SELECT ACTIVATE_CODE FROM users WHERE EMAIL = '$email'";
 $query = mysqli_query($connect, $sql);
 $row = mysqli_fetch_assoc($query);
 $activeCode = $row['ACTIVATE_CODE'];
 
-if(mysqli_num_rows($connect)){
+if(mysqli_num_rows($query)){
     require 'PHPMailer/PHPMailerAutoload.php';
 
     $url = "https://swiftbluebookrenew.com/PHP/verifyUser.php?activation_code=$activeCode";
