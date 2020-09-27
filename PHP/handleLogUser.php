@@ -10,6 +10,11 @@ if(isset($_POST['login'])){
     $result = mysqli_query($connect, $phn_sql);
     $row = mysqli_fetch_assoc($result);
     $phn = $row['PHN'];
+    $emailStat = $row['EMAIL_STATUS'];
+
+        if($emailStat == "not verified"){
+            header("location: ../Landing.php#loginForm?mssg=notVerified");
+        }
 
     session_start();
     $_SESSION['Uname'] = $Uname;
