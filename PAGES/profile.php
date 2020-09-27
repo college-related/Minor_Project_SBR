@@ -336,40 +336,8 @@
             </div>
         </div>
     </main> 
-     <!-- foot of the website -->
-     <footer>
- 
-         <!-- contact part -->
-         <div class="contact-section">
-             <h3>Contact us</h3>
-             <address>
- <pre>
- Tel-phn: +06100012
- Email: liscense@email.com
- Fax: 01-001212
- </pre>
-             </address>
-             <span>
-                 <i class="fab fa-facebook"></i>
-             </span>
-             <span>
-                 <i class="fab fa-chrome"></i>
-             </span>
-             <span>
-                 <i class="fas fa-fax"></i>
-             </span>
-         </div>
- 
-         <!-- about part -->
-         <div class="about-section">
-             <h3>About us</h3>
-             <p>
-                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Est eos perferendis corporis dolore sit qui possimus nobis eligendi, maxime amet tempore quo quod, similique in unde adipisci aspernatur autem assumenda?
-                 Harum, explicabo, dignissimos eum odio suscipit optio laboriosam voluptatem dolor nostrum libero quam architecto? Minima deserunt corporis id at? Sint, ipsa mollitia.
-             </p>
-         </div>
- 
-     </footer>
+     
+    <?php include '../repeated_section/footer.html' ?>
  
 </body>
 </html>
