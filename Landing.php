@@ -31,20 +31,23 @@
 
     <style>
 
-        .feature-section {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            margin: 10px;
-            background-color: #4D77A1;
-            padding: 10px;
-            border-radius: 10px;
-            color: white;   
-            text-align: justify;
-            box-shadow: 1px 4px 2px lightgray;
+        .feature-wrapper {
+            padding: 40px 0;
         }
 
-        #feature-text, .qr-fe, .fast-fe {
-            grid-column: 3/7;
+        .feature-section {
+            margin: 10px;
+            padding: 10px;   
+            text-align: justify;
+        }
+
+        #feature-text {
+            grid-column: 1/13;
+            text-align: center;
+        }
+
+        .qr-fe, .fast-fe {
+            grid-column: 2/7;
         }
 
         .secure-fe, .paper-fe {
@@ -62,17 +65,35 @@
             line-height: 1.5rem;
         }
 
+        .signLogSection {
+            background-color: #fff;
+            padding-bottom: 80px;
+        }
+
+        .advantage-section {
+            grid-column: 2/7;
+            margin-top: 180px;
+            line-height: 2rem;
+        }
+
+        .advantage-section>h1, .advantage-section i {
+            color: #111672;
+        }
+
+        .advantage-section i {
+            font-size: 30px;
+        }
+
+        .advantage-div {
+            margin: 30px 0;
+        }
+
         /* signup and login form */
         .form {
-            grid-column: 5/9;
-            background-color: #7293B5;
             padding: 20px 50px;
             margin-top: 150px;
-            color: white;
             text-align: center;
-            box-shadow: 
-                0 15px 40px 0 rgba(166, 173, 201, .2)
-                0 5px 10px 0 rgba(154, 160, 185, .05);
+            box-shadow: 0px 0px 10px 5px #e2e2e2;
             line-height: 4rem;
         }
 
@@ -84,8 +105,7 @@
         input {
             margin: 5px auto;
             padding: 10px 30px;
-            border: none;
-            border-radius: 10px;
+            border: 1px solid lightgrey;
             width: 80%;
         }
 
@@ -106,7 +126,7 @@
         ?>
 
         #form-wrapper {
-            grid-column: 5/9;
+            grid-column: 8/12;
         }
 
         #loginForm, #signupForm {
@@ -116,7 +136,6 @@
         #toLogLink, #toSignLink {
             background-color: inherit;
             border: none;
-            color: white;
             font-size: medium;
             cursor: pointer;
         }
@@ -168,106 +187,131 @@
     </div>
        
     <!-- wave sturcture below header-->
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#7293b5" fill-opacity="1" d="M0,224L48,197.3C96,171,192,117,288,96C384,75,480,85,576,101.3C672,117,768,139,864,160C960,181,1056,203,1152,202.7C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
+    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#7293b5" fill-opacity="1" d="M0,224L48,197.3C96,171,192,117,288,96C384,75,480,85,576,101.3C672,117,768,139,864,160C960,181,1056,203,1152,202.7C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg> -->
 
     <!-- main section -->
     <main>
-        <!-- features section -->
-        <h2 id="feature-text">Features</h2>
+        <div class="feature-wrapper">
+            <!-- features section -->
+            <h2 id="feature-text">Features</h2>
 
-        <!-- QR code section -->
-        <div class="feature-section qr-fe">
-            <img src="./ASSETS/images/qr.jpg" alt="illust1" class="feature-imgs">
-            <div class="feature-div">
-                <h3>QR Code</h3>
-                <p>
-                    The unique QR code system of our makes it easier to store the data and register them in the office.
-                </p>
-            </div>
-        </div>
-
-        <!-- Secure section -->
-        <div class="feature-section secure-fe">
-            <img src="./ASSETS/images/secure.jpg" alt="illust2" class="feature-imgs">
-            <div class="feature-div">
-                <h3>Secure Submission</h3>
-                <p>
-                    The form submitted through our site are more secure and up-to date, making the work more risk free.  
-                </p>
-            </div>
-        </div>
-
-        <!-- fast and reliable section -->
-        <div class="feature-section fast-fe">
-            <img src="./ASSETS/images/fast.jpg" alt="illust3" class="feature-imgs">
-            <div class="feature-div">
-                <h3>Fast and Relaible</h3>
-                <p>
-                    By using the QR code system and faster submission process, it makes the whole process easier and faster as well as relaible.
-                </p>
-            </div>
-        </div>
-
-        <!-- paper management section -->
-        <div class="feature-section paper-fe">
-            <img src="./ASSETS/images/paper.jpg" alt="illust4" class="feature-imgs">
-            <div class="feature-div">
-                <h3>Paper management</h3>
-                <p>
-                    Using this new system we can lessen the amount of paper needed thus,making it more nature friendly way of work.
-                </p>
-            </div>
-        </div>
-
-        <div id="form-wrapper">
-            <!-- sign up form -->
-            <div id="signupForm">
-                <div class="form">
-                <form action="./PHP/handleUser.php" method="POST">
-                    <h2>Sign Up</h2>
-                    <table>
-                        <tr>
-                            <td><input type="email" placeholder="Email" name="Email" value="dummy@gmail.com" required/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" placeholder="Username" name="Uname" value="dummy" required/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="number" placeholder="Phone Number" name="Phn" value="1111111111" required/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="password" placeholder="Password" name="Password" value="12345" required/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="password" placeholder="Confrim Password" name="Repass" value="12345" required/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit" value="Sign Up" name="signup"/></td>
-                        </tr>
-                    </table>
-                </form>
-                <button id="toLogLink">Log in</button>
+            <!-- QR code section -->
+            <div class="feature-section qr-fe">
+                <img src="./ASSETS/images/qr.jpg" alt="illust1" class="feature-imgs">
+                <div class="feature-div">
+                    <h3>QR Code</h3>
+                    <p>
+                        The unique QR code system of our makes it easier to store the data and register them in the office.
+                    </p>
                 </div>
             </div>
 
-            <!-- log in form -->
-            <div id="loginForm">
-                <div class="form">
-                <form action="./PHP/handleLogUser.php" method="POST">
-                    <h2>Log In</h2>
-                    <table>
-                        <tr>
-                            <td><input type="text" placeholder="Username" name="Uname" required/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="password" placeholder="Password" name="Password" required/></td>
-                        </tr>
-                        <tr>
-                            <td><input type="submit" value="Log In" name="login"/></td>
-                        </tr>
-                    </table>
-                </form>
-                <button id="toSignLink">Sign Up</button>
+            <!-- Secure section -->
+            <div class="feature-section secure-fe">
+                <img src="./ASSETS/images/secure.jpg" alt="illust2" class="feature-imgs">
+                <div class="feature-div">
+                    <h3>Secure Submission</h3>
+                    <p>
+                        The form submitted through our site are more secure and up-to date, making the work more risk free.  
+                    </p>
+                </div>
+            </div>
+
+            <!-- fast and reliable section -->
+            <div class="feature-section fast-fe">
+                <img src="./ASSETS/images/fast.jpg" alt="illust3" class="feature-imgs">
+                <div class="feature-div">
+                    <h3>Fast and Relaible</h3>
+                    <p>
+                        By using the QR code system and faster submission process, it makes the whole process easier and faster as well as relaible.
+                    </p>
+                </div>
+            </div>
+
+            <!-- paper management section -->
+            <div class="feature-section paper-fe">
+                <img src="./ASSETS/images/paper.jpg" alt="illust4" class="feature-imgs">
+                <div class="feature-div">
+                    <h3>Paper management</h3>
+                    <p>
+                        Using this new system we can lessen the amount of paper needed thus,making it more nature friendly way of work.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="signLogSection">
+            <!-- advantage section -->
+            <div class="advantage-section">
+                <h1>Sign up to get all the advantages</h1>
+
+                <div class="advantage-div">
+                    <i>Icon</i>
+                    <h3>Some advantage</h3>
+                    <p>Get some advantage so sign up now.</p>
+                </div>
+                <div class="advantage-div">
+                    <i class="fa fa-magic"></i>
+                    <h3>Auto-fill</h3>
+                    <p>Automatically fill up the form everytime you have to fill the form.</p>
+                </div>
+                <div class="advantage-div">
+                    <i class="fa fa-envelope-open-text"></i>
+                    <h3>Email reminder</h3>
+                    <p>Get notified every year when the time arrives to renew the bluebook.</p>
+                </div>
+            </div>
+
+            <div id="form-wrapper">
+                <!-- sign up form -->
+                <div id="signupForm">
+                    <div class="form">
+                    <form action="./PHP/handleUser.php" method="POST">
+                        <h2>Sign Up</h2>
+                        <table>
+                            <tr>
+                                <td><input type="email" placeholder="Email" name="Email" value="dummy@gmail.com" required/></td>
+                            </tr>
+                            <tr>
+                                <td><input type="text" placeholder="Username" name="Uname" value="dummy" required/></td>
+                            </tr>
+                            <tr>
+                                <td><input type="number" placeholder="Phone Number" name="Phn" value="1111111111" required/></td>
+                            </tr>
+                            <tr>
+                                <td><input type="password" placeholder="Password" name="Password" value="12345" required/></td>
+                            </tr>
+                            <tr>
+                                <td><input type="password" placeholder="Confrim Password" name="Repass" value="12345" required/></td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" value="Sign Up" name="signup"/></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <button id="toLogLink">Log in</button>
+                    </div>
+                </div>
+
+                <!-- log in form -->
+                <div id="loginForm">
+                    <div class="form">
+                    <form action="./PHP/handleLogUser.php" method="POST">
+                        <h2>Log In</h2>
+                        <table>
+                            <tr>
+                                <td><input type="text" placeholder="Username" name="Uname" required/></td>
+                            </tr>
+                            <tr>
+                                <td><input type="password" placeholder="Password" name="Password" required/></td>
+                            </tr>
+                            <tr>
+                                <td><input type="submit" value="Log In" name="login"/></td>
+                            </tr>
+                        </table>
+                    </form>
+                    <button id="toSignLink">Sign Up</button>
+                    </div>
                 </div>
             </div>
         </div>
