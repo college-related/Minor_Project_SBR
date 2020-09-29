@@ -35,7 +35,7 @@
 
                     if($log=="true"){
 
-                        echo "<a href='./form.html'>Form</a> <a href='./profile.php?Logged'>Profile</a> <a href='../php/logout.php'>LogOut</a> <i class="fa fa-search"></i>";
+                        echo "<a href='./form.html'>Form</a> <a href='./profile.php?Logged'>Profile</a> <a href='../php/logout.php'>LogOut</a> <i class='fa fa-search'></i>";
 
                     }
                     elseif($log=="false"){
