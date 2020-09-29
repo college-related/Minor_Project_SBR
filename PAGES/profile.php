@@ -43,6 +43,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
 
+    <link rel="stylesheet" href="../CSS/search.css">
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/profile.css">
 
@@ -96,6 +97,7 @@
     </style>
     <script defer src="../JS/detail_popup.js"></script>
     <script defer src="../JS/category_type.js"></script>
+    <script defer src="../JS/search.js"></script>
 </head>
 <body>
     <header>
@@ -108,6 +110,7 @@
             <a href="./information.php?isLogged=true">Infos</a>
             <a href="./form.html">Form</a>
             <a href="../php/logout.php">LogOut</a>
+            <i class="fa fa-search"></i>
         </nav>
 
         <!-- navigation bar for mobile view -->

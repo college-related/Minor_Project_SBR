@@ -1,14 +1,20 @@
-                                            
-function closePopUp(){
-    var overlay = document.getElementsByClassName('overlay')[0];
-    var popUp = document.getElementsByClassName('popup')[0];
+  var overlay = document.getElementsByClassName('overlay')[0];
+  var popUp = document.getElementsByClassName('popup')[0];
 
+  function openPopUp(){
+    overlay.style.display = 'block';
+    popUp.style.display = 'block';
+}
+
+function closePopUp(){
     overlay.style.display = 'none';
     popUp.style.display = 'none';
 }
 
 var input = document.getElementsByTagName('input')[0];
 var cross = document.getElementById('input-crossmark');
+var search = document.getElementsByClassName('fa-search')[0];
+search.addEventListener('click',openPopUp);
 
 function clearInputField(){
     input.value="";
