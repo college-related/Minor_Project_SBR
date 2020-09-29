@@ -31,6 +31,8 @@ if( isset($_POST['savebtn'])){
         $query = mysqli_query($connect, $sql);
         
             if(mysqli_affected_rows($connect)){
+                $sql_first = "UPDATE users SET FIRST_TIME_USER = 'no' WHERE PHN='$phn';";
+                $first_query = mysqli_query($connect, $sql_first);
                 header("location: ../PAGES/profile.php?Logged");
             }else{
                 header("location: ../PAGES/profile.php?Logged&Error");

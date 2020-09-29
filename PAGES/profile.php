@@ -14,6 +14,11 @@
     // $detail_result = mysqli_query($connect, $sql_detail);
 
     // $detailArray = mysqli_fetch_all($detail_result, MYSQLI_ASSOC);
+    $sql_firstUser = "SELECT FIRST_TIME_USER FROM users WHERE PHN='$ph';";
+    $firstUser_result = mysqli_query($connect, $sql_firstUser);
+    $row = mysqli_fetch_assoc($firstUser_result);
+    $first = $row['FIRST_TIME_USER'];
+
     $sql_form = "SELECT * FROM form WHERE PHN='$ph';";
     $form_result = mysqli_query($connect, $sql_form);
 
@@ -52,7 +57,7 @@
     <style>
         #closeBtn-holder{
             display:<?php
-            if(isset($_GET['signed'])){
+            if($first == 'yes'){
                 echo "none;";
             }
             else{
@@ -64,7 +69,7 @@
         .information{
             display:
             <?php
-            if(isset($_GET['signed'])){
+            if($first == 'yes'){
                 echo "block;";
             }
             else{
@@ -81,7 +86,7 @@
             cursor:pointer;
         }
         <?php
-        if(isset($_GET['signed'])){
+        if($first == 'yes'){
             echo ".detail-popup, .bg-overlay{
                 display:block;
                  }";

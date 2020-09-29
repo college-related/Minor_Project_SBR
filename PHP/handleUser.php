@@ -27,7 +27,7 @@ if(isset($_POST['signup'])){
             $_SESSION['phone'] = $phonenumber;
             $_SESSION['Email'] = $email;
 
-            $sql = "INSERT INTO users(USERNAME, EMAIL, PASSWORD, PHN, ACTIVATE_CODE, EMAIL_STATUS) VALUES('$username', '$email', '$password', '$phonenumber', '$activateCode', 'not verified')";
+            $sql = "INSERT INTO users(USERNAME, EMAIL, PASSWORD, PHN, ACTIVATE_CODE, EMAIL_STATUS,FIRST_TIME_USER) VALUES('$username', '$email', '$password', '$phonenumber', '$activateCode', 'not verified', 'yes')";
 
             mysqli_query($connect, $sql);
 
