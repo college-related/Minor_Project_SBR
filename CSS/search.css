@@ -80,7 +80,7 @@ input{
     font-size: 20px;
 }
 
-a,#input-crossmark{
+.link>a,#input-crossmark{
     color: lightseagreen;
 }
 

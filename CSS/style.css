@@ -53,6 +53,11 @@ header{
     word-spacing: 2rem;
 }
 
+.web-navigation>.fa-search{
+    color: white;
+    cursor: pointer;
+}
+
 /* Links */
 a{
     text-decoration: none;
