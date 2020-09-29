@@ -20,6 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SWIFT BLUEBOOK RENEW</title>
 
+    <link rel="stylesheet" href="./CSS/search.css">
     <link rel="stylesheet" href="./CSS/style.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -143,6 +144,7 @@
     </style>
 
     <script defer src="./JS/sign_log.js"></script>
+    <script defer src="./JS/search.js"></script>
 
 </head>
 
@@ -157,6 +159,7 @@
             <a href="./pages/information.php?isLogged=false">Infos</a>
             <a href="#signupForm" onclick="signPopUp()">SignUp</a>
             <a href="#loginForm" onclick="logPopUp()">LogIn</a>
+            <i class="fa fa-search"></i>
         </nav>
 
         <!-- navigation bar for mobile view -->
