@@ -1,0 +1,181 @@
+.overlay{
+    background-color: rgba(0,0,0,0.3);    /*a=alpha(opacity 0to 1 hunxa)*/
+    height: 100vh;     /*vh= view height*/
+    width: 100%;
+    top: 0;   /*y-axis*/
+    left: 0;   /*x-axis*/  
+}
+
+.popup{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: black 5px 5px 5px;
+    padding: 20px;
+    width: 30%;
+    /* height: 50vh; */
+}
+
+.overlay,.popup{
+    position:fixed; /*it makes the div element inline*/
+    z-index: 2;/*z-axis ma aghadi lyauna*/
+}
+
+.head{
+    border-bottom: black 1px solid;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 3fr 1fr; /*.head |1|2|3|4|  |h3|h3|h3|span|*/
+}
+
+.head>h3{
+    display: flex;
+    align-items: center;
+}
+
+span{
+  text-align: right;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
+.body{
+    padding: 20px;
+}
+
+input{
+    width: 100%;
+    padding: 15px;
+    /* background-color: rgba(169, 169, 169, 0.432); */
+    border: none;
+    outline: none;
+}
+
+.link,h4{
+    padding: 3px;
+    margin: 5px 0;
+}
+
+/* .link{
+    font-size: 20px;
+} */
+
+.searchbar{
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    border-radius: 10px;
+    border: 2px solid lightseagreen;
+    align-items: center;
+    justify-items: center;
+}
+
+/* .searchbar:active{
+    border: 1px solid lightseagreen;
+} */
+
+#input-crossmark{
+    font-size: 20px;
+}
+
+a,#input-crossmark{
+    color: lightseagreen;
+}
+
+.link{
+    display: none;
+}
+
+.tag{
+    display : none;
+}
+.autocomplete-items {
+
+    position: absolute;
+
+    /* border: 1px solid #d4d4d4; */
+
+    z-index: 99;
+
+    /*position the autocomplete items to be the same width as the container:*/
+
+    top: 0;
+
+    left: 110%;
+
+    /* right: 0; */
+
+    width: 400px;
+/* 
+    padding: 20px;
+
+    background-color: #fff; */
+
+  }
+
+ 
+
+  /* .autocomplete-items::after{
+
+      content: '';
+
+      position: absolute;
+
+      width: 50px;
+
+      height: 50px;
+
+      right: 100%;
+
+      top: 50%;
+
+      background-color: #fff;
+
+      transform: rotate(45deg);
+
+      margin-right: -25px;
+
+      margin-top: -40px;
+
+  } */
+
+  
+
+  .autocomplete-items div {
+
+    padding: 10px;
+
+    cursor: pointer;
+
+    background-color: #fff; 
+
+    /* margin: 5px 0; */
+
+    border-bottom: 1px solid #d4d4d4; 
+
+    border-radius: 10px;
+
+  }
+
+  
+
+  /*when hovering an item:*/
+
+  .autocomplete-items div:hover {
+
+    background-color: #e9e9e9; 
+
+  }
+
+  
+
+  /*when navigating through the items using the arrow keys:*/
+
+  .autocomplete-active {
+
+    background-color: DodgerBlue !important; 
+
+    color: #ffffff;
+  }
