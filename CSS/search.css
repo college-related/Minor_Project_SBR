@@ -21,6 +21,7 @@
 .overlay,.popup{
     position:fixed; /*it makes the div element inline*/
     z-index: 2;/*z-axis ma aghadi lyauna*/
+    display: none;
 }
 
 .head{
@@ -80,7 +81,7 @@ input{
     font-size: 20px;
 }
 
-.link>a,#input-crossmark{
+.link>a,.link>a:hover,#input-crossmark{
     color: lightseagreen;
 }
 
