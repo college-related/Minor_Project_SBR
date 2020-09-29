@@ -39,7 +39,7 @@
 
                     }
                     elseif($log=="false"){
-                        echo "<a href='../landing.php#signupForm'>SignUp</a> <a href='../landing.php?logBox#loginForm'>LogIn</a> <i class="fa fa-search"></i>";
+                        echo "<a href='../landing.php#signupForm'>SignUp</a> <a href='../landing.php?logBox#loginForm'>LogIn</a> <i class='fa fa-search'></i>";
 
                         
                     }
