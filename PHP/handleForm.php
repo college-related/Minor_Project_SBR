@@ -35,9 +35,9 @@ if(isset($_POST['saveForm'])) {
         mysqli_query($connect, $sql);
 
         if(mysqli_affected_rows($connect)){
-            header("location: ./calculateTax.php?Logged&savedForm");
+            header("location: ./calculateTax.php?savedForm");
         }else{
-            header("location: ../PAGES/form.html?error2");
+            header("location: ../PAGES/form.html?error=NotInserted");
         }
 
     }else {
@@ -47,12 +47,12 @@ if(isset($_POST['saveForm'])) {
         mysqli_query($connect, $sql);
 
         if(mysqli_affected_rows($connect)){
-            header("location: ./calculateTax.php?Logged&savedForm");
+            header("location: ./calculateTax.php?savedForm");
         }else{
-            header("location: ../PAGES/form.html?error");
+            header("location: ../PAGES/form.html?error=NotInserted");
         }
     }
 
 }else{
-    header("location:../PAGES/form.html?error=WrongWay");
+    header("location:../PAGES/form.html?error=IllegalWay");
 }

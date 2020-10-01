@@ -15,14 +15,14 @@ if(isset($_GET['activation_code'])){
         if(mysqli_affected_rows($connect)){
             header("location: ../PAGES/verifiedEmail.html");
         }else{
-            header("location: ../Landing.php#signupForm?mssg=AlreadyVerified");
+            header("location: ../Landing.php?mssg=AlreadyVerified#signupForm");
         }
     }else{
-        header("location: ../Landing.php#signupForm?mssg=NotUser");
+        header("location: ../Landing.php?error=NotActivationCode#signupForm");
     }
 
 }else{
-    header("location: ../Landing.php#signupForm?mssg=WrongLink");
+    header("location: ../Landing.php?error=WrongLink#signupForm");
 }
 
 ?>

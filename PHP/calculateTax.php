@@ -141,15 +141,15 @@ if(isset($_GET['savedForm'])){
     $query_add=mysqli_query($connect, $sql_add);
 
     if(mysqli_affected_rows($connect)){
-        header("location: ./QR.php?amount='$tAmount'&fine='$fineper'&mssg='$insMssg'");
+        header("location: ./QRPage.php?amount='$tAmount'&fine='$fineper'&mssg='$insMssg'");
     }
     else{
-        header("location: ../PAGES/form.html?notAdded");
+        header("location: ../PAGES/form.html?error=NotInserted");
     }
 
 }
 else{
-    header("location: ../PAGES/form.html?WrongWay");
+    header("location: ../PAGES/form.html?error=IllegalWay");
 }
 
 

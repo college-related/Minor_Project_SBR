@@ -20,7 +20,7 @@ if(isset($_POST['signup'])){
             $query_phn_check = mysqli_query($connect, $sql_phn_check);
 
         if(mysqli_num_rows($query_email_check) > 0 || mysqli_num_rows($query_phn_check) > 0){
-            header("location: ../Landing.php#signupForm");
+            header("location: ../Landing.php?error=AlreadyUser#signupForm");
         }else{
             session_start();
             $_SESSION['Uname'] = $username;
@@ -34,16 +34,16 @@ if(isset($_POST['signup'])){
             if(mysqli_affected_rows($connect)){
                 header("location: ./emailVerification.php");
             }else{
-                header("location: ../Landing.php");
+                header("location: ../Landing.php?error=NotInserted");
             }
         }
 
     }else 
     {
-        header("location:../Landing.php");
+        header("location:../Landing.php?error=PasswordNotSame");
     }
 }else{
-    header("location:../Landing.php");
+    header("location:../Landing.php?error=IllegalWay");
 }
 
 ?>

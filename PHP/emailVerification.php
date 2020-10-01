@@ -39,12 +39,12 @@ if(mysqli_num_rows($query)){
     $mail->Body = $mssg;
 
     if(!$mail->send()){
-        header("location: ../Landing.php#signupForm?mssg=sendMailError");
+        header("location: ../Landing.php?error=SendMailError#signupForm");
     }else{
-        header("location: ../Landing.php#signupForm?mssg=CheckEmail");
+        header("location: ../Landing.php?mssg=CheckEmail#signupForm");
     }
 }else{
-    header("location: ../Landing.php#signupForm?mssg=SomeError");
+    header("location: ../Landing.php?error=NotUser#signupForm");
 }
 
 ?>
