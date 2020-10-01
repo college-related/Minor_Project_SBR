@@ -24,7 +24,7 @@ if(mysqli_num_rows($query)){
         Click this link to verify and log in into your account
         $url
     </p>
-    "
+    ";
 
     $mail = new PHPMailer;
 
