@@ -28,7 +28,7 @@ if(isset($_POST['login'])){
     if(mysqli_num_rows($query)){
         header("location: ../PAGES/profile.php?Logged");
     }else{
-        header("location: ../Landing.php?error=NotInserted#loginForm");
+        header("location: ../Landing.php?inputError=WrongNameORPass#loginForm");
     }
 
 }else{
