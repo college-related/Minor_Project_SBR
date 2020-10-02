@@ -14,7 +14,8 @@ if(isset($_POST['login'])){
     $emailStat = $row['EMAIL_STATUS'];
 
         if($emailStat == "not verified"){
-            header("location: ../Landing.php?error=EmailNotVerified#loginForm");
+            header("location: ../Landing.php?error=EmailNotVerified&logBox#loginForm");
+            die();
         }
 
     session_start();
@@ -28,7 +29,7 @@ if(isset($_POST['login'])){
     if(mysqli_num_rows($query)){
         header("location: ../PAGES/profile.php?Logged");
     }else{
-        header("location: ../Landing.php?inputError=WrongNameORPass#loginForm");
+        header("location: ../Landing.php?inputError=WrongNameORPass&logBox#loginForm");
     }
 
 }else{

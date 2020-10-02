@@ -15,7 +15,7 @@ $activeCode = $row['ACTIVATE_CODE'];
 if(mysqli_num_rows($query)){
     require 'PHPMailer/PHPMailerAutoload.php';
 
-    $url = "https://swiftbluebookrenew.com/PHP/verifyUser.php?activation_code=$activeCode";
+    $url = "https://localhost/college_project/Minor_Project_SBR/PHP/verifyUser.php?activation_code=$activeCode";
 
     $mssg = "
     <h2>Hi, $user </h2>
