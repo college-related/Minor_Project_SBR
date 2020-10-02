@@ -112,6 +112,10 @@
                 echo "input[type='number']{
                         border:1px solid red;
                 }";
+            }else if($inputError == 'WrongNameORPass'){
+                echo ".log-input{
+                    border:1px solid red;
+                }";
             }
         ?>
 
@@ -371,19 +375,19 @@
                         <h2>Sign Up</h2>
                         <table>
                             <tr>
-                                <td><input type="email" placeholder="Email" name="Email" value="dummy@gmail.com" required/></td>
+                                <td><input class="form-input" type="email" placeholder="Email" name="Email" value="dummy@gmail.com" required/></td>
                             </tr>
                             <tr>
-                                <td><input type="text" placeholder="Username" name="Uname" value="dummy" required/></td>
+                                <td><input class="form-input" type="text" placeholder="Username" name="Uname" value="dummy" required/></td>
                             </tr>
                             <tr>
-                                <td><input type="number" placeholder="Phone Number" name="Phn" value="1111111111" required/></td>
+                                <td><input class="form-input" type="number" placeholder="Phone Number" name="Phn" value="1111111111" required/></td>
                             </tr>
                             <tr>
-                                <td><input type="password" placeholder="Password" name="Password" value="12345" required/></td>
+                                <td><input class="form-input" type="password" placeholder="Password" name="Password" value="12345" required/></td>
                             </tr>
                             <tr>
-                                <td><input type="password" placeholder="Confrim Password" name="Repass" value="12345" required/></td>
+                                <td><input class="form-input" type="password" placeholder="Confrim Password" name="Repass" value="12345" required/></td>
                             </tr>
                             <tr>
                                 <td><input type="submit" value="Sign Up" name="signup"/></td>
@@ -401,10 +405,10 @@
                         <h2>Log In</h2>
                         <table>
                             <tr>
-                                <td><input type="text" placeholder="Username" name="Uname" required/></td>
+                                <td><input class="form-input log-input" type="text" placeholder="Username" name="Uname" required/></td>
                             </tr>
                             <tr>
-                                <td><input type="password" placeholder="Password" name="Password" required/></td>
+                                <td><input class="form-input log-input" type="password" placeholder="Password" name="Password" required/></td>
                             </tr>
                             <tr>
                                 <td><input type="submit" value="Log In" name="login"/></td>
@@ -442,11 +446,11 @@
             document.getElementsByClassName('error')[0].style.display = 'none';
         }
 
-        var input = document.getElementsByTagName('input');
+        var input = document.getElementsByClassName('form-input');
 
         window.addEventListener('click', function(){
             for(var i = 0; i < input.length;i++){
-                input[i].style.borderColor = rgb(211,211,211);
+                input[i].style.borderColor = 'rgb(211,211,211)';
             }
         });
     </script>
