@@ -10,6 +10,36 @@
                 </script>';
     }
 
+    if(isset($_GET['error'])){
+        $error = $_GET['error'];
+            if($error == 'IllegalWay'){
+                $icon = "<i class='far fa-angry fa-2x'></i>";
+                $mssg = "Please ! Enter through proper way.";                
+            }else if($error == 'NotInserted'){
+                $icon = "<i class='far fa-grin-beam-sweat fa-2x'></i>";
+                $mssg = "Some error occured. Please retry.";
+            }else if($error == 'NotUser'){
+                $icon = "<i class='fas fa-frown fa-2x'></i>";
+                $mssg = "No such user found.";
+            }else if($error == 'SendMailError'){
+                $icon = "<i class='far fa-sad-cry fa-2x'></i>";
+                $mssg = "Some technical issue detected. Please report.";
+            }else if($error == 'WrongLink'){
+                $icon = "<i class='far fa-dizzy fa-2x'></i>";
+                $mssg = "The link must have been expired.";
+            }else if($error == 'NotActivationCode'){
+                $icon = "<i class='far fa-meh fa-2x'></i>";
+                $mssg = "No such activation code found.";
+            }else if($error == 'EmailNotVerified'){
+                $icon = "<i class='far fa-tired fa-2x'></i>";
+                $mssg = "Please verify your email first.";
+            }
+    }
+
+    if(isset($_GET['inputError'])){
+        $inputError = $_GET['inputError'];
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +61,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
 
     <style>
+        .error{
+            width:30%;
+            font-size:18px;
+            background-color:red;
+            color:#fff;
+            border:1px solid black;
+            display:grid;
+            grid-template-columns:1fr 4fr 1fr;
+            justify-items:center;
+            align-items:center;
+            position:fixed;
+            top:40px;
+            left:50%;
+            transform:translateX(-50%);
+            z-index:333;
+            animation: animate 0.5s ease-in-out;
+        }
+
+        /* .errorCloseMark{
+            color:#fff;
+            font-size:20px;
+            cursor:pointer;
+        } */
+
+        @keyframes animate{
+            from { top: 0; }
+            to { top: 40px; }
+        }
+
+        <?php
+            if(!isset($_GET['error'])){
+                echo ".error{
+                    display:none;
+                }";
+            }
+
+        ?>
+
+        <?php
+            if($inputError == 'AlreadyUserEmail'){
+                echo "input[type='email']{
+                        border:1px solid red;
+                }";
+            }else if($inputError == 'PasswordNotSame'){
+                echo "input[type='password']{
+                        border:1px solid red;
+                }";
+            }else if($inputError == 'AlreadyUserPhone'){
+                echo "input[type='number']{
+                        border:1px solid red;
+                }";
+            }
+        ?>
 
         .feature-wrapper {
             padding: 40px 0;
@@ -192,6 +275,17 @@
     <!-- wave sturcture below header-->
     <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#7293b5" fill-opacity="1" d="M0,224L48,197.3C96,171,192,117,288,96C384,75,480,85,576,101.3C672,117,768,139,864,160C960,181,1056,203,1152,202.7C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg> -->
 
+        <div class="error">
+            <?php echo $icon; ?>
+            <div>
+                <h3>Error</h3>
+                <p>
+                    <?php echo $mssg;?>
+                </p>
+            </div>
+            <span id="errorCloseMark" onclick="closeErrorPopUp()">&times;</span>
+        </div>
+
     <?php
     include './repeated_section/search.html';
    ?>
@@ -342,6 +436,20 @@
     </div>
 
     <?php include 'repeated_section/footer.html' ?>
+
+    <script>
+        function closeErrorPopUp(){
+            document.getElementsByClassName('error')[0].style.display = 'none';
+        }
+
+        var input = document.getElementsByTagName('input');
+
+        window.addEventListener('click', function(){
+            for(var i = 0; i < input.length;i++){
+                input[i].style.borderColor = rgb(211,211,211);
+            }
+        });
+    </script>
 
 </body>
 
