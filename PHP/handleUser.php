@@ -19,8 +19,10 @@ if(isset($_POST['signup'])){
             $query_email_check = mysqli_query($connect, $sql_email_check);
             $query_phn_check = mysqli_query($connect, $sql_phn_check);
 
-        if(mysqli_num_rows($query_email_check) > 0 || mysqli_num_rows($query_phn_check) > 0){
-            header("location: ../Landing.php?error=AlreadyUser#signupForm");
+        if(mysqli_num_rows($query_email_check) > 0 ){
+            header("location: ../Landing.php?inputError=AlreadyUserEmail#signupForm");
+        }else if(mysqli_num_rows($query_phn_check) > 0){
+            header("location: ../Landing.php?inputError=AlreadyUserPhone#signupForm");
         }else{
             session_start();
             $_SESSION['Uname'] = $username;
