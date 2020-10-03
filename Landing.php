@@ -12,6 +12,8 @@
 
     if(isset($_GET['error'])){
         $error = $_GET['error'];
+        $title = "Error";
+        
             if($error == 'IllegalWay'){
                 $icon = "<i class='far fa-angry fa-2x'></i>";
                 $mssg = "Please ! Enter through proper way.";                
@@ -40,6 +42,21 @@
         $inputError = $_GET['inputError'];
     }
 
+    if(isset($_GET['mssg'])){
+        $successMssg = $_GET['mssg'];
+        $title = "Hurray!";
+
+        if($successMssg == 'CheckEmail'){
+            $icon = "<i class='far fa-grin-beam fa-2x'></i>";
+            $mssg = "Please check your email for verification";
+        }else if($successMssg == 'AlreadyVerified'){
+            $icon = "<i class='far fa-laugh-wink fa-2x'></i>";
+            $mssg = "User already verified";
+        }
+    }
+
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +81,7 @@
         .error{
             width:30%;
             font-size:18px;
+            padding:10px;
             background-color:red;
             color:#fff;
             border:1px solid black;
@@ -72,26 +90,43 @@
             justify-items:center;
             align-items:center;
             position:fixed;
-            top:40px;
-            left:50%;
-            transform:translateX(-50%);
             z-index:333;
-            animation: animate 0.5s ease-in-out;
         }
 
-        /* .errorCloseMark{
-            color:#fff;
-            font-size:20px;
-            cursor:pointer;
-        } */
 
-        @keyframes animate{
+        @keyframes animateFromTop{
             from { top: 0; }
-            to { top: 40px; }
+            to { top: 50px; }
+        }
+
+        @keyframes animateFromBottom{
+            from { right :0; }
+            to { right: 30%; }
         }
 
         <?php
-            if(!isset($_GET['error'])){
+            if(isset($_GET['error'])){
+                echo ".error{
+                    background-color:red;
+                    animation: animateFromTop 1s ease-in-out;
+                    top: 50px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }";
+            }else if(isset($_GET['mssg'])){
+                echo ".error{
+                    background-color:grey;
+                    animation: animateFromBottom 1s ease-in-out;
+                    bottom: 20px;
+                    right: 30%;
+                    transform: translateX(30%);
+                }";
+            }
+
+        ?>
+
+        <?php
+            if(!isset($_GET['error']) && !isset($_GET['mssg'])){
                 echo ".error{
                     display:none;
                 }";
@@ -282,7 +317,9 @@
         <div class="error">
             <?php echo $icon; ?>
             <div>
-                <h3>Error</h3>
+                <h3>
+                    <?php echo $title; ?>
+                </h3>
                 <p>
                     <?php echo $mssg;?>
                 </p>
