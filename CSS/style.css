@@ -10,7 +10,7 @@ html {
 }
  
 /* divisions with grid display and full column length */
-body, header , .hero-div, footer, main, svg, .review-section, .signLogSection, .feature-wrapper{
+body, header , .hero-div, footer, main, svg, .review-section, .signLogSection, .feature-wrapper, .hero-section{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column: 1/13;
@@ -29,10 +29,7 @@ header{
     top: 0;
 }
 
-.nav-hero{
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-column: 1/13;
+.hero-section{
     background-color: #7293B5;
     padding: 100px 0;
 }
@@ -153,4 +150,89 @@ footer {
 /* comment on review section */
 .review-comment {
     grid-column: 6/11;
+}
+
+@media screen and (max-width: 800px){
+    body, header , .hero-div, footer, main, svg, .review-section, .signLogSection, .feature-wrapper, .hero-section{
+        grid-template-columns: repeat(4, 1fr);
+        grid-column: 1/5;
+    }
+
+    #logo{
+        grid-column: 1/3;
+        font-size: small;
+    }
+    
+    /* navigation for desktop version */
+    .web-navigation {
+        display: none;
+    }
+    
+    /* Links */
+    a{
+        font-size: small; 
+    }
+    
+    /* navigation for mobile version */
+    .mobile-navigation {
+        grid-column: 1/5;
+    }
+    
+    /* hero-text = big hero text, hero-link = btn link that is big */
+    .hero-text {
+        grid-column: 1/5;
+        font-size: 24px;
+        text-align: center;
+    }
+    
+    /* sub-text = sub heading */
+    .sub-text {
+        grid-column: 1/5;
+    }
+
+    .hero-link {
+        grid-column: 2/4;
+    }
+    
+    .sub-text {
+        font-size: 18px;
+    }
+    
+    /* hero-btn = bigger btn */
+    .hero-link, #hero-btn, input[type="submit"], #logOutBtn {
+        padding: 10px;
+    }
+    
+    /* contact and about section */
+    .contact-section, .about-section {
+        padding: 10px;
+    }
+    
+    .contact-section {
+        grid-column: 1/5;
+        border: none;
+    }
+    
+    .about-section {
+        display: none;
+    }
+    
+    /* review section */
+    .review-section {
+        padding: 60px 10px;
+    }
+    
+    .avatar-img {
+        grid-column: 1/5;
+    }
+    
+    .avatar-img>img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    /* comment on review section */
+    .review-comment {
+        grid-column: 1/5;
+    }
 }

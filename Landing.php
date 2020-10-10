@@ -69,6 +69,7 @@
 
     <link rel="stylesheet" href="./CSS/search.css">
     <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/landing.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
@@ -78,7 +79,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
 
     <style>
-        .error{
+        .error-popup{
             width:30%;
             font-size:18px;
             padding:10px;
@@ -93,7 +94,6 @@
             z-index:333;
         }
 
-
         @keyframes animateFromTop{
             from { top: 0; }
             to { top: 50px; }
@@ -106,7 +106,7 @@
 
         <?php
             if(isset($_GET['error'])){
-                echo ".error{
+                echo ".error-popup{
                     background-color:red;
                     animation: animateFromTop 1s ease-in-out;
                     top: 50px;
@@ -114,7 +114,7 @@
                     transform: translateX(-50%);
                 }";
             }else if(isset($_GET['mssg'])){
-                echo ".error{
+                echo ".error-popup{
                     background-color:grey;
                     animation: animateFromBottom 1s ease-in-out;
                     bottom: 20px;
@@ -127,7 +127,7 @@
 
         <?php
             if(!isset($_GET['error']) && !isset($_GET['mssg'])){
-                echo ".error{
+                echo ".error-popup{
                     display:none;
                 }";
             }
@@ -154,82 +154,8 @@
             }
         ?>
 
-        .feature-wrapper {
-            padding: 40px 0;
-        }
-
-        .feature-section {
-            margin: 10px;
-            padding: 10px;   
-            text-align: justify;
-        }
-
-        #feature-text {
-            grid-column: 1/13;
-            text-align: center;
-        }
-
-        .qr-fe, .fast-fe {
-            grid-column: 2/7;
-        }
-
-        .secure-fe, .paper-fe {
-            grid-column: 7/11;
-        }
-
-        .feature-imgs {
-            width: 100px;
-            height: 100px;
-            padding: 20px;
-        }
-
-        .feature-div {
-            padding: 2px 20px;
-            line-height: 1.5rem;
-        }
-
-        .signLogSection {
-            background-color: #fff;
-            padding-bottom: 80px;
-        }
-
-        .advantage-section {
-            grid-column: 2/7;
-            margin-top: 180px;
-            line-height: 2rem;
-        }
-
-        .advantage-section>h1, .advantage-section i {
-            color: #111672;
-        }
-
-        .advantage-section i {
-            font-size: 30px;
-        }
-
-        .advantage-div {
-            margin: 30px 0;
-        }
-
-        /* signup and login form */
-        .form {
-            padding: 20px 50px;
-            margin-top: 150px;
-            text-align: center;
-            box-shadow: 0px 0px 10px 5px #e2e2e2;
-            line-height: 4rem;
-        }
-
-        form>table{
-            width: 100%;
-        }
-
-        /* input field */
-        input {
-            margin: 5px auto;
-            padding: 10px 30px;
-            border: 1px solid lightgrey;
-            width: 80%;
+        #loginForm {
+            display: none;
         }
 
         /* log in form */
@@ -247,21 +173,6 @@
                     }";
             }
         ?>
-
-        #form-wrapper {
-            grid-column: 8/12;
-        }
-
-        #loginForm, #signupForm {
-            padding-top: 5px;
-        }
-
-        #toLogLink, #toSignLink {
-            background-color: inherit;
-            border: none;
-            font-size: medium;
-            cursor: pointer;
-        }
 
     </style>
 
@@ -294,7 +205,7 @@
         </nav>
     </header>
 
-    <div class="nav-hero">
+    <div class="hero-section">
              <!-- hero text(website name) -->
         <h1 class="hero-text headings">
             SWIFT BLUEBOOK RENEW
@@ -314,7 +225,7 @@
     <!-- wave sturcture below header-->
     <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#7293b5" fill-opacity="1" d="M0,224L48,197.3C96,171,192,117,288,96C384,75,480,85,576,101.3C672,117,768,139,864,160C960,181,1056,203,1152,202.7C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg> -->
 
-        <div class="error">
+        <div class="error-popup">
             <?php echo $icon; ?>
             <div>
                 <h3>
@@ -327,9 +238,7 @@
             <span id="errorCloseMark" onclick="closeErrorPopUp()">&times;</span>
         </div>
 
-    <?php
-    include './repeated_section/search.html';
-   ?>
+    <?php include './repeated_section/search.html'; ?>
    
     <!-- main section -->
     <main>

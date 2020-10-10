@@ -1,0 +1,153 @@
+.feature-wrapper {
+    padding: 40px 0;
+}
+
+.feature-section {
+    margin: 10px;
+    padding: 10px;   
+    text-align: justify;
+}
+
+#feature-text {
+    grid-column: 1/13;
+    text-align: center;
+}
+
+.qr-fe, .fast-fe {
+    grid-column: 2/7;
+}
+
+.secure-fe, .paper-fe {
+    grid-column: 7/11;
+}
+
+.feature-imgs {
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+}
+
+.feature-div {
+    padding: 2px 20px;
+    line-height: 1.5rem;
+}
+
+.signLogSection {
+    background-color: #fff;
+    padding-bottom: 80px;
+}
+
+.advantage-section {
+    grid-column: 2/7;
+    margin-top: 180px;
+    line-height: 2rem;
+}
+
+.advantage-section>h1, .advantage-section i {
+    color: #111672;
+}
+
+.advantage-section i {
+    font-size: 30px;
+}
+
+.advantage-div {
+    margin: 30px 0;
+}
+
+/* signup and login form */
+.form {
+    padding: 20px 50px;
+    margin-top: 150px;
+    text-align: center;
+    box-shadow: 0px 0px 10px 5px #e2e2e2;
+    line-height: 4rem;
+}
+
+#loginForm, #signupForm {
+    padding-top: 5px;
+}
+
+#toLogLink, #toSignLink {
+    background-color: inherit;
+    border: none;
+    font-size: medium;
+    cursor: pointer;
+}
+
+form>table{
+    width: 100%;
+}
+
+/* input field */
+input {
+    margin: 5px auto;
+    padding: 10px 30px;
+    border: 1px solid lightgrey;
+    width: 80%;
+}
+
+#form-wrapper {
+    grid-column: 8/12;
+}
+
+@media screen and (max-width: 800px){
+    .feature-wrapper {
+        padding: 40px 0;
+    }
+    
+    .feature-section {
+        margin: 10px;
+        padding: 10px;
+    }
+    
+    #feature-text {
+        grid-column: 1/5;
+    }
+    
+    .qr-fe, .fast-fe {
+        grid-column: 1/5;
+    }
+    
+    .secure-fe, .paper-fe {
+        display: none;
+    }
+    
+    .feature-imgs {
+        width: 50px;
+        height: 50px;
+        padding: 20px;
+    }
+    
+    .feature-div {
+        padding: 2px 20px;
+        line-height: 1.5rem;
+    }
+    
+    .advantage-section {
+        grid-column: 1/5;
+        margin: 5px 10px;
+    }
+    
+    .advantage-section>h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .advantage-section i {
+        font-size: 20px;
+    }
+    
+    .advantage-div {
+        margin: 10px;
+    }
+    
+    #form-wrapper {
+        grid-column: 1/5;
+        margin: 5px 10px;
+    }    
+
+    .form {
+        margin-top: 50px;
+    }
+}
