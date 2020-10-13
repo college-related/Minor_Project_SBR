@@ -72,13 +72,16 @@ h3{
 }
 
 #add-photo{
-    margin-top: 80px;
+    margin-top: 40px;
     text-align: center;
-    width: 150px;
-    height: 200px;
+    width: 50%;
+    height: 65%;
     margin-left: auto;
     margin-right: auto;
     border: 1px black solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #latest-form{
@@ -102,4 +105,16 @@ td{
 
 .form-table{
     width: 80%;
+}
+
+input[name='img']{
+    display: none;
+}
+
+label[for='image_adder']{
+    padding: 10px;
+    color:white;
+    background-color: blue;
+    cursor: pointer;
+    border-radius: 5px;
 }

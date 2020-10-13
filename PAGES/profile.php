@@ -28,6 +28,15 @@
     $sql_tax="SELECT * FROM fine WHERE PHN ='$ph';";
     $tax_result=mysqli_query($connect,$sql_tax);
 
+    $sql_image="SELECT image_name FROM images WHERE PHN='$ph';";
+    $image_result=mysqli_query($connect,$sql_image);
+
+    $imageArray=mysqli_fetch_all($image_result,MYSQLI_ASSOC);
+    if($imageArray != null){
+        $img = $imageArray[0]['image_name'];
+        $image_src = "../ASSETS/upload/" . $img;
+    }
+
     $formArray = mysqli_fetch_all($form_result,MYSQLI_ASSOC);
     $detailArray = mysqli_fetch_all($detail_result,MYSQLI_ASSOC);
     // print_r($detailArray);
@@ -191,7 +200,18 @@
     <main>
         <div id="profile" class="maindiv">
             <div id="add-photo">
-                <a href="#" id="profile-photo" style="color: black;">Add Photo</a>
+                <?php
+                    if($imageArray == null){
+                        echo "
+                            <form action='../PHP/handleImage.php' method='POST' enctype='multipart/form-data'>
+                                <input type='file' name='img' onchange='this.form.submit();' id='image_adder'>
+                                <label for='image_adder'> <i class='far fa-image'> </i> Upload Image<lable>
+                            </form>
+                        ";
+                    }else{
+                        echo "<img src='$image_src' alt='profile picture' id='profile_picture'>";
+                    }
+                ?>
             </div>
             <div id="user-name">
                 <h4>
