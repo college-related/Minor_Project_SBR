@@ -16,6 +16,7 @@
     $taxAmount = $_GET['amount'];
     $finePercent = $_GET['fine'];
     $mssg = $_GET['mssg'];
+    $date = Date("Y-m-d");
 
     $qrName = 'Name: ' . $arr[0]['NAME'] . "\n";
     $qrVtype =  'Vehicle type: '. $arr[0]['VEHICLE_TYPE'] . "\n";
@@ -24,8 +25,9 @@
     $qrTax = 'Tax Amount: ' . $taxAmount . "\n";
     $qrFine = 'Fine: ' . $finePercent . "\n";
     $qrInsMssg = 'Mssg: ' . $mssg;
+    $dateMssg = 'QR generated date: ' . $date;
 
-    $qrMssg = $qrName . $qrVtype . $qrEng . $qrRenew . $qrTax . $qrFine . $qrInsMssg;
+    $qrMssg = $qrName . $qrVtype . $qrEng . $qrRenew . $qrTax . $qrFine . $qrInsMssg . $dateMssg;
 
     // outputs image directly into browser, as PNG stream
     QRcode::png($qrMssg);

@@ -90,7 +90,7 @@
                 <h4>Insurance Detail</h4>
                 <p class="imp-insurance">
                     <?php 
-                        if($array[0][7] == 'yes'){
+                        if($array[0][10] == 'yes'){
                             echo "You must take the insurance slip with you.";
                         }else{
                             echo "You can either pay your insurance in any company or right outside the office.";
