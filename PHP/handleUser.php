@@ -26,7 +26,6 @@ if(isset($_POST['signup'])){
         }else{
             session_start();
             $_SESSION['Uname'] = $username;
-            $_SESSION['phone'] = $phonenumber;
             $_SESSION['Email'] = $email;
 
             $sql = "INSERT INTO users(USERNAME, EMAIL, PASSWORD, PHN, ACTIVATE_CODE, EMAIL_STATUS,FIRST_TIME_USER) VALUES('$username', '$email', '$password', '$phonenumber', '$activateCode', 'not verified', 'yes')";
