@@ -13,6 +13,7 @@ if(isset($_POST['login'])){
     $email = $row['EMAIL'];
     $emailStat = $row['EMAIL_STATUS'];
 
+    // checking if the email is verified or not
         if($emailStat == "not verified"){
             header("location: ../Landing.php?error=EmailNotVerified&logBox#loginForm");
             die();

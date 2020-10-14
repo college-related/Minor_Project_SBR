@@ -1,9 +1,10 @@
 <?php
     
-    $tAmount = $_GET['amount'];
-    $finePer = $_GET['fine'];
-    $insMssg = $_GET['mssg'];
-    $fineAmount = $_GET['fineAmount'];
+    // data passed through GET method
+    $tAmount = $_GET['amount']; // total amount
+    $finePer = $_GET['fine']; // fine percentage
+    $insMssg = $_GET['mssg']; // insurance message
+    $fineAmount = $_GET['fineAmount']; // fine amount
     // $urlPath = $_GET['path'];
     
     require 'connection.php';
@@ -32,10 +33,13 @@
 </head>
 <body>
     <main>
+    <!-- main wrapper div for qr page-->
         <div class="wrapper">
+        <!-- div containing the qr image -->
             <div id="QrCode">
                 <?php echo "<img src='QR.php?amount=$tAmount&fine=$finePer&mssg=$insMssg'>" ?>
             </div>
+            <!-- div containing the form details -->
             <div id="form">
                 <h4>Form Details</h4>
                 <div id="table">
@@ -81,15 +85,19 @@
                     <?php } ?>
             </div>
             </div>
+            <!-- div containing the fine details -->
             <div id="fine-detail">
                 <h4>Amount Details</h4>
                 <p>Your total amount will be Rs.<?= $tAmount ?></p>
                 <p>You have <?= $finePer ?> fine, which is Rs.<?= $fineAmount ?></p>
             </div>
+            <!-- div containing the insurance message -->
+            <!-- TODO: make it more useful -->
             <div id="insurance-detail">
                 <h4>Insurance Detail</h4>
                 <p class="imp-insurance">
                     <?php 
+                    // as the INS_SLIP column is in 10th index
                         if($array[0][10] == 'yes'){
                             echo "You must take the insurance slip with you.";
                         }else{
@@ -98,7 +106,9 @@
                     ?>
                 </p>
             </div>
+            <!-- Button div for going back to profile page -->
             <div id="button-layout">
+            <!-- TODO: add a download system -->
                 <!--<a href="<?php echo $urlPath; ?>"><button id="download-btn">Download</button></a>-->
                 <a href="../PAGES/profile.php?Logged"><button id="goback-btn">Go Home</button></a>
             </div>

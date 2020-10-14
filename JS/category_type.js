@@ -1,4 +1,5 @@
-
+// function to change the selection of vehicle category according to type
+// TODO: add the same functionality for Engine CC
 function changingType(sel1, sel2){
     var select1 = document.getElementById(sel1);
     var select2 = document.getElementById(sel2);

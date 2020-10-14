@@ -1,37 +1,47 @@
+/* wrapper for features section */
 .feature-wrapper {
     padding: 40px 0;
 }
 
+/* feature section */
 .feature-section {
     margin: 10px;
     padding: 10px;   
     text-align: justify;
 }
 
+/* texts used inside feature section */
 #feature-text {
     grid-column: 1/13;
     text-align: center;
 }
 
+/* QR feature, fast feature */
 .qr-fe, .fast-fe {
     grid-column: 2/7;
 }
 
+/* more secure feature, less paper feature */
 .secure-fe, .paper-fe {
     grid-column: 7/11;
 }
 
+/* images used in the feature section */
+/* TODO: make or use some logo image */
 .feature-imgs {
     width: 100px;
     height: 100px;
     padding: 20px;
 }
 
+/* div containing each feature */
 .feature-div {
     padding: 2px 20px;
     line-height: 1.5rem;
 }
 
+/* Sign up and login section */
+/* TODO: NEW design to be implemented */
 .signLogSection {
     background-color: #fff;
     padding-bottom: 80px;

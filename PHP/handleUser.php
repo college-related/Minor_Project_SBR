@@ -2,7 +2,8 @@
 
 if(isset($_POST['signup'])){
 
-
+    // data from the signup form
+    // TODO: add more datas to be inserted later on
     $email = $_POST['Email'];
     $username =  $_POST['Uname'];
     $password =  $_POST['Password'];
@@ -10,6 +11,7 @@ if(isset($_POST['signup'])){
     $phonenumber =  $_POST['Phn'];
     $activateCode = md5(rand());
 
+    // checking if the password's match or not 
     if($password == $confirmpassword){
         require_once "./connection.php";
 
@@ -19,9 +21,13 @@ if(isset($_POST['signup'])){
             $query_email_check = mysqli_query($connect, $sql_email_check);
             $query_phn_check = mysqli_query($connect, $sql_phn_check);
 
+        // checking if the email is already used
+        // TODO: maybe use the library or some preg_match patterns
         if(mysqli_num_rows($query_email_check) > 0 ){
             header("location: ../Landing.php?inputError=AlreadyUserEmail#signupForm");
-        }else if(mysqli_num_rows($query_phn_check) > 0){
+        }
+        // checking if the phone number already exits
+        else if(mysqli_num_rows($query_phn_check) > 0){
             header("location: ../Landing.php?inputError=AlreadyUserPhone#signupForm");
         }else{
             session_start();
