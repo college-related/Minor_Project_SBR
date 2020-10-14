@@ -222,7 +222,18 @@ function autocomplete(inp, arr) {
 
       "How much does the insurance for scooter cost", "How much does the insurance cost",
 
-      "What is the fine rate of tax?", "Fine rate tax", 
+      "What is the fine rate of tax?", "Fine rate tax", "How to claim document?", 
+      
+      "What are needed for insurance","When to pay tax?","What is tax? ",
+      
+      " About road tax","What is road tax?","What is Third Party Insurance? ",
+      
+      "How does Third-Party Insurance work?","What are the importance of Third Party Insurance?",
+
+      " What are the features of Third Party Insurance? ","What are the process to Claim Third Party Insurance?",
+
+      "  What are the Inclusion / Exclusion of third party Insurance Plan?","What is first party insurance?",
+
 
   ];
 
