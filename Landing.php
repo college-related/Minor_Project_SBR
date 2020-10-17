@@ -70,6 +70,7 @@
     <link rel="stylesheet" href="./CSS/search.css">
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="stylesheet" href="./CSS/landing.css">
+    <link rel="stylesheet" href="./CSS/error.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
@@ -77,32 +78,8 @@
     <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
-
+    
     <style>
-        .error-popup{
-            width:30%;
-            font-size:18px;
-            padding:10px;
-            background-color:red;
-            color:#fff;
-            border:1px solid black;
-            display:grid;
-            grid-template-columns:1fr 4fr 1fr;
-            justify-items:center;
-            align-items:center;
-            position:fixed;
-            z-index:333;
-        }
-
-        @keyframes animateFromTop{
-            from { top: 0; }
-            to { top: 50px; }
-        }
-
-        @keyframes animateFromBottom{
-            from { right :0; }
-            to { right: 30%; }
-        }
 
         <?php
             if(isset($_GET['error'])){
@@ -113,20 +90,12 @@
                     left: 50%;
                     transform: translateX(-50%);
                 }";
-            }else if(isset($_GET['mssg'])){
-                echo ".error-popup{
-                    background-color:grey;
-                    animation: animateFromBottom 1s ease-in-out;
-                    bottom: 20px;
-                    right: 30%;
-                    transform: translateX(30%);
-                }";
             }
 
         ?>
 
         <?php
-            if(!isset($_GET['error']) && !isset($_GET['mssg'])){
+            if(!isset($_GET['error'])){
                 echo ".error-popup{
                     display:none;
                 }";
@@ -135,19 +104,7 @@
         ?>
 
         <?php
-            if($inputError == 'AlreadyUserEmail'){
-                echo "input[type='email']{
-                        border:1px solid red;
-                }";
-            }else if($inputError == 'PasswordNotSame'){
-                echo "input[type='password']{
-                        border:1px solid red;
-                }";
-            }else if($inputError == 'AlreadyUserPhone'){
-                echo "input[type='number']{
-                        border:1px solid red;
-                }";
-            }else if($inputError == 'WrongNameORPass'){
+             if($inputError == 'WrongNameORPass'){
                 echo ".log-input{
                     border:1px solid red;
                 }";
@@ -222,18 +179,7 @@
         </a>
     </div>
 
-        <div class="error-popup">
-            <?php echo $icon; ?>
-            <div>
-                <h3>
-                    <?php echo $title; ?>
-                </h3>
-                <p>
-                    <?php echo $mssg;?>
-                </p>
-            </div>
-            <span id="errorCloseMark" onclick="closeErrorPopUp()">&times;</span>
-        </div>
+    <?php include './repeated_section/error.php'; ?>
 
     <?php include './repeated_section/search.html'; ?>
    
