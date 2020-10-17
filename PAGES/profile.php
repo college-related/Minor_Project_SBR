@@ -14,10 +14,6 @@
     // $detail_result = mysqli_query($connect, $sql_detail);
 
     // $detailArray = mysqli_fetch_all($detail_result, MYSQLI_ASSOC);
-    $sql_firstUser = "SELECT FIRST_TIME_USER FROM users WHERE PHN='$ph';";
-    $firstUser_result = mysqli_query($connect, $sql_firstUser);
-    $row = mysqli_fetch_assoc($firstUser_result);
-    $first = $row['FIRST_TIME_USER'];
 
     $sql_form = "SELECT * FROM form WHERE PHN='$ph';";
     $form_result = mysqli_query($connect, $sql_form);
@@ -66,27 +62,10 @@
     
     <style>
         #closeBtn-holder{
-            display:<?php
-            if($first == 'yes'){
-                echo "none;";
-            }
-            else{
-                echo "block;";
-            }
-            ?>
+            display:block;
             text-align:right;
         }
-        .information{
-            display:
-            <?php
-            if($first == 'yes'){
-                echo "block;";
-            }
-            else{
-                echo "none;";
-            }
-            ?>
-        }
+        
         #close-mark{
             text-align:right;
             font-size:40px;
@@ -95,13 +74,6 @@
         #close-mark,.fa-edit{
             cursor:pointer;
         }
-        <?php
-        if($first == 'yes'){
-            echo ".detail-popup, .bg-overlay{
-                display:block;
-                 }";
-        }
-        ?>
 
     </style>
     <script defer src="../JS/detail_popup.js"></script>
@@ -147,8 +119,7 @@
    <div class="bg-overlay"></div>
    
     <div class="detail-popup">
-        <div class="information"><P>Fill Up the data please</P></div>
-        <div id="closeBtn-holder">
+            <div id="closeBtn-holder">
             <span id="close-mark" onclick="closedEditPopup()">
             &times;
             </span>

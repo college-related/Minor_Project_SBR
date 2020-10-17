@@ -25,18 +25,6 @@ if( isset($_POST['savebtn'])){
       }else{
         header("location: ../PAGES/profile.php?Logged&Err");
       }
-    }else{
-        $sql = "INSERT INTO basic_data(PHN1, NAME1, VEHICLE_TYPE1, VEHICLE_CAT1, VEHICLE_REG1, ENGINE_CC1) VALUES ('$phn', '$name', '$vType', '$vCat', '$vReg', '$engineCC');";
-        
-        $query = mysqli_query($connect, $sql);
-        
-            if(mysqli_affected_rows($connect)){
-                $sql_first = "UPDATE users SET FIRST_TIME_USER = 'no' WHERE PHN='$phn';";
-                $first_query = mysqli_query($connect, $sql_first);
-                header("location: ../PAGES/profile.php?Logged");
-            }else{
-                header("location: ../PAGES/profile.php?Logged&Error");
-            }
     }
 
 }else{
