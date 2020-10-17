@@ -84,7 +84,8 @@
         <?php
             if(isset($_GET['error'])){
                 echo ".error-popup{
-                    background-color:red;
+                    background-color:rgba(146,6,6,1);
+                    color:#fff;
                     animation: animateFromTop 1s ease-in-out;
                     top: 50px;
                     left: 50%;
@@ -332,7 +333,7 @@
 
     <script>
         function closeErrorPopUp(){
-            document.getElementsByClassName('error')[0].style.display = 'none';
+            document.getElementsByClassName('error-popup')[0].style.display = 'none';
         }
 
         var input = document.getElementsByClassName('form-input');

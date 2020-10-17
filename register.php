@@ -103,5 +103,18 @@
 </head>
 <body>
     <?php include './repeated_section/error.php'; ?>
+    <script>
+        function closeErrorPopUp(){
+            document.getElementsByClassName('error-popup')[0].style.display = 'none';
+        }
+
+        var input = document.getElementsByClassName('form-input');
+
+        window.addEventListener('click', function(){
+            for(var i = 0; i < input.length;i++){
+                input[i].style.borderColor = 'rgb(211,211,211)';
+            }
+        });
+    </script>
 </body>
 </html>
