@@ -42,18 +42,12 @@
 
         <!-- navigation bar for desktop view -->
         <nav class="web-navigation">
-            <a href="./information.php?isLogged=true">Infos</a>
-            <a href="./profile.php?Logged">Profile</a>
-            <a href="../php/logout.php">LogOut</a>
-        </nav>
-
-        <!-- navigation bar for mobile view -->
-        <nav class="mobile-navigation">
             <ul>
-                <li>Home</li>
-                <li>Infos</li>  
-                <li>SignUp</li>
-                <li>LogIn</li>
+                <li><a href="./information.php?isLogged=true">Infos</a></li>
+                <li><a href="#">Form</a></li>
+                <li><a href="./profile.php?Logged">Profile</a></li>
+                <li><a href="../php/logout.php">LogOut</a></li>
+                <li><i class="fa fa-search"></i></li>
             </ul>
         </nav>
        

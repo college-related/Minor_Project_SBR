@@ -139,45 +139,41 @@
 
 </head>
 
-<body>
+<body class="col-12">
     <!-- head of the website -->
-    <header>
+    <header class="col-12">
         <!-- logo and website name -->
         <span id="logo">SWIFT BLUEBOOK RENEW</span>
 
-        <!-- navigation bar for desktop view -->
-        <nav class="web-navigation">
-            <a href="./pages/information.php?isLogged=false">Infos</a>
-            <a href="#signupForm" onclick="signPopUp()">SignUp</a>
-            <a href="#loginForm" onclick="logPopUp()">LogIn</a>
-            <i class="fa fa-search"></i>
-        </nav>
-
-        <!-- navigation bar for mobile view -->
-        <nav class="mobile-navigation">
+        <!-- navigation bar -->
+        <nav>
             <ul>
-                <li>Infos</li>  
-                <li>SignUp</li>
-                <li>LogIn</li>
+                <li><a href="./pages/information.php?isLogged=false">Infos</a></li>
+                <li><a href="register.php">SignUp</a></li>
+                <li><a href="#loginForm">LogIn</a></li>
+                <li><i class="fa fa-search"></i></li>
             </ul>
         </nav>
+
     </header>
 
-    <div class="hero-section">
-             <!-- hero text(website name) -->
-        <h1 class="hero-text headings">
-            SWIFT BLUEBOOK RENEW
-        </h1>
+    <div class="hero-section col-12">
+        <div class="hero-text">
+            <!-- hero text(website name) -->
+            <h1 class="hero-text headings">
+                SWIFT BLUEBOOK RENEW
+            </h1>
 
-        <!-- sub heading (slogan) -->
-        <h3 class="sub-text headings">
-            Less Lines, Less Waiting
-        </h3>
+            <!-- sub heading (slogan) -->
+            <h3 class="sub-text headings">
+                Less Lines, Less Waiting
+            </h3>
 
-        <!-- getting started button -->
-        <a href="#signupForm" class="hero-link">
-            <button id="hero-btn" onclick="signPopUp()">GET STARTED</button>
-        </a>
+            <!-- getting started button -->
+            <a href="register.php" class="hero-link">
+                <button id="hero-btn">GET STARTED</button>
+            </a>
+        </div>
     </div>
 
     <?php include './repeated_section/error.php'; ?>
@@ -185,8 +181,8 @@
     <?php include './repeated_section/search.html'; ?>
    
     <!-- main section -->
-    <main>
-        <div class="feature-wrapper">
+    <main class="col-12">
+        <div class="feature-wrapper col-12">
             <!-- features section -->
             <h2 id="feature-text">Features</h2>
 
@@ -235,7 +231,7 @@
             </div>
         </div>
 
-        <div class="signLogSection">
+        <div class="signLogSection col-12">
             <!-- advantage section -->
             <div class="advantage-section">
                 <h1>Sign up to get all the advantages</h1>
@@ -314,7 +310,7 @@
     </main>
 
     <!-- review section -->
-    <div class="review-section">
+    <div class="review-section col-12">
 
         <div class="avatar-img">
             <img src="./ASSETS/images/person_photo.jpg" alt="review-person">

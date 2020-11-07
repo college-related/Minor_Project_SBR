@@ -17,31 +17,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
     <script defer src="../JS/search.js"></script>
 </head>
-<body>
+<body class="col-12">
      <!-- head of the website -->
-     <header>
+     <header class="col-12">
 
         <!-- logo and website name -->
         <span id="logo">SWIFT BLUEBOOK RENEW</span>
 
-        <!-- navigation bar for desktop view -->
-        <nav class="web-navigation">
-            
+        <!-- navigation bar -->
+        <nav>
            <?php
-           
                 if(isset($_GET['isLogged'])){
 
                     $log = $_GET['isLogged'];
 
                     if($log=="true"){
-
-                        echo "<a href='./form.html'>Form</a> <a href='./profile.php?Logged'>Profile</a> <a href='../php/logout.php'>LogOut</a> <i class='fa fa-search'></i>";
-
+                        echo "
+                            <ul>
+                                <li><a href='#'>Infos</a></li>
+                                <li><a href='./form.html'>Form</a></li>
+                                <li><a href='./profile.php?Logged'>Profile</a></li> 
+                                <li><a href='../php/logout.php'>LogOut</a></li> 
+                                <li><i class='fa fa-search'></i></li>
+                            </ul>";
                     }
                     elseif($log=="false"){
-                        echo "<a href='../landing.php#signupForm'>SignUp</a> <a href='../landing.php?logBox#loginForm'>LogIn</a> <i class='fa fa-search'></i>";
-
-                        
+                        echo "
+                            <ul>
+                                <li><a href='../register.php'>SignUp</a></li>
+                                <li><a href='../landing.php#loginForm'>LogIn</a></li> 
+                                <li><i class='fa fa-search'></i></li>
+                            </ul>";
                     }
 
                 }else{
@@ -49,21 +55,11 @@
                 }
            
            ?>
-            <!-- <a href="#loginForm">LogIn</a> -->
-        </nav>
-
-        <!-- navigation bar for mobile view -->
-        <nav class="mobile-navigation">
-            <ul>
-                <li>Infos</li>  
-                <li>SignUp</li>
-                <li>LogIn</li>
-            </ul>
         </nav>
 
     </header>
 
-    <div class="nav-hero"> 
+    <div class="nav-hero col-12"> 
         <!-- hero text(website name) -->
         <h1 class="hero-text headings">
             INFORMATION
@@ -77,7 +73,7 @@
     include '../repeated_section/search.html';
    ?>
 
-    <main>
+    <main class="col-12">
         <div id="detail_related">
             <h3>
                 Details Related
@@ -222,7 +218,7 @@
     </main>
 
      <!-- review section -->
-     <div class="review-section">
+     <div class="review-section col-12">
  
          <div class="avatar-img">
              <img src="./ASSETS/images/person_photo.jpg" alt="review-person">
