@@ -99,11 +99,11 @@
 
     </header>
 
-    <div class="nav-hero col-12">
+    <!-- <div class="nav-hero col-12">
         <h1 class="hero-text headings">
             PROFILE
         </h1>
-    </div>
+    </div> -->
     
     <?php include '../repeated_section/search.html'; ?>
 
@@ -160,21 +160,8 @@
             </form>
     </div>
     <main class="col-12">
-        <div id="profile" class="maindiv">
-            <div id="add-photo">
-                <?php
-                    if($imageArray == null){
-                        echo "
-                            <form action='../PHP/handleImage.php' method='POST' enctype='multipart/form-data'>
-                                <input type='file' name='img' onchange='this.form.submit();' id='image_adder'>
-                                <label for='image_adder'> <i class='far fa-image'> </i> Upload Image<lable>
-                            </form>
-                        ";
-                    }else{
-                        echo "<img src='$image_src' alt='profile picture' id='profile_picture'>";
-                    }
-                ?>
-            </div>
+    <div class="profile-wrapper">
+        <div class="profile-side-section">
             <div id="user-name">
                 <h4>
                     <?php
@@ -182,11 +169,35 @@
                     ?>
                 </h4>
             </div>
+
+            <div class="profile-photo-wrapper">
+                <div id="add-photo">
+                    <!-- <?php
+                        if($imageArray == null){
+                            echo "
+                                <form action='../PHP/handleImage.php' method='POST' enctype='multipart/form-data'>
+                                    <input type='file' name='img' onchange='this.form.submit();' id='image_adder'>
+                                    <label for='image_adder'> <i class='far fa-image'> </i> Upload Image<lable>
+                                </form>
+                            ";
+                        }else{
+                            echo "<img src='$image_src' alt='profile picture' id='profile_picture'>";
+                        }
+                    ?> -->
+                </div>
+            </div>
+
+            <div class="profile-btn-wrapper">
+                <button class="btn basic-btn active-btn">Basic Details</button>
+                <button class="btn tax-btn">Tax Details</button>
+                <button class="btn latest-form-btn">Latest Form Detail</button>
+            </div>
         </div>
 
-        <div id="details" class="maindiv">
+        <div class="profile-detail-section basic-detail">
+        
+            <div class="detail-form">
             <h3><u> DETAILS</u></h3>
-            <div id="detail-form">
                 <table>
                     <tr>
                         <td>Phone number :</td>
@@ -199,6 +210,30 @@
                         }
                         
                         ?> </td>
+                    </tr>
+                    <tr>
+                        <td>Citizenship number :</td>
+                        <td> ???
+                            <!-- <?php
+                                if(empty($detailArray)){
+                                    echo "???";
+                                }else{
+                                    echo $detailArray[0]['CITIZEN'];
+                                }
+                            ?> -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Address :</td>
+                        <td>???
+                            <!-- <?php
+                                if(empty($detailArray)){
+                                    echo "???";
+                                }else{
+                                    echo $detailArray[0]['ADDRESS'];
+                                }
+                            ?> -->
+                        </td>
                     </tr>
                     <tr>
                         <td>Vehicle Type:</td>
@@ -252,11 +287,68 @@
           <div class="editBtn">
           <i class="fa fa-edit" onclick="openEditPopup()">Edit</i>
           </div>
-        </div>
-           
+        </div>           
         </div>
 
-        <div id="more-details" class="maindiv">
+        <div class="profile-detail-section tax-detail">
+            <div class="detail-form">
+                <h3><u>Tax Detail</u></h3>
+                <table>
+                    <tr>
+                        <th>YEAR</th>
+                        <th>FINE</th>
+                        <th>TAX AMOUNT</th>
+                    </tr>
+                <?php 
+                if(sizeof($taxArray) < 3){
+                    foreach($taxArray as $data) {?>
+                        <tr>
+                            <td>
+                                <?= $data['YEAR']?>
+                            </td>
+                            <td>
+                                <?= $data['FINE']?>
+                            </td>
+                            <td>
+                                <?= $data['TAX_AMOUNT']?>
+                            </td>
+                        </tr>
+                
+                    <?php }
+                }else{
+                    for($i= sizeof($taxArray)-1; $i > sizeof($taxArray)-4;$i--){ ?>
+                        <tr>
+                            <td>
+                                <?= $taxArray[$i]['YEAR']?>
+                            </td>
+                            <td>
+                                <?= $taxArray[$i]['FINE']?>
+                            </td>
+                            <td>
+                                <?= $taxArray[$i]['TAX_AMOUNT']?>
+                            </td>
+                        </tr>
+                
+                    <?php }  } ?>
+                </table>
+                <div class="slider-wrapper editBtn">
+                    <span>&lt;</span>
+                    <span>&gt;</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-detail-section form-detail">
+            <div class="detail-form">
+                <h3><u>Latest Form</u></h3>
+                <div class="form-template">
+                
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div id="more-details" class="maindiv">
             <h3><u> MORE DETAILS</u></h3>
             <div id="latest-form">
                 <h4>Latest Form</h4>
@@ -287,46 +379,7 @@
                     </table>
                 <?php } ?>
             </div>
-            <div class="tax-info">
-                    <table>
-                        <tr>
-                            <th>YEAR</th>
-                            <th>FINE</th>
-                            <th>TAX AMOUNT</th>
-                        </tr>
-                     <?php 
-                     if(sizeof($taxArray) < 3){
-                        foreach($taxArray as $data) {?>
-                            <tr>
-                                <td>
-                                    <?= $data['YEAR']?>
-                                </td>
-                                <td>
-                                    <?= $data['FINE']?>
-                                </td>
-                                <td>
-                                    <?= $data['TAX_AMOUNT']?>
-                                </td>
-                            </tr>
-                     
-                        <?php }
-                     }else{
-                         for($i= sizeof($taxArray)-1; $i > sizeof($taxArray)-4;$i--){ ?>
-                             <tr>
-                                <td>
-                                    <?= $taxArray[$i]['YEAR']?>
-                                </td>
-                                <td>
-                                    <?= $taxArray[$i]['FINE']?>
-                                </td>
-                                <td>
-                                    <?= $taxArray[$i]['TAX_AMOUNT']?>
-                                </td>
-                            </tr>
-                     
-                         <?php }  } ?>
-                    </table>
-            </div>
+        </div> -->
         </div>
     </main> 
      
