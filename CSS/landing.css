@@ -1,13 +1,20 @@
 /* wrapper for features section */
 .feature-wrapper {
-    padding: 40px 0;
+    padding: 80px 0;
 }
 
 /* feature section */
 .feature-section {
     margin: 10px;
     padding: 10px;   
+    text-align: center;
+    max-width: 30%;
+    font-size: 1.1rem;
+}
+
+.feature-div p {
     text-align: justify;
+    line-height: 2rem;
 }
 
 /* texts used inside feature section */
@@ -17,13 +24,30 @@
 }
 
 /* QR feature, fast feature */
-.qr-fe, .fast-fe {
+/* .qr-fe, .fast-fe {
     grid-column: 2/7;
-}
+} */
 
 /* more secure feature, less paper feature */
-.secure-fe, .paper-fe {
+/* .secure-fe, .paper-fe {
     grid-column: 7/11;
+} */
+
+.slides {
+    grid-column: 2/12;
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    animation: sliding 3s ease-in-out;
+}
+
+@keyframes sliding {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* images used in the feature section */
@@ -44,12 +68,12 @@
 /* TODO: NEW design to be implemented */
 .signLogSection {
     background-color: #fff;
-    padding-bottom: 80px;
+    padding: 3em 0;
 }
 
 .advantage-section {
     grid-column: 2/7;
-    margin-top: 180px;
+    margin-top: 4em;
     line-height: 2rem;
 }
 
@@ -58,30 +82,26 @@
 }
 
 .advantage-section i {
-    font-size: 30px;
+    font-size: 2rem;
 }
 
 .advantage-div {
-    margin: 30px 0;
+    margin: 1.5em 0;
 }
 
 /* signup and login form */
 .form {
-    padding: 20px 50px;
-    margin-top: 150px;
+    padding: 1.5em 2.5em;
+    margin-top: 4em;
     text-align: center;
     box-shadow: 0px 0px 10px 5px #e2e2e2;
     line-height: 4rem;
 }
 
-#loginForm, #signupForm {
-    padding-top: 5px;
-}
-
 #toLogLink, #toSignLink {
     background-color: inherit;
     border: none;
-    font-size: medium;
+    font-size: 1rem;
     cursor: pointer;
 }
 
@@ -91,73 +111,12 @@ form>table{
 
 /* input field */
 input {
-    margin: 5px auto;
-    padding: 10px 30px;
+    margin: .75em auto;
+    padding: 1em 2em;
     border: 1px solid lightgrey;
     width: 80%;
 }
 
 #form-wrapper {
     grid-column: 8/12;
-}
-
-@media screen and (max-width: 800px){
-    .feature-wrapper {
-        padding: 40px 0;
-    }
-    
-    .feature-section {
-        margin: 10px;
-        padding: 10px;
-    }
-    
-    #feature-text {
-        grid-column: 1/5;
-    }
-    
-    .qr-fe, .fast-fe {
-        grid-column: 1/5;
-    }
-    
-    .secure-fe, .paper-fe {
-        display: none;
-    }
-    
-    .feature-imgs {
-        width: 50px;
-        height: 50px;
-        padding: 20px;
-    }
-    
-    .feature-div {
-        padding: 2px 20px;
-        line-height: 1.5rem;
-    }
-    
-    .advantage-section {
-        grid-column: 1/5;
-        margin: 5px 10px;
-    }
-    
-    .advantage-section>h1 {
-        font-size: 20px;
-        text-align: center;
-    }
-
-    .advantage-section i {
-        font-size: 20px;
-    }
-    
-    .advantage-div {
-        margin: 10px;
-    }
-    
-    #form-wrapper {
-        grid-column: 1/5;
-        margin: 5px 10px;
-    }    
-
-    .form {
-        margin-top: 50px;
-    }
 }

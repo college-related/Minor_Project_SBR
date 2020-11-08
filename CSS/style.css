@@ -24,14 +24,15 @@ body {
 /* heading part */
 header{
     padding: 1.5em;
-    background-color: black;
-    position: sticky;
-    top: 0;
+    background-color: #265077;
+    /* position: sticky;
+    top: 0; */
 }
 
 .hero-section{
-    background-color: #7293B5;
+    background-color: #265077;
     width: 100%;
+    min-height: 80vh;
 }
 
 /* Big hero text and sub headings */
@@ -49,12 +50,13 @@ header{
 
 /* navigation for desktop version */
 nav {
-    grid-column: 9/12;
+    grid-column: 9/13;
 }
 
 nav ul {
+    list-style: none;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 nav li a{
@@ -74,20 +76,37 @@ a{
 }
 
 a:hover {
-    color: #EFF0F2;
+    color: darkgoldenrod;
     text-decoration: underline;
+}
+
+.active-nav-link {
+    color: darkgoldenrod;
+    text-decoration: underline;
+}
+
+.non-nav-link, .non-nav-link:hover {
+    color: black;
+}
+
+.non-nav-link:hover {
+    text-decoration: none;
 }
 
 /* hero-text = big hero text, hero-link = btn link that is big */
 .hero-text, .hero-link {
     color: whitesmoke;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-text {
     grid-column: 2/8;
     font-size: 3rem;
-    margin-top: 1em;
+    /* margin-top: 1em; */
 }
 
 /* sub-text = sub heading */
@@ -106,14 +125,21 @@ a:hover {
 
 /* hero-btn = bigger btn */
 .hero-link, #hero-btn, input[type="submit"], #logOutBtn {
-    background-color: #111672;
-    color: whitesmoke;
+    background-color: #f8e9a1;
+    color: black;
     border: none;
     cursor: pointer;
+    font-size: 1rem;
+}
+
+.hero-link {
+    padding: 1em 0;
+    width: 50%;
 }
 
 #hero-btn {
     padding: 2px;
+    outline: none;
 }
 
 /* foot of the website */

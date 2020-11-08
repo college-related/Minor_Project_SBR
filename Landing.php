@@ -112,10 +112,6 @@
             }
         ?>
 
-        #loginForm {
-            display: none;
-        }
-
         /* log in form */
         <?php
             if(isset($_GET['logBox'])){
@@ -134,8 +130,9 @@
 
     </style>
 
-    <script defer src="./JS/sign_log.js"></script>
+    <!-- <script defer src="./JS/sign_log.js"></script> -->
     <script defer src="./JS/search.js"></script>
+    <script defer src="./JS/automatic_slides.js"></script>
 
 </head>
 
@@ -170,7 +167,7 @@
             </h3>
 
             <!-- getting started button -->
-            <a href="register.php" class="hero-link">
+            <a href="register.php" class="hero-link non-nav-link">
                 <button id="hero-btn">GET STARTED</button>
             </a>
         </div>
@@ -186,47 +183,51 @@
             <!-- features section -->
             <h2 id="feature-text">Features</h2>
 
-            <!-- QR code section -->
-            <div class="feature-section qr-fe">
-                <img src="./ASSETS/images/qr.jpg" alt="illust1" class="feature-imgs">
-                <div class="feature-div">
-                    <h3>QR Code</h3>
-                    <p>
-                        The unique QR code system of our makes it easier to store the data and register them in the office.
-                    </p>
+            <div class="slides">
+                <!-- QR code section -->
+                <div class="feature-section qr-fe">
+                    <img src="./ASSETS/images/qr.jpg" alt="illust1" class="feature-imgs">
+                    <div class="feature-div">
+                        <h3>QR Code</h3>
+                        <p>
+                            The unique QR code system of our makes it easier to store the data and register them in the office.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Secure section -->
+                <div class="feature-section secure-fe">
+                    <img src="./ASSETS/images/secure.jpg" alt="illust2" class="feature-imgs">
+                    <div class="feature-div">
+                        <h3>Secure Submission</h3>
+                        <p>
+                            The form submitted through our site are more secure and up-to date, making the work more risk free.  
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Secure section -->
-            <div class="feature-section secure-fe">
-                <img src="./ASSETS/images/secure.jpg" alt="illust2" class="feature-imgs">
-                <div class="feature-div">
-                    <h3>Secure Submission</h3>
-                    <p>
-                        The form submitted through our site are more secure and up-to date, making the work more risk free.  
-                    </p>
+            <div class="slides">
+                <!-- fast and reliable section -->
+                <div class="feature-section fast-fe">
+                    <img src="./ASSETS/images/fast.jpg" alt="illust3" class="feature-imgs">
+                    <div class="feature-div">
+                        <h3>Fast and Relaible</h3>
+                        <p>
+                            By using the QR code system and faster submission process, it makes the whole process easier and faster as well as relaible.
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <!-- fast and reliable section -->
-            <div class="feature-section fast-fe">
-                <img src="./ASSETS/images/fast.jpg" alt="illust3" class="feature-imgs">
-                <div class="feature-div">
-                    <h3>Fast and Relaible</h3>
-                    <p>
-                        By using the QR code system and faster submission process, it makes the whole process easier and faster as well as relaible.
-                    </p>
-                </div>
-            </div>
-
-            <!-- paper management section -->
-            <div class="feature-section paper-fe">
-                <img src="./ASSETS/images/paper.jpg" alt="illust4" class="feature-imgs">
-                <div class="feature-div">
-                    <h3>Paper management</h3>
-                    <p>
-                        Using this new system we can lessen the amount of paper needed thus,making it more nature friendly way of work.
-                    </p>
+                <!-- paper management section -->
+                <div class="feature-section paper-fe">
+                    <img src="./ASSETS/images/paper.jpg" alt="illust4" class="feature-imgs">
+                    <div class="feature-div">
+                        <h3>Paper management</h3>
+                        <p>
+                            Using this new system we can lessen the amount of paper needed thus,making it more nature friendly way of work.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -255,7 +256,7 @@
 
             <div id="form-wrapper">
                 <!-- sign up form -->
-                <div id="signupForm">
+                <!-- <div id="signupForm">
                     <div class="form">
                     <form action="./PHP/handleUser.php" method="POST">
                         <h2>Sign Up</h2>
@@ -282,7 +283,7 @@
                     </form>
                     <button id="toLogLink">Log in</button>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- log in form -->
                 <div id="loginForm">
@@ -301,7 +302,9 @@
                             </tr>
                         </table>
                     </form>
-                    <button id="toSignLink">Sign Up</button>
+                    <button id="toSignLink">
+                        <a href="./register.php" class="non-nav-link">Sign Up</a>
+                    </button>
                     </div>
                 </div>
             </div>
@@ -310,7 +313,7 @@
     </main>
 
     <!-- review section -->
-    <div class="review-section col-12">
+    <!-- <div class="review-section col-12">
 
         <div class="avatar-img">
             <img src="./ASSETS/images/person_photo.jpg" alt="review-person">
@@ -323,7 +326,7 @@
             </p>
         </div>
 
-    </div>
+    </div> -->
 
     <?php include 'repeated_section/footer.html' ?>
 
