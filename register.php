@@ -103,6 +103,67 @@
 </head>
 <body>
     <?php include './repeated_section/error.php'; ?>
+
+    <main class="col-12">
+        <form action="" method="post">
+            <h3>SIGN UP</h3>
+            <table>
+                <tr>
+                    <th><label for="name">Full Name:</label></th>
+                    <td><input type="text" id="name" name="username"/></td>
+                    <th><label for="phone">Phone number:</label></th>
+                    <td><input type="text" id="phone" name="phn"/></td>
+                </tr>
+                <tr>
+                    <th><label for="email">Email:</label></th>
+                    <td colspan="3"><input type="email" name="Email" id="email"/></td>
+                </tr>
+                <tr>
+                    <th><label for="citizen">Citizenship no.:</label></th>
+                    <td><input type="text" id="citizen" name="citizenshipNo"/></td>
+                    <th><label for="address">Address:</label></th>
+                    <td><input type="text" id="address" name="Address"/></td>
+                </tr>
+                <tr>
+                    <th><label for="sel1">Vehicle type:</label></th>
+                    <td>
+                        <select name="vType" id="sel1" onchange="changingType('sel1', 'sel2')">
+                            <option value="none"></option>
+                            <option value="twoWheel">Two Wheeler</option>
+                            <option value="fourWheel">Four Wheeler</option>
+                        </select>
+                    </td>
+                    <th><label for="sel2">Vehicle Category:</label></th>
+                    <td>
+                        <select name="vCat" id="sel2" onchange="changingCC('sel2', 'sel3')"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="sel3">Engine CC:</label></th>
+                    <td>
+                        <select name="engCC" id="sel3"></select>
+                    </td>
+                    <th><label for="Vreg">Vehicle Registration:</label></th>
+                    <td><input type="text" id="Vreg" name="vReg"/></td>
+                </tr>
+                <tr>
+                    <th><label for="pass">Password:</label></th>
+                    <td><input type="password" id="pass" name="password"/></td>
+                    <th><label for="rePass">Confirm Password:</label></th>
+                    <td><input type="text" id="rePass" name="rePassword"/></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <input type="submit" value="Sign Up" name="sign"/>
+                    </td>
+                </tr>
+            </table>
+            <button>
+                <a href="Landing.php#loginForm">Log in</a>
+            </button>
+        </form>
+    </main>
+
     <script>
         function closeErrorPopUp(){
             document.getElementsByClassName('error-popup')[0].style.display = 'none';
