@@ -5,7 +5,14 @@ require 'connection.php';
 session_start();
 
 $email = $_SESSION['Email'];
-$user = $_SESSION['Uname'];
+$username = $_SESSION['Uname'];
+$phonenumber = $_SESSION['Phone'];
+$address = $_SESSION['Address'];
+$citizenshipNo = $_SESSION['CitizenNo'];
+$vehicleType = $_SESSION['Vtype'];
+$vehicleCategory = $_SESSION['Vcat'];
+$vehicleReg = $_SESSION['Vreg'];
+$engineCC = $_SESSION['EngCC'];
 
 $sql = "SELECT ACTIVATE_CODE FROM users WHERE EMAIL = '$email'";
 $query = mysqli_query($connect, $sql);
@@ -18,7 +25,7 @@ if(mysqli_num_rows($query)){
     $url = "https://localhost/college_project/Minor_Project_SBR/PHP/verifyUser.php?activation_code=$activeCode";
 
     $mssg = "
-    <h2>Hi, $user </h2>
+    <h2>Hi, $username </h2>
     <p>Thank you for registeration</p>
     <p>
         Click this link to verify and log in into your account
@@ -30,7 +37,7 @@ if(mysqli_num_rows($query)){
 
     $mail->setFrom('swiftbluebook10@gmail.com', 'Swift Bluebook');
 
-    $mail->addAddress($email, $user);
+    $mail->addAddress($email, $username);
 
     $mail->Subject = 'Email Verification';
 
@@ -39,12 +46,12 @@ if(mysqli_num_rows($query)){
     $mail->Body = $mssg;
 
     if(!$mail->send()){
-        header("location: ../Landing.php?error=SendMailError#signupForm");
+        header("location: ../register.php?error=SendMailError&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
     }else{
-        header("location: ../Landing.php?mssg=CheckEmail#signupForm");
+        header("location: ../register.php?mssg=CheckEmail");
     }
 }else{
-    header("location: ../Landing.php?error=NotUser#signupForm");
+    header("location: ../register.php?error=NotUser");
 }
 
 ?>

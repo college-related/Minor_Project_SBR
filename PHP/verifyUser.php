@@ -15,7 +15,7 @@ if(isset($_GET['activation_code'])){
         if(mysqli_affected_rows($connect)){
             header("location: ../PAGES/verifiedEmail.html");
         }else{
-            header("location: ../Landing.php?mssg=AlreadyVerified&logBox#loginForm");
+            header("location: ../Landing.php?mssg=AlreadyVerified#loginForm");
         }
     }else{
         header("location: ../Landing.php?error=NotActivationCode#signupForm");
