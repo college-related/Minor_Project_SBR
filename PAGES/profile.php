@@ -79,6 +79,7 @@
     <script defer src="../JS/detail_popup.js"></script>
     <script defer src="../JS/category_type.js"></script>
     <script defer src="../JS/search.js"></script>
+    <script defer src="../JS/profile.js"></script>
 </head>
 <body class="col-12">
     <header class="col-12">
