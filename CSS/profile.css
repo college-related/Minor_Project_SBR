@@ -113,58 +113,6 @@ h3{
     position: fixed;
 }
 
-
-#profile{
-    grid-column: 2/7;
-}
-
-#details{
-    grid-column: 7/12;
-}
-
-#more-details{
-    grid-column: 2/12;
-    padding: 30px 400px;
-}
-
-#details, #more-details{
-    text-align: center;
-}
-
-.maindiv{
-    background-color: white;
-    border-radius: 5px;
-    margin: 0 5px 20px 5px;
-    padding: 20px;
-}
-
-#user-name{
-  text-align: center;
-  margin-top: 30px;
-}
-
-#detail-form{
-    margin-top: 20px;
-    margin-left: 80px;
-}
-
-h3{
-   text-align: center;
-}
-
-#add-photo{
-    margin-top: 40px;
-    text-align: center;
-    width: 50%;
-    height: 65%;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px black solid;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 #latest-form{
     margin-top: 20px;
    text-align: center;

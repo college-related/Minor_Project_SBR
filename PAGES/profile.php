@@ -195,8 +195,9 @@
         </div>
 
         <div class="profile-detail-section basic-detail">
-        <h3><u> DETAILS</u></h3>
-            <div id="detail-form">
+        
+            <div class="detail-form">
+            <h3><u> DETAILS</u></h3>
                 <table>
                     <tr>
                         <td>Phone number :</td>
@@ -379,7 +380,7 @@
                 <?php } ?>
             </div>
         </div> -->
-        <div>
+        </div>
     </main> 
      
     <?php include '../repeated_section/footer.html' ?>
