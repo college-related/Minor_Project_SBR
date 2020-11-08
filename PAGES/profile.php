@@ -91,8 +91,8 @@
         <nav>
             <ul>
                 <li><a href="./information.php?isLogged=true">Infos</a></li>
-                <li><a href="./form.html">Form</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="./form.php">Form</a></li>
+                <li><a href="#" class="active-nav-link">Profile</a></li>
                 <li><a href="../php/logout.php">LogOut</a></li>
                 <li><i class="fa fa-search"></i></li>
             </ul>

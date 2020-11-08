@@ -35,16 +35,16 @@
 
 </head>
 <body>
-    <header>
+    <header class="col-12">
 
         <!-- logo and website name -->
         <span id="logo">SWIFT BLUEBOOK RENEW</span>
 
         <!-- navigation bar for desktop view -->
-        <nav class="web-navigation">
+        <nav>
             <ul>
                 <li><a href="./information.php?isLogged=true">Infos</a></li>
-                <li><a href="#">Form</a></li>
+                <li><a href="#" class="active-nav-link">Form</a></li>
                 <li><a href="./profile.php?Logged">Profile</a></li>
                 <li><a href="../php/logout.php">LogOut</a></li>
                 <li><i class="fa fa-search"></i></li>
@@ -53,14 +53,7 @@
        
     </header>
 
-    <div class="nav-hero">
-        <!-- hero text(website name) -->
-        <h1 class="hero-text headings">
-            Form
-        </h1>
-    </div>
-
-    <main class="form-main">
+    <main class="form-main col-12">
         <!-- checkbox to check if the form is for others -->
         <div class="btns">
             <input type="checkbox" id="check" onclick="reveal()"> For-Others

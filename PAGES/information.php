@@ -19,13 +19,13 @@
 </head>
 <body>
      <!-- head of the website -->
-     <header>
+     <header class="col-12">
 
         <!-- logo and website name -->
         <span id="logo">SWIFT BLUEBOOK RENEW</span>
 
         <!-- navigation bar for desktop view -->
-        <nav class="web-navigation">
+        <nav>
             
            <?php
            
@@ -35,11 +35,23 @@
 
                     if($log=="true"){
 
-                        echo "<a href='./form.html'>Form</a> <a href='./profile.php?Logged'>Profile</a> <a href='../php/logout.php'>LogOut</a> <i class='fa fa-search'></i>";
+                        echo 
+                            "<ul>
+                                <li><a href='#' class='active-nav-link'>Infos</a></li>
+                                <li><a href='./form.php'>Form</a></li>
+                                <li><a href='./profile.php?Logged'>Profile</a></li>
+                                <li><a href='../php/logout.php'>LogOut</a></li>
+                                <li><i class='fa fa-search'></i></li>
+                            </ul>";
 
                     }
                     elseif($log=="false"){
-                        echo "<a href='../landing.php#signupForm'>SignUp</a> <a href='../landing.php?logBox#loginForm'>LogIn</a> <i class='fa fa-search'></i>";
+                        echo 
+                            "<ul>
+                                <li><a href='../register.php'>SignUp</a></li>
+                                <li><a href='../landing.php#loginForm'>LogIn</a></li>
+                                <li><i class='fa fa-search'></i></li>
+                            </ul>";
 
                         
                     }
@@ -50,15 +62,6 @@
            
            ?>
             <!-- <a href="#loginForm">LogIn</a> -->
-        </nav>
-
-        <!-- navigation bar for mobile view -->
-        <nav class="mobile-navigation">
-            <ul>
-                <li>Infos</li>  
-                <li>SignUp</li>
-                <li>LogIn</li>
-            </ul>
         </nav>
 
     </header>
