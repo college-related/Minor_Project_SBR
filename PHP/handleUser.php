@@ -48,7 +48,7 @@ if(isset($_POST['signup'])){
 
             $sql = 
                 "INSERT INTO users(NAME, EMAIL, PASSWORD, PHN, ACTIVATE_CODE, EMAIL_STATUS, ADDRESS, CITIZEN) 
-                VALUES('$username', '$email', '$password', '$phonenumber', '$activateCode', 'not verified', '$address', '$citizenshipNo')";
+                VALUES('$username', '$email', '$password', '$phonenumber', '$activateCode', 'verified', '$address', '$citizenshipNo')";
 
             mysqli_query($connect, $sql);
 
