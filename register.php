@@ -39,6 +39,28 @@
         }
     }
 
+    if(isset($_GET['infoBack'])){
+        $infoBackLength = $_GET['infoBack'];
+        $address = $_GET['addressB'];
+        $citizenNo = $_GET['citizenB'];
+        $name = $_GET['nameB'];
+        $vReg = $_GET['vRegB'];
+        $engineCC = $_GET['engCCB'];
+        $vType = $_GET['vTypeB'];
+        $vCategory = $_GET['vCatB'];
+        $email = '';
+        $phone = '';
+
+            if($infoBackLength == "full"){
+                $email = $_GET['emailB'];
+                $phone = $_GET['phoneB'];        
+            }else if($infoBackLength == "noPhone"){
+                $email = $_GET['emailB'];
+            }else if($infoBackLength == "noEmail"){
+                $phone = $_GET['phoneB'];
+            }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -100,61 +122,63 @@
             }
         ?>
     </style>
+
+    <script defer src="./JS/category_type.js"></script>
 </head>
 <body>
     <?php include './repeated_section/error.php'; ?>
 
     <main class="col-12">
-        <form action="" method="post">
+        <form action="./PHP/handleUser.php" method="post">
             <h3>SIGN UP</h3>
             <table>
                 <tr>
                     <th><label for="name">Full Name:</label></th>
-                    <td><input type="text" id="name" name="username"/></td>
+                    <td><input type="text" id="name" name="Uname" required <?php if(isset($_GET['infoBack'])){echo "value='$name'";}?>/></td>
                     <th><label for="phone">Phone number:</label></th>
-                    <td><input type="text" id="phone" name="phn"/></td>
+                    <td><input type="number" id="phone" name="Phn" required <?php if(isset($_GET['infoBack'])){echo "value='$phone'";}?>/></td>
                 </tr>
                 <tr>
                     <th><label for="email">Email:</label></th>
-                    <td colspan="3"><input type="email" name="Email" id="email"/></td>
+                    <td colspan="3"><input type="email" name="Email" id="email" required <?php if(isset($_GET['infoBack'])){echo "value='$email'";}?>/></td>
                 </tr>
                 <tr>
                     <th><label for="citizen">Citizenship no.:</label></th>
-                    <td><input type="text" id="citizen" name="citizenshipNo"/></td>
+                    <td><input type="text" id="citizen" name="citizenshipNo" required <?php if(isset($_GET['infoBack'])){echo "value='$citizenNo'";}?>/></td>
                     <th><label for="address">Address:</label></th>
-                    <td><input type="text" id="address" name="Address"/></td>
+                    <td><input type="text" id="address" name="address" required <?php if(isset($_GET['infoBack'])){echo "value='$address'";}?>/></td>
                 </tr>
                 <tr>
                     <th><label for="sel1">Vehicle type:</label></th>
                     <td>
-                        <select name="vType" id="sel1" onchange="changingType('sel1', 'sel2')">
+                        <select name="vType" id="sel1" required onchange="changingType('sel1', 'sel2')" onclick="changingCC('sel2', 'sel3')">
                             <option value="none"></option>
-                            <option value="twoWheel">Two Wheeler</option>
-                            <option value="fourWheel">Four Wheeler</option>
+                            <option value="two Wheeler">Two Wheeler</option>
+                            <option value="four Wheeler">Four Wheeler</option>
                         </select>
                     </td>
                     <th><label for="sel2">Vehicle Category:</label></th>
                     <td>
-                        <select name="vCat" id="sel2" onchange="changingCC('sel2', 'sel3')"></select>
+                        <select name="vCategory" id="sel2" required></select>
                     </td>
                 </tr>
                 <tr>
                     <th><label for="sel3">Engine CC:</label></th>
                     <td>
-                        <select name="engCC" id="sel3"></select>
+                        <select name="engineCC" id="sel3" required></select>
                     </td>
                     <th><label for="Vreg">Vehicle Registration:</label></th>
-                    <td><input type="text" id="Vreg" name="vReg"/></td>
+                    <td><input type="text" id="Vreg" name="vReg" required <?php if(isset($_GET['infoBack'])){echo "value='$vReg'";}?>/></td>
                 </tr>
                 <tr>
                     <th><label for="pass">Password:</label></th>
-                    <td><input type="password" id="pass" name="password"/></td>
+                    <td><input type="password" id="pass" name="Password" required/></td>
                     <th><label for="rePass">Confirm Password:</label></th>
-                    <td><input type="text" id="rePass" name="rePassword"/></td>
+                    <td><input type="password" id="rePass" name="Repass" required/></td>
                 </tr>
                 <tr>
                     <td colspan="4">
-                        <input type="submit" value="Sign Up" name="sign"/>
+                        <input type="submit" value="Sign Up" name="signup"/>
                     </td>
                 </tr>
             </table>
