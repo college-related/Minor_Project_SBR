@@ -79,8 +79,7 @@ h3,li{
     grid-template-columns: 1fr 3fr;
 }
 .document_section{
-    display: flex;
-    
+    display:flex;
 }
 
 .document_section_text{
