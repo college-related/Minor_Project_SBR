@@ -134,24 +134,24 @@
             <table>
                 <tr>
                     <th><label for="name">Full Name:</label></th>
-                    <td><input type="text" id="name" name="Uname" <?php if(isset($_GET['infoBack'])){echo "value='$name'";}?>/></td>
+                    <td><input type="text" id="name" name="Uname" required <?php if(isset($_GET['infoBack'])){echo "value='$name'";}?>/></td>
                     <th><label for="phone">Phone number:</label></th>
-                    <td><input type="number" id="phone" name="Phn" <?php if(isset($_GET['infoBack'])){echo "value='$phone'";}?>/></td>
+                    <td><input type="number" id="phone" name="Phn" required <?php if(isset($_GET['infoBack'])){echo "value='$phone'";}?>/></td>
                 </tr>
                 <tr>
                     <th><label for="email">Email:</label></th>
-                    <td colspan="3"><input type="email" name="Email" id="email" <?php if(isset($_GET['infoBack'])){echo "value='$email'";}?>/></td>
+                    <td colspan="3"><input type="email" name="Email" id="email" required <?php if(isset($_GET['infoBack'])){echo "value='$email'";}?>/></td>
                 </tr>
                 <tr>
                     <th><label for="citizen">Citizenship no.:</label></th>
-                    <td><input type="text" id="citizen" name="citizenshipNo" <?php if(isset($_GET['infoBack'])){echo "value='$citizenNo'";}?>/></td>
+                    <td><input type="text" id="citizen" name="citizenshipNo" required <?php if(isset($_GET['infoBack'])){echo "value='$citizenNo'";}?>/></td>
                     <th><label for="address">Address:</label></th>
-                    <td><input type="text" id="address" name="address" <?php if(isset($_GET['infoBack'])){echo "value='$address'";}?>/></td>
+                    <td><input type="text" id="address" name="address" required <?php if(isset($_GET['infoBack'])){echo "value='$address'";}?>/></td>
                 </tr>
                 <tr>
                     <th><label for="sel1">Vehicle type:</label></th>
                     <td>
-                        <select name="vType" id="sel1" onchange="changingType('sel1', 'sel2')" onclick="changingCC('sel2', 'sel3')">
+                        <select name="vType" id="sel1" required onchange="changingType('sel1', 'sel2')" onclick="changingCC('sel2', 'sel3')">
                             <option value="none"></option>
                             <option value="two Wheeler">Two Wheeler</option>
                             <option value="four Wheeler">Four Wheeler</option>
@@ -159,22 +159,22 @@
                     </td>
                     <th><label for="sel2">Vehicle Category:</label></th>
                     <td>
-                        <select name="vCategory" id="sel2"></select>
+                        <select name="vCategory" id="sel2" required></select>
                     </td>
                 </tr>
                 <tr>
                     <th><label for="sel3">Engine CC:</label></th>
                     <td>
-                        <select name="engineCC" id="sel3"></select>
+                        <select name="engineCC" id="sel3" required></select>
                     </td>
                     <th><label for="Vreg">Vehicle Registration:</label></th>
-                    <td><input type="text" id="Vreg" name="vReg" <?php if(isset($_GET['infoBack'])){echo "value='$vReg'";}?>/></td>
+                    <td><input type="text" id="Vreg" name="vReg" required <?php if(isset($_GET['infoBack'])){echo "value='$vReg'";}?>/></td>
                 </tr>
                 <tr>
                     <th><label for="pass">Password:</label></th>
-                    <td><input type="password" id="pass" name="Password"/></td>
+                    <td><input type="password" id="pass" name="Password" required/></td>
                     <th><label for="rePass">Confirm Password:</label></th>
-                    <td><input type="password" id="rePass" name="Repass"/></td>
+                    <td><input type="password" id="rePass" name="Repass" required/></td>
                 </tr>
                 <tr>
                     <td colspan="4">
