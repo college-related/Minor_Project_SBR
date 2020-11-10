@@ -292,7 +292,7 @@
                         <h2>Log In</h2>
                         <table>
                             <tr>
-                                <td><input class="form-input log-input" type="text" placeholder="Username" name="Uname" required/></td>
+                                <td><input class="form-input log-input" type="email" placeholder="Email" name="email" required/></td>
                             </tr>
                             <tr>
                                 <td><input class="form-input log-input" type="password" placeholder="Password" name="Password" required/></td>
