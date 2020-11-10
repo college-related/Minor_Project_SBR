@@ -155,8 +155,8 @@
                         <td>
                         <select name="vType" id="vehicle-type" onchange="changingType('vehicle-type', 'vehicle-name')" required>
                                 <option value="none"></option>
-                                <option value="twoWheel">Two wheeler</option>
-                                <option value="fourWheel">Four wheeler</option>
+                                <option value="two Wheeler">Two wheeler</option>
+                                <option value="four Wheeler">Four wheeler</option>
                             </select>
                         </td>
                     </tr>

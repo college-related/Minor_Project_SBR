@@ -87,11 +87,11 @@ if(isset($_POST['signup'])){
                 mysqli_query($connect, $sqlV);
 
                 if(mysqli_affected_rows($connect)){
-                    $sqlKey = "INSERT INTO user_key,userStr(uID, userKey) VALUES('$uId', '$key','$str')";
+                    $sqlKey = "INSERT INTO user_key(uID, userKey,userStr) VALUES('$uId', '$key','$str')";
                     $executeKey = mysqli_query($connectKey, $sqlKey);
 
                     if(mysqli_affected_rows($connectKey)){
-                        header("location: ./emailVerification.php");
+                        header("location: ./emailVerification.php?email=$email");
                     }else{
                         header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
                     }
