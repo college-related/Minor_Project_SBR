@@ -16,7 +16,7 @@ if( isset($_POST['savebtn'])){
 
    session_start();
 
-   $phn=$_SESSION['uId'];
+   $uId=$_SESSION['uId'];
 
    $vType=protect($_POST['vType']);
    $vCat=protect($_POST['vCategory']);

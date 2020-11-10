@@ -147,6 +147,9 @@
                         <td>
                             <input type="hidden" value="<?= $key ?>"  name ="key">
                         </td>
+                        <td>
+                            <input type="hidden" value="<?= $str ?>"  name ="str">
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -170,7 +173,7 @@
                         <td>
                             <label for="engine-cc">Engine cc</label>
                         </td>
-                        <td><input type="number" name="ECC" id="engine-cc" placeholder="Ex: 150"></td>
+                        <td><input type="text" name="ECC" id="engine-cc" placeholder="Ex: 150"></td>
                     </tr>
                    
                     <tr>
