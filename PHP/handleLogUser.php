@@ -1,17 +1,31 @@
 <?php
 
+function protect($data){
+    return trim(strip_tags(addslashes($data)));
+}
+
+function encryptData($data, $key, $str){
+    $encryption_key = base64_decode($key);
+    $ivlength = substr(md5($str."users"),1, 16);
+    $encryptedData = openssl_encrypt($data, "aes-256-cbc", $encryption_key, 0, $ivlength);
+
+    return base64_encode($encryptedData.'::'.$ivlength);
+}
+
 if(isset($_POST['login'])){
     require_once "./connection.php";
 
-    $Uname = $_POST['Uname'];
-    $Password = $_POST['Password'];
-    
-    $phn_sql = "SELECT PHN, EMAIL, EMAIL_STATUS FROM users WHERE USERNAME = '$Uname' && PASSWORD = '$Password';";
+    $email = protect($_POST['email']);
+    $Password = protect($_POST['Password']);
+
+    $str = $email.$Password;
+    $key = md5($str);
+    $email = encryptData($email, $key, $str);    
+    $phn_sql = "SELECT PASSWORD, EMAIL_STATUS FROM users WHERE EMAIL = '$email';";
     $result = mysqli_query($connect, $phn_sql);
     $row = mysqli_fetch_assoc($result);
-    $phn = $row['PHN'];
-    $email = $row['EMAIL'];
     $emailStat = $row['EMAIL_STATUS'];
+    $password = $row['PASSWORD'];
 
     // checking if the email is verified or not
         if($emailStat == "not verified"){
@@ -21,13 +35,12 @@ if(isset($_POST['login'])){
 
     session_start();
     $_SESSION['Uname'] = $Uname;
-    $_SESSION['phone'] = $phn;
     $_SESSION['Email'] = $email;
 
-    $sql = "SELECT * FROM users WHERE USERNAME = '$Uname' && PASSWORD = '$Password'";
-    $query = mysqli_query($connect, $sql);
+    // $sql = "SELECT * FROM users WHERE USERNAME = '$Uname' && PASSWORD = '$Password'";
+    // $query = mysqli_query($connect, $sql);
 
-    if(mysqli_num_rows($query)){
+    if(password_verify($Password,$password)){
         header("location: ../PAGES/profile.php?Logged");
     }else{
         header("location: ../Landing.php?inputError=WrongNameORPass&logBox#loginForm");

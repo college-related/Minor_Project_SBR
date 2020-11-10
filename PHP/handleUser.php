@@ -1,24 +1,59 @@
 <?php
 
+function protect($data){
+    return trim(strip_tags(addslashes($data)));
+}
+
+function encryptData($data, $key, $str){
+    $encryption_key = base64_decode($key);
+    $ivlength = substr(md5($str."users"),1, 16);
+    $encryptedData = openssl_encrypt($data, "aes-256-cbc", $encryption_key, 0, $ivlength);
+
+    return base64_encode($encryptedData.'::'.$ivlength);
+}
+
 if(isset($_POST['signup'])){
 
     // data from the signup form
-    $email = $_POST['Email'];
-    $username =  $_POST['Uname'];
-    $password =  $_POST['Password'];
-    $confirmpassword =  $_POST['Repass'];
-    $phonenumber =  $_POST['Phn'];
-    $address = $_POST['address'];
-    $citizenshipNo = $_POST['citizenshipNo'];
-    $vehicleType = $_POST['vType'];
-    $vehicleCategory = $_POST['vCategory'];
-    $vehicleReg = $_POST['vReg'];
-    $engineCC = $_POST['engineCC'];
+    $email = protect($_POST['Email']);
+    $username =  protect($_POST['Uname']);
+    $password =  protect($_POST['Password']);
+    $confirmpassword =  protect($_POST['Repass']);
+    $phonenumber =  protect($_POST['Phn']);
+    $address = protect($_POST['address']);
+    $citizenshipNo = protect($_POST['citizenshipNo']);
+    $vehicleType = protect($_POST['vType']);
+    $vehicleCategory = protect($_POST['vCategory']);
+    $vehicleReg = protect($_POST['vReg']);
+    $engineCC = protect($_POST['engineCC']);
     $activateCode = md5(rand());
 
     // checking if the password's match or not 
     if($password == $confirmpassword){
         require_once "./connection.php";
+
+        session_start();
+        $_SESSION['Uname'] = $username;
+        $_SESSION['Email'] = $email;
+        $_SESSION['Phone'] = $phonenumber;
+        $_SESSION['Address'] = $address;
+        $_SESSION['CitizenNo'] = $citizenshipNo;
+        $_SESSION['Vtype'] = $vehicleType;
+        $_SESSION['Vcat'] = $vehicleCategory;
+        $_SESSION['Vreg'] = $vehicleReg;
+        $_SESSION['EngCC'] = $engineCC;
+
+        $str = $email.$password;
+        $key = md5($str);
+
+        $email = encryptData($email, $key, $str);
+        $username = encryptData($username, $key, $str);
+        $phonenumber = encryptData($phonenumber, $key, $str);
+        $address = encryptData($address, $key, $str);
+        $citizenshipNo = encryptData($citizenshipNo, $key, $str);
+        $vehicleReg = encryptData($vehicleReg, $key, $str);
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $sql_email_check = "SELECT * FROM users WHERE EMAIL = '$email';";
         $sql_phn_check = "SELECT * FROM users WHERE PHN = '$phonenumber';";
@@ -35,20 +70,10 @@ if(isset($_POST['signup'])){
         else if(mysqli_num_rows($query_phn_check) > 0){
             header("location: ../register.php?inputError=AlreadyUserPhone&infoBack=noPhone&nameB=$username&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
         }else{
-            session_start();
-            $_SESSION['Uname'] = $username;
-            $_SESSION['Email'] = $email;
-            $_SESSION['Phone'] = $phonenumber;
-            $_SESSION['Address'] = $address;
-            $_SESSION['CitizenNo'] = $citizenshipNo;
-            $_SESSION['Vtype'] = $vehicleType;
-            $_SESSION['Vcat'] = $vehicleCategory;
-            $_SESSION['Vreg'] = $vehicleReg;
-            $_SESSION['EngCC'] = $engineCC;
-
+           
             $sql = 
                 "INSERT INTO users(NAME, EMAIL, PASSWORD, PHN, ACTIVATE_CODE, EMAIL_STATUS, ADDRESS, CITIZEN) 
-                VALUES('$username', '$email', '$password', '$phonenumber', '$activateCode', 'verified', '$address', '$citizenshipNo')";
+                VALUES('$username', '$email', '$hashedPassword', '$phonenumber', '$activateCode', 'verified', '$address', '$citizenshipNo')";
 
             mysqli_query($connect, $sql);
 
@@ -62,7 +87,15 @@ if(isset($_POST['signup'])){
                 mysqli_query($connect, $sqlV);
 
                 if(mysqli_affected_rows($connect)){
-                    header("location: ./emailVerification.php");
+                    $sqlKey = "INSERT INTO user_key(uID, userKey) VALUES('$uId', '$key')";
+                    $executeKey = mysqli_query($connectKey, $sqlKey);
+
+                    if(mysqli_affected_rows($connectKey)){
+                        header("location: ./emailVerification.php");
+                    }else{
+                        header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+                    }
+
                 }else{
                     header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
                 }
