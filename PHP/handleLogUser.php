@@ -21,11 +21,12 @@ if(isset($_POST['login'])){
     $str = $email.$Password;
     $key = md5($str);
     $email = encryptData($email, $key, $str);    
-    $phn_sql = "SELECT PASSWORD, EMAIL_STATUS FROM users WHERE EMAIL = '$email';";
+    $phn_sql = "SELECT PASSWORD, EMAIL_STATUS, uId FROM users WHERE EMAIL = '$email';";
     $result = mysqli_query($connect, $phn_sql);
     $row = mysqli_fetch_assoc($result);
     $emailStat = $row['EMAIL_STATUS'];
     $password = $row['PASSWORD'];
+    $uId =$row['uId'];
 
     // checking if the email is verified or not
         if($emailStat == "not verified"){
@@ -34,7 +35,7 @@ if(isset($_POST['login'])){
         }
 
     session_start();
-    $_SESSION['Uname'] = $Uname;
+    $_SESSION['uId'] = $uId;
     $_SESSION['Email'] = $email;
 
     // $sql = "SELECT * FROM users WHERE USERNAME = '$Uname' && PASSWORD = '$Password'";

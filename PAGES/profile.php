@@ -1,5 +1,13 @@
 <?php
 
+    function decryptData($data, $key){
+        $encryption_key = base64_decode($key);
+        list($encrypted_data, $iv) = array_pad(explode('::', base64_decode($data), 2),2,null);
+        $decryptedData = openssl_decrypt($encrypted_data, "aes-256-cbc", $encryption_key, 0, $iv);
+
+        return $decryptedData;
+    }
+
     if(!isset($_GET['Logged'])){
         header("location: ../Landing.php?NotLogged");
     }
@@ -8,23 +16,39 @@
 
     session_start();
 
-    $ph = $_SESSION['phone'];
+    $uId = $_SESSION['uId'];
 
     // $sql_detail = "SELECT form.*, basic_data.* FROM form JOIN basic_data ON form.PHN = basic_data.PHN WHERE form.PHN = '$ph' && basic_data.PHN = '$ph';";
     // $detail_result = mysqli_query($connect, $sql_detail);
 
-    // $detailArray = mysqli_fetch_all($detail_result, MYSQLI_ASSOC);
+    // $infoarray = mysqli_fetch_all($detail_result, MYSQLI_ASSOC);
 
-    $sql_form = "SELECT * FROM form WHERE PHN='$ph';";
+    $sql_info = "SELECT users.ADDRESS, users.CITIZEN, users.NAME, users.PHN, vehicle_data.* FROM users JOIN vehicle_data ON users.uId=vehicle_data.uId WHERE users.uId='$uId' && vehicle_data.uId='$uId'";
+    $info_result = mysqli_query($connect, $sql_info);
+
+    $infoarray = mysqli_fetch_all($info_result, MYSQLI_ASSOC);
+
+    $key_sql = mysqli_fetch_all(
+        mysqli_query(
+            $connectKey,
+            "SELECT * FROM user_key WHERE uId = '$uId'"
+        ),
+        MYSQLI_ASSOC
+    );
+
+    $key = $key_sql[0]['userKey'];
+    $str = $key_sql[0]['userStr'];
+
+    $sql_form = "SELECT * FROM form WHERE uId='$uId';";
     $form_result = mysqli_query($connect, $sql_form);
 
-    $sql_detail= "SELECT * FROM basic_data WHERE PHN1='$ph';";
-    $detail_result = mysqli_query($connect, $sql_detail);
+    // $sql_detail= "SELECT * FROM vehicle_data WHERE uId='$uId';";
+    // $detail_result = mysqli_query($connect, $sql_detail);
 
-    $sql_tax="SELECT * FROM fine WHERE PHN ='$ph';";
+    $sql_tax="SELECT * FROM tax_data WHERE uId ='$uId';";
     $tax_result=mysqli_query($connect,$sql_tax);
 
-    $sql_image="SELECT image_name FROM images WHERE PHN='$ph';";
+    $sql_image="SELECT image_name FROM images WHERE uId='$uId';";
     $image_result=mysqli_query($connect,$sql_image);
 
     $imageArray=mysqli_fetch_all($image_result,MYSQLI_ASSOC);
@@ -34,11 +58,12 @@
     }
 
     $formArray = mysqli_fetch_all($form_result,MYSQLI_ASSOC);
-    $detailArray = mysqli_fetch_all($detail_result,MYSQLI_ASSOC);
-    // print_r($detailArray);
+    // $infoarray = mysqli_fetch_all($detail_result,MYSQLI_ASSOC);
+    // print_r($infoarray);
     // die();
 
     $taxArray = mysqli_fetch_all($tax_result,MYSQLI_ASSOC);
+    
 ?>
 
 <!DOCTYPE html>
@@ -120,6 +145,11 @@
                 <table>
                     <tr>
                         <td>
+                            <input type="hidden" value="<?= $key ?>"  name ="key">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
                             <label for="vehicle-type">Vehicle Type</label>
                         </td>
                         <td>
@@ -166,7 +196,7 @@
             <div id="user-name">
                 <h4>
                     <?php
-                        echo $_SESSION['Uname'];
+                       echo decryptData($infoarray[0]['NAME'],$key);
                     ?>
                 </h4>
             </div>
@@ -204,46 +234,46 @@
                         <td>Phone number :</td>
                         <td> <?php 
                         
-                        if(empty($detailArray)){
+                        if(empty($infoarray)){
                             echo "???";
                         }else{
-                            echo $detailArray[0]['PHN1'];
+                            echo decryptData($infoarray[0]['PHN'],$key);
                         }
                         
                         ?> </td>
                     </tr>
                     <tr>
                         <td>Citizenship number :</td>
-                        <td> ???
-                            <!-- <?php
-                                if(empty($detailArray)){
+                        <td> 
+                            <?php
+                                if(empty($infoarray)){
                                     echo "???";
                                 }else{
-                                    echo $detailArray[0]['CITIZEN'];
+                                    echo decryptData($infoarray[0]['CITIZEN'],$key);
                                 }
-                            ?> -->
+                            ?>
                         </td>
                     </tr>
                     <tr>
                         <td>Address :</td>
-                        <td>???
-                            <!-- <?php
-                                if(empty($detailArray)){
+                        <td>
+                            <?php
+                                if(empty($infoarray)){
                                     echo "???";
                                 }else{
-                                    echo $detailArray[0]['ADDRESS'];
+                                    echo decryptData($infoarray[0]['ADDRESS'],$key);
                                 }
-                            ?> -->
+                            ?>
                         </td>
                     </tr>
                     <tr>
                         <td>Vehicle Type:</td>
                         <td> 
                             <?php    
-                                if(empty($detailArray) || $detailArray[0]['VEHICLE_TYPE1'] == ""){
+                                if(empty($infoarray) || $infoarray[0]['VEHICLE_TYPE'] == ""){
                                     echo "???";
                                 }else{
-                                    echo $detailArray[0]['VEHICLE_TYPE1'];
+                                    echo $infoarray[0]['VEHICLE_TYPE'];
                                 }
                             ?>
                         </td>
@@ -252,10 +282,10 @@
                         <td>Vehicle Category :</td>
                         <td>
                             <?php
-                                if(empty($detailArray) || $detailArray[0]['VEHICLE_CAT1'] == ""){
+                                if(empty($infoarray) || $infoarray[0]['VEHICLE_CATEGORY'] == ""){
                                     echo "???";
                                 }else{
-                                    echo $detailArray[0]['VEHICLE_CAT1'];
+                                    echo $infoarray[0]['VEHICLE_CATEGORY'];
                                 }
                             ?>
                         </td>
@@ -264,10 +294,10 @@
                         <td>ENGINE_CC :</td>
                         <td> 
                             <?php
-                                 if(empty($detailArray) || $detailArray[0]['ENGINE_CC1'] == ""){
+                                 if(empty($infoarray) || $infoarray[0]['ENGINE_CC'] == ""){
                                     echo "???";
                                 }else{
-                                    echo $detailArray[0]['ENGINE_CC1'];
+                                    echo $infoarray[0]['ENGINE_CC'];
                                 }
                             ?>
                         </td>
@@ -276,10 +306,10 @@
                         <td>Vehicle Registration no. :</td>
                         <td> 
                             <?php
-                                 if(empty($detailArray) || $detailArray[0]['VEHICLE_REG1'] == ""){
+                                 if(empty($infoarray) || $infoarray[0]['VEHICLE_REG'] == ""){
                                     echo "???";
                                 }else{
-                                    echo $detailArray[0]['VEHICLE_REG1'];
+                                    echo decryptData($infoarray[0]['VEHICLE_REG'],$key);
                                 }
                             ?>
                        </td>

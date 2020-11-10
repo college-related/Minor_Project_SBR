@@ -87,7 +87,7 @@ if(isset($_POST['signup'])){
                 mysqli_query($connect, $sqlV);
 
                 if(mysqli_affected_rows($connect)){
-                    $sqlKey = "INSERT INTO user_key(uID, userKey) VALUES('$uId', '$key')";
+                    $sqlKey = "INSERT INTO user_key,userStr(uID, userKey) VALUES('$uId', '$key','$str')";
                     $executeKey = mysqli_query($connectKey, $sqlKey);
 
                     if(mysqli_affected_rows($connectKey)){
