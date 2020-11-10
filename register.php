@@ -148,13 +148,17 @@
                     <th><label for="address">Address:</label></th>
                     <td><input type="text" id="address" name="address" required <?php if(isset($_GET['infoBack'])){echo "value='$address'";}?>/></td>
                 </tr>
+                <!-- <tr>
+                    <td><input type="hidden" name="cc" id="selectedCC" <?php if(isset($_GET['infoBack'])){echo "value='$engineCC'";} ?>/></td>
+                    <td><input type="hidden" name="cat" id="selectedCat" <?php if(isset($_GET['infoBack'])){echo "value='$vCategory'";} ?>/></td>
+                </tr> -->
                 <tr>
                     <th><label for="sel1">Vehicle type:</label></th>
                     <td>
-                        <select name="vType" id="sel1" required onchange="changingType('sel1', 'sel2')" onclick="changingCC('sel2', 'sel3')">
+                        <select name="vType" id="sel1" required>
                             <option value="none"></option>
-                            <option value="two Wheeler">Two Wheeler</option>
-                            <option value="four Wheeler">Four Wheeler</option>
+                            <option value="two Wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "two Wheeler"){echo "selected";}}?>>Two Wheeler</option>
+                            <option value="four Wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "four Wheeler"){echo "selected";}}?>>Four Wheeler</option>
                         </select>
                     </td>
                     <th><label for="sel2">Vehicle Category:</label></th>

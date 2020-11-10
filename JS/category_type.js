@@ -1,6 +1,6 @@
 // function to change the selection of vehicle category according to type
 // TODO: add the same functionality for Engine CC
-function changingType(sel1, sel2){
+function changingType(sel1, sel2, selectedCat = ''){
     var select1 = document.getElementById(sel1);
     var select2 = document.getElementById(sel2);
     
@@ -19,12 +19,15 @@ function changingType(sel1, sel2){
         var newOption = document.createElement("option");
         newOption.value = pair[0];
         newOption.innerHTML = pair[1];
+        if(newOption.value == selectedCat){
+            newOption.setAttribute("selected", "true");
+        }
         select2.options.add(newOption);
     }
 }
 // "c|C", "d|D", "e|E", "f|F", "g|G", "h|H", "i|I", "j|J"
 
-function changingCC(sel1, sel2){
+function changingCC(sel1, sel2, selectedCC = ''){
     var select1 = document.getElementById(sel1);
     var select2 = document.getElementById(sel2);
     
@@ -55,6 +58,21 @@ function changingCC(sel1, sel2){
         var newOption = document.createElement("option");
         newOption.value = pair[0];
         newOption.innerHTML = pair[1];
+        if(newOption.value == selectedCC){
+            newOption.setAttribute("selected", "true");
+        }
         select2.options.add(newOption);
     }
 }
+
+var dropDown = document.getElementById('sel1');
+// var selectedCC = document.getElementById('selectedCC').value;
+// var selectedCategory = document.getElementById('selectedCat').value;
+
+dropDown.addEventListener('click', function(){
+    changingCC('sel2', 'sel3');
+});
+
+dropDown.addEventListener('change', function(){
+    changingType('sel1', 'sel2');
+})

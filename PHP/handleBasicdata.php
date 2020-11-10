@@ -1,23 +1,36 @@
 <?php
+function protect($data){
+  return trim(strip_tags(addslashes($data)));
+}
+
+function encryptData($data, $key, $str){
+  $encryption_key = base64_decode($key);
+  $ivlength = substr(md5($str."users"),1, 16);
+  $encryptedData = openssl_encrypt($data, "aes-256-cbc", $encryption_key, 0, $ivlength);
+
+  return base64_encode($encryptedData.'::'.$ivlength);
+}
+
 if( isset($_POST['savebtn'])){
    require_once "./connection.php";
 
    session_start();
 
-   $name=$_SESSION['Uname'];
-   $phn=$_SESSION['phone'];
+   $uId=$_SESSION['uId'];
 
-   $vType=$_POST['vType'];
-   $vCat=$_POST['vCategory'];
-   $vReg=$_POST['regNo'];
-   $engineCC=$_POST['ECC']; 
+   $vType=protect($_POST['vType']);
+   $vCat=protect($_POST['vCategory']);
+   $vReg=protect($_POST['regNo']);
+   $engineCC=protect($_POST['ECC']);
 
-    $sql_phn_check = "SELECT * FROM basic_data WHERE PHN1 = '$phn';";
-    $Phn = mysqli_query($connect,$sql_phn_check);
+   $key = $_POST['key']; 
+   $str = $_POST['str'];
+   $vReg = encryptData($vReg, $key, $str);
 
-    if(mysqli_num_rows($Phn) > 0 ){
-      $sql = "UPDATE basic_data SET VEHICLE_TYPE1 = '$vType', VEHICLE_CAT1 = '$vCat', VEHICLE_REG1 = '$vReg', ENGINE_CC1 = '$engineCC' WHERE PHN1 = '$phn' && NAME1 = '$name';";
+    // $sql_phn_check = "SELECT * FROM basic_data WHERE PHN1 = '$phn';";
+    // $Phn = mysqli_query($connect,$sql_phn_check);
 
+      $sql = "UPDATE vehicle_data SET VEHICLE_TYPE = '$vType', VEHICLE_CATEGORY = '$vCat', VEHICLE_REG = '$vReg', ENGINE_CC = '$engineCC' WHERE uId = '$uId';";
       $query = mysqli_query($connect,$sql);
 
       if(mysqli_affected_rows($connect)){
@@ -25,7 +38,7 @@ if( isset($_POST['savebtn'])){
       }else{
         header("location: ../PAGES/profile.php?Logged&Err");
       }
-    }
+    
 
 }else{
     header("location: ../PAGES/profile.php?Logged");
