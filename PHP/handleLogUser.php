@@ -36,10 +36,6 @@ if(isset($_POST['login'])){
 
     session_start();
     $_SESSION['uId'] = $uId;
-    $_SESSION['Email'] = $email;
-
-    // $sql = "SELECT * FROM users WHERE USERNAME = '$Uname' && PASSWORD = '$Password'";
-    // $query = mysqli_query($connect, $sql);
 
     if(password_verify($Password,$password)){
         header("location: ../PAGES/profile.php?Logged");
