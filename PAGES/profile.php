@@ -18,11 +18,6 @@
 
     $uId = $_SESSION['uId'];
 
-    // $sql_detail = "SELECT form.*, basic_data.* FROM form JOIN basic_data ON form.PHN = basic_data.PHN WHERE form.PHN = '$ph' && basic_data.PHN = '$ph';";
-    // $detail_result = mysqli_query($connect, $sql_detail);
-
-    // $infoarray = mysqli_fetch_all($detail_result, MYSQLI_ASSOC);
-
     $sql_info = "SELECT users.ADDRESS, users.CITIZEN, users.NAME, users.PHN, vehicle_data.* FROM users JOIN vehicle_data ON users.uId=vehicle_data.uId WHERE users.uId='$uId' && vehicle_data.uId='$uId'";
     $info_result = mysqli_query($connect, $sql_info);
 
@@ -42,9 +37,6 @@
     $sql_form = "SELECT * FROM form WHERE uId='$uId';";
     $form_result = mysqli_query($connect, $sql_form);
 
-    // $sql_detail= "SELECT * FROM vehicle_data WHERE uId='$uId';";
-    // $detail_result = mysqli_query($connect, $sql_detail);
-
     $sql_tax="SELECT * FROM tax_data WHERE uId ='$uId';";
     $tax_result=mysqli_query($connect,$sql_tax);
 
@@ -58,9 +50,6 @@
     }
 
     $formArray = mysqli_fetch_all($form_result,MYSQLI_ASSOC);
-    // $infoarray = mysqli_fetch_all($detail_result,MYSQLI_ASSOC);
-    // print_r($infoarray);
-    // die();
 
     $taxArray = mysqli_fetch_all($tax_result,MYSQLI_ASSOC);
     
@@ -124,12 +113,6 @@
         </nav>
 
     </header>
-
-    <!-- <div class="nav-hero col-12">
-        <h1 class="hero-text headings">
-            PROFILE
-        </h1>
-    </div> -->
     
     <?php include '../repeated_section/search.html'; ?>
 

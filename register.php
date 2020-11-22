@@ -42,22 +42,32 @@
     if(isset($_GET['infoBack'])){
         $infoBackLength = $_GET['infoBack'];
         $address = $_GET['addressB'];
-        $citizenNo = $_GET['citizenB'];
+        $citizenNo = '';
         $name = $_GET['nameB'];
-        $vReg = $_GET['vRegB'];
+        $vReg = '';
         $engineCC = $_GET['engCCB'];
         $vType = $_GET['vTypeB'];
         $vCategory = $_GET['vCatB'];
         $email = '';
         $phone = '';
 
-            if($infoBackLength == "full"){
+            if($infoBackLength == "noPhone"){
                 $email = $_GET['emailB'];
-                $phone = $_GET['phoneB'];        
-            }else if($infoBackLength == "noPhone"){
-                $email = $_GET['emailB'];
+                $phone = $_GET['phoneB'];
+                $citizenNo = $_GET['citizenB'];
+                $vReg = $_GET['vRegB'];
             }else if($infoBackLength == "noEmail"){
                 $phone = $_GET['phoneB'];
+                $citizenNo = $_GET['citizenB'];
+                $vReg = $_GET['vRegB'];
+            }else if($infoBackLength == "noCitizen"){
+                $email = $_GET['emailB'];
+                $phone = $_GET['phoneB'];
+                $vReg = $_GET['vRegB'];
+            }else if($infoBackLength == "noVreg"){
+                $email = $_GET['emailB'];
+                $phone = $_GET['phoneB'];
+                $citizenNo = $_GET['citizenB'];
             }
     }
 
@@ -148,28 +158,36 @@
                     <th><label for="address">Address:</label></th>
                     <td><input type="text" id="address" name="address" required <?php if(isset($_GET['infoBack'])){echo "value='$address'";}?>/></td>
                 </tr>
-                <!-- <tr>
-                    <td><input type="hidden" name="cc" id="selectedCC" <?php if(isset($_GET['infoBack'])){echo "value='$engineCC'";} ?>/></td>
-                    <td><input type="hidden" name="cat" id="selectedCat" <?php if(isset($_GET['infoBack'])){echo "value='$vCategory'";} ?>/></td>
-                </tr> -->
                 <tr>
-                    <th><label for="sel1">Vehicle type:</label></th>
+                    <th><label for="type">Vehicle type:</label></th>
                     <td>
-                        <select name="vType" id="sel1" required>
+                        <select name="vType" id="type" required>
                             <option value="none"></option>
                             <option value="two Wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "two Wheeler"){echo "selected";}}?>>Two Wheeler</option>
                             <option value="four Wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "four Wheeler"){echo "selected";}}?>>Four Wheeler</option>
                         </select>
                     </td>
-                    <th><label for="sel2">Vehicle Category:</label></th>
+                    <th><label for="category">Vehicle Category:</label></th>
                     <td>
-                        <select name="vCategory" id="sel2" required></select>
+                        <select name="vCategory" id="category" required>
+                            <?php
+                                if(isset($_GET['infoBack'])){
+                                    echo "<option value='$vCategory'>$vCategory</option>";
+                                }
+                            ?>
+                        </select>
                     </td>
                 </tr>
                 <tr>
-                    <th><label for="sel3">Engine CC:</label></th>
+                    <th><label for="engCC">Engine CC:</label></th>
                     <td>
-                        <select name="engineCC" id="sel3" required></select>
+                        <select name="engineCC" id="engCC" required>
+                                <?php
+                                    if(isset($_GET['infoBack'])){
+                                        echo "<option value='$engineCC'>$engineCC</option>";
+                                    }
+                                ?>
+                        </select>
                     </td>
                     <th><label for="Vreg">Vehicle Registration:</label></th>
                     <td><input type="text" id="Vreg" name="vReg" required <?php if(isset($_GET['infoBack'])){echo "value='$vReg'";}?>/></td>
