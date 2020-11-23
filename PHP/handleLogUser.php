@@ -18,7 +18,7 @@ if(isset($_POST['login'])){
     $email = protect($_POST['email']);
     $Password = protect($_POST['Password']);
 
-    $str = $email.$Password;
+    $str = $email;
     $key = md5($str);
     $email = encryptData($email, $key, $str);    
     $phn_sql = "SELECT PASSWORD, EMAIL_STATUS, uId FROM users WHERE EMAIL = '$email';";
