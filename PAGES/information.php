@@ -15,7 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
-    <script defer src="../JS/search.js"></script>
 </head>
 <body>
      <!-- head of the website -->
@@ -41,7 +40,6 @@
                                 <li><a href='./form.php'>Form</a></li>
                                 <li><a href='./profile.php?Logged'>Profile</a></li>
                                 <li><a href='../php/logout.php'>LogOut</a></li>
-                                <li><i class='fa fa-search'></i></li>
                             </ul>";
 
                     }
@@ -50,7 +48,6 @@
                             "<ul>
                                 <li><a href='../register.php'>SignUp</a></li>
                                 <li><a href='../landing.php#loginForm'>LogIn</a></li>
-                                <li><i class='fa fa-search'></i></li>
                             </ul>";
 
                         
@@ -65,8 +62,6 @@
         </nav>
 
     </header>
-
-    <?php include '../repeated_section/search.html'; ?>
 
     <main>
         <div class="information-wrapper">
