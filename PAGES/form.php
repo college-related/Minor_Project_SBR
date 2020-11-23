@@ -154,7 +154,6 @@
                 <li><a href="#" class="active-nav-link">Form</a></li>
                 <li><a href="./profile.php?Logged">Profile</a></li>
                 <li><a href="../php/logout.php">LogOut</a></li>
-                <li><i class="fa fa-search"></i></li>
             </ul>
         </nav>
        
