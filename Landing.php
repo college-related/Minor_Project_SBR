@@ -130,8 +130,6 @@
 
     </style>
 
-    <!-- <script defer src="./JS/sign_log.js"></script> -->
-    <script defer src="./JS/search.js"></script>
     <script defer src="./JS/automatic_slides.js"></script>
 
 </head>
@@ -148,7 +146,6 @@
                 <li><a href="./pages/information.php?isLogged=false">Infos</a></li>
                 <li><a href="register.php">SignUp</a></li>
                 <li><a href="#loginForm">LogIn</a></li>
-                <li><i class="fa fa-search"></i></li>
             </ul>
         </nav>
 
@@ -174,8 +171,6 @@
     </div>
 
     <?php include './repeated_section/error.php'; ?>
-
-    <?php include './repeated_section/search.html'; ?>
    
     <!-- main section -->
     <main class="col-12">
