@@ -1,16 +1,16 @@
 <?php
 
-function calculateTax($type,$engcc){
+function calculateTax($type,$engicc){
 
     $taxAmount;
     if($type=="twoWheel"){
-        if($engicc<=125){
+        if($engicc=="0-125CC"){
             $taxAmount=2500;
         }
-        else if($engicc<250){
+        else if($engicc=="126CC-250CC"){
             $taxAmount=4000;
         }
-        else if($engicc<400){
+        else if($engicc=="251CC-400CC"){
             $taxAmount=8000;
         }
         else{
@@ -18,19 +18,19 @@ function calculateTax($type,$engcc){
         }
     }
     else if ($type== "fourWheel"){
-        if($engicc<=1000){
+        if($engicc=="0-1000CC"){
             $taxAmount=19000;
         }
-        else if($engicc<1500){
+        else if($engicc=="1001CC-1500CC"){
             $taxAmount=21000;
         }
-        else if($engicc<2000){
+        else if($engicc=="1501CC-2000CC"){
             $taxAmount=23000;
         }
-        else if($engicc<2500){
+        else if($engicc=="2001CC-2500CC"){
             $taxAmount=32000;
         }
-        else if($engicc<2900){
+        else if($engicc=="2501CC-2900CC"){
             $taxAmount=37000;
         }
         else{
