@@ -92,7 +92,6 @@
     </style>
     <script defer src="../JS/detail_popup.js"></script>
     <script defer src="../JS/category_type.js"></script>
-    <script defer src="../JS/search.js"></script>
     <script defer src="../JS/profile.js"></script>
 </head>
 <body class="col-12">
@@ -108,13 +107,10 @@
                 <li><a href="./form.php">Form</a></li>
                 <li><a href="#" class="active-nav-link">Profile</a></li>
                 <li><a href="../php/logout.php">LogOut</a></li>
-                <li><i class="fa fa-search"></i></li>
             </ul>
         </nav>
 
     </header>
-    
-    <?php include '../repeated_section/search.html'; ?>
 
    <div class="bg-overlay"></div>
    
