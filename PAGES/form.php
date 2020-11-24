@@ -170,9 +170,6 @@
                 <legend>Personal details:</legend>
                 <table>
                     <tr>
-                        <td colspan="2"><input type="hidden" name="uid" value=<?=$uId?>/></td>
-                    </tr>
-                    <tr>
                         <td><label for="name">Name:</label></td>
                         <td><input type="text" name="Name" id="name" value='<?=$name?>' required/></td>
                     </tr>

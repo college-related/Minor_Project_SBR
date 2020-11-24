@@ -1,5 +1,13 @@
 <?php
     
+    function decryptData($data, $key){
+        $encryption_key = base64_decode($key);
+        list($encrypted_data, $iv) = array_pad(explode('::', base64_decode($data), 2),2,null);
+        $decryptedData = openssl_decrypt($encrypted_data, "aes-256-cbc", $encryption_key, 0, $iv);
+
+        return $decryptedData;
+    }
+
     // data passed through GET method
     $tAmount = $_GET['amount']; // total amount
     $finePer = $_GET['fine']; // fine percentage
@@ -11,14 +19,17 @@
     
     session_start();
     
-    $ph = $_SESSION['phone'];
+    $uId = $_SESSION['uId'];
     
-    $sql = "SELECT * FROM form WHERE PHN = '$ph';";
+    $sql = "SELECT * FROM form WHERE uId = '$uId';";
     $query = mysqli_query($connect, $sql);
-    $array = mysqli_fetch_all($query);
-    
-    // print_r($array);
-    // die();
+    $array1 = mysqli_fetch_all($query);
+
+    $length = count($array1);  
+    $data = $array1[$length-1];
+
+    $str = "j-{b\b{Prd(.w4:Zj-{b\b{Prd(.w4:Z";
+    $key = md5($str);
 ?>
 
 <!DOCTYPE html>
@@ -43,18 +54,29 @@
             <div id="form">
                 <h4>Form Details</h4>
                 <div id="table">
-                    <?php foreach($array as $data) { ?>
                     <table>
                         <tr>
                             <td> Name: </td>
                             <td>
-                                <?= $data[1] ?>
+                                <?= decryptData($data[1], $key); ?>
                             </td>
                         </tr>
                         <tr>
                             <td> Phone no:</td>
                             <td>
-                                <?= $data[0] ?>
+                                <?= decryptData($data[0], $key); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Address:</td>
+                            <td>
+                                <?= decryptData($data[12], $key); ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Citizenship Number:</td>
+                            <td>
+                                <?= decryptData($data[14], $key); ?>
                             </td>
                         </tr>
                         <tr>
@@ -66,13 +88,13 @@
                         <tr>
                             <td>Engine CC:</td>
                             <td>
-                                <?= $data[4] ?>
+                                <?= $data[5] ?>
                             </td>
                         </tr>
                         <tr>
                             <td> Registration number:</td>
                             <td>
-                                <?= $data[5] ?>
+                                <?= decryptData($data[4], $key); ?>
                             </td>
                         </tr>
                         <tr>
@@ -82,7 +104,6 @@
                             </td>
                         </tr>
                     </table>
-                    <?php } ?>
             </div>
             </div>
             <!-- div containing the fine details -->
@@ -98,7 +119,7 @@
                 <p class="imp-insurance">
                     <?php 
                     // as the INS_SLIP column is in 10th index
-                        if($array[0][10] == 'yes'){
+                        if($data[10] == 'yes'){
                             echo "You must take the insurance slip with you.";
                         }else{
                             echo "You can either pay your insurance in any company or right outside the office.";

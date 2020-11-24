@@ -8,10 +8,10 @@ function changingType(sel1, sel2){
 
     var optArry = [];
 
-    if(select1.value == "two Wheeler"){
-        optArry = ["k|K", "a|A"];
+    if(select1.value == "two wheeler"){
+        optArry = ["K|K", "A|A"];
     }else{
-        optArry = ["b|B"];
+        optArry = ["B|B"];
     }
 
     for(var option in optArry){
@@ -33,7 +33,7 @@ function changingCC(sel1, sel2){
 
     var optArry = [];
 
-    if(select1.value == "b"){
+    if(select1.value == "B"){
         optArry = [
             "0-1000CC|0-1000CC", 
             "1001CC-1500CC|1001CC-1500CC", 

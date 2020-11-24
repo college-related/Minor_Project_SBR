@@ -3,7 +3,7 @@
 function calculateTax($type,$engicc){
 
     $taxAmount;
-    if($type=="twoWheel"){
+    if($type=="two wheeler"){
         if($engicc=="0-125CC"){
             $taxAmount=2500;
         }
@@ -17,7 +17,7 @@ function calculateTax($type,$engicc){
             $taxAmount=15000;
         }
     }
-    else if ($type== "fourWheel"){
+    else if ($type== "four wheeler"){
         if($engicc=="0-1000CC"){
             $taxAmount=19000;
         }
@@ -39,7 +39,6 @@ function calculateTax($type,$engicc){
     }
     else{
         echo "Error";
-        die();
     }
     return $taxAmount;
 
@@ -137,7 +136,7 @@ if(isset($_GET['savedForm'])){
         $fine = $fineper ."/ fine-" . $fAmount . "(". $fineDaysCal. "days late)";
 
     }
-    $sql_add = "INSERT INTO FINE(PHN,YEAR,FINE,TAX_AMOUNT) VALUES ('$phoneNo','$date','$fine','$totalAmount');";
+    $sql_add = "INSERT INTO FINE(uId,YEAR,FINE,TAX_AMOUNT) VALUES ('$uId','$date','$fine','$totalAmount');";
     $query_add=mysqli_query($connect, $sql_add);
 
     if(mysqli_affected_rows($connect)){

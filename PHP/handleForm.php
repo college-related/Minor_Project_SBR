@@ -11,10 +11,11 @@ function encryptData($data, $key, $str){
 if(isset($_POST['saveForm'])) {
 
     require_once "./connection.php";
+    session_start();
 
     $phn = $_POST['Phn'];
     $name = $_POST['Name'];
-    $uId = $_POST['uid'];
+    $uId = $_SESSION['uId'];
     
     $vehicleType = $_POST['Vtype'];
     $vehicleCat = $_POST['Vcategory'];
