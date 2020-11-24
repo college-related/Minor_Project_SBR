@@ -101,11 +101,11 @@ if(isset($_GET['savedForm'])){
     require_once "connection.php";
     session_start();
 
-    $phoneNo = $_SESSION['phone'];
+    $uId=$_SESSION['uId'];
     
     
 
-    $sql = "SELECT VEHICLE_TYPE,ENGINE_CC,RENEW_DATE,INS_SLIP FROM form WHERE PHN ='$phoneNo'";
+    $sql = "SELECT VEHICLE_TYPE,ENGINE_CC,RENEW_DATE,INS_SLIP FROM form WHERE uId='uId' ";
     $query = mysqli_query($connect,$sql);
 
     $infoArr = mysqli_fetch_all($query,MYSQLI_ASSOC);
