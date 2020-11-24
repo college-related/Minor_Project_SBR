@@ -136,7 +136,7 @@ if(isset($_GET['savedForm'])){
         $fine = $fineper ."/ fine-" . $fAmount . "(". $fineDaysCal. "days late)";
 
     }
-    $sql_add = "INSERT INTO FINE(uId,YEAR,FINE,TAX_AMOUNT) VALUES ('$uId','$date','$fine','$totalAmount');";
+    $sql_add = "INSERT INTO tax_data(uId,YEAR,FINE,TAX_AMOUNT) VALUES ('$uId','$date','$fine','$totalAmount');";
     $query_add=mysqli_query($connect, $sql_add);
 
     if(mysqli_affected_rows($connect)){
