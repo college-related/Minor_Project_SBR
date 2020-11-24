@@ -34,16 +34,9 @@
             ),
             MYSQLI_ASSOC
         );
-
-        $key_sql = mysqli_fetch_all(
-            mysqli_query(
-                $connectKey,
-                "SELECT * FROM user_key WHERE uId = '$uId'"
-            ),
-            MYSQLI_ASSOC
-        );
     
-        $key = $key_sql[0]['userKey'];
+        $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
+        $key = md5($str);
 
         $name = decryptData($info[0]["NAME"], $key);
         $citizen = decryptData($info[0]["CITIZEN"], $key);
@@ -70,16 +63,9 @@
             ),
             MYSQLI_ASSOC
         );
-
-        $key_sql = mysqli_fetch_all(
-            mysqli_query(
-                $connectKey,
-                "SELECT * FROM user_key WHERE uId = '$uId'"
-            ),
-            MYSQLI_ASSOC
-        );
-    
-        $key = $key_sql[0]['userKey'];
+        
+        $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
+        $key = md5($str);
 
         $name1 = decryptData($info[0]["NAME"], $key);
         $citizen1 = decryptData($info[0]["CITIZEN"], $key);
@@ -184,6 +170,9 @@
                 <legend>Personal details:</legend>
                 <table>
                     <tr>
+                        <td colspan="2"><input type="hidden" name="uid" value=<?=$uId?>/></td>
+                    </tr>
+                    <tr>
                         <td><label for="name">Name:</label></td>
                         <td><input type="text" name="Name" id="name" value='<?=$name?>' required/></td>
                     </tr>
@@ -277,11 +266,11 @@
                         </tr>
                         <tr>
                             <td><label for="address1">Address:</label></td>
-                            <td><input type="text" name="Address1" id="address1" value="<?=$address1?>" required/></td>
+                            <td><input type="text" name="Address1" id="address1" value="<?=$address1?>"/></td>
                         </tr>
                         <tr>
                             <td><label for="citizen1">Citizenship number:</label></td>
-                            <td><input type="text" name="Citizen1" id="citizen1" value="<?=$citizen1?>" required/></td>
+                            <td><input type="text" name="Citizen1" id="citizen1" value="<?=$citizen1?>"/></td>
                         </tr>
                     </table>
                 </fieldset>
