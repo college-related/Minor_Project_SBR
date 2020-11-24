@@ -105,7 +105,7 @@ if(isset($_GET['savedForm'])){
     
     
 
-    $sql = "SELECT VEHICLE_TYPE,ENGINE_CC,RENEW_DATE,INS_SLIP FROM form WHERE uId='uId' ";
+    $sql = "SELECT VEHICLE_TYPE,ENGINE_CC,RENEW_DATE,INS_SLIP FROM form WHERE uId='$uId' ";
     $query = mysqli_query($connect,$sql);
 
     $infoArr = mysqli_fetch_all($query,MYSQLI_ASSOC);
