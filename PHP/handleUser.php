@@ -54,31 +54,31 @@ if(isset($_POST['signup'])){
             $query_citizen_check = mysqli_query($connect, $sql_citizen_check);
             $query_vreg_check = mysqli_query($connect, $sql_vreg_check);
 
-        // checking if the email is already used
-        // TODO: maybe use the library or some preg_match patterns
-        if(mysqli_num_rows($query_email_check) > 0 ){
-            header("location: ../register.php?inputError=AlreadyUserEmail&infoBack=noEmail&nameB=$username&phoneB=$phonenumber&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
-        }
-        // checking if the phone number already exits
-        else if(mysqli_num_rows($query_phn_check) > 0){
-            header("location: ../register.php?inputError=AlreadyUserPhone&infoBack=noPhone&nameB=$username&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
-        }
-        
-        else if(mysqli_num_rows($query_citizen_check) > 0 ){
-            header("location: ../register.php?inputError=AlreadyCitizen&infoBack=noCitizen&emailB=$email&nameB=$username&phoneB=$phonenumber&addressB=$address&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
-        }
+            // checking if the email is already used
+            // TODO: maybe use the library or some preg_match patterns
+            if(mysqli_num_rows($query_email_check) > 0 ){
+                header("location: ../register.php?inputError=AlreadyUserEmail&infoBack=noEmail&nameB=$username&phoneB=$phonenumber&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+            }
+            // checking if the phone number already exits
+            else if(mysqli_num_rows($query_phn_check) > 0){
+                header("location: ../register.php?inputError=AlreadyUserPhone&infoBack=noPhone&nameB=$username&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+            }
+            
+            else if(mysqli_num_rows($query_citizen_check) > 0 ){
+                header("location: ../register.php?inputError=AlreadyCitizen&infoBack=noCitizen&emailB=$email&nameB=$username&phoneB=$phonenumber&addressB=$address&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+            }
 
-        else if(mysqli_num_rows($query_vreg_check) > 0 ){
-            header("location: ../register.php?inputError=AlreadyVReg&infoBack=noVreg&emailB=$email&nameB=$username&phoneB=$phonenumber&addressB=$address&citizenB=$citizenshipNo&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
-        }
+            else if(mysqli_num_rows($query_vreg_check) > 0 ){
+                header("location: ../register.php?inputError=AlreadyVReg&infoBack=noVreg&emailB=$email&nameB=$username&phoneB=$phonenumber&addressB=$address&citizenB=$citizenshipNo&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+            }
 
-        else{
-           
-            $sql = 
-                "INSERT INTO users(NAME, EMAIL, PASSWORD, PHN, ACTIVATE_CODE, EMAIL_STATUS, ADDRESS, CITIZEN) 
-                VALUES('$EncryptedUsername', '$EncryptedEmail', '$hashedPassword', '$EncryptedPhonenumber', '$activateCode', 'not verified', '$EncryptedAddress', '$EncryptedCitizenshipNo')";
+            else{
+            
+                $sql = 
+                    "INSERT INTO users(NAME, EMAIL, PASSWORD, PHN, ACTIVATE_CODE, EMAIL_STATUS, ADDRESS, CITIZEN) 
+                    VALUES('$EncryptedUsername', '$EncryptedEmail', '$hashedPassword', '$EncryptedPhonenumber', '$activateCode', 'not verified', '$EncryptedAddress', '$EncryptedCitizenshipNo')";
 
-            mysqli_query($connect, $sql);
+                mysqli_query($connect, $sql);
 
             if(mysqli_affected_rows($connect)){
                 $uIdGet = "SELECT uId FROM users WHERE EMAIL = '$EncryptedEmail'";
@@ -91,17 +91,15 @@ if(isset($_POST['signup'])){
 
                 if(mysqli_affected_rows($connect)){
                         header("location: ./emailVerification.php?email=$EncryptedEmail&Email=$email&Uname=$username&Phone=$phonenumber&Address=$address&CitizenNo=$citizenshipNo&Vtype=$vehicleType&Vcat=$vehicleCategory&Vreg=$vehicleReg&EngCC=$engineCC");
-                    }else{
-                        header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
-                    }
+                }else{
+                    header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+                }
             }else{
                 header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
             }
         }
-
-    }else 
-    {
-        header("location:../register.php?inputError=PasswordNotSame&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+    }else{
+        header("location: ../register.php?inputError=PasswordNotSame");
     }
 }else{
     header("location:../register.php?error=IllegalWay");
