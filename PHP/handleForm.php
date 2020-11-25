@@ -1,5 +1,13 @@
 <?php
 
+function encryptData($data, $key, $str){
+    $encryption_key = base64_decode($key);
+    $ivlength = substr(md5($str."users"),1, 16);
+    $encryptedData = openssl_encrypt($data, "aes-256-cbc", $encryption_key, 0, $ivlength);
+
+    return base64_encode($encryptedData.'::'.$ivlength);
+}
+
 if(isset($_POST['saveForm'])) {
 
     require_once "./connection.php";
@@ -34,6 +42,19 @@ if(isset($_POST['saveForm'])) {
     if($vehicleReg1 == "")
         $vehicleReg1 = $_POST['VehicleReg'];
 
+        $str = "j-{b\b{Prd(.w4:Zj-{b\b{Prd(.w4:Z";
+        $key = md5($str);
+
+        $phn = encryptData($phn, $key, $str);
+        $name = encryptData($name, $key, $str);
+        $vehicleReg = encryptData($vehicleReg, $key, $str);
+        $name1 = encryptData($name1, $key, $str);
+        $phn1 = encryptData($phn1, $key, $str);
+        $vehicleReg1 = encryptData($vehicleReg1, $key, $str);
+        $address = encryptData($address, $key, $str);
+        $address1 = encryptData($address1, $key, $str);
+        $citizen = encryptData($citizen, $key, $str);
+        $citizen1 = encryptData($citizen1, $key, $str);
 
         $sql = "INSERT INTO form(PHN, NAME, VEHICLE_TYPE, VEHICLE_CATEGORY, ENGINE_CC, VEHICLE_REG, RENEW_DATE, NAME1, PHN1, VEHICLE_REG1, INS_SLIP, uId, ADDRESS, ADDRESS1, CITIZEN, CITIZEN1) VALUES('$phn', '$name', '$vehicleType', '$vehicleCat', '$engineCC', '$vehicleReg', '$renewDate', '$name1', '$phn1', '$vehicleReg1', '$insSlip', '$uId', '$address', '$address1', '$citizen', '$citizen1');";
     
