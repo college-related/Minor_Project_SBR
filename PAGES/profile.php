@@ -117,21 +117,21 @@
                 <table>
                     <tr>
                         <td>
-                            <label for="vehicle-type">Vehicle Type</label>
+                            <label for="type">Vehicle Type</label>
                         </td>
                         <td>
-                        <select name="vType" id="vehicle-type" onchange="changingType('vehicle-type', 'vehicle-name')" required>
+                        <select name="vType" id="type"  required>
                                 <option value="none"></option>
-                                <option value="two Wheeler" <?php if($infoarray[0]['VEHICLE_TYPE'] == "two Wheeler"){ echo "selected";} ?>>Two wheeler</option>
-                                <option value="four Wheeler" <?php if($infoarray[0]['VEHICLE_TYPE'] == "four Wheeler"){ echo "selected";} ?>>Four wheeler</option>
+                                <option value="two wheeler" <?php if($infoarray[0]['VEHICLE_TYPE'] == "two wheeler"){ echo "selected";} ?>>Two wheeler</option>
+                                <option value="four wheeler" <?php if($infoarray[0]['VEHICLE_TYPE'] == "four wheeler"){ echo "selected";} ?>>Four wheeler</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="vehicle-name">Vehicle Category</label>
+                            <label for="category">Vehicle Category</label>
                         </td>
-                        <td><select name="vCategory" id="vehicle-name" required>
+                        <td><select name="vCategory" id="category" required>
                             <?php 
                                 echo "<option value='$vcat'>$vcat</option>";
                             ?>
