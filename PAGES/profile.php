@@ -116,14 +116,6 @@
                 <table>
                     <tr>
                         <td>
-                            <input type="hidden" value="<?= $key ?>"  name ="key">
-                        </td>
-                        <td>
-                            <input type="hidden" value="<?= $str ?>"  name ="str">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
                             <label for="vehicle-type">Vehicle Type</label>
                         </td>
                         <td>

@@ -23,18 +23,15 @@ if( isset($_POST['savebtn'])){
    $vReg=protect($_POST['regNo']);
    $engineCC=protect($_POST['ECC']);
 
-   $key = $_POST['key']; 
-   $str = $_POST['str'];
+   $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
+    $key = md5($str);
    $vReg = encryptData($vReg, $key, $str);
-
-    // $sql_phn_check = "SELECT * FROM basic_data WHERE PHN1 = '$phn';";
-    // $Phn = mysqli_query($connect,$sql_phn_check);
 
       $sql = "UPDATE vehicle_data SET VEHICLE_TYPE = '$vType', VEHICLE_CATEGORY = '$vCat', VEHICLE_REG = '$vReg', ENGINE_CC = '$engineCC' WHERE uId = '$uId';";
       $query = mysqli_query($connect,$sql);
 
       if(mysqli_affected_rows($connect)){
-          header("location: ../PAGES/profile.php?Logged");
+          header("location: ../PAGES/profile.php?Logged&Updated");
       }else{
         header("location: ../PAGES/profile.php?Logged&Err");
       }
