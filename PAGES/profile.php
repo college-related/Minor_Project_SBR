@@ -44,7 +44,8 @@
     $formArray = mysqli_fetch_all($form_result,MYSQLI_ASSOC);
 
     $taxArray = mysqli_fetch_all($tax_result,MYSQLI_ASSOC);
-    
+    $vcat = $infoarray[0]['VEHICLE_CATEGORY'];
+    $enginecc = $infoarray[0]['ENGINE_CC'];
 ?>
 
 <!DOCTYPE html>
@@ -121,8 +122,8 @@
                         <td>
                         <select name="vType" id="vehicle-type" onchange="changingType('vehicle-type', 'vehicle-name')" required>
                                 <option value="none"></option>
-                                <option value="two Wheeler">Two wheeler</option>
-                                <option value="four Wheeler">Four wheeler</option>
+                                <option value="two Wheeler" <?php if($infoarray[0]['VEHICLE_TYPE'] == "two Wheeler"){ echo "selected";} ?>>Two wheeler</option>
+                                <option value="four Wheeler" <?php if($infoarray[0]['VEHICLE_TYPE'] == "four Wheeler"){ echo "selected";} ?>>Four wheeler</option>
                             </select>
                         </td>
                     </tr>
@@ -130,22 +131,47 @@
                         <td>
                             <label for="vehicle-name">Vehicle Category</label>
                         </td>
-                        <td><select name="vCategory" id="vehicle-name" required></select></td>
+                        <td><select name="vCategory" id="vehicle-name" required>
+                            <?php 
+                                echo "<option value='$vcat'>$vcat</option>";
+                            ?>
+                        </select></td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="engine-cc">Engine cc</label>
+                            <label for="engCC">Engine cc</label>
                         </td>
-                        <td><input type="text" name="ECC" id="engine-cc" placeholder="Ex: 150"></td>
+                        <td>
+                            <select name="ECC" id="engCC" required>
+                                    <?php
+                                            echo "<option value='$enginecc'>$enginecc</option>";
+                                    ?>
+                            </select>
+                        </td>
                     </tr>
                    
                     <tr>
                         <td>
                             <label for="registration-no">Vehicle Registration Number </label>
                         </td>
-                        <td><input type="text" name="regNo" id="registration-no" placeholder="GA 16 PA 4381"></td>
+                        <td><input type="text" name="regNo" id="registration-no" placeholder="GA 16 PA 4381" value="<?=decryptData($infoarray[0]['VEHICLE_REG'],$key); ?>"></td>
                     </tr>
-                   
+                   <tr>
+                        <td>
+                            <label for="address">Address</label>
+                        </td>
+                        <td>
+                            <input type="text" name="Address" id="address" value="<?=decryptData($infoarray[0]['ADDRESS'],$key); ?>">
+                        </td>
+                   </tr>
+                   <tr>
+                       <td>
+                            <label for="phn">Phone number</label>
+                       </td>
+                       <td>
+                            <input type="number" name="Phn" id="phn" value="<?=decryptData($infoarray[0]['PHN'],$key); ?>">
+                       </td>
+                   </tr>
                     <tr>
                         <td > 
                       </td>
