@@ -167,8 +167,8 @@
                     <td>
                         <select name="vType" id="type" required>
                             <option value="none"></option>
-                            <option value="two Wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "two Wheeler"){echo "selected";}}?>>Two Wheeler</option>
-                            <option value="four Wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "four Wheeler"){echo "selected";}}?>>Four Wheeler</option>
+                            <option value="two wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "two wheeler"){echo "selected";}}?>>Two Wheeler</option>
+                            <option value="four wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "four wheeler"){echo "selected";}}?>>Four Wheeler</option>
                         </select>
                     </td>
                     <th><label for="category">Vehicle Category:</label></th>
