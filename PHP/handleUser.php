@@ -32,7 +32,7 @@ if(isset($_POST['signup'])){
     if($password == $confirmpassword){
         require_once "./connection.php";
 
-        $str = $email;
+        $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
         $key = md5($str);
 
         $EncryptedEmail = encryptData($email, $key, $str);

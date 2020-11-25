@@ -23,16 +23,8 @@
 
     $infoarray = mysqli_fetch_all($info_result, MYSQLI_ASSOC);
 
-    $key_sql = mysqli_fetch_all(
-        mysqli_query(
-            $connectKey,
-            "SELECT * FROM user_key WHERE uId = '$uId'"
-        ),
-        MYSQLI_ASSOC
-    );
-
-    $key = $key_sql[0]['userKey'];
-    $str = $key_sql[0]['userStr'];
+    $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
+    $key = md5($str);
 
     $sql_form = "SELECT * FROM form WHERE uId='$uId';";
     $form_result = mysqli_query($connect, $sql_form);
