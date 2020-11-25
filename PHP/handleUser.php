@@ -90,18 +90,10 @@ if(isset($_POST['signup'])){
                 mysqli_query($connect, $sqlV);
 
                 if(mysqli_affected_rows($connect)){
-                    $sqlKey = "INSERT INTO user_key(uID, userKey,userStr) VALUES('$uId', '$key','$str')";
-                    $executeKey = mysqli_query($connectKey, $sqlKey);
-
-                    if(mysqli_affected_rows($connectKey)){
                         header("location: ./emailVerification.php?email=$EncryptedEmail&Email=$email&Uname=$username&Phone=$phonenumber&Address=$address&CitizenNo=$citizenshipNo&Vtype=$vehicleType&Vcat=$vehicleCategory&Vreg=$vehicleReg&EngCC=$engineCC");
                     }else{
                         header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
                     }
-
-                }else{
-                    header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
-                }
             }else{
                 header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
             }
