@@ -53,7 +53,6 @@
 
             if($infoBackLength == "noPhone"){
                 $email = $_GET['emailB'];
-                $phone = $_GET['phoneB'];
                 $citizenNo = $_GET['citizenB'];
                 $vReg = $_GET['vRegB'];
             }else if($infoBackLength == "noEmail"){
@@ -68,6 +67,11 @@
                 $email = $_GET['emailB'];
                 $phone = $_GET['phoneB'];
                 $citizenNo = $_GET['citizenB'];
+            }else if($infoBackLength == "full"){
+                $email = $_GET['emailB'];
+                $citizenNo = $_GET['citizenB'];
+                $vReg = $_GET['vRegB'];
+                $phone = $_GET['phoneB'];
             }
     }
 
