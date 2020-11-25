@@ -105,26 +105,14 @@
         ?>
 
         <?php
-             if($inputError == 'WrongNameORPass'){
-                echo ".log-input{
+             if($inputError == 'WrongPass'){
+                echo ".log-input-pass{
                     border:1px solid red;
                 }";
-            }
-        ?>
-
-        /* log in form */
-        <?php
-            if(isset($_GET['logBox'])){
-                echo "#loginForm {
-                        display: block;
-                    }
-                    #signupForm {
-                        display: none;
-                    }";
-            }else{
-                echo "#loginForm {
-                        display: none;
-                    }";
+            }elseif($inputError == "WrongEmailOrUser"){
+                echo ".log-input-user{
+                    border: 1px solid red;
+                }";
             }
         ?>
 
@@ -287,10 +275,10 @@
                         <h2>Log In</h2>
                         <table>
                             <tr>
-                                <td><input class="form-input log-input" type="email" placeholder="Email" name="email" required/></td>
+                                <td><input class="form-input log-input-user" type="text" placeholder="Email or Full Name" name="user" required/></td>
                             </tr>
                             <tr>
-                                <td><input class="form-input log-input" type="password" placeholder="Password" name="Password" required/></td>
+                                <td><input class="form-input log-input-pass" type="password" placeholder="Password" name="Password" required/></td>
                             </tr>
                             <tr>
                                 <td><input type="submit" value="Log In" name="login"/></td>
@@ -298,8 +286,9 @@
                         </table>
                     </form>
                     <button id="toSignLink">
-                        <a href="./register.php" class="non-nav-link">Sign Up</a>
-                    </button>
+                        Don't have a account?&nbsp;<a href="./register.php" class="non-nav-link">Create one</a>
+                    </button><br>
+                    <a href="./PAGES/forgetPassword.php" class="non-nav-link">Forgot password?</a>
                     </div>
                 </div>
             </div>
