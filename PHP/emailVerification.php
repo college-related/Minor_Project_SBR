@@ -22,7 +22,7 @@ $activeCode = $row['ACTIVATE_CODE'];
 if(mysqli_num_rows($query)){
     require 'PHPMailer/PHPMailerAutoload.php';
 
-    $url = "https://localhost/college_project/Minor_Project_SBR/PHP/verifyUser.php?activation_code=$activeCode";
+    $url = "http://localhost/college_project/Minor_Project_SBR/PHP/verifyUser.php?activation_code=$activeCode";
 
     $mssg = "
     <h2>Hi, $username </h2>

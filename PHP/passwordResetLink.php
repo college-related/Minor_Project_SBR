@@ -41,7 +41,7 @@ if(isset($_POST['resetLink'])){
             $name = decryptData($name, $key);
             $uId = $row['uId'];
             
-            $url = "https://localhost/college_project/Minor_Project_SBR/PAGES/resetPassword.php?uId=$uId";
+            $url = "http://localhost/college_project/Minor_Project_SBR/PAGES/resetPassword.php?uId=$uId";
             // $secureUrl = "https://localhost/college_project/Minor_Project_SBR/PAGES/changePassword.php?uId=$uId";
 
             $mssgBody = 
