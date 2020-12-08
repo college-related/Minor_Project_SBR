@@ -132,7 +132,7 @@
         <nav>
             <ul>
                 <li><a href="./pages/information.php?isLogged=false">Infos</a></li>
-                <li><a href="register.php">SignUp</a></li>
+                <li><a href="#">Contact Us</a></li>
                 <li><a href="#loginForm">LogIn</a></li>
             </ul>
         </nav>
@@ -238,37 +238,6 @@
             </div>
 
             <div id="form-wrapper">
-                <!-- sign up form -->
-                <!-- <div id="signupForm">
-                    <div class="form">
-                    <form action="./PHP/handleUser.php" method="POST">
-                        <h2>Sign Up</h2>
-                        <table>
-                            <tr>
-                                <td><input class="form-input" type="email" placeholder="Email" name="Email" value="dummy@gmail.com" required/></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-input" type="text" placeholder="Username" name="Uname" value="dummy" required/></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-input" type="number" placeholder="Phone Number" name="Phn" value="1111111111" required/></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-input" type="password" placeholder="Password" name="Password" value="12345" required/></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-input" type="password" placeholder="Confrim Password" name="Repass" value="12345" required/></td>
-                            </tr>
-                            <tr>
-                                <td><input type="submit" value="Sign Up" name="signup"/></td>
-                            </tr>
-                        </table>
-                    </form>
-                    <button id="toLogLink">Log in</button>
-                    </div>
-                </div> -->
-
-                <!-- log in form -->
                 <div id="loginForm">
                     <div class="form">
                     <form action="./PHP/handleLogUser.php" method="POST">
@@ -296,21 +265,43 @@
 
     </main>
 
-    <!-- review section -->
-    <!-- <div class="review-section col-12">
-
-        <div class="avatar-img">
-            <img src="./ASSETS/images/person_photo.jpg" alt="review-person">
+    <div class="contact-section">
+        <div class="send-section">
+            <form action="#" method="post">
+                <table>
+                    <tr>
+                        <td>
+                            <input type="text" name="senderName" placeholder="Name"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="email" name="senderEmail" placeholder="Email"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="mssgBox">Message:</label><br/>
+                            <textarea name="senderMessage" id="mssgBox" cols="50" rows="10"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
-
-        <div class="review-comment">
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos minus iusto, magnam corrupti iste omnis itaque dolor commodi maiores quod quaerat aspernatur laborum, quisquam mollitia. Voluptatum expedita dignissimos dolore distinctio.
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio iusto tempora quos deserunt vel vitae doloribus voluptas esse dignissimos, quisquam incidunt velit modi dolores! Nulla nostrum mollitia distinctio repudiandae iste.
-            </p>
+        <div class="contacts">
+            <address>
+                <label for="phoneNumber">Phone Number: </label>
+                <span class="contact-span" id="phoneNumber">+061-123455</span><br/>
+                <label for="emailAddress">Email: </label>
+                <span class="contact-span" id="emailAddress">+061-123455</span><br/>
+                <label for="faxNumber">Fax Number: </label>
+                <span class="contact-span" id="faxNumber">+061-1244555</span><br/>
+                <i class="fab fa-facebook"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-instagram"></i>
+            </address>
         </div>
-
-    </div> -->
+    </div>
 
     <?php include 'repeated_section/footer.html' ?>
 

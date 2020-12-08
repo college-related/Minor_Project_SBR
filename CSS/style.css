@@ -70,19 +70,14 @@ nav ul li .fa-search{
 
 /* Links */
 a{
+    padding: 5px;
     text-decoration: none;
     color: whitesmoke;
     font-family: 'ZCOOL XiaoWei', serif; 
 }
 
-a:hover {
-    color: darkgoldenrod;
-    text-decoration: underline;
-}
-
-.active-nav-link {
-    color: darkgoldenrod;
-    text-decoration: underline;
+.active-nav-link, nav a:hover {
+    background-color: #201E1F;
 }
 
 .non-nav-link, .non-nav-link:hover {
@@ -149,40 +144,8 @@ footer {
     padding: 1em;
 }
 
-/* contact and about section */
-.contact-section, .about-section {
-    padding: 1em;
-    line-height: 1.5rem;
-}
-
-.contact-section {
-    grid-column: 2/7;
-    border-right: 1px solid white;
-}
-
-.about-section {
-    grid-column: 7/12;
-}
-
-/* review section */
-.review-section {
-    background-color: #EFF0F2;
-    padding: 3em 1em;
-}
-
-.avatar-img {
-    grid-column: 3/5;
-}
-
-.avatar-img>img {
-    border-radius: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    width: 150px;
-    height: 150px;
-}
-
-/* comment on review section */
-.review-comment {
-    grid-column: 6/11;
+.cr-section {
+    grid-column: 2/12;
+    text-align: center;
+    padding-top: 30px;
 }
