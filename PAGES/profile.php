@@ -194,19 +194,20 @@
             </div>
 
             <div class="profile-photo-wrapper">
-                <div id="add-photo">
-                    <!-- <?php
+                <div id="add-photo" style="background-image: url('../ASSETS/upload/b.jpg');">
+                    <?php
                         if($imageArray == null){
-                            echo "
-                                <form action='../PHP/handleImage.php' method='POST' enctype='multipart/form-data'>
-                                    <input type='file' name='img' onchange='this.form.submit();' id='image_adder'>
-                                    <label for='image_adder'> <i class='far fa-image'> </i> Upload Image<lable>
-                                </form>
-                            ";
+                            echo "";
                         }else{
                             echo "<img src='$image_src' alt='profile picture' id='profile_picture'>";
                         }
-                    ?> -->
+                    ?>
+                    <div class="image-adder-btn">
+                        <form action='../PHP/handleImage.php' method='POST' enctype='multipart/form-data'>
+                            <input type='file' name='img' onchange='this.form.submit();' id='image_adder'>
+                            <label for='image_adder'> <i class='far fa-image'> </i> Upload Image<lable>
+                        </form>
+                    </div>
                 </div>
             </div>
 

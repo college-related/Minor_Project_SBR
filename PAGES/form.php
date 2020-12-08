@@ -152,7 +152,6 @@
                 <input type="checkbox" id="check" onclick="reveal()" <?php if(isset($_GET['reset'])){echo "checked";} ?>>
                 For-Others
             </div>
-            <!-- TODO: add auto-fill -->
             <form action="" method="get">
                 <input type="submit" value="Auto-Fill" name="autoFill" id="autofill" <?php if(isset($_GET['reset'])){echo "disabled";} ?>/>
             </form>
