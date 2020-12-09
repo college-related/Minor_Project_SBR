@@ -6,6 +6,7 @@ main{
     grid-template-columns: repeat(12,1fr);
     /* grid-template-rows: repeat(3,1fr); */
     /* grid-gap: 20px; */
+    
 }
 .information-wrapper{
     grid-column:2/12;
@@ -57,6 +58,9 @@ main{
 } */
 h3,li{
     padding: 5px 30px 20px 3px;
+}
+nav li {
+    padding: 0;
 }
 .PaymentRelatedImage{
     border-radius: 50%;

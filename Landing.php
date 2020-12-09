@@ -73,11 +73,6 @@
     <link rel="stylesheet" href="./CSS/error.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-    <!-- font links -->
-    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
     
     <style>
 
@@ -267,6 +262,7 @@
 
     <div class="contact-section">
         <div class="send-section">
+            <h3>Send Feedback</h3>
             <form action="#" method="post">
                 <table>
                     <tr>
@@ -282,13 +278,23 @@
                     <tr>
                         <td>
                             <label for="mssgBox">Message:</label><br/>
-                            <textarea name="senderMessage" id="mssgBox" cols="50" rows="10"></textarea>
+                            <textarea name="senderMessage" id="mssgBox" cols="60" rows="5"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Send message" name="mssgSend"/>
                         </td>
                     </tr>
                 </table>
             </form>
         </div>
         <div class="contacts">
+            <h3>About us</h3>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero eveniet sequi minima unde aperiam neque rerum qui suscipit in voluptatibus, ab tenetur ad expedita, quia illo eligendi delectus ipsa maiores.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel qui ducimus sit laborum? Labore explicabo quaerat quidem aut temporibus voluptates neque repudiandae sunt, delectus quo harum, veritatis optio at omnis.
+            </p>
             <address>
                 <label for="phoneNumber">Phone Number: </label>
                 <span class="contact-span" id="phoneNumber">+061-123455</span><br/>
