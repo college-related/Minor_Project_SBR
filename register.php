@@ -183,6 +183,25 @@
                     </td>
                 </tr>
                 <tr>
+                    <th><label for="prov">Province number: </label></th>
+                    <td>
+                        <select name="province" id="prov">
+                            <option value="1">Province no 1</option>
+                            <option value="2">Province no 2</option>
+                            <option value="3">Province no 3</option>
+                            <option value="4">Province no 4</option>
+                            <option value="5">Province no 5</option>
+                            <option value="6">Province no 6</option>
+                            <option value="7">Province no 7</option>
+                        </select>
+                    </td>
+                    <th><label for="privPub">Select one:</label></th>
+                    <td>
+                        <input type="radio" name="pp" value="Private"> Private
+                        <input type="radio" name="pp" value="Public"> Public
+                    </td>
+                </tr>
+                <tr>
                     <th><label for="engCC">Engine CC:</label></th>
                     <td>
                         <select name="engineCC" id="engCC" required>

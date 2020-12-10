@@ -26,6 +26,8 @@ if(isset($_POST['signup'])){
     $vehicleCategory = protect($_POST['vCategory']);
     $vehicleReg = protect($_POST['vReg']);
     $engineCC = protect($_POST['engineCC']);
+    $province = protect($_POST['province']);
+    $pp = protect($_POST['pp']);
     $activateCode = md5(rand());
 
     // checking if the password's match or not 
@@ -75,8 +77,8 @@ if(isset($_POST['signup'])){
             else{
             
                 $sql = 
-                    "INSERT INTO users(NAME, EMAIL, PASSWORD, PHN, ACTIVATE_CODE, EMAIL_STATUS, ADDRESS, CITIZEN) 
-                    VALUES('$EncryptedUsername', '$EncryptedEmail', '$hashedPassword', '$EncryptedPhonenumber', '$activateCode', 'not verified', '$EncryptedAddress', '$EncryptedCitizenshipNo')";
+                    "INSERT INTO users(NAME, EMAIL, PASSWORD, PHN, ACTIVATE_CODE, EMAIL_STATUS, ADDRESS, CITIZEN,PROVINCE,PP) 
+                    VALUES('$EncryptedUsername', '$EncryptedEmail', '$hashedPassword', '$EncryptedPhonenumber', '$activateCode', 'verified', '$EncryptedAddress', '$EncryptedCitizenshipNo','$province','$pp')";
 
                 mysqli_query($connect, $sql);
 
