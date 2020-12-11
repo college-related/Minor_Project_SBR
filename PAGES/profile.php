@@ -209,12 +209,12 @@
                             </form>
                         </div>
                         <div>
-                            <form action="../PHP/deleteImage.php" method="POST">
-                                <label for="image-remover">
+                            <form action="../PHP/deleteImage.php" id="delete-image-form" method="POST">
+                                <label for="image-remover" onclick="submitForm()">
                                     <i class="fas fa-user-times"></i>
                                     <span class="tooltip" id="delete-image">Delete image</span>
                                 </label>
-                            <input type="text" id="image-remover" style="display:none;" name="delete-btn" onfocus="this.form.submit();">
+                            <input type="hidden" value="delete" name="delete-btn">
                             </form>
                         </div>
                     </div>
@@ -418,6 +418,11 @@
     </main> 
      
     <?php include '../repeated_section/footer.html' ?>
+    <script>
+        function submitForm(){
+            document.getElementById('delete-image-form').submit();
+        }
+    </script>
  
 </body>
 </html>
