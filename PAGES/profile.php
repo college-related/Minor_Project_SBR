@@ -188,19 +188,34 @@
             </div>
 
             <div class="profile-photo-wrapper">
-                <div id="add-photo" style="background-image: url('../ASSETS/upload/b.jpg');">
-                    <?php
-                        if($imageArray == null){
-                            echo "";
-                        }else{
-                            echo "<img src='$image_src' alt='profile picture' id='profile_picture'>";
-                        }
-                    ?>
+                <div id="add-photo" >
+                    <div class="profile-image">
+                        <?php
+                            if($imageArray == null){
+                                echo "";
+                            }else{
+                                echo "<img src='$image_src' alt='profile picture' id='profile_picture'>";
+                            }
+                        ?>
+                    </div>
                     <div class="image-adder-btn">
-                        <form action='../PHP/handleImage.php' method='POST' enctype='multipart/form-data'>
-                            <input type='file' name='img' onchange='this.form.submit();' id='image_adder'>
-                            <label for='image_adder'> <i class='far fa-image'> </i> Upload Image<lable>
-                        </form>
+                        <div>
+                            <form action='../PHP/handleImage.php' method='POST' enctype='multipart/form-data'>
+                                <input type='file' name='img' onchange='this.form.submit();' id='image_adder'>
+                                <label for='image_adder'>
+                                    <i class='far fa-image'> </i> 
+                                    <span class="tooltip" id="add-image">Upload image</span> 
+                                <lable>
+                            </form>
+                        </div>
+                        <div>
+                            <form action="" method="POST">
+                                <label for="image-remover">
+                                    <i class="fas fa-user-times"></i>
+                                    <span class="tooltip" id="delete-image">Delete image</span>
+                                </label>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

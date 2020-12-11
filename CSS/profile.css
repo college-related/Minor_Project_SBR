@@ -41,18 +41,65 @@ h3{
 
 .profile-photo-wrapper{
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #add-photo{
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
+    border: none;
+    border-radius: 50%;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9_XFSGSvGjGE6yUkMystpC3YLzgebpb_4UA&usqp=CAU");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.profile-image{
+    width: 250px;
+    height: 250px;
     border: 1px solid black;
     border-radius: 50%;
+}
+
+.image-adder-btn{
+    display: none;
+    padding: 5px;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 180px;
+    height: 30px;
+    border-radius: 30px;
+    animation: fadeIn 0.5s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.336);
+}
+
+@keyframes fadeIn { 
+    from{opacity: 0;}
+    to {opacity: 1;}
+}
+
+.image-adder-btn form{
+    display: inline;
+}
+
+#add-photo:hover .image-adder-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .profile-btn-wrapper{
     display: flex;
     flex-direction: column;
+    width: 300px;
 }
 
 .btn{
@@ -147,10 +194,31 @@ input[name='img']{
     display: none;
 }
 
-label[for='image_adder']{
-    padding: 10px;
+label[for='image_adder'],label[for='image-remover']{
     color:white;
-    background-color: blue;
     cursor: pointer;
+}
+
+.tooltip{
+    visibility: hidden;
+    position: absolute;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.336);
+    color: white;
     border-radius: 5px;
+    left: 7px;
+    bottom: -35px;
+    font-size: 12px;
+    padding: 4px;
+    text-align: center;
+}
+
+label[for='image_adder']:hover #add-image{
+    visibility: visible;
+}
+
+label[for='image-remover']:hover #delete-image{
+    visibility: visible;
+    right: 7px;
+    left: 50%;
 }
