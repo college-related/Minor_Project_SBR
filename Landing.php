@@ -128,6 +128,7 @@
             <ul>
                 <li><a href="./pages/information.php?isLogged=false">Infos</a></li>
                 <li><a href="#">Contact Us</a></li>
+                <li><a href="./PAGES/taxCalculator.php"></a></li>
                 <li><a href="#loginForm">LogIn</a></li>
             </ul>
         </nav>

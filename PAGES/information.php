@@ -35,13 +35,14 @@
                                 <li><a href='#' class='active-nav-link'>Infos</a></li>
                                 <li><a href='./form.php'>Form</a></li>
                                 <li><a href='./profile.php?Logged'>Profile</a></li>
-                                <li><a href='../php/logout.php'>LogOut</a></li>
+                                <li><a href='./taxCalculator.php'>Tax Calculator</a></li>
                             </ul>";
 
                     }
                     elseif($log=="false"){
                         echo 
                             "<ul>
+                                <li><a href='./taxCalculator.php'>Tax Calculator</a></li>
                                 <li><a href='../register.php'>SignUp</a></li>
                                 <li><a href='../landing.php#loginForm'>LogIn</a></li>
                             </ul>";

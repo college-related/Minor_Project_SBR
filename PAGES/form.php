@@ -134,7 +134,7 @@
                 <li><a href="./information.php?isLogged=true">Infos</a></li>
                 <li><a href="#" class="active-nav-link">Form</a></li>
                 <li><a href="./profile.php?Logged">Profile</a></li>
-                <li><a href="../php/logout.php">LogOut</a></li>
+                <li><a href='./taxCalculator.php'>Tax Calculator</a></li>
             </ul>
         </nav>
        
