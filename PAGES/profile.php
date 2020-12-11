@@ -93,7 +93,7 @@
                 <li><a href="./information.php?isLogged=true">Infos</a></li>
                 <li><a href="./form.php">Form</a></li>
                 <li><a href="#" class="active-nav-link">Profile</a></li>
-                <li><a href="../php/logout.php">LogOut</a></li>
+                <li><a href="./taxCalculator.php">Tax Calculator</a></li>
             </ul>
         </nav>
 
@@ -225,6 +225,9 @@
                 <button class="btn basic-btn active-btn">Basic Details</button>
                 <button class="btn tax-btn">Tax Details</button>
                 <button class="btn latest-form-btn">Latest Form Detail</button>
+            </div>
+            <div class="logout-btn-holder">
+                <button > <a href="../PHP/logout.php" class="non-nav-link">Log Out</a> </button>
             </div>
         </div>
 
