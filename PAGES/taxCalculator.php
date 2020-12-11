@@ -12,6 +12,11 @@
         $finePercentage = $fineArray[0];
         $fineAmount = $fineArray[1];
         $days = $fineArray[2];
+        if($days <0){
+            $daysMssg = abs($days)." days ahead";
+        }else{
+            $daysMssg = $days." days"; 
+        }
         if($fineAmount < 0 ){
             $totalAmount = "--";
         }else{
@@ -98,7 +103,7 @@
                         <td>Rs$taxAmount</td>
                         <td>$finePercentage</td>
                         <td>Rs$fineAmount</td>
-                        <td>$days days</td>
+                        <td>$daysMssg</td>
                         <td> Rs$totalAmount</td>
                     </tr>
                  </table>
