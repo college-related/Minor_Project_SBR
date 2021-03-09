@@ -9,7 +9,7 @@ function encryptData($data, $key, $str){
 }
 
     if(isset($_FILES['img']['name'])){
-        require('./connection.php');
+        require "./includes/connection.php";
 
         session_start();
         $uId = $_SESSION['uId'];

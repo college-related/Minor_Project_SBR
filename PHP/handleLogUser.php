@@ -13,7 +13,7 @@ function encryptData($data, $key, $str){
 }
 
 if(isset($_POST['login'])){
-    require_once "./connection.php";
+    require "./includes/connection.php";
 
     $user = protect($_POST['user']);
     $Password = protect($_POST['Password']);

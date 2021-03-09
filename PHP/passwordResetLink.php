@@ -21,7 +21,7 @@ function decryptData($data, $key){
 }
 
 if(isset($_POST['resetLink'])){
-    require_once('./connection.php');
+    require "./includes/connection.php";
 
     $email = protect($_POST['email']);
 

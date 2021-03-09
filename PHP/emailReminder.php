@@ -1,6 +1,6 @@
 <?php
 
-require 'connection.php';
+require "./includes/connection.php";
 
 $date = DATE("Y-m-d", strtotime('- 363 day'));
 

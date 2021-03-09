@@ -97,7 +97,7 @@ function calculatePercentageFine($totalDays){
 
 if(isset($_GET['savedForm'])){
 
-    require_once "connection.php";
+    require "./includes/connection.php";
     session_start();
 
     $uId=$_SESSION['uId'];

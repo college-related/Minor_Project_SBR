@@ -3,7 +3,7 @@
 if(isset($_GET['activation_code'])){
     $activateCode = $_GET['activation_code'];
 
-    require 'connection.php';
+    require "./includes/connection.php";
 
     $sql = "SELECT * FROM users WHERE ACTIVATE_CODE = '$activateCode'";
     $query = mysqli_query($connect, $sql);

@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['delete-btn'])){
-    require('./connection.php');
+    require "./includes/connection.php";
     session_start();
 
     $uId = $_SESSION['uId'];

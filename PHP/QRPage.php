@@ -15,7 +15,7 @@
     $fineAmount = $_GET['fineAmount']; // fine amount
     // $urlPath = $_GET['path'];
     
-    require 'connection.php';
+    require "./includes/connection.php";
     
     session_start();
     

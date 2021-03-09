@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['changePass'])){
-    require('connection.php');
+    require "./includes/connection.php";
 
     $uId = $_POST['uId'];
     $pass = $_POST['pass'];

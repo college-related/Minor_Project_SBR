@@ -12,7 +12,7 @@ function encryptData($data, $key, $str){
 }
 
 if( isset($_POST['savebtn'])){
-   require_once "./connection.php";
+   require "./includes/connection.php";
 
    session_start();
 

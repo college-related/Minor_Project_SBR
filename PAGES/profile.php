@@ -12,7 +12,7 @@
         header("location: ../Landing.php?NotLogged");
     }
 
-    require "../PHP/connection.php";
+    require "../PHP/includes/connection.php";
 
     session_start();
 

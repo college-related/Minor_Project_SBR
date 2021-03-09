@@ -25,7 +25,7 @@
     }
 
     if(isset($_GET['autoFill'])){
-        require('../PHP/connection.php');
+        require "../PHP/includes/connection.php";
 
         $info = mysqli_fetch_all(
             mysqli_query(

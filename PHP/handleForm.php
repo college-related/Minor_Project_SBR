@@ -10,7 +10,7 @@ function encryptData($data, $key, $str){
 
 if(isset($_POST['saveForm'])) {
 
-    require_once "./connection.php";
+    require "./includes/connection.php";
     session_start();
 
     $phn = $_POST['Phn'];

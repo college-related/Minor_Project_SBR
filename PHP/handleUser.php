@@ -1,19 +1,6 @@
 <?php
 
-$email_column = "email";
-$username_column = "name";
-$password_column = "password";
-$phoneNumber_column = "phone_number";
-$citizenship_column = "citizenship_number";
-$activation_column = "activation_code";
-$emailVerification_column = "email_verified";
-$createdAt_column = "created_at";
-
-$vehicleRegistration_column = "vehicle_registration_number";
-$vehicleType_column = "vehicle_type";
-$vehicleCategory_column = "vehicle_category";
-$engineCC_column = "engine_cc";
-$pp_column = "public_private";
+include('./includes/table_columns_name.php');
 
 function protect($data){
     return trim(strip_tags(addslashes($data)));
@@ -50,7 +37,7 @@ if(isset($_POST['signup'])){
 
     // checking if the password's match or not 
     if($password == $confirmpassword){
-        require "./connection.php";
+        require "./includes/connection.php";
 
         $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
         $key = md5($str);

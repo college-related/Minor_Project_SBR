@@ -10,7 +10,7 @@
 
     include('./phpqrcode/qrlib.php');
     
-    require_once "connection.php";
+    require "./includes/connection.php";
 
     session_start();
 

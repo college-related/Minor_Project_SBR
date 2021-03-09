@@ -1,9 +1,8 @@
 <?php
 
-require 'connection.php';
+require "./includes/connection.php";
 
-$email_column = "email";
-$activation_column = "activation_code";
+include('./includes/table_columns_name.php');
 
 $email = $_GET['Email'];
 $username = $_GET['Uname'];
