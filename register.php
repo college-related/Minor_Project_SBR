@@ -41,7 +41,6 @@
 
     if(isset($_GET['infoBack'])){
         $infoBackLength = $_GET['infoBack'];
-        $address = $_GET['addressB'];
         $citizenNo = '';
         $name = $_GET['nameB'];
         $vReg = '';
@@ -50,6 +49,7 @@
         $vCategory = $_GET['vCatB'];
         $email = '';
         $phone = '';
+        $pp = $_GET['pp'];
 
             if($infoBackLength == "noPhone"){
                 $email = $_GET['emailB'];
@@ -147,64 +147,74 @@
             <h3>SIGN UP</h3>
             <table>
                 <tr>
-                    <th><label for="name">Full Name:</label></th>
-                    <td><input type="text" id="name" name="Uname" required <?php if(isset($_GET['infoBack'])){echo "value='$name'";}?>/></td>
-                    <th><label for="phone">Phone number:</label></th>
-                    <td><input type="number" id="phone" name="Phn" required <?php if(isset($_GET['infoBack'])){echo "value='$phone'";}?>/></td>
-                </tr>
-                <tr>
-                    <th><label for="email">Email:</label></th>
-                    <td colspan="3"><input type="email" name="Email" id="email" required <?php if(isset($_GET['infoBack'])){echo "value='$email'";}?>/></td>
-                </tr>
-                <tr>
-                    <th><label for="citizen">Citizenship no.:</label></th>
-                    <td><input type="text" id="citizen" name="citizenshipNo" required <?php if(isset($_GET['infoBack'])){echo "value='$citizenNo'";}?>/></td>
-                    <th><label for="address">Address:</label></th>
-                    <td><input type="text" id="address" name="address" required <?php if(isset($_GET['infoBack'])){echo "value='$address'";}?>/></td>
-                </tr>
-                <tr>
-                    <th><label for="type">Vehicle type:</label></th>
                     <td>
-                        <select name="vType" id="type" required>
-                            <option value="none"></option>
-                            <option value="two wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "two wheeler"){echo "selected";}}?>>Two Wheeler</option>
-                            <option value="four wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "four wheeler"){echo "selected";}}?>>Four Wheeler</option>
+                        <input type="text" required placeholder="Full name" name="username" <?php if(isset($_GET['infoBack'])){echo "value='$name'";} ?>>
+                    </td>
+                    <td>
+                        <input type="text" required placeholder="Phone number" name="phoneNumber" <?php if(isset($_GET['infoBack'])){echo "value='$phone'";} ?>>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="email" required placeholder="Email" name="email" <?php if(isset($_GET['infoBack'])){echo "value='$email'";} ?>>
+                    </td>
+                    <td>
+                        <input type="text" required placeholder="Citizenship Number" name="citizenshipNumber" <?php if(isset($_GET['infoBack'])){echo "value='$citizenNo'";} ?>>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="vType" id="type">
+                            <option value="none">--Vehicle Type--</option>
+                            <option value="two wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "two wheeler"){echo "selected";}} ?>>Two Wheeler</option>
+                            <option value="four wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "four wheeler"){echo "selected";}} ?>>Four Wheeler</option>
                         </select>
                     </td>
-                    <th><label for="category">Vehicle Category:</label></th>
                     <td>
-                        <select name="vCategory" id="category" required>
+                        <input type="text" required placeholder="Vehicle Registration Number" name="vReg" <?php if(isset($_GET['infoBack'])){echo "value='$vReg'";} ?>> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <select name="vCategory" id="category">
                             <?php
                                 if(isset($_GET['infoBack'])){
                                     echo "<option value='$vCategory'>$vCategory</option>";
                                 }
                             ?>
+                            <option value="none">--Vehicle Category--</option>
                         </select>
                     </td>
-                </tr>
-                <tr>
-                    <th><label for="engCC">Engine CC:</label></th>
                     <td>
-                        <select name="engineCC" id="engCC" required>
-                                <?php
-                                    if(isset($_GET['infoBack'])){
-                                        echo "<option value='$engineCC'>$engineCC</option>";
-                                    }
-                                ?>
+                        <select name="engineCC" id="engCC">
+                            <?php
+                                if(isset($_GET['infoBack'])){
+                                    echo "<option value='$engineCC'>$engineCC</option>";
+                                }
+                            ?>
+                            <option value="none">--Engine CC--</option>
                         </select>
                     </td>
-                    <th><label for="Vreg">Vehicle Registration:</label></th>
-                    <td><input type="text" id="Vreg" name="vReg" required <?php if(isset($_GET['infoBack'])){echo "value='$vReg'";}?>/></td>
                 </tr>
                 <tr>
-                    <th><label for="pass">Password:</label></th>
-                    <td><input type="password" id="pass" name="Password" required/></td>
-                    <th><label for="rePass">Confirm Password:</label></th>
-                    <td><input type="password" id="rePass" name="Repass" required/></td>
+                    <td>
+                        <input type="radio" name="public_or_private" value="private" id="privateP" checked><label for="privateP">Private</label>
+                        <input type="radio" name="public_or_private" value="public" id="publicP" <?php if(isset($_GET['infoBack'])){if($pp == 'public'){echo "checked";}} ?>><label for="publicP">Public</label>
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="4">
-                        <input type="submit" value="Sign Up" name="signup"/>
+                    <td>
+                        <input type="password" required placeholder="Password" name="password" id="pass">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" required placeholder="Confirm Password" name="repassword" id="rePass">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Register" name="signup">
                     </td>
                 </tr>
             </table>

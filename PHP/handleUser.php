@@ -1,5 +1,20 @@
 <?php
 
+$email_column = "email";
+$username_column = "name";
+$password_column = "password";
+$phoneNumber_column = "phone_number";
+$citizenship_column = "citizenship_number";
+$activation_column = "activation_code";
+$emailVerification_column = "email_verified";
+$createdAt_column = "created_at";
+
+$vehicleRegistration_column = "vehicle_registration_number";
+$vehicleType_column = "vehicle_type";
+$vehicleCategory_column = "vehicle_category";
+$engineCC_column = "engine_cc";
+$pp_column = "public_private";
+
 function protect($data){
     return trim(strip_tags(addslashes($data)));
 }
@@ -15,39 +30,42 @@ function encryptData($data, $key, $str){
 if(isset($_POST['signup'])){
 
     // data from the signup form
-    $email = protect($_POST['Email']);
-    $username =  protect($_POST['Uname']);
-    $password =  protect($_POST['Password']);
-    $confirmpassword =  protect($_POST['Repass']);
-    $phonenumber =  protect($_POST['Phn']);
-    $address = protect($_POST['address']);
-    $citizenshipNo = protect($_POST['citizenshipNo']);
+    $email = protect($_POST['email']);
+    $username =  protect($_POST['username']);
+    $password =  protect($_POST['password']);
+    $confirmpassword =  protect($_POST['repassword']);
+    $phonenumber =  protect($_POST['phoneNumber']);
+    $citizenshipNumber = protect($_POST['citizenshipNumber']);
     $vehicleType = protect($_POST['vType']);
     $vehicleCategory = protect($_POST['vCategory']);
-    $vehicleReg = protect($_POST['vReg']);
+    $vehicleRegistrationNumber = protect($_POST['vReg']);
     $engineCC = protect($_POST['engineCC']);
-    $activateCode = md5(rand());
+    $activationCode = md5(rand());
+
+    if($_POST['public_or_private']){
+        $publicOrPrivate = protect($_POST['public_or_private']);
+    }else{
+        $publicOrPrivate = "private";
+    }
 
     // checking if the password's match or not 
     if($password == $confirmpassword){
-        require_once "./connection.php";
+        require "./connection.php";
 
         $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
         $key = md5($str);
 
         $EncryptedEmail = encryptData($email, $key, $str);
-        $EncryptedUsername = encryptData($username, $key, $str);
         $EncryptedPhonenumber = encryptData($phonenumber, $key, $str);
-        $EncryptedAddress = encryptData($address, $key, $str);
-        $EncryptedCitizenshipNo = encryptData($citizenshipNo, $key, $str);
-        $EncryptedVehicleReg = encryptData($vehicleReg, $key, $str);
+        $EncryptedCitizenshipNumber = encryptData($citizenshipNumber, $key, $str);
+        $EncryptedVehicleRegistrationNumber = encryptData($vehicleRegistrationNumber, $key, $str);
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql_email_check = "SELECT * FROM users WHERE EMAIL = '$EncryptedEmail';";
-        $sql_phn_check = "SELECT * FROM users WHERE PHN = '$EncryptedPhonenumber';";
-        $sql_citizen_check = "SELECT * FROM users WHERE CITIZEN = '$EncryptedCitizenshipNo';";
-        $sql_vreg_check = "SELECT * FROM vehicle_data WHERE VEHICLE_REG = '$EncryptedVehicleReg';";
+        $sql_email_check = "SELECT * FROM users WHERE $email_column = '$EncryptedEmail';";
+        $sql_phn_check = "SELECT * FROM users WHERE $phoneNumber_column = '$EncryptedPhonenumber';";
+        $sql_citizen_check = "SELECT * FROM users WHERE $citizenship_column = '$EncryptedCitizenshipNumber';";
+        $sql_vreg_check = "SELECT * FROM vehicles_data WHERE $vehicleRegistration_column = '$EncryptedVehicleRegistrationNumber';";
 
             $query_email_check = mysqli_query($connect, $sql_email_check);
             $query_phn_check = mysqli_query($connect, $sql_phn_check);
@@ -57,49 +75,51 @@ if(isset($_POST['signup'])){
             // checking if the email is already used
             // TODO: maybe use the library or some preg_match patterns
             if(mysqli_num_rows($query_email_check) > 0 ){
-                header("location: ../register.php?inputError=AlreadyUserEmail&infoBack=noEmail&nameB=$username&phoneB=$phonenumber&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+                header("location: ../register.php?inputError=AlreadyUserEmail&infoBack=noEmail&nameB=$username&phoneB=$phonenumber&addressB=$address&citizenB=$citizenshipNumber&vRegB=$vehicleRegistrationNumber&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$publicOrPrivate");
             }
             // checking if the phone number already exits
             else if(mysqli_num_rows($query_phn_check) > 0){
-                header("location: ../register.php?inputError=AlreadyUserPhone&infoBack=noPhone&nameB=$username&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+                header("location: ../register.php?inputError=AlreadyUserPhone&infoBack=noPhone&nameB=$username&emailB=$email&addressB=$address&citizenB=$citizenshipNumber&vRegB=$vehicleRegistrationNumber&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$publicOrPrivate");
             }
             
             else if(mysqli_num_rows($query_citizen_check) > 0 ){
-                header("location: ../register.php?inputError=AlreadyCitizen&infoBack=noCitizen&emailB=$email&nameB=$username&phoneB=$phonenumber&addressB=$address&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+                header("location: ../register.php?inputError=AlreadyCitizen&infoBack=noCitizen&emailB=$email&nameB=$username&phoneB=$phonenumber&addressB=$address&vRegB=$vehicleRegistrationNumber&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$publicOrPrivate");
             }
 
             else if(mysqli_num_rows($query_vreg_check) > 0 ){
-                header("location: ../register.php?inputError=AlreadyVReg&infoBack=noVreg&emailB=$email&nameB=$username&phoneB=$phonenumber&addressB=$address&citizenB=$citizenshipNo&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+                header("location: ../register.php?inputError=AlreadyVReg&infoBack=noVreg&emailB=$email&nameB=$username&phoneB=$phonenumber&addressB=$address&citizenB=$citizenshipNumber&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$publicOrPrivate");
             }
 
             else{
             
                 $sql = 
-                    "INSERT INTO users(NAME, EMAIL, PASSWORD, PHN, ACTIVATE_CODE, EMAIL_STATUS, ADDRESS, CITIZEN) 
-                    VALUES('$EncryptedUsername', '$EncryptedEmail', '$hashedPassword', '$EncryptedPhonenumber', '$activateCode', 'not verified', '$EncryptedAddress', '$EncryptedCitizenshipNo')";
+                    "INSERT INTO users($username_column, $email_column, $password_column, $activation_column, $emailVerification_column, $phoneNumber_column, $citizenship_column) VALUES('$username', '$EncryptedEmail', '$hashedPassword', '$activationCode', 'not verified', '$EncryptedPhonenumber', '$EncryptedCitizenshipNumber')";
 
                 mysqli_query($connect, $sql);
 
-            if(mysqli_affected_rows($connect)){
-                $uIdGet = "SELECT uId FROM users WHERE EMAIL = '$EncryptedEmail'";
-                $execute = mysqli_query($connect, $uIdGet);
-                $row = mysqli_fetch_assoc($execute);
-                $uId = $row['uId'];
-
-                $sqlV = "INSERT INTO vehicle_data(uId, VEHICLE_TYPE, VEHICLE_CATEGORY, VEHICLE_REG, ENGINE_CC) VALUES('$uId','$vehicleType','$vehicleCategory', '$EncryptedVehicleReg', '$engineCC')";
-                mysqli_query($connect, $sqlV);
-
                 if(mysqli_affected_rows($connect)){
-                        header("location: ./emailVerification.php?email=$EncryptedEmail&Email=$email&Uname=$username&Phone=$phonenumber&Address=$address&CitizenNo=$citizenshipNo&Vtype=$vehicleType&Vcat=$vehicleCategory&Vreg=$vehicleReg&EngCC=$engineCC");
+                    $uIdGet = "SELECT uId FROM users WHERE $email_column = '$EncryptedEmail'";
+                    $execute = mysqli_query($connect, $uIdGet);
+                    $row = mysqli_fetch_assoc($execute);
+                    $uId = $row['uId'];
+
+                    $sqlV = 
+                        "INSERT INTO vehicles_data(uId, $vehicleType_column, $vehicleCategory_column, $vehicleRegistration_column, $engineCC_column, $pp_column) 
+                        VALUES($uId,'$vehicleType','$vehicleCategory', '$EncryptedVehicleRegistrationNumber', '$engineCC', '$publicOrPrivate')";
+
+                    mysqli_query($connect, $sqlV);
+
+                    if(mysqli_affected_rows($connect)){
+                            header("location: ./emailVerification.php?email=$EncryptedEmail&Email=$email&Uname=$username&Phone=$phonenumber&Address=$address&CitizenNo=$citizenshipNumber&Vtype=$vehicleType&Vcat=$vehicleCategory&Vreg=$vehicleRegistrationNumber&EngCC=$engineCC&pp=$publicOrPrivate");
+                    }else{
+                        header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNumber&vRegB=$vehicleRegistrationNumber&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$publicOrPrivate");
+                    }
                 }else{
-                    header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+                    header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNumber&vRegB=$vehicleRegistrationNumber&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$publicOrPrivate");
                 }
-            }else{
-                header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
             }
-        }
     }else{
-        header("location: ../register.php?inputError=PasswordNotSame&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory");
+        header("location: ../register.php?inputError=PasswordNotSame&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNumber&vRegB=$vehicleRegistrationNumber&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$publicOrPrivate");
     }
 }else{
     header("location:../register.php?error=IllegalWay");

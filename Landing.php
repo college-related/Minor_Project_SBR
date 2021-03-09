@@ -128,7 +128,7 @@
             <ul>
                 <li><a href="./pages/information.php?isLogged=false">Infos</a></li>
                 <li><a href="#">Contact Us</a></li>
-                <li><a href="./PAGES/taxCalculator.php"></a></li>
+                <li><a href="./PAGES/taxCalculator.php">Tax Calculator</a></li>
                 <li><a href="#loginForm">LogIn</a></li>
             </ul>
         </nav>
@@ -250,9 +250,10 @@
                             </tr>
                         </table>
                     </form>
-                    <button id="toSignLink">
-                        Don't have a account?&nbsp;<a href="./register.php" class="non-nav-link">Create one</a>
-                    </button><br>
+                    <a href="./register.php" class="non-nav-link">
+                    <button id="toSignLink" class="btn">
+                        Don't have a account?&nbsp;Create one
+                    </button></a><br>
                     <a href="./PAGES/forgetPassword.php" class="non-nav-link">Forgot password?</a>
                     </div>
                 </div>
@@ -261,7 +262,7 @@
 
     </main>
 
-    <div class="contact-section">
+    <div class="contact-section col-12">
         <div class="send-section">
             <h3>Send Feedback</h3>
             <form action="#" method="post">
