@@ -80,6 +80,8 @@ if(isset($_POST['resetLink'])){
             $mail->SMTPSecure = 'tls';
             $mail->Port = 587;
 
+            include("./includes/phpMailer_fix.php");
+
             $mail->setFrom($adminEmail, 'Swift Bluebook');
 
             $mail->addAddress($email, $name);

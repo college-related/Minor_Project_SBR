@@ -24,6 +24,8 @@ $mail->Password = 'SBR12345rbs';
 $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
 
+include("./includes/phpMailer_fix.php");
+
 //Set who the message is to be sent from
 $mail->setFrom('swiftbluebook10@gmail.com', 'SwiftBluebook');
 //Set who the message is to be sent to
