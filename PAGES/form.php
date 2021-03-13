@@ -4,7 +4,6 @@
     $uId = $_SESSION['uId'];
     $name = " ";
     $citizen = " ";
-    $address = " ";
     $phn = " ";
     $vehicleType = " ";
     $vehicleCategory = " ";
@@ -12,7 +11,6 @@
     $engineCC = " ";
     $name1 = " ";
     $citizen1 = " ";
-    $address1 = " ";
     $phn1 = " ";
     $vehicleReg1 = " ";
 
@@ -26,11 +24,12 @@
 
     if(isset($_GET['autoFill'])){
         require "../PHP/includes/connection.php";
+        include("../PHP/includes/table_columns_name.php");
 
         $info = mysqli_fetch_all(
             mysqli_query(
                 $connect,
-                "SELECT users.ADDRESS, users.CITIZEN, users.NAME, users.PHN, vehicle_data.* FROM users JOIN vehicle_data ON users.uId=vehicle_data.uId WHERE users.uId='$uId' && vehicle_data.uId='$uId'"
+                "SELECT users.$citizenship_column, users.$username_column, users.$phoneNumber_column, vehicles_data.* FROM users JOIN vehicles_data ON users.uId=vehicles_data.uId WHERE users.uId='$uId' && vehicles_data.uId='$uId'"
             ),
             MYSQLI_ASSOC
         );
@@ -38,28 +37,31 @@
         $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
         $key = md5($str);
 
-        $name = decryptData($info[0]["NAME"], $key);
-        $citizen = decryptData($info[0]["CITIZEN"], $key);
-        $address = decryptData($info[0]["ADDRESS"], $key);
-        $phn = decryptData($info[0]["PHN"], $key);
-        $vehicleType = $info[0]["VEHICLE_TYPE"];
-        $vehicleCategory = $info[0]["VEHICLE_CATEGORY"];
-        $vehicleReg = decryptData($info[0]["VEHICLE_REG"], $key);
-        $engineCC = $info[0]["ENGINE_CC"];
+        // print_r($info);
+        // die();
+
+        $name = $info[0][$username_column];
+        $citizen = decryptData($info[0][$citizenship_column], $key);
+        $phn = decryptData($info[0][$phoneNumber_column], $key);
+        $vehicleType = $info[0][$vehicleType_column];
+        $vehicleCategory = $info[0][$vehicleCategory_column];
+        $vehicleReg = decryptData($info[0][$vehicleRegistration_column], $key);
+        $engineCC = $info[0][$engineCC_column];
+        $pp = $info[0][$pp_column];
         $name1 = $name;
         $citizen1 = $citizen;
-        $address1 = $address;
         $phn1 = $phn;
         $vehicleReg1 = $vehicleReg;
     }
 
     if(isset($_GET['reset'])){
-        require('../PHP/connection.php');
+        require "../PHP/includes/connection.php";
+        include("../PHP/includes/table_columns_name.php");
 
         $info = mysqli_fetch_all(
             mysqli_query(
                 $connect,
-                "SELECT users.ADDRESS, users.CITIZEN, users.NAME, users.PHN, vehicle_data.VEHICLE_REG FROM users JOIN vehicle_data ON users.uId=vehicle_data.uId WHERE users.uId='$uId' && vehicle_data.uId='$uId'"
+                "SELECT users.$citizenship_column, users.$username_column, users.$phoneNumber_column, vehicles_data.$vehicleRegistration_column FROM users JOIN vehicles_data ON users.uId=vehicles_data.uId WHERE users.uId='$uId' && vehicles_data.uId='$uId'"
             ),
             MYSQLI_ASSOC
         );
@@ -67,11 +69,10 @@
         $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
         $key = md5($str);
 
-        $name1 = decryptData($info[0]["NAME"], $key);
-        $citizen1 = decryptData($info[0]["CITIZEN"], $key);
-        $address1 = decryptData($info[0]["ADDRESS"], $key);
-        $phn1 = decryptData($info[0]["PHN"], $key);
-        $vehicleReg1 = decryptData($info[0]["VEHICLE_REG"], $key);
+        $name1 = $info[0][$username_column];
+        $citizen1 = decryptData($info[0][$citizenship_column], $key);
+        $phn1 = decryptData($info[0][$phoneNumber_column], $key);
+        $vehicleReg1 = decryptData($info[0][$vehicleRegistration_column], $key);
     }
 ?>
 
@@ -172,10 +173,6 @@
                         <td><input type="number" name="Phn" id="phn" value='<?=$phn?>' required/></td>
                     </tr>
                     <tr>
-                        <td><label for="address">Address:</label></td>
-                        <td><input type="text" name="Address" id="address" value='<?=$address?>' required/></td>
-                    </tr>
-                    <tr>
                         <td><label for="citizen">Citizenship number:</label></td>
                         <td><input type="text" name="Citizen" id="citizen" value='<?=$citizen?>' required/></td>
                     </tr>
@@ -206,8 +203,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><label for="engine">Engine CC:</label></td>
-                        <td colspan="2">
+                        <td><label for="engine">Engine CC:</label></td>
+                        <td>
                             <select name="EngineCC" id="engCC" required>
                                     <?php
                                         if(isset($_GET['autoFill'])){
@@ -215,6 +212,11 @@
                                         }
                                     ?>
                             </select>
+                        </td>
+                        <td><label for="publicOrPrivate">Public/Private:</label></td>
+                        <td>
+                            <input type="radio" name="pp" id="publicOrPrivate" value="private" class="insurance-slip" checked>Private
+                            <input type="radio" name="pp" id="publicOrPrivate" value="public" class="insurance-slip" <?php if(isset($_GET['autoFill'])){if($pp == 'public'){echo "checked";}} ?>>Public
                         </td>
                     </tr>
                     <tr>
@@ -254,10 +256,6 @@
                         <tr>
                             <td><label for="phn1">Phone Number:</label></td>
                             <td><input type="number" name="Phn1" id="phn1" value="<?=$phn1?>"/></td>
-                        </tr>
-                        <tr>
-                            <td><label for="address1">Address:</label></td>
-                            <td><input type="text" name="Address1" id="address1" value="<?=$address1?>"/></td>
                         </tr>
                         <tr>
                             <td><label for="citizen1">Citizenship number:</label></td>

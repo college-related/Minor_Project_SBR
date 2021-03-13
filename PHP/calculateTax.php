@@ -98,31 +98,34 @@ function calculatePercentageFine($totalDays){
 if(isset($_GET['savedForm'])){
 
     require "./includes/connection.php";
+    require("./includes/table_columns_name.php");
+
     session_start();
 
-    $uId=$_SESSION['uId'];
+    $fillerId=$_SESSION['uId'];
     
-    
-
-    $sql = "SELECT VEHICLE_TYPE,ENGINE_CC,RENEW_DATE,INS_SLIP FROM form WHERE uId='$uId' ";
+    $sql = "SELECT $vehicleType_column,$engineCC_column,$renewDate_column,$insurance_column,$formFillerId_column,uId FROM forms_data WHERE $formFillerId_column='$fillerId' ORDER BY $formID_column DESC LIMIT 1 ";
     $query = mysqli_query($connect,$sql);
 
     $infoArr = mysqli_fetch_all($query,MYSQLI_ASSOC);
 
+    // print_r($infoArr);
+    // die();
+
     $date = date("Y-m-d");
     $dateArr = explode("-",$date);
-    $lastDateArr = explode("-",$infoArr[0]['RENEW_DATE']);
-    $insCheck = $infoArr[0]['INS_SLIP'];
+    $lastDateArr = explode("-",$infoArr[0][$renewDate_column]);
+    $insCheck = $infoArr[0][$insurance_column];
 
     if($insCheck == 'no'){
-        $insMssg = "You have to pay for the insurance too";
+        $insMssg = "Insurance Not Paid";
     }
     else{
-        $insMssg = "";
+        $insMssg = "Insurance Paid";
     }
     $fineDaysCal = ((($dateArr[0]-$lastDateArr[0])*365)+(($dateArr[1]-$lastDateArr[1])*30)+($dateArr[2]-$lastDateArr[2]))-365;
 
-    $tAmount = calculateTax($infoArr[0]['VEHICLE_TYPE'],$infoArr[0]['ENGINE_CC']);
+    $tAmount = calculateTax($infoArr[0][$vehicleType_column],$infoArr[0][$engineCC_column]);
     $fAmount = calculateFine($tAmount,$fineDaysCal);
 
     $totalAmount= $tAmount + $fAmount;
@@ -131,12 +134,20 @@ if(isset($_GET['savedForm'])){
 
     if($fineDaysCal<0){
         $fine = "You paid your tax " . abs($fineDaysCal) . " days ahead";
+        $fineInDB = "Paid " . abs($fineDaysCal) . " days ahead";
     }
     else{
         $fine = $fineper ."/ fine-" . $fAmount . "(". $fineDaysCal. "days late)";
-
+        $fineInDB = "Paid " . $fineDaysCal . " days late";
     }
-    $sql_add = "INSERT INTO tax_data(uId,YEAR,FINE,TAX_AMOUNT) VALUES ('$uId','$date','$fine','$totalAmount');";
+
+    if($infoArr[0][$formFillerId_column] == $infoArr[0]['uId']){
+        $uId = $fillerId;
+    }else{
+        $uId = 0;
+    }
+
+    $sql_add = "INSERT INTO tax_details($fillerId_column,uId,$createdAt_column,$fineAmount_column,$taxAmount_column,$finePercentage_column,$paidIn_column,$totalAmount_column) VALUES ('$fillerId','$uId',null,'$fAmount','$tAmount','$fineper','$fineInDB','$totalAmount');";
     $query_add=mysqli_query($connect, $sql_add);
 
     if(mysqli_affected_rows($connect)){

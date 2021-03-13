@@ -16,17 +16,15 @@
     // $urlPath = $_GET['path'];
     
     require "./includes/connection.php";
-    
+    include("./includes/table_columns_name.php");
+
     session_start();
     
     $uId = $_SESSION['uId'];
     
-    $sql = "SELECT * FROM form WHERE uId = '$uId';";
+    $sql = "SELECT * FROM forms_data WHERE $formFillerId_column = '$uId' ORDER BY $formID_column DESC LIMIT 1";
     $query = mysqli_query($connect, $sql);
-    $array1 = mysqli_fetch_all($query);
-
-    $length = count($array1);  
-    $data = $array1[$length-1];
+    $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
     $str = "j-{b\b{Prd(.w4:Zj-{b\b{Prd(.w4:Z";
     $key = md5($str);
@@ -58,49 +56,43 @@
                         <tr>
                             <td> Name: </td>
                             <td>
-                                <?= decryptData($data[1], $key); ?>
+                                <?= $data[0][$username_column] ?>
                             </td>
                         </tr>
                         <tr>
                             <td> Phone no:</td>
                             <td>
-                                <?= decryptData($data[0], $key); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Address:</td>
-                            <td>
-                                <?= decryptData($data[12], $key); ?>
+                                <?= decryptData($data[0][$phoneNumber_column], $key); ?>
                             </td>
                         </tr>
                         <tr>
                             <td>Citizenship Number:</td>
                             <td>
-                                <?= decryptData($data[14], $key); ?>
+                                <?= decryptData($data[0][$citizenship_column], $key); ?>
                             </td>
                         </tr>
                         <tr>
                             <td> Vehicle type:</td>
                             <td>
-                                <?= $data[2] ?>
+                                <?= $data[0][$vehicleType_column] ?>
                             </td>
                         </tr>
                         <tr>
                             <td>Engine CC:</td>
                             <td>
-                                <?= $data[5] ?>
+                                <?= $data[0][$engineCC_column] ?>
                             </td>
                         </tr>
                         <tr>
                             <td> Registration number:</td>
                             <td>
-                                <?= decryptData($data[4], $key); ?>
+                                <?= decryptData($data[0][$vehicleRegistration_column], $key); ?>
                             </td>
                         </tr>
                         <tr>
                             <td>Last renew date:</td>
                             <td>
-                                <?= $data[6] ?>
+                                <?= $data[0][$renewDate_column] ?>
                             </td>
                         </tr>
                     </table>
@@ -119,7 +111,7 @@
                 <p class="imp-insurance">
                     <?php 
                     // as the INS_SLIP column is in 10th index
-                        if($data[10] == 'yes'){
+                        if($data[0][$insurance_column] == 'yes'){
                             echo "You must take the insurance slip with you.";
                         }else{
                             echo "You can either pay your insurance in any company or right outside the office.";

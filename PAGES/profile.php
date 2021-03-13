@@ -13,12 +13,13 @@
     }
 
     require "../PHP/includes/connection.php";
+    include("../PHP/includes/table_columns_name.php");
 
     session_start();
 
     $uId = $_SESSION['uId'];
 
-    $sql_info = "SELECT users.ADDRESS, users.CITIZEN, users.NAME, users.PHN, vehicle_data.* FROM users JOIN vehicle_data ON users.uId=vehicle_data.uId WHERE users.uId='$uId' && vehicle_data.uId='$uId'";
+    $sql_info = "SELECT users.$citizenship_column, users.$image_column, users.$username_column, users.$phoneNumber_column, vehicles_data.* FROM users JOIN vehicles_data ON users.uId=vehicles_data.uId WHERE users.uId='$uId' && vehicles_data.uId='$uId'";
     $info_result = mysqli_query($connect, $sql_info);
 
     $infoarray = mysqli_fetch_all($info_result, MYSQLI_ASSOC);
@@ -26,26 +27,23 @@
     $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
     $key = md5($str);
 
-    $sql_form = "SELECT * FROM form WHERE uId='$uId';";
+    $sql_form = "SELECT * FROM forms_data WHERE $formFillerId_column='$uId';";
     $form_result = mysqli_query($connect, $sql_form);
 
-    $sql_tax="SELECT * FROM tax_data WHERE uId ='$uId';";
+    $sql_tax="SELECT * FROM tax_details WHERE $fillerId_column ='$uId';";
     $tax_result=mysqli_query($connect,$sql_tax);
 
-    $sql_image="SELECT image_name FROM images WHERE uId='$uId';";
-    $image_result=mysqli_query($connect,$sql_image);
-
-    $imageArray=mysqli_fetch_all($image_result,MYSQLI_ASSOC);
-    if($imageArray != null){
-        $img = $imageArray[0]['image_name'];
+    if($infoarray[0][$image_column] != null){
+        $img = $infoarray[0][$image_column];
         $image_src = "../ASSETS/upload/" . $img;
     }
 
     $formArray = mysqli_fetch_all($form_result,MYSQLI_ASSOC);
 
     $taxArray = mysqli_fetch_all($tax_result,MYSQLI_ASSOC);
-    $vcat = $infoarray[0]['VEHICLE_CATEGORY'];
-    $enginecc = $infoarray[0]['ENGINE_CC'];
+    $vcat = $infoarray[0][$vehicleCategory_column];
+    $enginecc = $infoarray[0][$engineCC_column];
+
 ?>
 
 <!DOCTYPE html>
@@ -116,8 +114,8 @@
                         <td>
                         <select name="vType" id="type"  required>
                                 <option value="none"></option>
-                                <option value="two wheeler" <?php if($infoarray[0]['VEHICLE_TYPE'] == "two wheeler"){ echo "selected";} ?>>Two wheeler</option>
-                                <option value="four wheeler" <?php if($infoarray[0]['VEHICLE_TYPE'] == "four wheeler"){ echo "selected";} ?>>Four wheeler</option>
+                                <option value="two wheeler" <?php if($infoarray[0][$vehicleType_column] == "two wheeler"){ echo "selected";} ?>>Two wheeler</option>
+                                <option value="four wheeler" <?php if($infoarray[0][$vehicleType_column] == "four wheeler"){ echo "selected";} ?>>Four wheeler</option>
                             </select>
                         </td>
                     </tr>
@@ -143,27 +141,27 @@
                             </select>
                         </td>
                     </tr>
-                   
+                   <tr>
+                    <td>
+                        <label for="pp">Private or Public</label>
+                    </td>
+                    <td>
+                        <input type="radio" name="pORp" id="pp" value="private" <?php if($infoarray[0][$pp_column] == "private"){echo "checked";}else{echo "disabled";} ?>/>Private
+                        <input type="radio" name="pORp" id="pp" value="public" <?php if($infoarray[0][$pp_column] == "public"){echo "checked";}else{echo "disabled";} ?>/>Public
+                    </td>
+                   </tr>
                     <tr>
                         <td>
                             <label for="registration-no">Vehicle Registration Number </label>
                         </td>
-                        <td><input type="text" name="regNo" id="registration-no" placeholder="GA 16 PA 4381" value="<?=decryptData($infoarray[0]['VEHICLE_REG'],$key); ?>"></td>
+                        <td><input type="text" name="regNo" id="registration-no" placeholder="GA 16 PA 4381" value="<?=decryptData($infoarray[0][$vehicleRegistration_column],$key); ?>"></td>
                     </tr>
-                   <tr>
-                        <td>
-                            <label for="address">Address</label>
-                        </td>
-                        <td>
-                            <input type="text" name="Address" id="address" value="<?=decryptData($infoarray[0]['ADDRESS'],$key); ?>">
-                        </td>
-                   </tr>
                    <tr>
                        <td>
                             <label for="phn">Phone number</label>
                        </td>
                        <td>
-                            <input type="number" name="Phn" id="phn" value="<?=decryptData($infoarray[0]['PHN'],$key); ?>">
+                            <input type="text" name="Phn" id="phn" value="<?=decryptData($infoarray[0][$phoneNumber_column],$key); ?>">
                        </td>
                    </tr>
                     <tr>
@@ -182,7 +180,7 @@
             <div id="user-name">
                 <h4>
                     <?php
-                       echo decryptData($infoarray[0]['NAME'],$key);
+                       echo decryptData($infoarray[0][$username_column],$key);
                     ?>
                 </h4>
             </div>
@@ -191,7 +189,7 @@
                 <div id="add-photo" >
                     <div class="profile-image">
                         <?php
-                            if($imageArray == null){
+                            if($infoarray[0][$image_column] == null){
                                 echo "";
                             }else{
                                 echo "<img src='$image_src' alt='profile picture' id='profile_picture'>";
@@ -243,7 +241,7 @@
                         if(empty($infoarray)){
                             echo "???";
                         }else{
-                            echo decryptData($infoarray[0]['PHN'],$key);
+                            echo decryptData($infoarray[0][$phoneNumber_column],$key);
                         }
                         
                         ?> </td>
@@ -255,19 +253,7 @@
                                 if(empty($infoarray)){
                                     echo "???";
                                 }else{
-                                    echo decryptData($infoarray[0]['CITIZEN'],$key);
-                                }
-                            ?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Address :</td>
-                        <td>
-                            <?php
-                                if(empty($infoarray)){
-                                    echo "???";
-                                }else{
-                                    echo decryptData($infoarray[0]['ADDRESS'],$key);
+                                    echo decryptData($infoarray[0][$citizenship_column],$key);
                                 }
                             ?>
                         </td>
@@ -276,10 +262,10 @@
                         <td>Vehicle Type:</td>
                         <td> 
                             <?php    
-                                if(empty($infoarray) || $infoarray[0]['VEHICLE_TYPE'] == ""){
+                                if(empty($infoarray) || $infoarray[0][$vehicleType_column] == ""){
                                     echo "???";
                                 }else{
-                                    echo $infoarray[0]['VEHICLE_TYPE'];
+                                    echo $infoarray[0][$vehicleType_column];
                                 }
                             ?>
                         </td>
@@ -288,10 +274,10 @@
                         <td>Vehicle Category :</td>
                         <td>
                             <?php
-                                if(empty($infoarray) || $infoarray[0]['VEHICLE_CATEGORY'] == ""){
+                                if(empty($infoarray) || $infoarray[0][$vehicleCategory_column] == ""){
                                     echo "???";
                                 }else{
-                                    echo $infoarray[0]['VEHICLE_CATEGORY'];
+                                    echo $infoarray[0][$vehicleCategory_column];
                                 }
                             ?>
                         </td>
@@ -300,22 +286,31 @@
                         <td>ENGINE_CC :</td>
                         <td> 
                             <?php
-                                 if(empty($infoarray) || $infoarray[0]['ENGINE_CC'] == ""){
+                                 if(empty($infoarray) || $infoarray[0][$engineCC_column] == ""){
                                     echo "???";
                                 }else{
-                                    echo $infoarray[0]['ENGINE_CC'];
+                                    echo $infoarray[0][$engineCC_column];
                                 }
                             ?>
                         </td>
                     </tr>
                     <tr>
+                        <td>
+                            <label for="pp">Private or Public</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="pORp" id="pp" value="private" <?php if($infoarray[0][$pp_column] == "private"){echo "checked";}else{echo "disabled";} ?>/>Private
+                            <input type="radio" name="pORp" id="pp" value="public"  <?php if($infoarray[0][$pp_column] == "public"){echo "checked";}else{echo "disabled";} ?>/>Public
+                        </td>
+                   </tr>
+                    <tr>
                         <td>Vehicle Registration no. :</td>
                         <td> 
                             <?php
-                                 if(empty($infoarray) || $infoarray[0]['VEHICLE_REG'] == ""){
+                                 if(empty($infoarray) || $infoarray[0][$vehicleRegistration_column] == ""){
                                     echo "???";
                                 }else{
-                                    echo decryptData($infoarray[0]['VEHICLE_REG'],$key);
+                                    echo decryptData($infoarray[0][$vehicleRegistration_column],$key);
                                 }
                             ?>
                        </td>
@@ -341,13 +336,13 @@
                     foreach($taxArray as $data) {?>
                         <tr>
                             <td>
-                                <?= $data['YEAR']?>
+                                <?= $data[$createdAt_column]?>
                             </td>
                             <td>
-                                <?= $data['FINE']?>
+                                <?= $data[$fineAmount_column]?>
                             </td>
                             <td>
-                                <?= $data['TAX_AMOUNT']?>
+                                <?= $data[$taxAmount_column]?>
                             </td>
                         </tr>
                 
@@ -356,13 +351,13 @@
                     for($i= sizeof($taxArray)-1; $i > sizeof($taxArray)-4;$i--){ ?>
                         <tr>
                             <td>
-                                <?= $taxArray[$i]['YEAR']?>
+                                <?= $taxArray[$i][$createdAt_column]?>
                             </td>
                             <td>
-                                <?= $taxArray[$i]['FINE']?>
+                                <?= $taxArray[$i][$fineAmount_column]?>
                             </td>
                             <td>
-                                <?= $taxArray[$i]['TAX_AMOUNT']?>
+                                <?= $taxArray[$i][$taxAmount_column]?>
                             </td>
                         </tr>
                 

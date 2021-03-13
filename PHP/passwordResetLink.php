@@ -22,6 +22,7 @@ function decryptData($data, $key){
 
 if(isset($_POST['resetLink'])){
     require "./includes/connection.php";
+    require("./includes/table_columns_name.php");
 
     $email = protect($_POST['email']);
 
@@ -30,18 +31,17 @@ if(isset($_POST['resetLink'])){
 
     $encryptedEmail = encryptData($email, $key, $str);
 
-    $sql = "SELECT NAME, uId FROM users WHERE EMAIL = '$encryptedEmail'";
+    $sql = "SELECT $username_column, uId FROM users WHERE $email_column = '$encryptedEmail'";
     $result = mysqli_query($connect, $sql);
 
         if(mysqli_num_rows($result) > 0){
             require('PHPMailer/PHPMailerAutoload.php');
 
             $row = mysqli_fetch_assoc($result);
-            $name = $row['NAME'];
-            $name = decryptData($name, $key);
+            $name = $row[$username_column];
             $uId = $row['uId'];
             
-            $url = "http://localhost/college_project/Minor_Project_SBR/PAGES/resetPassword.php?uId=$uId";
+            $url = "http://localhost/Minor_Project_SBR/PAGES/resetPassword.php?uId=$uId";
             // $secureUrl = "https://localhost/college_project/Minor_Project_SBR/PAGES/changePassword.php?uId=$uId";
 
             $mssgBody = 
@@ -69,10 +69,18 @@ if(isset($_POST['resetLink'])){
             // If you didn't requested for a password reset link<br>
             // Click <a href='$secureUrl'>here</a> for changing your password and securing
             // your data.
+            $adminEmail = 'swiftbluebook10@gmail.com';
 
-            $mail = new PHPMailer;
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->Host = "smtp.gmail.com";
+            $mail->SMTPAuth = true;
+            $mail->Username = $adminEmail;
+            $mail->Password = 'SBR12345rbs';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
 
-            $mail->setFrom('swiftbluebook10@gmail.com', 'Swift Bluebook');
+            $mail->setFrom($adminEmail, 'Swift Bluebook');
 
             $mail->addAddress($email, $name);
 

@@ -97,7 +97,7 @@ if(isset($_POST['signup'])){
                     mysqli_query($connect, $sqlV);
 
                     if(mysqli_affected_rows($connect)){
-                            header("location: ./emailVerification.php?email=$EncryptedEmail&Email=$email&Uname=$username&Phone=$phonenumber&Address=$address&CitizenNo=$citizenshipNumber&Vtype=$vehicleType&Vcat=$vehicleCategory&Vreg=$vehicleRegistrationNumber&EngCC=$engineCC&pp=$publicOrPrivate");
+                            header("location: ./emailVerification.php?Email=$email&Uname=$username&Phone=$phonenumber&CitizenNo=$citizenshipNumber&Vtype=$vehicleType&Vcat=$vehicleCategory&Vreg=$vehicleRegistrationNumber&EngCC=$engineCC&pp=$publicOrPrivate&email=$EncryptedEmail");
                     }else{
                         header("location: ../register.php?error=NotInserted&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNumber&vRegB=$vehicleRegistrationNumber&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$publicOrPrivate");
                     }

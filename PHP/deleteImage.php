@@ -2,18 +2,20 @@
 
 if(isset($_POST['delete-btn'])){
     require "./includes/connection.php";
+    include("./includes/table_columns_name.php");
+
     session_start();
 
     $uId = $_SESSION['uId'];
     $execute = mysqli_query(
         $connect,
-        "SELECT * FROM images WHERE uId='$uId'"
+        "SELECT * FROM users WHERE uId='$uId'"
     );
     $row = mysqli_fetch_assoc($execute);
-    $imageName = $row['image_name'];
+    $imageName = $row[$image_column];
     mysqli_query(
         $connect,
-        "DELETE FROM images WHERE uId='$uId'"
+        "UPDATE users SET $image_column=NULL WHERE uId='$uId'"
     );
     if(mysqli_affected_rows($connect)){
         unlink("../ASSETS/upload/".$imageName);

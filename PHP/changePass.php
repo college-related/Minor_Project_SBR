@@ -2,6 +2,7 @@
 
 if(isset($_POST['changePass'])){
     require "./includes/connection.php";
+    require("./includes/table_columns_name.php");
 
     $uId = $_POST['uId'];
     $pass = $_POST['pass'];
@@ -14,7 +15,7 @@ if(isset($_POST['changePass'])){
 
     $newPass = password_hash($pass, PASSWORD_DEFAULT);
 
-    $sql = "UPDATE users SET PASSWORD = '$newPass' WHERE uId = '$uId'";
+    $sql = "UPDATE users SET $password_column = '$newPass' WHERE uId = '$uId'";
     $res = mysqli_query($connect, $sql);
 
     if(mysqli_affected_rows($connect)){

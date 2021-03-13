@@ -13,6 +13,7 @@ function encryptData($data, $key, $str){
 
 if( isset($_POST['savebtn'])){
    require "./includes/connection.php";
+   include("./includes/table_columns_name.php");
 
    session_start();
 
@@ -23,26 +24,25 @@ if( isset($_POST['savebtn'])){
    $vReg=protect($_POST['regNo']);
    $engineCC=protect($_POST['ECC']);
    $phn = protect($_POST['Phn']);
-   $address = protect($_POST['Address']);
 
    $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
     $key = md5($str);
    $vReg = encryptData($vReg, $key, $str);
    $phn = encryptData($phn,$key, $str);
-   $address = encryptData($address, $key, $str);
 
-      $sql = "UPDATE vehicle_data SET VEHICLE_TYPE = '$vType', VEHICLE_CATEGORY = '$vCat', VEHICLE_REG = '$vReg', ENGINE_CC = '$engineCC' WHERE uId = '$uId';";
+      $sql = "UPDATE vehicles_data SET $vehicleType_column='$vType', $vehicleCategory_column='$vCat', $vehicleRegistration_column='$vReg', $engineCC_column='$engineCC' WHERE uId=$uId";
       $query = mysqli_query($connect,$sql);
 
       if(mysqli_affected_rows($connect)){
-          mysqli_query($connect, "UPDATE users SET PHN='$phn', ADDRESS='$address' WHERE uId='$uId'");
+          mysqli_query($connect, "UPDATE users SET $phoneNumber_column='$phn' WHERE uId=$uId");
+          header("location: ../PAGES/profile.php?Logged&Updated");
+      }else{
+        mysqli_query($connect, "UPDATE users SET $phoneNumber_column='$phn' WHERE uId=$uId");
           if(mysqli_affected_rows($connect)){
             header("location: ../PAGES/profile.php?Logged&Updated");
           }else{
-            header("location: ../PAGES/profile.php?Logged&Err");
+            header("location: ../PAGES/profile.php?Logged&NothingUpdated");
           }
-      }else{
-        header("location: ../PAGES/profile.php?Logged&Err");
       }
     
 

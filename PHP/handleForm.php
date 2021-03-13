@@ -11,11 +11,12 @@ function encryptData($data, $key, $str){
 if(isset($_POST['saveForm'])) {
 
     require "./includes/connection.php";
+    include("./includes/table_columns_name.php");
     session_start();
 
     $phn = $_POST['Phn'];
     $name = $_POST['Name'];
-    $uId = $_SESSION['uId'];
+    $fillerId = $_SESSION['uId'];
     
     $vehicleType = $_POST['Vtype'];
     $vehicleCat = $_POST['Vcategory'];
@@ -23,41 +24,29 @@ if(isset($_POST['saveForm'])) {
     $vehicleReg = $_POST['VehicleReg'];
     $renewDate = $_POST['RenewDate'];
     $insSlip = $_POST['insuranceSlip'];
-    $address = $_POST['Address'];
     $citizen = $_POST['Citizen'];
+    $pp = $_POST['pp'];
 
     $name1 = $_POST['Name1'];
     $phn1 = $_POST['Phn1'];
-    $address1 = $_POST['Address1'];
-    $citizen1 = $_POST['Citizen1'];
     $vehicleReg1 = $_POST['VehicleReg1'];
+    $uId = 0;
 
-    if($name1 == "")
-        $name1 = $_POST['Name'];
-    if($phn1 == "")
-        $phn1 = $_POST['Phn'];
-    if($address1 == "")
-        $address1 = $_POST['Address'];
-    if($citizen1 == "")
-        $citizen1 = $_POST['Citizen'];
-    if($vehicleReg1 == "")
-        $vehicleReg1 = $_POST['VehicleReg'];
+    if($vehicleReg1 == $vehicleReg){
+        $uId = $fillerId;
+    }
 
         $str = "j-{b\b{Prd(.w4:Zj-{b\b{Prd(.w4:Z";
         $key = md5($str);
 
         $phn = encryptData($phn, $key, $str);
-        $name = encryptData($name, $key, $str);
         $vehicleReg = encryptData($vehicleReg, $key, $str);
         $name1 = encryptData($name1, $key, $str);
         $phn1 = encryptData($phn1, $key, $str);
         $vehicleReg1 = encryptData($vehicleReg1, $key, $str);
-        $address = encryptData($address, $key, $str);
-        $address1 = encryptData($address1, $key, $str);
         $citizen = encryptData($citizen, $key, $str);
-        $citizen1 = encryptData($citizen1, $key, $str);
 
-        $sql = "INSERT INTO form(PHN, NAME, VEHICLE_TYPE, VEHICLE_CATEGORY, ENGINE_CC, VEHICLE_REG, RENEW_DATE, NAME1, PHN1, VEHICLE_REG1, INS_SLIP, uId, ADDRESS, ADDRESS1, CITIZEN, CITIZEN1) VALUES('$phn', '$name', '$vehicleType', '$vehicleCat', '$engineCC', '$vehicleReg', '$renewDate', '$name1', '$phn1', '$vehicleReg1', '$insSlip', '$uId', '$address', '$address1', '$citizen', '$citizen1');";
+        $sql = "INSERT INTO forms_data(uId, $phoneNumber_column, $username_column, $vehicleType_column, $vehicleCategory_column, $engineCC_column, $vehicleRegistration_column, $renewDate_column, $formFillerName_column, $formFillerPhn_column, $formFillerVehicleReg_column, $insurance_column, $formFillerId_column, $citizenship_column, $pp_column) VALUES('$uId', '$phn', '$name', '$vehicleType', '$vehicleCat', '$engineCC', '$vehicleReg', '$renewDate', '$name1', '$phn1', '$vehicleReg1', '$insSlip', '$fillerId', '$citizen', '$pp');";
     
         mysqli_query($connect, $sql);
 
