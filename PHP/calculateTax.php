@@ -1,36 +1,36 @@
 <?php
 
-function calculateTax($type,$engcc){
+function calculateTax($type,$engicc){
 
     $taxAmount;
-    if($type=="twoWheel"){
-        if($engicc<=125){
+    if($type=="two wheeler"){
+        if($engicc=="0-125CC"){
             $taxAmount=2500;
         }
-        else if($engicc<250){
+        else if($engicc=="126CC-250CC"){
             $taxAmount=4000;
         }
-        else if($engicc<400){
+        else if($engicc=="251CC-400CC"){
             $taxAmount=8000;
         }
         else{
             $taxAmount=15000;
         }
     }
-    else if ($type== "fourWheel"){
-        if($engicc<=1000){
+    else if ($type== "four wheeler"){
+        if($engicc=="0-1000CC"){
             $taxAmount=19000;
         }
-        else if($engicc<1500){
+        else if($engicc=="1001CC-1500CC"){
             $taxAmount=21000;
         }
-        else if($engicc<2000){
+        else if($engicc=="1501CC-2000CC"){
             $taxAmount=23000;
         }
-        else if($engicc<2500){
+        else if($engicc=="2001CC-2500CC"){
             $taxAmount=32000;
         }
-        else if($engicc<2900){
+        else if($engicc=="2501CC-2900CC"){
             $taxAmount=37000;
         }
         else{
@@ -39,7 +39,6 @@ function calculateTax($type,$engcc){
     }
     else{
         echo "Error";
-        die();
     }
     return $taxAmount;
 
@@ -98,32 +97,35 @@ function calculatePercentageFine($totalDays){
 
 if(isset($_GET['savedForm'])){
 
-    require_once "connection.php";
+    require "./includes/connection.php";
+    require("./includes/table_columns_name.php");
+
     session_start();
 
-    $phoneNo = $_SESSION['phone'];
+    $fillerId=$_SESSION['uId'];
     
-    
-
-    $sql = "SELECT VEHICLE_TYPE,ENGINE_CC,RENEW_DATE,INS_SLIP FROM form WHERE PHN ='$phoneNo'";
+    $sql = "SELECT $vehicleType_column,$engineCC_column,$renewDate_column,$insurance_column,$formFillerId_column,uId FROM forms_data WHERE $formFillerId_column='$fillerId' ORDER BY $formID_column DESC LIMIT 1 ";
     $query = mysqli_query($connect,$sql);
 
     $infoArr = mysqli_fetch_all($query,MYSQLI_ASSOC);
 
+    // print_r($infoArr);
+    // die();
+
     $date = date("Y-m-d");
     $dateArr = explode("-",$date);
-    $lastDateArr = explode("-",$infoArr[0]['RENEW_DATE']);
-    $insCheck = $infoArr[0]['INS_SLIP'];
+    $lastDateArr = explode("-",$infoArr[0][$renewDate_column]);
+    $insCheck = $infoArr[0][$insurance_column];
 
     if($insCheck == 'no'){
-        $insMssg = "You have to pay for the insurance too";
+        $insMssg = "Insurance Not Paid";
     }
     else{
-        $insMssg = "";
+        $insMssg = "Insurance Paid";
     }
     $fineDaysCal = ((($dateArr[0]-$lastDateArr[0])*365)+(($dateArr[1]-$lastDateArr[1])*30)+($dateArr[2]-$lastDateArr[2]))-365;
 
-    $tAmount = calculateTax($infoArr[0]['VEHICLE_TYPE'],$infoArr[0]['ENGINE_CC']);
+    $tAmount = calculateTax($infoArr[0][$vehicleType_column],$infoArr[0][$engineCC_column]);
     $fAmount = calculateFine($tAmount,$fineDaysCal);
 
     $totalAmount= $tAmount + $fAmount;
@@ -132,24 +134,32 @@ if(isset($_GET['savedForm'])){
 
     if($fineDaysCal<0){
         $fine = "You paid your tax " . abs($fineDaysCal) . " days ahead";
+        $fineInDB = "Paid " . abs($fineDaysCal) . " days ahead";
     }
     else{
         $fine = $fineper ."/ fine-" . $fAmount . "(". $fineDaysCal. "days late)";
-
+        $fineInDB = "Paid " . $fineDaysCal . " days late";
     }
-    $sql_add = "INSERT INTO FINE(PHN,YEAR,FINE,TAX_AMOUNT) VALUES ('$phoneNo','$date','$fine','$totalAmount');";
+
+    if($infoArr[0][$formFillerId_column] == $infoArr[0]['uId']){
+        $uId = $fillerId;
+    }else{
+        $uId = 0;
+    }
+
+    $sql_add = "INSERT INTO tax_details($fillerId_column,uId,$createdAt_column,$fineAmount_column,$taxAmount_column,$finePercentage_column,$paidIn_column,$totalAmount_column) VALUES ('$fillerId','$uId',null,'$fAmount','$tAmount','$fineper','$fineInDB','$totalAmount');";
     $query_add=mysqli_query($connect, $sql_add);
 
     if(mysqli_affected_rows($connect)){
-        header("location: ./QR.php?amount='$tAmount'&fine='$fineper'&mssg='$insMssg'");
+        header("location: ./QRPage.php?amount=$tAmount&fine=$fineper&mssg=$insMssg&fineAmount=$fAmount");
     }
     else{
-        header("location: ../PAGES/form.html?notAdded");
+        header("location: ../PAGES/form.html?error=NotInserted");
     }
 
 }
 else{
-    header("location: ../PAGES/form.html?WrongWay");
+    header("location: ../PAGES/form.html?error=IllegalWay");
 }
 
 

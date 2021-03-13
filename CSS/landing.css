@@ -1,0 +1,145 @@
+/* wrapper for features section */
+.feature-wrapper {
+    padding: 80px 0;
+}
+
+/* feature section */
+.feature-section {
+    margin: 10px;
+    padding: 10px;   
+    text-align: center;
+    max-width: 30%;
+    font-size: 1.1rem;
+}
+
+.feature-div p {
+    text-align: justify;
+    line-height: 2rem;
+}
+
+/* texts used inside feature section */
+#feature-text {
+    grid-column: 1/13;
+    text-align: center;
+}
+
+/* QR feature, fast feature */
+/* .qr-fe, .fast-fe {
+    grid-column: 2/7;
+} */
+
+/* more secure feature, less paper feature */
+/* .secure-fe, .paper-fe {
+    grid-column: 7/11;
+} */
+
+.slides {
+    grid-column: 2/12;
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    animation: sliding 3s ease-in-out;
+}
+
+@keyframes sliding {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* images used in the feature section */
+/* TODO: make or use some logo image */
+.feature-imgs {
+    width: 100px;
+    height: 100px;
+    padding: 20px;
+}
+
+/* div containing each feature */
+.feature-div {
+    padding: 2px 20px;
+    line-height: 1.5rem;
+}
+
+/* Sign up and login section */
+/* TODO: NEW design to be implemented */
+.signLogSection {
+    background-color: #fff;
+    padding: 3em 0;
+}
+
+.advantage-section {
+    grid-column: 2/7;
+    margin-top: 4em;
+    line-height: 2rem;
+}
+
+.advantage-section>h1, .advantage-section i {
+    color: #111672;
+}
+
+.advantage-section i {
+    font-size: 2rem;
+}
+
+.advantage-div {
+    margin: 1.5em 0;
+}
+
+/* signup and login form */
+.form {
+    padding: 1.5em 2.5em;
+    margin-top: 4em;
+    text-align: center;
+    box-shadow: 0px 0px 10px 5px #e2e2e2;
+    line-height: 2rem;
+}
+
+#toLogLink, #toSignLink {
+    background-color: inherit;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+form>table{
+    width: 100%;
+}
+
+form>table tr td {
+    width: 100%;
+}
+
+/* input field */
+input {
+    margin: .75em 0;
+    padding: 1em 1em;
+    border: 1px solid lightgrey;
+    width: 100%;
+}
+
+#form-wrapper {
+    grid-column: 8/12;
+}
+
+.contact-section {
+    width: 60%;
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    box-shadow: 0px 0px 10px 3px #b1b0b0;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    display: none;
+}
+
+.contacts>p{
+    text-align: justify;
+    margin-bottom: 20px;
+}

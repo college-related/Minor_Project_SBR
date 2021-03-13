@@ -14,6 +14,134 @@ main{
     background-color: rgba(0,0,0,0.6);
 }
 
+.profile-wrapper{
+    background-color: white;
+    border-radius: 5px;
+    margin: 20px;
+    display: flex;
+    grid-column: 2/12;
+}
+
+#user-name{
+    text-align: center;
+    margin-top: 30px;
+}
+
+h3{
+    text-align: center;
+}
+
+.profile-side-section{
+    border-right: 3px solid black;
+}
+
+.profile-detail-section{
+    width: 100%;
+}
+
+.profile-photo-wrapper{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#add-photo{
+    width: 250px;
+    height: 250px;
+    border: none;
+    border-radius: 50%;
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9_XFSGSvGjGE6yUkMystpC3YLzgebpb_4UA&usqp=CAU");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.profile-image{
+    width: 250px;
+    height: 250px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.image-adder-btn{
+    display: none;
+    padding: 5px;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 180px;
+    height: 30px;
+    border-radius: 30px;
+    animation: fadeIn 0.5s ease-in-out;
+    background-color: rgba(0, 0, 0, 0.336);
+}
+
+@keyframes fadeIn { 
+    from{opacity: 0;}
+    to {opacity: 1;}
+}
+
+.image-adder-btn form{
+    display: inline;
+}
+
+#add-photo:hover .image-adder-btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.profile-btn-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.btn{
+    padding: 15px;
+    border: none;
+    border-top: 1px solid black;
+    border-left: 15px solid black;
+    outline: none;
+    cursor: pointer;
+}
+
+.detail-form, .tax-detail, .form-detail{
+    padding: 30px;
+}
+
+.detail-form table{
+    width: 80%;
+    margin: 10px auto;
+}
+
+.detail-form table tr{
+    background-color: cornflowerblue;
+}
+
+.detail-form table tr:nth-child(even){
+    background-color: white;
+} 
+
+.editBtn{
+    padding: 30px;
+    text-align: right;
+}
+
+.active-btn{
+    border-left-color: lightgreen;
+}
+
+.tax-detail, .form-detail{
+    display: none;
+}
+
+
 .detail-popup{
     display: block;
     /* position: fixed; */
@@ -32,55 +160,6 @@ main{
     position: fixed;
 }
 
-
-#profile{
-    grid-column: 2/7;
-}
-
-#details{
-    grid-column: 7/12;
-}
-
-#more-details{
-    grid-column: 2/12;
-    padding: 30px 400px;
-}
-
-#details, #more-details{
-    text-align: center;
-}
-
-.maindiv{
-    background-color: white;
-    border-radius: 5px;
-    margin: 0 5px 20px 5px;
-    padding: 20px;
-}
-
-#user-name{
-  text-align: center;
-  margin-top: 30px;
-}
-
-#detail-form{
-    margin-top: 20px;
-    margin-left: 80px;
-}
-
-h3{
-   text-align: center;
-}
-
-#add-photo{
-    margin-top: 80px;
-    text-align: center;
-    width: 150px;
-    height: 200px;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px black solid;
-}
-
 #latest-form{
     margin-top: 20px;
    text-align: center;
@@ -92,9 +171,10 @@ h3{
     border-radius: 8px;
     width: 50px;
 }
-td{
-    padding: 10px ;
+td, th {
+    padding: 15px ;
 }
+
 .btn-td{
     text-align: right;
     border-radius: 10px;
@@ -102,4 +182,43 @@ td{
 
 .form-table{
     width: 80%;
+}
+
+#profile_picture{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+input[name='img']{
+    display: none;
+}
+
+label[for='image_adder'],label[for='image-remover']{
+    color:white;
+    cursor: pointer;
+}
+
+.tooltip{
+    visibility: hidden;
+    position: absolute;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.336);
+    color: white;
+    border-radius: 5px;
+    left: 7px;
+    bottom: -35px;
+    font-size: 12px;
+    padding: 4px;
+    text-align: center;
+}
+
+label[for='image_adder']:hover #add-image{
+    visibility: visible;
+}
+
+label[for='image-remover']:hover #delete-image{
+    visibility: visible;
+    right: 7px;
+    left: 50%;
 }

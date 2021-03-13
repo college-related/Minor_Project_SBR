@@ -1,39 +1,49 @@
 <?php
 
+    function decryptData($data, $key){
+        $encryption_key = base64_decode($key);
+        list($encrypted_data, $iv) = array_pad(explode('::', base64_decode($data), 2),2,null);
+        $decryptedData = openssl_decrypt($encrypted_data, "aes-256-cbc", $encryption_key, 0, $iv);
+
+        return $decryptedData;
+    }
+
     if(!isset($_GET['Logged'])){
         header("location: ../Landing.php?NotLogged");
     }
 
-    require "../PHP/connection.php";
+    require "../PHP/includes/connection.php";
+    include("../PHP/includes/table_columns_name.php");
 
     session_start();
 
-    $ph = $_SESSION['phone'];
+    $uId = $_SESSION['uId'];
 
-    // $sql_detail = "SELECT form.*, basic_data.* FROM form JOIN basic_data ON form.PHN = basic_data.PHN WHERE form.PHN = '$ph' && basic_data.PHN = '$ph';";
-    // $detail_result = mysqli_query($connect, $sql_detail);
+    $sql_info = "SELECT users.$citizenship_column, users.$image_column, users.$username_column, users.$phoneNumber_column, vehicles_data.* FROM users JOIN vehicles_data ON users.uId=vehicles_data.uId WHERE users.uId='$uId' && vehicles_data.uId='$uId'";
+    $info_result = mysqli_query($connect, $sql_info);
 
-    // $detailArray = mysqli_fetch_all($detail_result, MYSQLI_ASSOC);
-    $sql_firstUser = "SELECT FIRST_TIME_USER FROM users WHERE PHN='$ph';";
-    $firstUser_result = mysqli_query($connect, $sql_firstUser);
-    $row = mysqli_fetch_assoc($firstUser_result);
-    $first = $row['FIRST_TIME_USER'];
+    $infoarray = mysqli_fetch_all($info_result, MYSQLI_ASSOC);
 
-    $sql_form = "SELECT * FROM form WHERE PHN='$ph';";
+    $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
+    $key = md5($str);
+
+    $sql_form = "SELECT * FROM forms_data WHERE $formFillerId_column='$uId';";
     $form_result = mysqli_query($connect, $sql_form);
 
-    $sql_detail= "SELECT * FROM basic_data WHERE PHN1='$ph';";
-    $detail_result = mysqli_query($connect, $sql_detail);
-
-    $sql_tax="SELECT * FROM fine WHERE PHN ='$ph';";
+    $sql_tax="SELECT * FROM tax_details WHERE $fillerId_column ='$uId';";
     $tax_result=mysqli_query($connect,$sql_tax);
 
+    if($infoarray[0][$image_column] != null){
+        $img = $infoarray[0][$image_column];
+        $image_src = "../ASSETS/upload/" . $img;
+    }
+
     $formArray = mysqli_fetch_all($form_result,MYSQLI_ASSOC);
-    $detailArray = mysqli_fetch_all($detail_result,MYSQLI_ASSOC);
-    // print_r($detailArray);
-    // die();
 
     $taxArray = mysqli_fetch_all($tax_result,MYSQLI_ASSOC);
+    $vcat = $infoarray[0][$vehicleCategory_column];
+    $enginecc = $infoarray[0][$engineCC_column];
+
 ?>
 
 <!DOCTYPE html>
@@ -48,36 +58,13 @@
     <link rel="stylesheet" href="../CSS/profile.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-
-    <!-- font links -->
-    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Mukta+Malar&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
-
     
     <style>
         #closeBtn-holder{
-            display:<?php
-            if($first == 'yes'){
-                echo "none;";
-            }
-            else{
-                echo "block;";
-            }
-            ?>
+            display:block;
             text-align:right;
         }
-        .information{
-            display:
-            <?php
-            if($first == 'yes'){
-                echo "block;";
-            }
-            else{
-                echo "none;";
-            }
-            ?>
-        }
+        
         #close-mark{
             text-align:right;
             font-size:40px;
@@ -86,60 +73,34 @@
         #close-mark,.fa-edit{
             cursor:pointer;
         }
-        <?php
-        if($first == 'yes'){
-            echo ".detail-popup, .bg-overlay{
-                display:block;
-                 }";
-        }
-        ?>
 
     </style>
     <script defer src="../JS/detail_popup.js"></script>
     <script defer src="../JS/category_type.js"></script>
-    <script defer src="../JS/search.js"></script>
+    <script defer src="../JS/profile.js"></script>
 </head>
-<body>
-    <header>
+<body class="col-12">
+    <header class="col-12">
 
         <!-- logo and website name -->
         <span id="logo">SWIFT BLUEBOOK RENEW</span>
 
-        <!-- navigation bar for desktop view -->
-        <nav class="web-navigation">
-            <a href="./information.php?isLogged=true">Infos</a>
-            <a href="./form.html">Form</a>
-            <a href="../php/logout.php">LogOut</a>
-            <i class="fa fa-search"></i>
-        </nav>
-
-        <!-- navigation bar for mobile view -->
-        <nav class="mobile-navigation">
+        <!-- navigation bar -->
+        <nav>
             <ul>
-                <li>Infos</li>  
-                <li>SignUp</li>
-                <li>LogIn</li>
+                <li><a href="./information.php?isLogged=true">Infos</a></li>
+                <li><a href="./form.php">Form</a></li>
+                <li><a href="#" class="active-nav-link">Profile</a></li>
+                <li><a href="./taxCalculator.php">Tax Calculator</a></li>
             </ul>
         </nav>
-       
-    </header>
 
-    <div class="nav-hero">
-        <h1 class="hero-text headings">
-            PROFILE
-        </h1>
-    </div>
-    <!-- wave sturcture below header-->
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#7293b5" fill-opacity="1" d="M0,224L48,197.3C96,171,192,117,288,96C384,75,480,85,576,101.3C672,117,768,139,864,160C960,181,1056,203,1152,202.7C1248,203,1344,181,1392,170.7L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg> -->
-   <?php
-    include '../repeated_section/search.html';
-   ?>
+    </header>
 
    <div class="bg-overlay"></div>
    
     <div class="detail-popup">
-        <div class="information"><P>Fill Up the data please</P></div>
-        <div id="closeBtn-holder">
+            <div id="closeBtn-holder">
             <span id="close-mark" onclick="closedEditPopup()">
             &times;
             </span>
@@ -148,36 +109,61 @@
                 <table>
                     <tr>
                         <td>
-                            <label for="vehicle-type">Vehicle Type</label>
+                            <label for="type">Vehicle Type</label>
                         </td>
                         <td>
-                        <select name="vType" id="vehicle-type" onchange="changingType('vehicle-type', 'vehicle-name')" required>
+                        <select name="vType" id="type"  required>
                                 <option value="none"></option>
-                                <option value="twoWheel">Two wheeler</option>
-                                <option value="fourWheel">Four wheeler</option>
+                                <option value="two wheeler" <?php if($infoarray[0][$vehicleType_column] == "two wheeler"){ echo "selected";} ?>>Two wheeler</option>
+                                <option value="four wheeler" <?php if($infoarray[0][$vehicleType_column] == "four wheeler"){ echo "selected";} ?>>Four wheeler</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="vehicle-name">Vehicle Category</label>
+                            <label for="category">Vehicle Category</label>
                         </td>
-                        <td><select name="vCategory" id="vehicle-name" required></select></td>
+                        <td><select name="vCategory" id="category" required>
+                            <?php 
+                                echo "<option value='$vcat'>$vcat</option>";
+                            ?>
+                        </select></td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="engine-cc">Engine cc</label>
+                            <label for="engCC">Engine cc</label>
                         </td>
-                        <td><input type="number" name="ECC" id="engine-cc" placeholder="Ex: 150"></td>
+                        <td>
+                            <select name="ECC" id="engCC" required>
+                                    <?php
+                                            echo "<option value='$enginecc'>$enginecc</option>";
+                                    ?>
+                            </select>
+                        </td>
                     </tr>
-                   
+                   <tr>
+                    <td>
+                        <label for="pp">Private or Public</label>
+                    </td>
+                    <td>
+                        <input type="radio" name="pORp" id="pp" value="private" <?php if($infoarray[0][$pp_column] == "private"){echo "checked";}else{echo "disabled";} ?>/>Private
+                        <input type="radio" name="pORp" id="pp" value="public" <?php if($infoarray[0][$pp_column] == "public"){echo "checked";}else{echo "disabled";} ?>/>Public
+                    </td>
+                   </tr>
                     <tr>
                         <td>
                             <label for="registration-no">Vehicle Registration Number </label>
                         </td>
-                        <td><input type="text" name="regNo" id="registration-no" placeholder="GA 16 PA 4381"></td>
+                        <td><input type="text" name="regNo" id="registration-no" placeholder="GA 16 PA 4381" value="<?=decryptData($infoarray[0][$vehicleRegistration_column],$key); ?>"></td>
                     </tr>
-                   
+                   <tr>
+                       <td>
+                            <label for="phn">Phone number</label>
+                       </td>
+                       <td>
+                            <input type="text" name="Phn" id="phn" value="<?=decryptData($infoarray[0][$phoneNumber_column],$key); ?>">
+                       </td>
+                   </tr>
                     <tr>
                         <td > 
                       </td>
@@ -188,44 +174,98 @@
                 </table>
             </form>
     </div>
-    <main>
-        <div id="profile" class="maindiv">
-            <div id="add-photo">
-                <a href="#" id="profile-photo" style="color: black;">Add Photo</a>
-            </div>
+    <main class="col-12">
+    <div class="profile-wrapper">
+        <div class="profile-side-section">
             <div id="user-name">
                 <h4>
                     <?php
-                        echo $_SESSION['Uname'];
+                       echo decryptData($infoarray[0][$username_column],$key);
                     ?>
                 </h4>
             </div>
+
+            <div class="profile-photo-wrapper">
+                <div id="add-photo" >
+                    <div class="profile-image">
+                        <?php
+                            if($infoarray[0][$image_column] == null){
+                                echo "";
+                            }else{
+                                echo "<img src='$image_src' alt='profile picture' id='profile_picture'>";
+                            }
+                        ?>
+                    </div>
+                    <div class="image-adder-btn">
+                        <div>
+                            <form action='../PHP/handleImage.php' method='POST' enctype='multipart/form-data'>
+                                <input type='file' name='img' onchange='this.form.submit();' id='image_adder'>
+                                <label for='image_adder'>
+                                    <i class='far fa-image'> </i> 
+                                    <span class="tooltip" id="add-image">Upload image</span> 
+                                <lable>
+                            </form>
+                        </div>
+                        <div>
+                            <form action="../PHP/deleteImage.php" id="delete-image-form" method="POST">
+                                <label for="image-remover" onclick="submitForm()">
+                                    <i class="fas fa-user-times"></i>
+                                    <span class="tooltip" id="delete-image">Delete image</span>
+                                </label>
+                            <input type="hidden" value="delete" name="delete-btn">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-btn-wrapper">
+                <button class="btn basic-btn active-btn">Basic Details</button>
+                <button class="btn tax-btn">Tax Details</button>
+                <button class="btn latest-form-btn">Latest Form Detail</button>
+            </div>
+            <div class="logout-btn-holder">
+                <button > <a href="../PHP/logout.php" class="non-nav-link">Log Out</a> </button>
+            </div>
         </div>
 
-        <div id="details" class="maindiv">
+        <div class="profile-detail-section basic-detail">
+        
+            <div class="detail-form">
             <h3><u> DETAILS</u></h3>
-            <div id="detail-form">
                 <table>
                     <tr>
                         <td>Phone number :</td>
                         <td> <?php 
                         
-                        if(empty($detailArray)){
+                        if(empty($infoarray)){
                             echo "???";
                         }else{
-                            echo $detailArray[0]['PHN1'];
+                            echo decryptData($infoarray[0][$phoneNumber_column],$key);
                         }
                         
                         ?> </td>
                     </tr>
                     <tr>
+                        <td>Citizenship number :</td>
+                        <td> 
+                            <?php
+                                if(empty($infoarray)){
+                                    echo "???";
+                                }else{
+                                    echo decryptData($infoarray[0][$citizenship_column],$key);
+                                }
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
                         <td>Vehicle Type:</td>
                         <td> 
                             <?php    
-                                if(empty($detailArray) || $detailArray[0]['VEHICLE_TYPE1'] == ""){
+                                if(empty($infoarray) || $infoarray[0][$vehicleType_column] == ""){
                                     echo "???";
                                 }else{
-                                    echo $detailArray[0]['VEHICLE_TYPE1'];
+                                    echo $infoarray[0][$vehicleType_column];
                                 }
                             ?>
                         </td>
@@ -234,10 +274,10 @@
                         <td>Vehicle Category :</td>
                         <td>
                             <?php
-                                if(empty($detailArray) || $detailArray[0]['VEHICLE_CAT1'] == ""){
+                                if(empty($infoarray) || $infoarray[0][$vehicleCategory_column] == ""){
                                     echo "???";
                                 }else{
-                                    echo $detailArray[0]['VEHICLE_CAT1'];
+                                    echo $infoarray[0][$vehicleCategory_column];
                                 }
                             ?>
                         </td>
@@ -246,22 +286,31 @@
                         <td>ENGINE_CC :</td>
                         <td> 
                             <?php
-                                 if(empty($detailArray) || $detailArray[0]['ENGINE_CC1'] == ""){
+                                 if(empty($infoarray) || $infoarray[0][$engineCC_column] == ""){
                                     echo "???";
                                 }else{
-                                    echo $detailArray[0]['ENGINE_CC1'];
+                                    echo $infoarray[0][$engineCC_column];
                                 }
                             ?>
                         </td>
                     </tr>
                     <tr>
+                        <td>
+                            <label for="pp">Private or Public</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="pORp" id="pp" value="private" <?php if($infoarray[0][$pp_column] == "private"){echo "checked";}else{echo "disabled";} ?>/>Private
+                            <input type="radio" name="pORp" id="pp" value="public"  <?php if($infoarray[0][$pp_column] == "public"){echo "checked";}else{echo "disabled";} ?>/>Public
+                        </td>
+                   </tr>
+                    <tr>
                         <td>Vehicle Registration no. :</td>
                         <td> 
                             <?php
-                                 if(empty($detailArray) || $detailArray[0]['VEHICLE_REG1'] == ""){
+                                 if(empty($infoarray) || $infoarray[0][$vehicleRegistration_column] == ""){
                                     echo "???";
                                 }else{
-                                    echo $detailArray[0]['VEHICLE_REG1'];
+                                    echo decryptData($infoarray[0][$vehicleRegistration_column],$key);
                                 }
                             ?>
                        </td>
@@ -270,11 +319,68 @@
           <div class="editBtn">
           <i class="fa fa-edit" onclick="openEditPopup()">Edit</i>
           </div>
-        </div>
-           
+        </div>           
         </div>
 
-        <div id="more-details" class="maindiv">
+        <div class="profile-detail-section tax-detail">
+            <div class="detail-form">
+                <h3><u>Tax Detail</u></h3>
+                <table>
+                    <tr>
+                        <th>YEAR</th>
+                        <th>FINE</th>
+                        <th>TAX AMOUNT</th>
+                    </tr>
+                <?php 
+                if(sizeof($taxArray) < 3){
+                    foreach($taxArray as $data) {?>
+                        <tr>
+                            <td>
+                                <?= $data[$createdAt_column]?>
+                            </td>
+                            <td>
+                                <?= $data[$fineAmount_column]?>
+                            </td>
+                            <td>
+                                <?= $data[$taxAmount_column]?>
+                            </td>
+                        </tr>
+                
+                    <?php }
+                }else{
+                    for($i= sizeof($taxArray)-1; $i > sizeof($taxArray)-4;$i--){ ?>
+                        <tr>
+                            <td>
+                                <?= $taxArray[$i][$createdAt_column]?>
+                            </td>
+                            <td>
+                                <?= $taxArray[$i][$fineAmount_column]?>
+                            </td>
+                            <td>
+                                <?= $taxArray[$i][$taxAmount_column]?>
+                            </td>
+                        </tr>
+                
+                    <?php }  } ?>
+                </table>
+                <div class="slider-wrapper editBtn">
+                    <span>&lt;</span>
+                    <span>&gt;</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-detail-section form-detail">
+            <div class="detail-form">
+                <h3><u>Latest Form</u></h3>
+                <div class="form-template">
+                
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div id="more-details" class="maindiv">
             <h3><u> MORE DETAILS</u></h3>
             <div id="latest-form">
                 <h4>Latest Form</h4>
@@ -305,50 +411,16 @@
                     </table>
                 <?php } ?>
             </div>
-            <div class="tax-info">
-                    <table>
-                        <tr>
-                            <th>YEAR</th>
-                            <th>FINE</th>
-                            <th>TAX AMOUNT</th>
-                        </tr>
-                     <?php 
-                     if(sizeof($taxArray) < 3){
-                        foreach($taxArray as $data) {?>
-                            <tr>
-                                <td>
-                                    <?= $data['YEAR']?>
-                                </td>
-                                <td>
-                                    <?= $data['FINE']?>
-                                </td>
-                                <td>
-                                    <?= $data['TAX_AMOUNT']?>
-                                </td>
-                            </tr>
-                     
-                        <?php }
-                     }else{
-                         for($i= sizeof($taxArray)-1; $i > sizeof($taxArray)-4;$i--){ ?>
-                             <tr>
-                                <td>
-                                    <?= $taxArray[$i]['YEAR']?>
-                                </td>
-                                <td>
-                                    <?= $taxArray[$i]['FINE']?>
-                                </td>
-                                <td>
-                                    <?= $taxArray[$i]['TAX_AMOUNT']?>
-                                </td>
-                            </tr>
-                     
-                         <?php }  } ?>
-                    </table>
-            </div>
+        </div> -->
         </div>
     </main> 
      
     <?php include '../repeated_section/footer.html' ?>
+    <script>
+        function submitForm(){
+            document.getElementById('delete-image-form').submit();
+        }
+    </script>
  
 </body>
 </html>

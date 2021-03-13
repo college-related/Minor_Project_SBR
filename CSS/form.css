@@ -1,29 +1,49 @@
+/* form of the form page */
 form{
     grid-column: 3/11;
     background-color: whitesmoke;
     padding: 30px;
 }
 
+/* each section/fieldset of the form */
 form>fieldset {
     margin: 10px 0;
     padding: 20px;
     line-height: 2rem;
 }
 
+/* table, inpit fields and select field */
 table, input, select {
     width: 100%;
 }
 
+/* checkbox have to be smaller */
 input[type="checkbox"] {
     width: fit-content;
 }
 
+/* buttons used in the form page */
 .btns {
-    grid-column: 6/10;
+    grid-column: 8/11;
     text-align: center;
     word-spacing: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
+/* all the hidden div for others */
 .others-info {
     display: none;
+}
+
+#autofill, #resetBtn {
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: black 1px 2px 3px;
+    outline: none;
+}
+
+#autofill:disabled, #resetBtn:disabled {
+    cursor: no-drop;
 }
