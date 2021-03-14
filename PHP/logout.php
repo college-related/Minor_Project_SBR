@@ -1,6 +1,6 @@
 <?php
 
-// Starting and destroying session variables before logging out
+// * Starting and destroying session variables before logging out
 session_start();
 
 session_destroy();

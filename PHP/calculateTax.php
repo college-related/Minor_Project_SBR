@@ -1,5 +1,12 @@
 <?php
 
+/*
+    * function to calculte the tax amount
+
+    *@param [vehicle type and engine cc]
+    *@return [tax amount]
+
+*/
 function calculateTax($type,$engicc){
 
     $taxAmount;
@@ -44,8 +51,13 @@ function calculateTax($type,$engicc){
 
 }
 
+/*
+    * function to calculte the fine amount if any
 
+    *@param [tax amount and days the bluebook is renewed]
+    *@return [fine amount]
 
+*/
 function calculateFine($currentTaxAmount,$totalDays){
     // $finePercent;
     // $fineDays= $totalDays;
@@ -71,6 +83,14 @@ function calculateFine($currentTaxAmount,$totalDays){
     }
     return $fineAmount;
 }
+
+/*
+    * function to calculte the fine percentage if any
+
+    *@param [days the bluebook is renewed]
+    *@return [fine percentage]
+
+*/
 function calculatePercentageFine($totalDays){
     $finePercent;
 
@@ -109,29 +129,40 @@ if(isset($_GET['savedForm'])){
 
     $infoArr = mysqli_fetch_all($query,MYSQLI_ASSOC);
 
-    // print_r($infoArr);
-    // die();
-
     $date = date("Y-m-d");
     $dateArr = explode("-",$date);
     $lastDateArr = explode("-",$infoArr[0][$renewDate_column]);
     $insCheck = $infoArr[0][$insurance_column];
 
+    /*
+        * checking if the insurance slip is present or not
+        * and providing corresponding message
+    */ 
     if($insCheck == 'no'){
         $insMssg = "Insurance Not Paid";
     }
     else{
         $insMssg = "Insurance Paid";
     }
+
+    // * Calculating days in between renewing the bluebook by subtracting last renew date from today's date
     $fineDaysCal = ((($dateArr[0]-$lastDateArr[0])*365)+(($dateArr[1]-$lastDateArr[1])*30)+($dateArr[2]-$lastDateArr[2]))-365;
 
+    // * Obtaining the tax amount  
     $tAmount = calculateTax($infoArr[0][$vehicleType_column],$infoArr[0][$engineCC_column]);
+
+    // * Obtaining the fine amount
     $fAmount = calculateFine($tAmount,$fineDaysCal);
 
+    // * calculating total amount
     $totalAmount= $tAmount + $fAmount;
 
+    // * obtaining fine percentage
     $fineper = calculatePercentageFine($fineDaysCal);
 
+    /*
+        * Defining corresponding message as the days in between
+    */
     if($fineDaysCal<0){
         $fine = "You paid your tax " . abs($fineDaysCal) . " days ahead";
         $fineInDB = "Paid " . abs($fineDaysCal) . " days ahead";
@@ -141,6 +172,7 @@ if(isset($_GET['savedForm'])){
         $fineInDB = "Paid " . $fineDaysCal . " days late";
     }
 
+    // * giving the uId column same as the form filler id if its the filler's form
     if($infoArr[0][$formFillerId_column] == $infoArr[0]['uId']){
         $uId = $fillerId;
     }else{

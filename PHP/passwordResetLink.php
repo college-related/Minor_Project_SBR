@@ -1,24 +1,6 @@
 <?php
 
-function protect($data){
-    return trim(strip_tags(addslashes($data)));
-}
-
-function encryptData($data, $key, $str){
-    $encryption_key = base64_decode($key);
-    $ivlength = substr(md5($str."users"),1, 16);
-    $encryptedData = openssl_encrypt($data, "aes-256-cbc", $encryption_key, 0, $ivlength);
-
-    return base64_encode($encryptedData.'::'.$ivlength);
-}
-
-function decryptData($data, $key){
-    $encryption_key = base64_decode($key);
-    list($encrypted_data, $iv) = array_pad(explode('::', base64_decode($data), 2),2,null);
-    $decryptedData = openssl_decrypt($encrypted_data, "aes-256-cbc", $encryption_key, 0, $iv);
-
-    return $decryptedData;
-}
+include("./includes/encryption.php");
 
 if(isset($_POST['resetLink'])){
     require "./includes/connection.php";
@@ -44,6 +26,7 @@ if(isset($_POST['resetLink'])){
             $url = "http://localhost/Minor_Project_SBR/PAGES/resetPassword.php?uId=$uId";
             // $secureUrl = "https://localhost/college_project/Minor_Project_SBR/PAGES/changePassword.php?uId=$uId";
 
+            // * Message body of the mail
             $mssgBody = 
             "
             <h2>Hello, $name </h2>
@@ -71,7 +54,10 @@ if(isset($_POST['resetLink'])){
             // your data.
             $adminEmail = 'swiftbluebook10@gmail.com';
 
+            // * creating a PHPMailer instance
             $mail = new PHPMailer(true);
+
+            // * configuring the PHPMailer to SMTP for gmail
             $mail->isSMTP();
             $mail->Host = "smtp.gmail.com";
             $mail->SMTPAuth = true;
@@ -82,16 +68,22 @@ if(isset($_POST['resetLink'])){
 
             include("./includes/phpMailer_fix.php");
 
+            // * setting the email address and name of sender
             $mail->setFrom($adminEmail, 'Swift Bluebook');
 
+            // * setting email address and name of reciver
             $mail->addAddress($email, $name);
 
+            // * Setting subject of the email
             $mail->Subject = 'Password Reset';
 
+            // * defining the body message contains HTML
             $mail->IsHTML(true);
 
+            // * setting the body of the email
             $mail->Body = $mssgBody;
 
+            // * sending the email and checking error
             if(!$mail->send()){
                 header("location: ../PAGES/forgetPassword.php?error=SendMailError");
             }else{

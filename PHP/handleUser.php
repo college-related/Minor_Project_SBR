@@ -1,22 +1,11 @@
 <?php
 
 include('./includes/table_columns_name.php');
-
-function protect($data){
-    return trim(strip_tags(addslashes($data)));
-}
-
-function encryptData($data, $key, $str){
-    $encryption_key = base64_decode($key);
-    $ivlength = substr(md5($str."users"),1, 16);
-    $encryptedData = openssl_encrypt($data, "aes-256-cbc", $encryption_key, 0, $ivlength);
-
-    return base64_encode($encryptedData.'::'.$ivlength);
-}
+include("./includes/encryption.php");
 
 if(isset($_POST['signup'])){
 
-    // data from the signup form
+    // * data from the signup form
     $email = protect($_POST['email']);
     $username =  protect($_POST['username']);
     $password =  protect($_POST['password']);
@@ -29,24 +18,28 @@ if(isset($_POST['signup'])){
     $engineCC = protect($_POST['engineCC']);
     $activationCode = md5(rand());
 
+    // * setting the public or private as the need
     if($_POST['public_or_private']){
         $publicOrPrivate = protect($_POST['public_or_private']);
     }else{
         $publicOrPrivate = "private";
     }
 
-    // checking if the password's match or not 
+    // * checking if the password's match or not 
     if($password == $confirmpassword){
         require "./includes/connection.php";
 
+        // * Generating key for encryption
         $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
         $key = md5($str);
 
+        // * encrypting email, phone number, citizenship number and vehicle Registration number
         $EncryptedEmail = encryptData($email, $key, $str);
         $EncryptedPhonenumber = encryptData($phonenumber, $key, $str);
         $EncryptedCitizenshipNumber = encryptData($citizenshipNumber, $key, $str);
         $EncryptedVehicleRegistrationNumber = encryptData($vehicleRegistrationNumber, $key, $str);
 
+        // * hashing the password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $sql_email_check = "SELECT * FROM users WHERE $email_column = '$EncryptedEmail';";
@@ -59,26 +52,27 @@ if(isset($_POST['signup'])){
             $query_citizen_check = mysqli_query($connect, $sql_citizen_check);
             $query_vreg_check = mysqli_query($connect, $sql_vreg_check);
 
-            // checking if the email is already used
+            // * checking if the email is already used
             // TODO: maybe use the library or some preg_match patterns
             if(mysqli_num_rows($query_email_check) > 0 ){
                 header("location: ../register.php?inputError=AlreadyUserEmail&infoBack=noEmail&nameB=$username&phoneB=$phonenumber&addressB=$address&citizenB=$citizenshipNumber&vRegB=$vehicleRegistrationNumber&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$publicOrPrivate");
             }
-            // checking if the phone number already exits
+            // * checking if the phone number already used
             else if(mysqli_num_rows($query_phn_check) > 0){
                 header("location: ../register.php?inputError=AlreadyUserPhone&infoBack=noPhone&nameB=$username&emailB=$email&addressB=$address&citizenB=$citizenshipNumber&vRegB=$vehicleRegistrationNumber&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$publicOrPrivate");
             }
-            
+            // * checking if citizenship number already used
             else if(mysqli_num_rows($query_citizen_check) > 0 ){
                 header("location: ../register.php?inputError=AlreadyCitizen&infoBack=noCitizen&emailB=$email&nameB=$username&phoneB=$phonenumber&addressB=$address&vRegB=$vehicleRegistrationNumber&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$publicOrPrivate");
             }
-
+            // * Checking if the vehicle regitartion number already used
             else if(mysqli_num_rows($query_vreg_check) > 0 ){
                 header("location: ../register.php?inputError=AlreadyVReg&infoBack=noVreg&emailB=$email&nameB=$username&phoneB=$phonenumber&addressB=$address&citizenB=$citizenshipNumber&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$publicOrPrivate");
             }
 
             else{
             
+                // * Adding to users table
                 $sql = 
                     "INSERT INTO users($username_column, $email_column, $password_column, $activation_column, $emailVerification_column, $phoneNumber_column, $citizenship_column) VALUES('$username', '$EncryptedEmail', '$hashedPassword', '$activationCode', 'not verified', '$EncryptedPhonenumber', '$EncryptedCitizenshipNumber')";
 
@@ -90,6 +84,7 @@ if(isset($_POST['signup'])){
                     $row = mysqli_fetch_assoc($execute);
                     $uId = $row['uId'];
 
+                    // * Adding to vehicles_data table
                     $sqlV = 
                         "INSERT INTO vehicles_data(uId, $vehicleType_column, $vehicleCategory_column, $vehicleRegistration_column, $engineCC_column, $pp_column) 
                         VALUES($uId,'$vehicleType','$vehicleCategory', '$EncryptedVehicleRegistrationNumber', '$engineCC', '$publicOrPrivate')";

@@ -1,18 +1,7 @@
 <?php
 
 include('./includes/table_columns_name.php');
-
-function protect($data){
-    return trim(strip_tags(addslashes($data)));
-}
-
-function encryptData($data, $key, $str){
-    $encryption_key = base64_decode($key);
-    $ivlength = substr(md5($str."users"),1, 16);
-    $encryptedData = openssl_encrypt($data, "aes-256-cbc", $encryption_key, 0, $ivlength);
-
-    return base64_encode($encryptedData.'::'.$ivlength);
-}
+include("./includes/encryption.php");
 
 if(isset($_POST['login'])){
     require "./includes/connection.php";
@@ -20,23 +9,25 @@ if(isset($_POST['login'])){
     $user = protect($_POST['user']);
     $Password = protect($_POST['Password']);
 
+    // * generating key for encryption
     $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
     $key = md5($str);
 
     $username_sql = "SELECT $password_column, $emailVerification_column, uId FROM users WHERE $username_column = '$user';";
     $result = mysqli_query($connect, $username_sql);
     
+    // * checking if the user with the given name is a valid user or not
     if(mysqli_num_rows($result) > 0){
-        // $row = mysqli_fetch_assoc($result);
         $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
             
         foreach($row as $data){
-            // checking if the email is verified or not
+            // * checking if the email is verified or not
             if($data[$emailVerification_column] == "not verified"){
                 header("location: ../Landing.php?error=EmailNotVerified#loginForm");
                 die();
             }
 
+            // * cheking if the password is correct or not
             if(password_verify($Password,$data[$password_column])){
                 session_start();
                 $_SESSION['uId'] = $data['uId'];
@@ -52,10 +43,11 @@ if(isset($_POST['login'])){
         $email_sql = "SELECT $password_column, $emailVerification_column, uId FROM users WHERE $email_column = '$user';";
         $result = mysqli_query($connect, $email_sql);
         
+        // * checking if the user with the given email is a valid user
         if(mysqli_num_rows($result) > 0){
             $row = mysqli_fetch_assoc($result);
 
-            // checking if the email is verified or not
+            // * checking if the email is verified or not
             if($row[$emailVerification_column] == "not verified"){
                 header("location: ../Landing.php?error=EmailNotVerified#loginForm");
                 die();
@@ -64,6 +56,7 @@ if(isset($_POST['login'])){
             session_start();
             $_SESSION['uId'] = $row['uId'];
 
+            // * checking if the password is correct or not
             if(password_verify($Password,$row[$password_column])){
                 header("location: ../PAGES/profile.php?Logged");
             }else{

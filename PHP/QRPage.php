@@ -1,14 +1,8 @@
 <?php
     
-    function decryptData($data, $key){
-        $encryption_key = base64_decode($key);
-        list($encrypted_data, $iv) = array_pad(explode('::', base64_decode($data), 2),2,null);
-        $decryptedData = openssl_decrypt($encrypted_data, "aes-256-cbc", $encryption_key, 0, $iv);
+    include("./includes/encryption.php");
 
-        return $decryptedData;
-    }
-
-    // data passed through GET method
+    // * data passed through GET method
     $tAmount = $_GET['amount']; // total amount
     $finePer = $_GET['fine']; // fine percentage
     $insMssg = $_GET['mssg']; // insurance message
@@ -26,6 +20,7 @@
     $query = mysqli_query($connect, $sql);
     $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
+    // * Generating key for encryption
     $str = "j-{b\b{Prd(.w4:Zj-{b\b{Prd(.w4:Z";
     $key = md5($str);
 ?>

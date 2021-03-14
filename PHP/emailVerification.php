@@ -28,6 +28,7 @@ if(mysqli_num_rows($query)){
 
     $adminEmail = 'swiftbluebook10@gmail.com';
 
+    // * creating message
     $mssg = "
     <h2>Hi, $username </h2>
     <p>Thank you for registeration</p>
@@ -37,7 +38,10 @@ if(mysqli_num_rows($query)){
     </p>
     ";
 
+    // * creating a PHPMailer instance
     $mail = new PHPMailer(true);
+
+    // * configuring the PHPMailer to SMTP for gmail
     $mail->isSMTP();
     $mail->Host = "smtp.gmail.com";
     $mail->SMTPAuth = true;
@@ -48,21 +52,26 @@ if(mysqli_num_rows($query)){
 
     include("./includes/phpMailer_fix.php");
 
+    // * setting the email address and name of sender
     $mail->setFrom($adminEmail, 'Swift Bluebook');
 
+    // * setting email address and name of reciver
     $mail->addAddress($email, $username);
 
+    // * Setting subject of the email
     $mail->Subject = 'Email Verification';
 
+    // * defining the body message contains HTML
     $mail->isHTML(true);
 
+    // * For debugging
     $mail->SMTPDebug = 2;
 
+    // * setting the body of the email
     $mail->Body = $mssg;
 
+    // * sending the email and checking error
     if($mail->send()){
-        // print_r($mail->ErrorInfo);
-        // die();
         header("location: ../register.php?mssg=CheckEmail");
     }else{
         header("location: ../register.php?error=SendMailError&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$pp");

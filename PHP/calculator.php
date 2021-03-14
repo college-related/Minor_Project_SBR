@@ -1,5 +1,11 @@
 <?php
 
+/*
+    * function to calculate tax amount
+
+    *@param [vehicle name, engine cc, province number, and private/public]
+    *@return [tax amount]
+*/
 function calculateTax($name, $engCC, $province, $radio){
     $taxAmount = "";
 
@@ -296,6 +302,12 @@ function calculateTax($name, $engCC, $province, $radio){
     return $taxAmount;
 }
 
+/*
+    * function to calculate fine amount
+
+    *@param [last renew date and current tax amount]
+    *@return [fine amount]
+*/
 function calculateFine($lastRenew, $taxAmount){
     $fine = "";
     $date = date("Y-m-d");
@@ -336,9 +348,12 @@ if(isset($_POST['taxCalculate'])){
     $lastRenew = $_POST['lastRenewDate'];
     $province = $_POST['pro'];
 
+    // * obtaining the tax amount
     $taxAmount = calculateTax($vName, $engCC, $province, $radio);
 
+    // * obtaining the fine amount
     $fine = calculateFine($lastRenew, $taxAmount);
+    
     header("location: ../PAGES/taxCalculator.php?calculated&wt=$vType&vn=$vName&e=$engCC&lr=$lastRenew&pr=$province&ta=$taxAmount&f=$fine");
 
 }

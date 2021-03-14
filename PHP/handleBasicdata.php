@@ -1,15 +1,6 @@
 <?php
-function protect($data){
-  return trim(strip_tags(addslashes($data)));
-}
 
-function encryptData($data, $key, $str){
-  $encryption_key = base64_decode($key);
-  $ivlength = substr(md5($str."users"),1, 16);
-  $encryptedData = openssl_encrypt($data, "aes-256-cbc", $encryption_key, 0, $ivlength);
-
-  return base64_encode($encryptedData.'::'.$ivlength);
-}
+include("./includes/encryption.php");
 
 if( isset($_POST['savebtn'])){
    require "./includes/connection.php";
@@ -25,8 +16,11 @@ if( isset($_POST['savebtn'])){
    $engineCC=protect($_POST['ECC']);
    $phn = protect($_POST['Phn']);
 
+   // * Settting the key
    $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
-    $key = md5($str);
+   $key = md5($str);
+
+   // * encrypting vehicle registration and phone number
    $vReg = encryptData($vReg, $key, $str);
    $phn = encryptData($phn,$key, $str);
 

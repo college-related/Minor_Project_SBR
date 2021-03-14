@@ -8,11 +8,13 @@ if(isset($_POST['changePass'])){
     $pass = $_POST['pass'];
     $repass = $_POST['rePass'];
 
+    // * redirecting back if the passwords given are not same
     if($pass != $repass){
         header("location: ../PAGES/resetPassword.php?uId=$uId&error=NotSamePass");
         die();
     }
 
+    // * hashing new password
     $newPass = password_hash($pass, PASSWORD_DEFAULT);
 
     $sql = "UPDATE users SET $password_column = '$newPass' WHERE uId = '$uId'";
