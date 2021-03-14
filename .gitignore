@@ -1,1 +1,6 @@
+
+# ignoring the phpmailer_fix file for some systems
 PHP/includes/phpMailer_fix.php
+
+# ignoring the uploaded images
+ASSETS/upload/*
