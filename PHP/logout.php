@@ -5,6 +5,6 @@ session_start();
 
 session_destroy();
 
-header("location:../Landing.php?LoggedOut");
+header("location:../index.php?LoggedOut");
 
 ?>

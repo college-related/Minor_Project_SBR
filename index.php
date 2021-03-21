@@ -1,5 +1,7 @@
 <?php
 
+    include("./PHP/includes/db.php");
+
     if(isset($_GET['LogedIn'])){
         echo '<script type="text/Javascript">
                 alert("Sign up or Log in First");

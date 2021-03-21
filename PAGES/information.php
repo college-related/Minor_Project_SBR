@@ -44,14 +44,14 @@
                             "<ul>
                                 <li><a href='./taxCalculator.php'>Tax Calculator</a></li>
                                 <li><a href='../register.php'>SignUp</a></li>
-                                <li><a href='../landing.php#loginForm'>LogIn</a></li>
+                                <li><a href='../index.php#loginForm'>LogIn</a></li>
                             </ul>";
 
                         
                     }
 
                 }else{
-                    header("Location: ../landing.php");
+                    header("Location: ../index.php");
                 }
            
            ?>

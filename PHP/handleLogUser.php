@@ -23,7 +23,7 @@ if(isset($_POST['login'])){
         foreach($row as $data){
             // * checking if the email is verified or not
             if($data[$emailVerification_column] == "not verified"){
-                header("location: ../Landing.php?error=EmailNotVerified#loginForm");
+                header("location: ../index.php?error=EmailNotVerified#loginForm");
                 die();
             }
 
@@ -35,7 +35,7 @@ if(isset($_POST['login'])){
                 header("location: ../PAGES/profile.php?Logged");
                 die();
             }else{
-                header("location: ../Landing.php?inputError=WrongPass#loginForm");
+                header("location: ../index.php?inputError=WrongPass#loginForm");
             }
         }
     }else{
@@ -49,7 +49,7 @@ if(isset($_POST['login'])){
 
             // * checking if the email is verified or not
             if($row[$emailVerification_column] == "not verified"){
-                header("location: ../Landing.php?error=EmailNotVerified#loginForm");
+                header("location: ../index.php?error=EmailNotVerified#loginForm");
                 die();
             }
 
@@ -60,15 +60,15 @@ if(isset($_POST['login'])){
             if(password_verify($Password,$row[$password_column])){
                 header("location: ../PAGES/profile.php?Logged");
             }else{
-                header("location: ../Landing.php?inputError=WrongNameORPass#loginForm");
+                header("location: ../index.php?inputError=WrongNameORPass#loginForm");
             }
         }else{
-            header("location: ../Landing.php?inputError=WrongEmailOrUser#loginForm");
+            header("location: ../index.php?inputError=WrongEmailOrUser#loginForm");
         }
     }
 
 }else{
-    header("location:../Landing.php?error=IllegalWay");
+    header("location:../index.php?error=IllegalWay");
 }
 
 ?>

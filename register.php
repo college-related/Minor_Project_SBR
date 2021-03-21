@@ -219,7 +219,7 @@
                 </tr>
             </table>
             <button>
-                <a href="Landing.php#loginForm">Log in</a>
+                <a href="index.php#loginForm">Log in</a>
             </button>
         </form>
     </main>

@@ -21,7 +21,7 @@ if(isset($_POST['changePass'])){
     $res = mysqli_query($connect, $sql);
 
     if(mysqli_affected_rows($connect)){
-        header("location: ../Landing.php?mssg=PassChanged#loginForm");
+        header("location: ../index.php?mssg=PassChanged#loginForm");
     }else{
         header("location: ../PAGES/resetPassword.php?error=SomeError&uId=$uId");
     }

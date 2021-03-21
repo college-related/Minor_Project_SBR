@@ -3,7 +3,7 @@
     include("../PHP/includes/encryption.php");
 
     if(!isset($_GET['Logged'])){
-        header("location: ../Landing.php?NotLogged");
+        header("location: ../index.php?NotLogged");
     }
 
     require "../PHP/includes/connection.php";
