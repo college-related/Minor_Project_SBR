@@ -1,6 +1,13 @@
 <?php
 
-$conn = new mysqli("localhost", "root", "");
+include("table_columns_name.php");
+
+$hostName = "localhost";
+$username = "root";
+$password = "";
+$dbName = "sbr_db";
+
+$conn = new mysqli($hostName, $username, $password);
 
 // $conn->query('DROP DATABASE myDB');
 
@@ -10,11 +17,11 @@ if($conn->connect_error){
 }else{
 
     // using the database if database present
-    $selectDB = "USE sbr_db";
+    $selectDB = "USE ". $dbName;
     
     // creating the database if database not present
     if($conn->query($selectDB) === FALSE){
-        $createDB = "CREATE DATABASE sbr_db";
+        $createDB = "CREATE DATABASE ".$dbName;
 
         if($conn->query($createDB) === FALSE){
             die('some error while creating database');
@@ -22,7 +29,7 @@ if($conn->connect_error){
     }
 
     // connecting to the database in the localhost
-    $con = new mysqli("localhost", "root", "", "sbr_db");
+    $con = new mysqli($hostName, $username, $password, $dbName);
 
     if($con->connect_error){
         die("Unable to connect to database");
@@ -36,15 +43,15 @@ if($conn->connect_error){
         $createUserTable = 
             "CREATE TABLE users(
                 uId int auto_increment primary key,
-                name varchar(50) not null,
-                email text not null unique,
-                phone_number text not null unique,
-                citizenship_number text not null unique,
-                password text not null,
-                email_verified enum('verified', 'not verified') not null,
-                activation_code text not null,
-                created_at timestamp,
-                profile_image_name varchar(100)
+                $username_column varchar(50) not null,
+                $email_column text not null unique,
+                $phoneNumber_column text not null unique,
+                $citizenship_column text not null unique,
+                $password_column text not null,
+                $emailVerification_column enum('verified', 'not verified') not null,
+                $activation_column text not null,
+                $createdAt_column timestamp,
+                $image_column varchar(100)
             );
             ";
         
@@ -62,12 +69,12 @@ if($conn->connect_error){
             "CREATE TABLE vehicles_data(
                 vId int auto_increment primary key,
                 uId int not null,
-                vehicle_type enum('two wheeler', 'four wheeler') not null,
-                vehicle_category enum('A','B','K') not null,
-                engine_cc varchar(100) not null,
-                vehicle_registration_number text not null unique,
-                public_private enum('public','private') not null,
-                created_at timestamp,
+                $vehicleType_column enum('two wheeler', 'four wheeler') not null,
+                $vehicleCategory_column enum('A','B','K') not null,
+                $engineCC_column varchar(100) not null,
+                $vehicleRegistration_column text not null unique,
+                $pp_column enum('public','private') not null,
+                $createdAt_column timestamp,
                 FOREIGN KEY (uId) REFERENCES users(uId)
             );
             ";
@@ -85,21 +92,21 @@ if($conn->connect_error){
                 fId int auto_increment primary key,
                 uId int,
                 name varchar(50) not null,
-                citizenship_number text not null,
-                phone_number text not null,
-                vehicle_type enum('two wheeler','four wheeler') not null,
-                vehicle_category enum('A','B','K') not null,
-                engine_cc varchar(100) not null,
-                public_private enum('public', 'private') not null,
-                insurance_slip enum('yes', 'no') not null,
-                vehicle_registration_number text not null,
-                last_renew_date date not null,
-                created_at timestamp,
-                form_filled_by varchar(50) not null,
-                form_filler_vehicle_registration_number text not null,
-                form_filler_phone_number text not null,
-                form_filler_uId int not null,
-                FOREIGN KEY (form_filler_uId) REFERENCES users(uId)
+                $citizenship_column text not null,
+                $phoneNumber_column text not null,
+                $vehicleType_column enum('two wheeler','four wheeler') not null,
+                $vehicleCategory_column enum('A','B','K') not null,
+                $engineCC_column varchar(100) not null,
+                $pp_column enum('public', 'private') not null,
+                $insurance_column enum('yes', 'no') not null,
+                $vehicleRegistration_column text not null,
+                $renewDate_column date not null,
+                $createdAt_column timestamp,
+                $formFillerName_column varchar(50) not null,
+                $formFillerVehicleReg_column text not null,
+                $formFillerPhn_column text not null,
+                $formFillerId_column int not null,
+                FOREIGN KEY ($formFillerId_column) REFERENCES users(uId)
             );
             ";
 
@@ -115,14 +122,14 @@ if($conn->connect_error){
             "CREATE TABLE tax_details(
                 tId int auto_increment primary key,
                 uId int,
-                tax_amount varchar(100) not null,
-                fine_amount varchar(100) not null,
-                fine_percentage varchar(50) not null,
-                paid_in varchar(100) not null,
-                total_amount varchar(100) not null,
-                created_at timestamp,
-                filler_uId int not null,
-                FOREIGN KEY (filler_uId) REFERENCES users(uId)
+                $taxAmount_column varchar(100) not null,
+                $fineAmount_column varchar(100) not null,
+                $finePercentage_column varchar(50) not null,
+                $paidIn_column varchar(100) not null,
+                $totalAmount_column varchar(100) not null,
+                $createdAt_column timestamp,
+                $fillerId_column int not null,
+                FOREIGN KEY ($fillerId_column) REFERENCES users(uId)
             );
             ";
 
