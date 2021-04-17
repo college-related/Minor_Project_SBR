@@ -138,44 +138,50 @@
     </style>
 
     <script defer src="./JS/category_type.js"></script>
+    <link rel="stylesheet" href="./CSS/register_page.css">
 </head>
 <body>
     <?php include './repeated_section/error.php'; ?>
 
-    <main class="col-12">
-        <form action="./PHP/handleUser.php" method="post">
-            <h3>SIGN UP</h3>
-            <table>
-                <tr>
-                    <td>
-                        <input type="text" required placeholder="Full name" name="username" <?php if(isset($_GET['infoBack'])){echo "value='$name'";} ?>>
-                    </td>
-                    <td>
-                        <input type="text" required placeholder="Phone number" name="phoneNumber" <?php if(isset($_GET['infoBack'])){echo "value='$phone'";} ?>>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+    <main>
+        <div class="main">
+            <div id="info">
+            <form action="./PHP/handleUser.php" method="post">
+            <h6>Swift Bluebook Renew</h6>
+            <h1>Welcome</h1>
+            <div class="form-wrapper">
+            <div class="flex-form">
+            <div>
+            <input type="text" required placeholder="Full name" name="username" <?php if(isset($_GET['infoBack'])){echo "value='$name'";} ?>>
+            </div>
+            <div>
+            <input type="text" required placeholder="Phone number" name="phoneNumber" <?php if(isset($_GET['infoBack'])){echo "value='$phone'";} ?>>
+            </div>
+            </div>
+                       
+                    
+            <div class="flex-form">
+                <div>
                         <input type="email" required placeholder="Email" name="email" <?php if(isset($_GET['infoBack'])){echo "value='$email'";} ?>>
-                    </td>
-                    <td>
+                    </div>
+                    <div>
                         <input type="text" required placeholder="Citizenship Number" name="citizenshipNumber" <?php if(isset($_GET['infoBack'])){echo "value='$citizenNo'";} ?>>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                   </div>
+                   </div>
+                <div class="flex-form">
+                <div>
+                <input type="text" required placeholder="Vehicle Registration Number" name="vReg" <?php if(isset($_GET['infoBack'])){echo "value='$vReg'";} ?>> 
+                       </div>
+                       <div>
                         <select name="vType" id="type">
                             <option value="none">--Vehicle Type--</option>
                             <option value="two wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "two wheeler"){echo "selected";}} ?>>Two Wheeler</option>
                             <option value="four wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "four wheeler"){echo "selected";}} ?>>Four Wheeler</option>
                         </select>
-                    </td>
-                    <td>
-                        <input type="text" required placeholder="Vehicle Registration Number" name="vReg" <?php if(isset($_GET['infoBack'])){echo "value='$vReg'";} ?>> 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                   </div>
+                </div>
+               <div class="flex-form">
+                        <div>
                         <select name="vCategory" id="category">
                             <?php
                                 if(isset($_GET['infoBack'])){
@@ -184,8 +190,8 @@
                             ?>
                             <option value="none">--Vehicle Category--</option>
                         </select>
-                    </td>
-                    <td>
+                        </div>
+                        <div>
                         <select name="engineCC" id="engCC">
                             <?php
                                 if(isset($_GET['infoBack'])){
@@ -194,34 +200,37 @@
                             ?>
                             <option value="none">--Engine CC--</option>
                         </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                        </div>
+                   </div>
+                <div class="flex-form">
+                <div>
                         <input type="radio" name="public_or_private" value="private" id="privateP" checked><label for="privateP">Private</label>
-                        <input type="radio" name="public_or_private" value="public" id="publicP" <?php if(isset($_GET['infoBack'])){if($pp == 'public'){echo "checked";}} ?>><label for="publicP">Public</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                     </div>
+                     <div>
+                        <input type="radio" name="public_or_private" value="public" id="publicP" <?php if(isset($_GET['infoBack'])){if($pp == 'public'){echo "checked";}} ?> ><label for="publicP">Public</label>
+                    </div>
+                    </div>
+                <div class="flex-form">
+                <div>
                         <input type="password" required placeholder="Password" name="password" id="pass">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+                   </div>
+                   <div>
                         <input type="password" required placeholder="Confirm Password" name="repassword" id="rePass">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="submit" value="Register" name="signup">
-                    </td>
-                </tr>
-            </table>
-            <button>
-                <a href="index.php#loginForm">Log in</a>
-            </button>
-        </form>
+                  </div>
+                  </div>
+                <div class="flex-form">
+                
+                        <input class="btn" type="submit" value="Register" name="signup">
+                   </div>
+                   </form>
+                   <div>
+                        <h6>Already have an account?<a href="index.php#loginForm">Log in</a></h6>
+                        <h6><a href="./PAGES/forgetPassword.php">Forgot Password?</a></h6>
+                    </div>
+                </div>
+       </div>
+        <div id="illustration"></div>
+    </div>
     </main>
 
     <script>

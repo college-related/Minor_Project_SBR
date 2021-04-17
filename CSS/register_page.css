@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Palanquin&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Palanquin', sans-serif;
+}
+
+body{
+    background-image: url('../ASSETS/IMAGES/front-assets/back2.png');
+    background-attachment: fixed;
+    background-size: 100%;
+}
+
+h1{
+    color: #0C0A67;
+}
+
+h6{
+    color: rgb(44, 44, 44);
+}
+
+main{
+    width: 75%;
+    /* height: 70%; */
+    margin: 3% auto;
+    z-index: 3;
+    background-color: white;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.767) ;
+}
+
+.main{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+.flex-form{
+    margin-bottom: 0.6em;
+   
+    display: flex;
+}
+
+.flex-form>div{
+    margin-right: 0.25em;
+    width: 100%;
+}
+
+.form-wrapper{
+    padding: 0.25em 1.5em;
+}
+
+#info{
+    padding: 4%;
+    grid-column: 1/2;
+    /* justify-self: center; */
+    /* background-color: whitesmoke; */
+}
+
+#illustration{
+    grid-column: 2/3;
+    background-image:linear-gradient(to top, white,#77a4e9b9), url('../ASSETS/IMAGES/front-assets/illustration.png');
+    background-size: contain;
+}
+
+
+input,select{
+    color: grey;
+    width: 100%;
+    padding: 4px;
+    border: 1px solid rgb(179, 177, 177);
+    /* border-radius: 5px; */
+}
+
+table{
+    margin: 13px 30px;
+    height: 80%;
+}
+
+td{
+    padding: 3px 20px;
+}
+ 
+.btn{
+    color: white;
+    background-color: #0C0A67;
+    border: none;
+    width: 100%;
+    border-radius: 0%;
+    margin-top: 10px;
+}
+input[type='text']::placeholder,input[type='email']::placeholder,input[type='password']::placeholder{
+    text-align:left;
+}
+
+label{
+    font-size: 12px;
+}
+
+input[type='radio'],label{
+    padding: 2px;
+    display: inline;
+    width: fit-content;
+}
+
+@media screen and (max-width:750px) {
+    .main{
+        grid-template-columns: 1fr;
+    }
+
+    .flex-form{
+        flex-direction:column;
+    }
+
+    .flex-form>div input,.flex-form>div select{
+        margin-bottom: .75em;
+    }
+
+    #illustration{
+        display: none;
+    }
+}
