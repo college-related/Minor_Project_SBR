@@ -1,7 +1,5 @@
 <?php
 
-    include("./includes/encryption.php");
-
     include('./phpqrcode/qrlib.php');
     
     require "./includes/connection.php";
@@ -16,10 +14,6 @@
 
     // * array containing datas from the form table to be included in the QR
     $arr = mysqli_fetch_all($query, MYSQLI_ASSOC);
-
-    // * Generating key for encryption
-    $str = "j-{b\b{Prd(.w4:Zj-{b\b{Prd(.w4:Z";
-    $key = md5($str);
 
     // * passed data from GET method
     $taxAmount = $_GET['amount']; // total amount
