@@ -138,7 +138,7 @@
             color: #ffffff;
             font-size: 18px;
             height: 3rem;
-            width: 24rem;
+            width: 29rem;
         }
         @media screen and (max-width:750px)
          {
@@ -148,7 +148,10 @@
             .taxdata ,.taxresult{
                 width:100%;
                 overflow:scroll;
+                height:600px;
+                padding-top:4rem;
             }
+            
         }
     </style>
 </head>
