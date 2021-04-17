@@ -57,8 +57,17 @@
         }
     }
 
-    
+    session_start();
 
+    if(!isset($_SESSION['lang']))
+        $_SESSION['lang'] = "en";
+    elseif(isset($_GET['lang']) && !empty($_GET['lang']) && $_SESSION['lang'] != $_GET['lang']){
+        $_SESSION['lang'] = $_GET['lang'];
+    }
+
+    $url = $_SESSION['lang'];
+    
+    require('Language/'.$url.'.php');
 ?>
 
 <!DOCTYPE html>
@@ -113,25 +122,40 @@
             }
         ?>
 
+        .lang-div {
+            background-color: black;
+            color: black;
+        }
+
     </style>
 
+    <script defer src="./JS/navToggle.js"></script>
     <script defer src="./JS/automatic_slides.js"></script>
 
 </head>
 
 <body class="col-12">
+    <div class="lang-div">
+        <a href="index.php?lang=en">En</a>|<a href="index.php?lang=np">Np</a>
+    </div>
     <!-- head of the website -->
     <header class="col-12">
         <!-- logo and website name -->
-        <span id="logo">SWIFT BLUEBOOK RENEW</span>
+        <span id="logo">
+            <?= $lang['common']['website-name'] ?>
+        </span>
+
+        <button type="button" class="nav-toggler" id="navToggler">
+            <i class="fas fa-bars"></i>
+        </button>
 
         <!-- navigation bar -->
-        <nav>
+        <nav id="navMenu">
             <ul>
-                <li><a href="./pages/information.php?isLogged=false">Infos</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="./PAGES/taxCalculator.php">Tax Calculator</a></li>
-                <li><a href="#loginForm">LogIn</a></li>
+                <li><a href="./pages/information.php?isLogged=false"><?= $lang['index-page']['header-menus'][0] ?></a></li>
+                <li><a href="#"><?= $lang['index-page']['header-menus'][1] ?></a></li>
+                <li><a href="./PAGES/taxCalculator.php"><?= $lang['index-page']['header-menus'][2] ?></a></li>
+                <li><a href="#loginForm"><?= $lang['index-page']['header-menus'][3] ?></a></li>
             </ul>
         </nav>
 
@@ -141,17 +165,17 @@
         <div class="hero-text">
             <!-- hero text(website name) -->
             <h1 class="hero-text headings">
-                SWIFT BLUEBOOK RENEW
+                <?= $lang['index-page']['hero-text'] ?>
             </h1>
 
             <!-- sub heading (slogan) -->
             <h3 class="sub-text headings">
-                Less Lines, Less Waiting
+                <?= $lang['index-page']['slogan-text'] ?>
             </h3>
 
             <!-- getting started button -->
             <a href="register.php" class="hero-link non-nav-link">
-                <button id="hero-btn">GET STARTED</button>
+                <button id="hero-btn"><?= $lang['index-page']['hero-btn-text'] ?></button>
             </a>
         </div>
     </div>
@@ -162,16 +186,16 @@
     <main class="col-12">
         <div class="feature-wrapper col-12">
             <!-- features section -->
-            <h2 id="feature-text">Features</h2>
+            <h2 id="feature-text"><?= $lang['index-page']['feature-section']['title'] ?></h2>
 
             <div class="slides">
                 <!-- QR code section -->
                 <div class="feature-section qr-fe">
                     <img src="./ASSETS/images/qr.jpg" alt="illust1" class="feature-imgs">
                     <div class="feature-div">
-                        <h3>QR Code</h3>
+                        <h3><?= $lang['index-page']['feature-section']['sub-titles'][0] ?></h3>
                         <p>
-                            The unique QR code system of our makes it easier to store the data and register them in the office.
+                            <?= $lang['index-page']['feature-section']['descriptions'][0] ?>
                         </p>
                     </div>
                 </div>
@@ -180,9 +204,9 @@
                 <div class="feature-section secure-fe">
                     <img src="./ASSETS/images/secure.jpg" alt="illust2" class="feature-imgs">
                     <div class="feature-div">
-                        <h3>Secure Submission</h3>
+                        <h3><?= $lang['index-page']['feature-section']['sub-titles'][1] ?></h3>
                         <p>
-                            The form submitted through our site are more secure and up-to date, making the work more risk free.  
+                            <?= $lang['index-page']['feature-section']['descriptions'][1] ?>
                         </p>
                     </div>
                 </div>
@@ -193,9 +217,9 @@
                 <div class="feature-section fast-fe">
                     <img src="./ASSETS/images/fast.jpg" alt="illust3" class="feature-imgs">
                     <div class="feature-div">
-                        <h3>Fast and Relaible</h3>
+                        <h3><?= $lang['index-page']['feature-section']['sub-titles'][2] ?></h3>
                         <p>
-                            By using the QR code system and faster submission process, it makes the whole process easier and faster as well as relaible.
+                            <?= $lang['index-page']['feature-section']['descriptions'][2] ?>
                         </p>
                     </div>
                 </div>
@@ -204,9 +228,9 @@
                 <div class="feature-section paper-fe">
                     <img src="./ASSETS/images/paper.jpg" alt="illust4" class="feature-imgs">
                     <div class="feature-div">
-                        <h3>Paper management</h3>
+                        <h3><?= $lang['index-page']['feature-section']['sub-titles'][3] ?></h3>
                         <p>
-                            Using this new system we can lessen the amount of paper needed thus,making it more nature friendly way of work.
+                            <?= $lang['index-page']['feature-section']['descriptions'][3] ?>
                         </p>
                     </div>
                 </div>
@@ -216,22 +240,22 @@
         <div class="signLogSection col-12">
             <!-- advantage section -->
             <div class="advantage-section">
-                <h1>Sign up to get all the advantages</h1>
+                <h1><?= $lang['index-page']['Log-section']['title'] ?></h1>
 
                 <div class="advantage-div">
                     <i>Icon</i>
-                    <h3>Some advantage</h3>
-                    <p>Get some advantage so sign up now.</p>
+                    <h3><?= $lang['index-page']['Log-section']['advantage-section']['0']['title'] ?></h3>
+                    <p><?= $lang['index-page']['Log-section']['advantage-section']['0']['description'] ?></p>
                 </div>
                 <div class="advantage-div">
                     <i class="fa fa-magic"></i>
-                    <h3>Auto-fill</h3>
-                    <p>Automatically fill up the form everytime you have to fill the form.</p>
+                    <h3><?= $lang['index-page']['Log-section']['advantage-section']['1']['title'] ?></h3>
+                    <p><?= $lang['index-page']['Log-section']['advantage-section']['1']['description'] ?></p>
                 </div>
                 <div class="advantage-div">
                     <i class="fa fa-envelope-open-text"></i>
-                    <h3>Email reminder</h3>
-                    <p>Get notified every year when the time arrives to renew the bluebook.</p>
+                    <h3><?= $lang['index-page']['Log-section']['advantage-section']['2']['title'] ?></h3>
+                    <p><?= $lang['index-page']['Log-section']['advantage-section']['2']['description'] ?></p>
                 </div>
             </div>
 
@@ -239,24 +263,24 @@
                 <div id="loginForm">
                     <div class="form">
                     <form action="./PHP/handleLogUser.php" method="POST">
-                        <h2>Log In</h2>
+                        <h2><?= $lang['index-page']['Log-section']['log-box-section']['title'] ?></h2>
                         <table>
                             <tr>
-                                <td><input class="form-input log-input-user" type="text" placeholder="Email or Full Name" name="user" required/></td>
+                                <td><input class="form-input log-input-user" type="text" placeholder="<?= $lang['index-page']['Log-section']['log-box-section']['email-placeholder'] ?>" name="user" required/></td>
                             </tr>
                             <tr>
-                                <td><input class="form-input log-input-pass" type="password" placeholder="Password" name="Password" required/></td>
+                                <td><input class="form-input log-input-pass" type="password" placeholder="<?= $lang['index-page']['Log-section']['log-box-section']['password-placeholder'] ?>" name="Password" required/></td>
                             </tr>
                             <tr>
-                                <td><input type="submit" value="Log In" name="login"/></td>
+                                <td><input type="submit" value="<?= $lang['index-page']['Log-section']['log-box-section']['btn-text'] ?>" name="login"/></td>
                             </tr>
                         </table>
                     </form>
                     <a href="./register.php" class="non-nav-link">
                     <button id="toSignLink" class="btn">
-                        Don't have a account?&nbsp;Create one
+                        <?= $lang['index-page']['Log-section']['log-box-section']['new-acc-text'] ?>
                     </button></a><br>
-                    <a href="./PAGES/forgetPassword.php" class="non-nav-link">Forgot password?</a>
+                    <a href="./PAGES/forgetPassword.php" class="non-nav-link"><?= $lang['index-page']['Log-section']['log-box-section']['forgot-text'] ?></a>
                     </div>
                 </div>
             </div>
