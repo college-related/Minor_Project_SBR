@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Palanquin&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Palanquin', sans-serif;
+}
+
+body{
+    background-color: #6486AE;
+    background-attachment: fixed;
+    background-size: 100%;
+    background-image: linear-gradient(to bottom right,#6486AE,#0C0A67);
+    padding-top: 2%;
+}
+
+main{
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    height: 80%;
+    width: 68%;
+    margin:3% auto;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.767) ;
+    justify-content: center;
+}
+
+.details{
+    grid-column: 1/6;
+    background-color: white;
+    padding: 25% 15%;
+    text-align: center;
+}
+
+.illustration{
+    grid-column: 6/13;
+    background-image: linear-gradient(to top,rgba(255, 255, 255, 0.486),#77a5e977),url('../ASSETS/IMAGES/front-assets/illustration.png');
+    background-size: cover;
+}
+
+h2{
+    color: #0C0A67;
+}
+
+h5{
+    margin-bottom: 15px;
+}
+
+span{
+    text-align: left;
+    font-size: 12px;
+    margin-top: 30px;
+}
+
+span,.account{
+    font-weight: bold;
+}
+
+.account{
+    font-size: 12px;
+    margin-top: 5%;
+}
+
+#msg{
+    color: rgb(122, 120, 120);
+    margin-top: 5px;
+}
+
+input[type='submit']{
+    color: white;
+    background-color: #0C0A67;
+    border: none;
+    padding: 3px;
+    width: 90%;
+}
+
+input[type='email'],input[type='password']{
+    width: 90%;
+    padding: 4px;
+    border: 1px solid rgb(179, 177, 177);
+    border-radius: 5px;
+}
+
+span,form{
+    margin-top: 10%;
+}
+
+@media screen and (max-width:750px) {
+    
+    .illustration{
+        display: none;
+    }
+
+    main{
+        grid-template-columns: 1fr;
+    }
+}
