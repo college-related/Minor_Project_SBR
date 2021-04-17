@@ -13,9 +13,9 @@
         $fineAmount = $fineArray[1];
         $days = $fineArray[2];
         if($days <0){
-            $daysMssg = abs($days)." days ahead";
+            $daysMssg = "Paid ".abs($days)." days ahead";
         }else{
-            $daysMssg = $days." days"; 
+            $daysMssg = "Paid in ".$days." days"; 
         }
         if($fineAmount < 0 ){
             $totalAmount = "--";
@@ -30,53 +30,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tax Calculator</title>
+    
+    <link rel="stylesheet" href="../CSS/style.css">
 
     <style>
-        *{
-            margin: 0;
-            box-sizing: border-box;
-        }
-        /* .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        } */
-        /* 
-
-        [class*="col-"] {
-            float: left;
-            padding: 15px;
-        } */
-
-        /* header{
-            padding: 2rem;
-            width: 100%;
-        }
-        span{
-            font-size: 35px;
-            color: #0c0a67;
-            grid-column: 1/7;
-        } */
-        /* nav{
-            grid-column: 8 /13;
-        }
-        nav ul{
-            list-style: none;
-            display: flex;
-            justify-content: space-evenly;
-        } */
-        a{
-            text-decoration: none;
-            color: #0C0A67;
-        }
         p{
-            font-size: 20px;
-            color: whitesmoke;
             text-align: center;
             padding-bottom:1rem;
         }
         label{
-            font-size: 30px;
             color: white;
             width: 100%;
         }
@@ -85,7 +47,7 @@
             height: 100%;
         }
         input{
-            font-size: 24px;
+            /* font-size: 24px; */
         }
         .main{
             height: 800px;
@@ -95,16 +57,15 @@
            width: 100%;
         }
         select{
-            font-size: 24px;
+            /* font-size: 24px; */
         }
         td{
-            font-size:30px;
+            /* font-size:30px; */
         }
         .taxdata{
             width: 50%;
             float:left;
             background-color: #97C0F0;
-            padding-top:10rem;
             display:flex;
             flex-direction:column; 
             box-sizing:border-box;
@@ -117,13 +78,12 @@
         }
         h1{
             color: #0C0A67;
-            font-size: 35px;
+            /* font-size: 35px; */
             text-align:center;
         }
         .taxresult{
             float:left;
-            background-color: white; 
-            padding-top:10rem;
+            background-color: white;
             width: 50%;
             height:800px;
             box-sizing:border-box;
@@ -136,10 +96,28 @@
         .calculate{
             background-color:#0C0A67;
             color: #ffffff;
-            font-size: 18px;
+            /* font-size: 18px; */
             height: 3rem;
             width: 24rem;
         }
+
+        <?php
+            if(isset($_GET['calculated'])){
+                echo '.result-table {
+                            animation: fade-in 1.5s ease-in-out;
+                        }';
+            }
+        ?>
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         @media screen and (max-width:750px)
          {
             .row{
@@ -147,19 +125,35 @@
             } 
             .taxdata ,.taxresult{
                 width:100%;
-                overflow:scroll;
             }
         }
     </style>
 </head>
 <body>
+    <header class="col-12">
+        <!-- logo and website name -->
+        <span id="logo">
+            Swift Bluebook Renew
+        </span>
+
+        <!-- navigation bar -->
+        <nav>
+            <ul>
+                <li><a href="./pages/information.php?isLogged=false">Infos</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#" class="active-link">Tax Calulator</a></li>
+                <li><a href="../index.php#loginForm">Log in</a></li>
+            </ul>
+        </nav>
+
+    </header>
     <main>
         <div class="row">
         
         <div class="taxdata " id="td" >
             <h1>Tax Calculator</h1>
             <p>Estimate your tax according to your vehicle and other details</p>
-             <form action="" method="POST" >
+             <form action="../PHP/calculator.php" method="POST" >
                 <label for="wheel">Vehicle Type: </label>
                 <select name="wheeler" id="wheel">
                     <option value="0W">--Select type--</option>
@@ -199,52 +193,57 @@
         </div>
         <div class="taxresult" id="tr">
             <h1>Your Result</h1>
-            <table>
-                <tr>
-                    <td>Vehicle Type:</td>
-                    <td>Two wheeler</td>
-                </tr>
-                <tr>
-                    <td>Vehicle Name:</td>
-                    <td>Motocycle</td>
-                </tr>
-                <tr>
-                    <td>Engine CC:</td>
-                    <td>150</td>
-                </tr>
-                <tr>
-                    <td>Public /Private:</td>
-                    <td>private</td>
-                </tr>
-                <tr>
-                    <td>Last Renew Date:</td>
-                    <td>2020-01-05</td>
-                </tr>
-                <tr>
-                    <td>Provience:</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>Tax Amount:</td>
-                    <td>2000</td>
-                </tr>
-                <tr>
-                    <td>Days:</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>Fine Percentage:</td>
-                    <td>5%</td>
-                </tr>
-                <tr>
-                    <td>Fine Amount:</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <td>Total Amount:</td>
-                    <td>2200</td>
-                </tr>
-            </table>
+            <?php
+            
+                if(isset($_GET['calculated'])){
+                    echo 
+                    '<table class="result-table">
+                        <tr>
+                            <td>Vehicle Type:</td>
+                            <td>'.$vType.'</td>
+                        </tr>
+                        <tr>
+                            <td>Vehicle Name:</td>
+                            <td>'.$vName.'</td>
+                        </tr>
+                        <tr>
+                            <td>Engine CC:</td>
+                            <td>'.$engCC.'</td>
+                        </tr>
+                        <tr>
+                            <td>Last Renew Date:</td>
+                            <td>'.$lastRenewDate.'</td>
+                        </tr>
+                        <tr>
+                            <td>Provience:</td>
+                            <td>'.$province.'</td>
+                        </tr>
+                        <tr>
+                            <td>Tax Amount:</td>
+                            <td>'.$taxAmount.'</td>
+                        </tr>
+                        <tr>
+                            <td>Days:</td>
+                            <td>'.$daysMssg.'</td>
+                        </tr>
+                        <tr>
+                            <td>Fine Percentage:</td>
+                            <td>'.$finePercentage.'</td>
+                        </tr>
+                        <tr>
+                            <td>Fine Amount:</td>
+                            <td>'.$fineAmount.'</td>
+                        </tr>
+                        <tr>
+                            <td>Total Amount:</td>
+                            <td>'.$totalAmount.'</td>
+                        </tr>
+                    </table>';
+                }else{
+                    echo '<p>Your Result will appear here</p>';
+                }
+            
+            ?>
         </div>
         </div>
     </main>
