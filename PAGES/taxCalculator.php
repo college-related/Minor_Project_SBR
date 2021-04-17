@@ -98,7 +98,7 @@
             color: #ffffff;
             /* font-size: 18px; */
             height: 3rem;
-            width: 24rem;
+            width: 29rem;
         }
 
         <?php
@@ -126,6 +126,7 @@
             .taxdata ,.taxresult{
                 width:100%;
             }
+            
         }
     </style>
 </head>

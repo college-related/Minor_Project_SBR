@@ -219,7 +219,7 @@
                         <input type="password" required placeholder="Confirm Password" name="repassword" id="rePass">
                   </div>
                   </div>
-                <div class="flex-form">
+                <div >
                 
                         <input class="btn" type="submit" value="Register" name="signup">
                    </div>
