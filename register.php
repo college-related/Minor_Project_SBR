@@ -138,6 +138,7 @@
     </style>
 
     <script defer src="./JS/category_type.js"></script>
+    <link rel="stylesheet" href="./CSS/style.css">
     <link rel="stylesheet" href="./CSS/register_page.css">
 </head>
 <body>
@@ -224,8 +225,8 @@
                    </div>
                    </form>
                    <div>
-                        <h6>Already have an account?<a href="index.php#loginForm">Log in</a></h6>
-                        <h6><a href="./PAGES/forgetPassword.php">Forgot Password?</a></h6>
+                        <h5>Already have an account?<a href="index.php#loginForm">Log in</a></h5>
+                        <h5><a href="./PAGES/forgetPassword.php">Forgot Password?</a></h5>
                     </div>
                 </div>
        </div>
