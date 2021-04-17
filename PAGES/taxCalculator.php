@@ -32,85 +32,224 @@
     <title>Tax Calculator</title>
 
     <style>
-        .result>table,.result td ,.result th{
-            border : 1px solid black;
-            border-collapse:collapse;
-            padding: 10px;
+        *{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        /* .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        } */
+        /* 
+
+        [class*="col-"] {
+            float: left;
+            padding: 15px;
+        } */
+
+        /* header{
+            padding: 2rem;
+            width: 100%;
+        }
+        span{
+            font-size: 35px;
+            color: #0c0a67;
+            grid-column: 1/7;
+        } */
+        /* nav{
+            grid-column: 8 /13;
+        }
+        nav ul{
+            list-style: none;
+            display: flex;
+            justify-content: space-evenly;
+        } */
+        a{
+            text-decoration: none;
+            color: #0C0A67;
+        }
+        p{
+            font-size: 20px;
+            color: whitesmoke;
+            text-align: center;
+            padding-bottom:1rem;
+        }
+        label{
+            font-size: 30px;
+            color: white;
+            width: 100%;
+        }
+        .row{
+            width: 100%;
+            height: 100%;
+        }
+        input{
+            font-size: 24px;
+        }
+        .main{
+            height: 800px;
+        }
+        option{
+            color: #0C0A67;
+           width: 100%;
+        }
+        select{
+            font-size: 24px;
+        }
+        td{
+            font-size:30px;
+        }
+        .taxdata{
+            width: 50%;
+            float:left;
+            background-color: #97C0F0;
+            padding-top:10rem;
+            display:flex;
+            flex-direction:column; 
+            box-sizing:border-box;
+            height: 800px;
+            right:0;
+        }
+        form{
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1{
+            color: #0C0A67;
+            font-size: 35px;
+            text-align:center;
+        }
+        .taxresult{
+            float:left;
+            background-color: white; 
+            padding-top:10rem;
+            width: 50%;
+            height:800px;
+            box-sizing:border-box;
+            right:0;
+        }  
+        table{
+            margin-left: auto;
+            margin-right: auto;
+        } 
+        .calculate{
+            background-color:#0C0A67;
+            color: #ffffff;
+            font-size: 18px;
+            height: 3rem;
+            width: 29rem;
+        }
+        @media screen and (max-width:750px)
+         {
+            .row{
+                flex-direction:column;
+            } 
+            .taxdata ,.taxresult{
+                width:100%;
+                overflow:scroll;
+                height:600px;
+                padding-top:4rem;
+            }
+            
         }
     </style>
 </head>
 <body>
     <main>
-        <h1>Tax Calculator</h1>
-        <form action="../PHP/calculator.php" method="post">
-            <label for="wheel">Vehicle Type: </label>
-            <select name="wheeler" id="wheel">
-                <option value="0W">--Select type--</option>
-                <option value="2W">Two Wheeler</option>
-                <option value="3W">Three Wheeler</option>
-                <option value="4W">Four Wheeler</option>
-                <option value="6W">Six Wheeler</option>
-                <option value="8W">Eight Wheeler</option>
-                <option value="W">Tracks(Dozer)</option>
-            </select>
-            <label for="name">Vehicle name: </label>
-            <select name="Name" id="name" disabled>
-            <option value="none">--Select vehicle--</option>
-            </select><br><br>
-            <input type="radio" name="pp" value="private" checked disabled/>Private
-            <input type="radio" name="pp" value="public" disabled/>Public
-            <br><br>
-            <label for="engCC">Engine CC:</label>
-            <select name="engineCC" id="engCC" disabled></select>
-            <br><br>
-            <label for="lastRenew">Last Renew Date: </label>
-            <input type="date" name="lastRenewDate" id="lastRenew">
-            <label for="province">Province Number: </label>
-            <select name="pro" id="province">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-            </select><br><br>
-            <input type="submit" value="Calculate Tax" name="taxCalculate">
-        </form>
-        <?php
-            if(isset($_GET['calculated'])){
-                echo 
-                "
-                <div class='result'>
-                <span>Your tax will be: </span>
-                 <table>
-                    <tr>
-                        <th>Vehicle Type</th>
-                        <th>Engine CC</th>
-                        <th>Last renew date</th>
-                        <th>Province Number</th>
-                        <th>Tax Amount</th>
-                        <th>Fine percentage</th>
-                        <th>Fine Amount</th>
-                        <th>Paid In</th>
-                        <th>Total tax Amount</th>
-                    </tr>
-                    <tr>
-                        <td>$vType</td>
-                        <td>$engCC</td>
-                        <td>$lastRenewDate</td>
-                        <td>$province</td>
-                        <td>Rs$taxAmount</td>
-                        <td>$finePercentage</td>
-                        <td>Rs$fineAmount</td>
-                        <td>$daysMssg</td>
-                        <td> Rs$totalAmount</td>
-                    </tr>
-                 </table>
-                </div>
-                ";
-            }
-        ?>
+        <div class="row">
+        
+        <div class="taxdata " id="td" >
+            <h1>Tax Calculator</h1>
+            <p>Estimate your tax according to your vehicle and other details</p>
+             <form action="" method="POST" >
+                <label for="wheel">Vehicle Type: </label>
+                <select name="wheeler" id="wheel">
+                    <option value="0W">--Select type--</option>
+                    <option value="2W">Two Wheeler</option>
+                    <option value="3W">Three Wheeler</option>
+                    <option value="4W">Four Wheeler</option>
+                    <option value="6W">Six Wheeler</option>
+                    <option value="8W">Eight Wheeler</option>
+                    <option value="W">Tracks(Dozer)</option>
+                </select><br><br>
+                <label for="name">Vehicle name: </label>
+                <select name="Name" id="name" >
+                    <option value="none">--Select vehicle--</option>
+                </select><br><br>
+                <label for="name">Public/Private: </label>
+                <input type="radio" name="pp" value="private" checked /><label for="name" style="font-size: 24px; color: black;">Private </label>
+                <input type="radio" name="pp" value="public" /><label for="name" style="font-size: 24px; color: black;">Public </label>
+                <br><br>
+                <label for="engCC">Engine CC:</label>
+                <select name="engineCC" id="engCC" ></select>
+                <br><br>
+                <label for="lastRenew">Last Renew Date: </label>
+                <input type="date" name="lastRenewDate" id="lastRenew">
+                <br><br>
+                <label for="province">Province Number: </label>
+                <select name="pro" id="province">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select><br><br>
+                <input type="submit" value="Calculate Tax" name="taxCalculate" class="calculate" id="slide" >
+                </form>
+        </div>
+        <div class="taxresult" id="tr">
+            <h1>Your Result</h1>
+            <table>
+                <tr>
+                    <td>Vehicle Type:</td>
+                    <td>Two wheeler</td>
+                </tr>
+                <tr>
+                    <td>Vehicle Name:</td>
+                    <td>Motocycle</td>
+                </tr>
+                <tr>
+                    <td>Engine CC:</td>
+                    <td>150</td>
+                </tr>
+                <tr>
+                    <td>Public /Private:</td>
+                    <td>private</td>
+                </tr>
+                <tr>
+                    <td>Last Renew Date:</td>
+                    <td>2020-01-05</td>
+                </tr>
+                <tr>
+                    <td>Provience:</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>Tax Amount:</td>
+                    <td>2000</td>
+                </tr>
+                <tr>
+                    <td>Days:</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Fine Percentage:</td>
+                    <td>5%</td>
+                </tr>
+                <tr>
+                    <td>Fine Amount:</td>
+                    <td>200</td>
+                </tr>
+                <tr>
+                    <td>Total Amount:</td>
+                    <td>2200</td>
+                </tr>
+            </table>
+        </div>
+        </div>
     </main>
 
     <script>
