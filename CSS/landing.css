@@ -143,3 +143,13 @@ input {
     text-align: justify;
     margin-bottom: 20px;
 }
+
+@media screen and (max-width: 750px) {
+    .slides, .advantage-section, #form-wrapper {
+        grid-column: 1/3;
+    }
+
+    .advantage-section, #form-wrapper {
+        padding: 1em;
+    }
+}

@@ -37,17 +37,21 @@ header{
     min-height: 80vh;
 }
 
-/* Big hero text and sub headings */
-.headings {
-    /* font-family: 'kalam'; */
-}
-
 /* logo */
 #logo{
     grid-column: 2/5;
     color: whitesmoke;
     font-size: 1.2rem;
     text-align: start;
+}
+
+.nav-toggler {
+    display: none;
+    background-color: transparent;
+    border: none;
+    text-align: right;
+    outline: none;
+    color: #ffffff;
 }
 
 /* navigation for desktop version */
@@ -150,4 +154,30 @@ footer {
     grid-column: 2/12;
     text-align: center;
     padding-top: 30px;
+}
+
+@media screen and (max-width: 750px) {
+    .col-12 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #logo {
+        grid-column: 1/2;
+    }
+
+    .nav-toggler {
+        display: block;
+    }
+
+    nav {
+        display: none;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav, .hero-text, .cr-section {
+        grid-column: 1/3;
+    }
 }
