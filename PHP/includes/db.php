@@ -1,11 +1,12 @@
 <?php
 
 include("table_columns_name.php");
+include("encryption.php");
 
 $hostName = "localhost";
 $username = "root";
 $password = "";
-$dbName = "sbr_db";
+$dbName = "sbr_database";
 
 $conn = new mysqli($hostName, $username, $password);
 
@@ -56,7 +57,51 @@ if($conn->connect_error){
             ";
         
         if($con->query($createUserTable) === FALSE){
-            die("Error while creating users table".$con->error_log);
+            die("Error while creating users table");
+        }
+    }
+
+    $str = "/6G6F;WvK7;s{au/6G6F;WvK7;s{au";
+    $key = md5($str);
+
+    $admin1Email = encryptData('Magar33alson@gmail.com', $key, $str);
+    $admin2Email = encryptData('salipagurung@gmail.com', $key, $str);
+    $admin3Email = encryptData('correctyyyy@gmail.com', $key, $str);
+
+    $admin1Pass = password_hash('alson123456', PASSWORD_DEFAULT);
+    $admin2Pass = password_hash('salipa123456', PASSWORD_DEFAULT);
+    $admin3Pass = password_hash('pratigya123456', PASSWORD_DEFAULT);
+
+    $admin1Check = "SELECT * FROM users WHERE $email_column = '$admin1Email' AND $password_column = '$admin1Pass'";
+
+    if($con->query($admin1Check) === FALSE){
+        $createAdmin1 = "INSERT INTO users VALUES
+                    (null, 'Alson Garbuja', '$admin1Email', 'admin1', 'admin1', '$admin1Pass', 'verified', 'admin1', null, null)";
+
+        if($con->query($createAdmin1) === FALSE){
+            die("Error while creating admin 1");
+        }
+    }
+
+    $admin2Check = "SELECT * FROM users WHERE $email_column = '$admin2Email' AND $password_column = '$admin2Pass'";
+
+    if($con->query($admin2Check) === FALSE){
+        $createAdmin2 = "INSERT INTO users VALUES
+                    (null, 'Salipa Gurung', '$admin2Email', 'admin2', 'admin2', '$admin2Pass', 'verified', 'admin2', null, null)";
+
+        if($con->query($createAdmin2) === FALSE){
+            die("Error while creating admin 2");
+        }
+    }
+
+    $admin3Check = "SELECT * FROM users WHERE $email_column = '$admin3Email' AND $password_column = '$admin3Pass'";
+
+    if($con->query($admin2Check) === FALSE){
+        $createAdmin3 = "INSERT INTO users VALUES
+                    (null, 'Pratigya Dhakal', '$admin3Email', 'admin3', 'admin3', '$admin3Pass', 'verified', 'admin3', null, null)";
+
+        if($con->query($createAdmin3) === FALSE){
+            die("Error while creating admin 2");
         }
     }
 
