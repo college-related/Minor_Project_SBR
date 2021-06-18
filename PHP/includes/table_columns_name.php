@@ -12,6 +12,7 @@ $citizenship_column = "citizenship_number";
 $activation_column = "activation_code";
 $emailVerification_column = "email_verified";
 $image_column = "profile_image_name";
+$role_column = "user_role";
 
 // * vehicles_data table / forms_data table
 $vehicleRegistration_column = "vehicle_registration_number";

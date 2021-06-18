@@ -4,3 +4,5 @@ PHP/includes/phpMailer_fix.php
 
 # ignoring the uploaded images
 ASSETS/upload/*
+
+Admin/php/*

@@ -1,7 +1,5 @@
 <?php
 
-    include("./PHP/includes/db.php");
-
     if(isset($_GET['LogedIn'])){
         echo '<script type="text/Javascript">
                 alert("Sign up or Log in First");
@@ -134,10 +132,10 @@
 
 </head>
 
-<body class="col-12">
     <div class="lang-div">
         <a href="index.php?lang=en">En</a>|<a href="index.php?lang=np">Np</a>
     </div>
+<body class="col-12">
     <!-- head of the website -->
     <header class="col-12">
         <!-- logo and website name -->
