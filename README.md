@@ -52,6 +52,16 @@ you on time.
 5. Run `php db.php`
 
    ⋅Run this for _automatically creating database and required tables_ in your localhost
+   
+   If you encounter this error `**bash: php: command not found**` then follow the following steps
+   <details> <summary> <b> See instructions </b> </summary> 
+   1. Open system environment variable from your control pannel<br/>
+   2. Click on environment variables<br/>
+   3. A new window will pop up, click on the path of system variables <br/>
+   4. Click edit <br/>
+   5. A new window will open, click new <br/>
+   6. Copy and paste your file path to php folder, example: `C:\xampp\php`<br/>
+   </details>
 
 7. Now open your localhost and navigate to the project
 
