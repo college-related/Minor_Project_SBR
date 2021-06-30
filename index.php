@@ -76,266 +76,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SWIFT BLUEBOOK RENEW</title>
 
-    <link rel="stylesheet" href="./CSS/search.css">
-    <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/landing.css">
-    <link rel="stylesheet" href="./CSS/error.css">
+    <link rel="stylesheet" href="./CSS/new-css/style.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    
-    <style>
-
-        <?php
-            if(isset($_GET['error'])){
-                echo ".error-popup{
-                    background-color:rgba(146,6,6,1);
-                    color:#fff;
-                    animation: animateFromTop 1s ease-in-out;
-                    top: 50px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                }";
-            }
-
-        ?>
-
-        <?php
-            if(!isset($_GET['error'])){
-                echo ".error-popup{
-                    display:none;
-                }";
-            }
-
-        ?>
-
-        <?php
-             if($inputError == 'WrongPass'){
-                echo ".log-input-pass{
-                    border:1px solid red;
-                }";
-            }elseif($inputError == "WrongEmailOrUser"){
-                echo ".log-input-user{
-                    border: 1px solid red;
-                }";
-            }
-        ?>
-
-        .lang-div {
-            background-color: black;
-            color: black;
-        }
-
-    </style>
-
-    <script defer src="./JS/navToggle.js"></script>
-    <script defer src="./JS/automatic_slides.js"></script>
-
 </head>
 
-    <div class="lang-div">
-        <a href="index.php?lang=en">En</a>|<a href="index.php?lang=np">Np</a>
-    </div>
-<body class="col-12">
-    <!-- head of the website -->
-    <header class="col-12">
-        <!-- logo and website name -->
-        <span id="logo">
-            <?= $lang['common']['website-name'] ?>
-        </span>
-
-        <button type="button" class="nav-toggler" id="navToggler">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <!-- navigation bar -->
-        <nav id="navMenu">
-            <ul>
-                <li><a href="./pages/information.php?isLogged=false"><?= $lang['index-page']['header-menus'][0] ?></a></li>
-                <li><a href="#"><?= $lang['index-page']['header-menus'][1] ?></a></li>
-                <li><a href="./PAGES/taxCalculator.php"><?= $lang['index-page']['header-menus'][2] ?></a></li>
-                <li><a href="#loginForm"><?= $lang['index-page']['header-menus'][3] ?></a></li>
-            </ul>
-        </nav>
-
-    </header>
-
-    <div class="hero-section col-12">
-        <div class="hero-text">
-            <!-- hero text(website name) -->
-            <h1 class="hero-text headings">
-                <?= $lang['index-page']['hero-text'] ?>
-            </h1>
-
-            <!-- sub heading (slogan) -->
-            <h3 class="sub-text headings">
-                <?= $lang['index-page']['slogan-text'] ?>
-            </h3>
-
-            <!-- getting started button -->
-            <a href="register.php" class="hero-link non-nav-link">
-                <button id="hero-btn"><?= $lang['index-page']['hero-btn-text'] ?></button>
-            </a>
-        </div>
-    </div>
-
-    <?php include './repeated_section/error.php'; ?>
+<body>
+    <?php include("./repeated_section/header.php") ?>
    
     <!-- main section -->
-    <main class="col-12">
-        <div class="feature-wrapper col-12">
-            <!-- features section -->
-            <h2 id="feature-text"><?= $lang['index-page']['feature-section']['title'] ?></h2>
-
-            <div class="slides">
-                <!-- QR code section -->
-                <div class="feature-section qr-fe">
-                    <img src="./ASSETS/images/qr.jpg" alt="illust1" class="feature-imgs">
-                    <div class="feature-div">
-                        <h3><?= $lang['index-page']['feature-section']['sub-titles'][0] ?></h3>
-                        <p>
-                            <?= $lang['index-page']['feature-section']['descriptions'][0] ?>
-                        </p>
-                    </div>
+    <main class="container">
+        <div class="row-2 hero-holder">
+            <div class="col-1 hero-div text-center">
+                <h1>Swift BlueBook Renew</h1>
+                <h3>Less Line Less Waiting</h3>
+                <a href="./register.php">
+                    <button class="btn btn-primary btn-hero">Get Started</button>
+                </a>
+            </div>
+            <div class="col-1">
+                <img src="./ASSETS/IMAGES/undraw/landing-hero.png" alt="" width="600">
+            </div>
+        </div>
+        <div class="row-3 feature-holder">
+            <div class="col-1">
+                <div class="feature-img">
+                    <img src="./ASSETS/IMAGES/undraw/secure.png" alt="" width="300">
                 </div>
-
-                <!-- Secure section -->
-                <div class="feature-section secure-fe">
-                    <img src="./ASSETS/images/secure.jpg" alt="illust2" class="feature-imgs">
-                    <div class="feature-div">
-                        <h3><?= $lang['index-page']['feature-section']['sub-titles'][1] ?></h3>
-                        <p>
-                            <?= $lang['index-page']['feature-section']['descriptions'][1] ?>
-                        </p>
-                    </div>
+                <div class="feature-description">
+                    <h4 class="text-center">Secure and Safe</h4>
+                    <p>
+                        Don't Worry your data are safe
+                        and secure through our database
+                        level encryption and email based
+                        authentication. You are the only 
+                        one who can access them.
+                    </p>
                 </div>
             </div>
-
-            <div class="slides">
-                <!-- fast and reliable section -->
-                <div class="feature-section fast-fe">
-                    <img src="./ASSETS/images/fast.jpg" alt="illust3" class="feature-imgs">
-                    <div class="feature-div">
-                        <h3><?= $lang['index-page']['feature-section']['sub-titles'][2] ?></h3>
-                        <p>
-                            <?= $lang['index-page']['feature-section']['descriptions'][2] ?>
-                        </p>
-                    </div>
+            <div class="col-1">
+                <div class="feature-img">
+                    <img src="./ASSETS/IMAGES/undraw/digitalized.png" alt="" width="300">
                 </div>
-
-                <!-- paper management section -->
-                <div class="feature-section paper-fe">
-                    <img src="./ASSETS/images/paper.jpg" alt="illust4" class="feature-imgs">
-                    <div class="feature-div">
-                        <h3><?= $lang['index-page']['feature-section']['sub-titles'][3] ?></h3>
-                        <p>
-                            <?= $lang['index-page']['feature-section']['descriptions'][3] ?>
-                        </p>
+                <div class="feature-description">
+                    <h4 class="text-center">Digitalized</h4>
+                    <p>
+                        By Digitalizing the data we are
+                        not only making the data reliable
+                        and safe but also fast. All you 
+                        need is few minutes to fill the 
+                        form and its done.
+                    </p>
+                </div>
+            </div>
+            <div class="col-1">
+                <div class="feature-img">
+                    <img src="./ASSETS//IMAGES/undraw/reminder.png" alt="" width="300">
+                </div>
+                <div class="feature-description">
+                    <h4 class="text-center">Reminders</h4>
+                    <p>
+                        Link your email account and the
+                        next time its time to pay the bill
+                        you got our back we will remind
+                        you on time. 
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row-2" id="form">
+            <div class="col-1">
+                <img src="./ASSETS/IMAGES/undraw/login.png" alt="" width="600">
+            </div>
+            <div class="col-1">
+                <div class="form" >
+                    <h2 class="form-title">Log In</h2>
+                    <div class="form-body text-center">
+                        <form action="./PHP/handleLogUser.php" method="POST">
+                            <input class="form-field" type="text" placeholder="UserName or Email" name="user" required/>
+                            <input class="form-field" type="password" placeholder="Password" name="Password" required/>
+                            <input type="submit" value="Log In" name="login" class="btn btn-primary btn-accent"/>
+                        </form>
+                    </div>
+                    <div class="form-footer text-center">
+                        <p>Don't have a account? <a href="./register.php" class="link-primary">Create one</a></p>
+                        <a href="./PAGES/forgetPassword.php" class="link-underline">Forgot Password?</a>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="signLogSection col-12">
-            <!-- advantage section -->
-            <div class="advantage-section">
-                <h1><?= $lang['index-page']['Log-section']['title'] ?></h1>
-
-                <div class="advantage-div">
-                    <i>Icon</i>
-                    <h3><?= $lang['index-page']['Log-section']['advantage-section']['0']['title'] ?></h3>
-                    <p><?= $lang['index-page']['Log-section']['advantage-section']['0']['description'] ?></p>
-                </div>
-                <div class="advantage-div">
-                    <i class="fa fa-magic"></i>
-                    <h3><?= $lang['index-page']['Log-section']['advantage-section']['1']['title'] ?></h3>
-                    <p><?= $lang['index-page']['Log-section']['advantage-section']['1']['description'] ?></p>
-                </div>
-                <div class="advantage-div">
-                    <i class="fa fa-envelope-open-text"></i>
-                    <h3><?= $lang['index-page']['Log-section']['advantage-section']['2']['title'] ?></h3>
-                    <p><?= $lang['index-page']['Log-section']['advantage-section']['2']['description'] ?></p>
-                </div>
-            </div>
-
-            <div id="form-wrapper">
-                <div id="loginForm">
-                    <div class="form">
-                    <form action="./PHP/handleLogUser.php" method="POST">
-                        <h2><?= $lang['index-page']['Log-section']['log-box-section']['title'] ?></h2>
-                        <table>
-                            <tr>
-                                <td><input class="form-input log-input-user" type="text" placeholder="<?= $lang['index-page']['Log-section']['log-box-section']['email-placeholder'] ?>" name="user" required/></td>
-                            </tr>
-                            <tr>
-                                <td><input class="form-input log-input-pass" type="password" placeholder="<?= $lang['index-page']['Log-section']['log-box-section']['password-placeholder'] ?>" name="Password" required/></td>
-                            </tr>
-                            <tr>
-                                <td><input type="submit" value="<?= $lang['index-page']['Log-section']['log-box-section']['btn-text'] ?>" name="login"/></td>
-                            </tr>
-                        </table>
-                    </form>
-                    <a href="./register.php" class="non-nav-link">
-                    <button id="toSignLink" class="btn">
-                        <?= $lang['index-page']['Log-section']['log-box-section']['new-acc-text'] ?>
-                    </button></a><br>
-                    <a href="./PAGES/forgetPassword.php" class="non-nav-link"><?= $lang['index-page']['Log-section']['log-box-section']['forgot-text'] ?></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </main>
 
-    <div class="contact-section col-12">
-        <div class="send-section">
-            <h3>Send Feedback</h3>
-            <form action="#" method="post">
-                <table>
-                    <tr>
-                        <td>
-                            <input type="text" name="senderName" placeholder="Name"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="email" name="senderEmail" placeholder="Email"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="mssgBox">Message:</label><br/>
-                            <textarea name="senderMessage" id="mssgBox" cols="60" rows="5"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="submit" value="Send message" name="mssgSend"/>
-                        </td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        <div class="contacts">
-            <h3>About us</h3>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero eveniet sequi minima unde aperiam neque rerum qui suscipit in voluptatibus, ab tenetur ad expedita, quia illo eligendi delectus ipsa maiores.
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel qui ducimus sit laborum? Labore explicabo quaerat quidem aut temporibus voluptates neque repudiandae sunt, delectus quo harum, veritatis optio at omnis.
-            </p>
-            <address>
-                <label for="phoneNumber">Phone Number: </label>
-                <span class="contact-span" id="phoneNumber">+061-123455</span><br/>
-                <label for="emailAddress">Email: </label>
-                <span class="contact-span" id="emailAddress">+061-123455</span><br/>
-                <label for="faxNumber">Fax Number: </label>
-                <span class="contact-span" id="faxNumber">+061-1244555</span><br/>
-                <i class="fab fa-facebook"></i>
-                <i class="fab fa-twitter"></i>
-                <i class="fab fa-instagram"></i>
-            </address>
-        </div>
-    </div>
-
-    <?php include 'repeated_section/footer.html' ?>
+    <?php include('repeated_section/footer.html') ?>
 
     <script>
         function closeErrorPopUp(){
