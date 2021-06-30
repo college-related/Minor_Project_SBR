@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: inherit;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #89A6F3;
+    border-radius: 10px;
+}
+
+.row-3, .row-5, .row-2, .row-6 {display: grid;}
+.flex {display: flex;}
+
+.row-2 {grid-template-columns: repeat(2, 1fr);}
+.row-3 {grid-template-columns: repeat(3, 1fr);}
+.row-5 {grid-template-columns: repeat(5, 1fr);}
+.row-6 {grid-template-columns: repeat(6, 1fr);}
+
+.col-1 {grid-column: span 1;}
+.col-2 {grid-column: span 2;}
+.col-3 {grid-column: span 3;}
+.col-4 {grid-column: span 4;}
+.col-5 {grid-column: span 5;}
+
+.btn {
+    padding: .5em 1.5em;
+    border: none;
+    box-shadow: 3px 5px 10px #e2e2e2;
+    cursor: pointer;
+    font-weight: bold;
+}
+.btn-primary {background-color: #89A6F3;}
+.btn-rounded {border-radius: 20px;}
+.btn-accent {
+    width: 50%;
+    font-size: 1rem;
+    background-color: inherit;
+    border: 1px solid #FFA733;
+    box-shadow: none;
+}
+.btn-accent:hover {
+    color: #000;
+    background-color: #FFA733;
+}
+.btn-hero {
+    width: 60%;
+    padding: 1em 0;
+}
+
+.nav-btn {margin: .75em 1em;}
+
+a {text-decoration: none; color: #000;}
+.link-primary, .link-underline {text-decoration: underline;}
+.link-primary {color: #89A6F3;}
+.link-footer {color: #e2e2e2;}
+
+.text-center {text-align: center !important;}
+
+.container {
+    max-width: 85%;
+    padding: 0 .75rem;
+    margin: 0 auto;
+}
+
+/* header navigation styling starts */
+header {
+    padding: 2em 0 1em 0;
+    justify-content: space-between;
+}
+
+.nav {margin-left: 2em;}
+.active-link {font-weight: 800; text-decoration: underline;}
+.nav-list {
+    display: flex;
+    list-style: none;
+}
+
+.nav-list li, .settings-widget {
+    padding: 1em;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: .5em;
+}
+
+.theme-setting {
+    border-radius: 50%;
+    background-color: #000;
+    color: #e2e2e2;
+    padding: .5em .75em;
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+.settings-widget {
+    font-weight: bold;
+}
+/* header navbar styling finishes */
+
+
+/* footer styling starts */
+footer {
+    background-color: #252525;
+    color: #e2e2e2;
+}
+
+.footer-div, .policy-div {
+    padding: 1em 0;
+}
+
+.footer-list {
+    list-style: none;
+    line-height: 2.75em;
+    padding: .75em 0;
+}
+
+.footer-heading {
+    padding: .75em 0;
+}
+
+hr {
+    height: 2px;
+    width: 20%;
+    background-color: #e2e2e2;
+    border: none;
+}
+
+.policy-div {
+    border-top: 1px solid #e2e2e2;
+}
+/* footer styling ends */
+
+
+.form-field {
+    width: 100%;
+    padding: 1em;
+    outline: none;
+}
+
+main {
+    padding: 2em 0;
+}
+
+.hero-holder {
+    padding: 2em 0 4em 0;
+}
+
+.hero-div {
+    line-height: 3rem;
+    padding: 2em 0;
+}
+
+.feature-holder {
+    padding: 2em 0 10em 0;
+}
+
+.feature-holder>div {
+    padding: 0 3em;
+}
+
+.feature-description p {
+    text-align: justify;
+}
+
+.form {
+    padding: 1.5em 2.5em;
+    box-shadow: 0px 0px 10px 5px #e2e2e2;
+    width: 80%;
+}
+
+.form-title, .form-body, .form-footer {
+    margin-bottom: 1.5em;
+}
+
+.form-body {
+    line-height: 4.5rem;
+}
