@@ -17,5 +17,8 @@
     <main>
         Profile
     </main>
+
+    <script src="../../JS/new-js/mobile-menu.js"></script>
+    <script src="../../JS/new-js/theme.js"></script>
 </body>
 </html>
