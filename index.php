@@ -1,45 +1,12 @@
 <?php
-
-    if(isset($_GET['LogedIn'])){
-        echo '<script type="text/Javascript">
-                alert("Sign up or Log in First");
-                </script>';
-    }else if(isset($_GET['LoggedOut'])){
-        echo '<script type="text/Javascript">
-                alert("Loged out Successfully");
-                </script>';
-    }
-
     if(isset($_GET['error'])){
         $error = $_GET['error'];
         $title = "Error";
         
-            if($error == 'IllegalWay'){
-                $icon = "<i class='far fa-angry fa-2x'></i>";
-                $mssg = "Please ! Enter through proper way.";                
-            }else if($error == 'NotInserted'){
-                $icon = "<i class='far fa-grin-beam-sweat fa-2x'></i>";
-                $mssg = "Some error occured. Please retry.";
-            }else if($error == 'NotUser'){
-                $icon = "<i class='fas fa-frown fa-2x'></i>";
-                $mssg = "No such user found.";
-            }else if($error == 'SendMailError'){
-                $icon = "<i class='far fa-sad-cry fa-2x'></i>";
-                $mssg = "Some technical issue detected. Please report.";
-            }else if($error == 'WrongLink'){
-                $icon = "<i class='far fa-dizzy fa-2x'></i>";
-                $mssg = "The link must have been expired.";
-            }else if($error == 'NotActivationCode'){
-                $icon = "<i class='far fa-meh fa-2x'></i>";
-                $mssg = "No such activation code found.";
-            }else if($error == 'EmailNotVerified'){
-                $icon = "<i class='far fa-tired fa-2x'></i>";
-                $mssg = "Please verify your email first.";
-            }
-    }
-
-    if(isset($_GET['inputError'])){
-        $inputError = $_GET['inputError'];
+        if($error == 'EmailNotVerified'){
+            $icon = "<i class='far fa-tired fa-2x'></i>";
+            $mssg = "Please verify your email first.";
+        }
     }
 
     if(isset($_GET['mssg'])){
@@ -56,16 +23,6 @@
     }
 
     session_start();
-
-    if(!isset($_SESSION['lang']))
-        $_SESSION['lang'] = "en";
-    elseif(isset($_GET['lang']) && !empty($_GET['lang']) && $_SESSION['lang'] != $_GET['lang']){
-        $_SESSION['lang'] = $_GET['lang'];
-    }
-
-    $url = $_SESSION['lang'];
-    
-    require('Language/'.$url.'.php');
 ?>
 
 <!DOCTYPE html>
@@ -79,10 +36,28 @@
     <link rel="stylesheet" href="./CSS/new-css/style.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <style>
+        <?php if(isset($_GET['inputError']) && $_GET['inputError'] == 'WrongPass') { ?>
+            #password-field {
+                border: 1px solid #CA0B00;
+            }
+        <?php } ?>
+        <?php if(isset($_GET['inputError']) && $_GET['inputError'] == 'WrongEmailOrUser') { ?>
+            #name-field {
+                border: 1px solid #CA0B00;
+            }
+        <?php } ?>
+    </style>
 </head>
 
 <body>
     <?php include("./repeated_section/header.php") ?>
+    <?php 
+        if(isset($_GET['error'])) {
+            include("./repeated_section/error.php");
+        }
+    ?>
    
     <!-- main section -->
     <main class="container">
@@ -94,14 +69,14 @@
                     <button class="btn btn-primary btn-hero">Get Started</button>
                 </a>
             </div>
-            <div class="col-1">
-                <img src="./ASSETS/IMAGES/undraw/landing-hero.png" alt="" width="600">
+            <div class="col-1" class="feature-img">
+                <img src="./ASSETS/IMAGES/undraw/landing-hero.png" alt="girl sitting in a car" class="feature-img">
             </div>
         </div>
         <div class="row-3 feature-holder">
             <div class="col-1">
                 <div class="feature-img">
-                    <img src="./ASSETS/IMAGES/undraw/secure.png" alt="" width="300">
+                    <img src="./ASSETS/IMAGES/undraw/secure.png" alt="secure and safe" class="feature-img">
                 </div>
                 <div class="feature-description">
                     <h4 class="text-center">Secure and Safe</h4>
@@ -116,7 +91,7 @@
             </div>
             <div class="col-1">
                 <div class="feature-img">
-                    <img src="./ASSETS/IMAGES/undraw/digitalized.png" alt="" width="300">
+                    <img src="./ASSETS/IMAGES/undraw/digitalized.png" alt="digitalized" class="feature-img">
                 </div>
                 <div class="feature-description">
                     <h4 class="text-center">Digitalized</h4>
@@ -131,7 +106,7 @@
             </div>
             <div class="col-1">
                 <div class="feature-img">
-                    <img src="./ASSETS//IMAGES/undraw/reminder.png" alt="" width="300">
+                    <img src="./ASSETS//IMAGES/undraw/reminder.png" alt="reminder" class="feature-img">
                 </div>
                 <div class="feature-description">
                     <h4 class="text-center">Reminders</h4>
@@ -144,18 +119,26 @@
                 </div>
             </div>
         </div>
-        <div class="row-2" id="form">
-            <div class="col-1">
-                <img src="./ASSETS/IMAGES/undraw/login.png" alt="" width="600">
+        <div class="row-2 form-holder" id="form-wrapper">
+            <div class="col-1" class="feature-img" id="login-img">
+                <img src="./ASSETS/IMAGES/undraw/login.png" alt="girl by the tree" class="feature-img">
             </div>
             <div class="col-1">
                 <div class="form" >
                     <h2 class="form-title">Log In</h2>
-                    <div class="form-body text-center">
+                    <div class="form-body">
                         <form action="./PHP/handleLogUser.php" method="POST">
-                            <input class="form-field" type="text" placeholder="UserName or Email" name="user" required/>
-                            <input class="form-field" type="password" placeholder="Password" name="Password" required/>
-                            <input type="submit" value="Log In" name="login" class="btn btn-primary btn-accent"/>
+                            <div class="form-group">
+                                <input class="form-field" type="text" placeholder="UserName or Email" name="user" id="name-field" required/>
+                                <?php if(isset($_GET['inputError']) && $_GET['inputError'] == 'WrongEmailOrUser') { echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> The credential is not correct</span>"; } ?>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-field" type="password" placeholder="Password" name="Password" id="password-field" required/>
+                                <?php if(isset($_GET['inputError']) && $_GET['inputError'] == 'WrongPass') { echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> The password is incorrect</span>"; } ?>
+                            </div>
+                            <div class="form-group text-center">
+                                <input type="submit" value="Log In" name="login" class="btn btn-accent"/>
+                            </div>
                         </form>
                     </div>
                     <div class="form-footer text-center">
@@ -173,16 +156,9 @@
         function closeErrorPopUp(){
             document.getElementsByClassName('error-popup')[0].style.display = 'none';
         }
-
-        var input = document.getElementsByClassName('form-input');
-
-        window.addEventListener('click', function(){
-            for(var i = 0; i < input.length;i++){
-                input[i].style.borderColor = 'rgb(211,211,211)';
-            }
-        });
     </script>
-
+    <script src="./JS/new-js/mobile-menu.js"></script>
+    <script src="./JS/new-js/theme.js"></script>
 </body>
 
 </html>
