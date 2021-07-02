@@ -23,7 +23,7 @@ if(isset($_POST['login'])){
         foreach($row as $data){
             // * checking if the email is verified or not
             if($data[$emailVerification_column] == "not verified"){
-                header("location: ../index.php?error=EmailNotVerified#loginForm");
+                header("location: ../index.php?error=EmailNotVerified#form-wrapper");
                 die();
             }
 
@@ -41,7 +41,7 @@ if(isset($_POST['login'])){
                     die();
                 }
             }else{
-                header("location: ../index.php?inputError=WrongPass#loginForm");
+                header("location: ../index.php?inputError=WrongPass#form-wrapper");
             }
         }
     }else{
@@ -55,7 +55,7 @@ if(isset($_POST['login'])){
 
             // * checking if the email is verified or not
             if($row[$emailVerification_column] == "not verified"){
-                header("location: ../index.php?error=EmailNotVerified#loginForm");
+                header("location: ../index.php?error=EmailNotVerified#form-wrapper");
                 die();
             }
 
@@ -73,10 +73,10 @@ if(isset($_POST['login'])){
                     die();
                 }
             }else{
-                header("location: ../index.php?inputError=WrongNameORPass#loginForm");
+                header("location: ../index.php?inputError=WrongPass#form-wrapper");
             }
         }else{
-            header("location: ../index.php?inputError=WrongEmailOrUser#loginForm");
+            header("location: ../index.php?inputError=WrongEmailOrUser#form-wrapper");
         }
     }
 
