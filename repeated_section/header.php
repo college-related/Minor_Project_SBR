@@ -8,28 +8,16 @@
             <span class="logo">SBR</span>
             <nav class="nav">
                 <ul class="nav-list">
-                    <?php if(isset($_SESSION['uId']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin') { ?>
-                        <li><a href="http://localhost/MINOR_PROJECT_SBR/PAGES/admin/details.php" class='<?php if($pageName == "details.php") { echo "active-link"; } ?>'>Details</a></li>
-                        <li><a href="http://localhost/MINOR_PROJECT_SBR/PAGES/admin/profile.php" class='<?php if($pageName == "profile.php") { echo "active-link"; } ?>'>Profile</a></li>
-                    <?php }else {?>
-                        <li><a href="http://localhost/MINOR_PROJECT_SBR/PAGES/taxCalculator.php" class='<?php if($pageName == "taxCalculator.php") { echo "active-link"; } ?>'>Tax Calculator</a></li>
-                        <li><a href="http://localhost/MINOR_PROJECT_SBR/PAGES/information.php" class='<?php if($pageName == "information.php") { echo "active-link"; } ?>'>Info</a></li>
-                        <?php if(isset($_SESSION['uId'])) { ?>
-                            <li><a href="http://localhost/MINOR_PROJECT_SBR/PAGES/form.php" class='<?php if($pageName == "form.php") { echo "active-link"; } ?>'>Form</a></li>
-                            <li><a href="http://localhost/MINOR_PROJECT_SBR/PAGES/profile.php" class='<?php if($pageName == "profile.php") { echo "active-link"; } ?>'>Profile</a></li>
-                        <?php } ?>
-                    <?php } ?>
-                    <!-- <li> -->
+                    <?php include('navMenu.php'); ?>
                     <?php if(isset($_SESSION['uId'])) {?>
-                        <a href="http://localhost/MINOR_PROJECT_SBR/PHP/logout.php" class="btn btn-primary btn-rounded nav-btn">
-                            Log Out
+                        <a href="http://localhost/MINOR_PROJECT_SBR/PHP/logout.php">
+                            <button class="btn btn-primary btn-rounded nav-btn">Log Out</button>
                         </a>
                     <?php } else {?>
-                        <a href="#form" class="btn btn-primary btn-rounded nav-btn">
-                            Log In
+                        <a href="#form-wrapper">
+                            <button class="btn btn-primary btn-rounded nav-btn">Log In</button>
                         </a>
                     <?php } ?>
-                    <!-- </li> -->
                 </ul>
             </nav>
         </div>
@@ -40,4 +28,25 @@
             </span>
         </div>
     </header>
+</div>
+
+<div class="mobile-nav">
+    <div class="mobile-nav-lines">
+        <div class="line-1"></div>
+        <div class="line-2"></div>
+        <div class="line-3"></div>
+    </div>
+</div>
+<div class="mobile-menu">
+    <div class="mobile-close-mark">&times;</div>
+    <?php include('navMenu.php'); ?>
+    <?php if(isset($_SESSION['uId'])) {?>
+        <a href="http://localhost/MINOR_PROJECT_SBR/PHP/logout.php" class="btn-mobile">
+            Log Out
+        </a>
+    <?php } else {?>
+        <a href="#form-wrapper" class="btn-mobile" id="mobile-log">
+            Log In
+        </a>
+    <?php } ?>
 </div>
