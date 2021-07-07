@@ -60,6 +60,7 @@ body {
     background-color: inherit;
     border: 1px solid #FFA733;
     box-shadow: none;
+    color: var(--text-color);
 }
 .btn-accent:hover {
     color: #000;
