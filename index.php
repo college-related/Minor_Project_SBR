@@ -6,6 +6,9 @@
         if($error == 'EmailNotVerified'){
             $icon = "<i class='far fa-tired fa-2x'></i>";
             $mssg = "Please verify your email first.";
+        }elseif($error == 'IllegalWay'){
+            $icon = "<i class='far fa-angry fa-2x'></i>";
+            $mssg = "Illegal Entry Denied!!!";
         }
     }
 

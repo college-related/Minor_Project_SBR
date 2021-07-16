@@ -28,7 +28,7 @@ let themeColor = JSON.parse(localStorage.getItem("themeColors"))
 root.setProperty('--bg-color', themeColor.bgColor);
 root.setProperty('--text-color', themeColor.textColor);
 root.setProperty('--shadow-color', themeColor.shadowColor);
-root.setProperty('--scroll-color', themeColor.shadowColor);
+root.setProperty('--scroll-color', themeColor.scrollColor);
 themeChanger.innerHTML = localStorage.getItem('themeIcon')
 
 function darkMode(){
