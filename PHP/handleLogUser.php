@@ -59,11 +59,11 @@ if(isset($_POST['login'])){
                 die();
             }
 
-            session_start();
-            $_SESSION['uId'] = $row['uId'];
-
             // * checking if the password is correct or not
             if(password_verify($Password,$row[$password_column])){
+                session_start();
+                $_SESSION['uId'] = $row['uId'];
+                
                 if($row[$role_column] == 'admin'){
                     $_SESSION['role'] = 'admin';
                     header("location: ../PAGES/admin/profile.php");
