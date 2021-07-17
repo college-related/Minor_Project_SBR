@@ -6,6 +6,9 @@ if(isset($_POST['delete-btn'])){
 
     session_start();
 
+    if(isset($_SESSION['role'])){
+        $role = $_SESSION['role'];
+    }
     $uId = $_SESSION['uId'];
     $execute = mysqli_query(
         $connect,
@@ -23,11 +26,26 @@ if(isset($_POST['delete-btn'])){
     if(mysqli_affected_rows($connect)){
         // * unlinking or deleting the photo from the uploads folder
         unlink("../ASSETS/upload/".$imageName);
+
+        if($role){
+            header("location: ../PAGES/admin/profile.php?deleted");
+            die();
+        }
+        
         header("location: ../PAGES/profile.php?Logged&deleted");
     }else{
+        if($role){
+            header("location: ../PAGES/admin/profile.php?error3");
+            die();
+        }
+
         header("location: ../PAGES/profile.php?Logged&error3");
     }
 }else{
+    if($role){
+        header("location: ../PAGES/admin/profile.php?error=IllegalWay");
+        die();
+    }
     header("location: ../PAGES/profile.php?Logged&error=IllegalWay");
 }
 
