@@ -53,6 +53,11 @@ body {
     font-weight: bold;
 }
 .btn-primary {background-color: #89A6F3;}
+.btn-secondary {
+    background-color: var(--secondary-button-color); 
+    box-shadow: none;
+    padding: 1em 3em;
+}
 .btn-rounded {border-radius: 20px;}
 .btn-accent {
     width: 50%;
