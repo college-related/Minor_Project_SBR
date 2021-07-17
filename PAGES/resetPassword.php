@@ -9,26 +9,38 @@ $uId = $_GET['uId'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change your Password</title>
+    <title>Change Your Password</title>
+    <link rel="stylesheet" href="../CSS/new-css/style.css">
+    <link rel="stylesheet" href="../CSS/new-css/color.css">
     <link rel="stylesheet" href="../CSS/forgot_reset.css">
 </head>
 <body>
-    <main>
-    <div class="details">
-            <h2>Reset Password</h2>
-            <h5 id="msg">Please choose your new password</h5>
-            <form action="../PHP/changePass.php" method="post">
-                <input type="hidden" name="uId" value="<?=$uId?>"/>
-                <!-- <label for="Pass">New password:</label><br><br> -->
-                <input type="password" name="pass" id="Pass" placeholder="Enter new password"/><br><br>
-                <!-- <label for="Repass">Confirm new password:</label><br><br> -->
-                <input type="password" name="rePass" id="Repass" placeholder="Confirm new password"/><br><br>
-                <input type="submit" value="Change Password" name="changePass"/>
-            </form>
-            <div class="account">Already have an account? <a href="Landing.php#loginForm">Log in</a></div>
-        </div>
-        <div class="illustration"></div>
-        
+    <main class="container form" >
+        <div class="flex main-div">
+            <div class=" detail">
+                <h2 class="form-title web-title">Reset Password</h2>
+                <div class="form-body">
+                    <form action="../PHP/changePass.php" method="post">
+                        <input type="hidden" name="uId" value="<?=$uId?>"/>
+                        <!-- <label for="Pass">New password:</label><br><br> -->
+                        <input type="password" name="pass" id="Pass" placeholder="New password" class="form-field form-group"/><br><br>
+                        <!-- <label for="Repass">Confirm new password:</label><br><br> -->
+                        <input type="password" name="rePass" id="Repass" placeholder="Confirm New Password" class="form-field form-group"/><br><br>
+                        <input type="submit" value="Reset Password" name="changePass" class="btn btn-accent btn-rounded form-group"/>
+                    </form>
+                </div>
+                <div class="form-footer">
+                    <span>Got Password? </span>
+                    <a href="Landing.php#loginForm" class="link-primary">Log in</a>
+                </div>
+            </div>
+            <div class=" reset-password-image side-div">
+                <h2 class="form-title mobile-title">Reset Password</h2>
+                <img src="../ASSETS/IMAGES/undraw/reset-password.png" alt="reset-password" class="feature-img">    
+            </div> 
+        </div> 
+        <script src="../JS/new-js/mobile-menu.js"></script>
+        <script src="../JS/new-js/theme.js"></script>
     </main>
 </body>
 </html>
