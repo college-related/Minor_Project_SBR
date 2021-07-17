@@ -1,0 +1,79 @@
+@import url('./color.css');
+h2 {
+    font-size: 1.5rem;
+}
+
+.calculator-div {
+    padding: .5em 0em;
+}
+
+.calculator-div form {
+    padding: 2em 0;
+}
+
+.calculator-div form div {
+    margin-bottom: 1em;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.tax-radio {
+    display: inline-block;
+    padding: .5em 1em;
+    border: 1px solid #000;
+    cursor: pointer;
+    margin-top: .5em;
+    margin-right: .5em;
+    background-color: var(--reverse-bg-color);
+}
+
+.tax-radio--rounded {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+input[type="radio"]:checked + label {
+    border: none;
+    background-color: #CAD8FC;
+    box-shadow: 3px 4px 10px var(--shadow-color);
+    padding: .75em 1em;
+    color: #000;
+}
+
+.disabled-radio {
+    cursor: not-allowed;
+    color: #919191 !important;
+    border-color: #c4c4c4 !important;
+}
+
+select, option, .result-holder {
+    background-color: var(--reverse-bg-color);
+}
+
+.result {
+    margin: auto .5em;
+}
+
+.result-holder {
+    width: 70%;
+    box-shadow: 3px 4px 20px var(--shadow-color);
+    padding: 1em 2em;
+    background-image: url('../../ASSETS/test.svg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    margin: auto;
+}
+
+.tax-amount {
+    padding: 5.5em 0;
+}
+
+.result-details {
+    margin-top: auto;
+    line-height: 2em;
+}
