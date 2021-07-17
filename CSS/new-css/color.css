@@ -2,7 +2,9 @@
 :root {
     --bg-color: #fff;
     --text-color: #000;
+    --reverse-bg-color: #fff;
     --shadow-color: #e2e2e2;
     --scroll-color: #89A6F3;
+    --border-color: #000;
     --secondary-button-color: #CAD8FC;
 }
