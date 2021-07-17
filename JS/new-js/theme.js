@@ -10,7 +10,8 @@ let lightThemeColors = {
     'shadowColor': '#e2e2e2',
     'scrollColor': '#89A6F3',
     'reverseBgColor': '#fff',
-    'borderColor': '#000'
+    'borderColor': '#000',
+    'forgotBackgroundColor':'#ECECEC'
 }
 let darkThemeColors = {
     'bgColor': '#252525',
@@ -18,7 +19,8 @@ let darkThemeColors = {
     'shadowColor': '#000',
     'scrollColor': '#CAD8FC',
     'reverseBgColor': '#000',
-    'borderColor': '#CCC'
+    'borderColor': '#CCC',
+    'forgotBackgroundColor': '#1C1C1C'
 }
 
 if(theme == null){
@@ -35,6 +37,7 @@ root.setProperty('--shadow-color', themeColor.shadowColor);
 root.setProperty('--scroll-color', themeColor.scrollColor);
 root.setProperty('--reverse-bg-color', themeColor.reverseBgColor);
 root.setProperty('--border-color', themeColor.borderColor);
+root.setProperty('--forgot-background-color', themeColor.forgotBackgroundColor);
 themeChanger.innerHTML = localStorage.getItem('themeIcon')
 
 function darkMode(){
@@ -45,6 +48,7 @@ function darkMode(){
     root.setProperty('--reverse-bg-color', '#000');
     root.setProperty('--border-color', '#CCC');
 
+    root.setProperty('--forgot-background-color', '#1C1C1C');
     localStorage.setItem('theme', 'dark')
     localStorage.setItem('themeColors', JSON.stringify(darkThemeColors))
     localStorage.setItem('themeIcon', '<i class="far fa-sun"></i>')
@@ -59,6 +63,7 @@ function lightMode(){
     root.setProperty('--reverse-bg-color', '#fff');
     root.setProperty('--border-color', '#000');
 
+    root.setProperty('--forgot-background-color', '#ECECEC');
     localStorage.setItem('theme', 'light')
     localStorage.setItem('themeColors', JSON.stringify(lightThemeColors))
     localStorage.setItem('themeIcon', '<i class="far fa-moon"></i>')

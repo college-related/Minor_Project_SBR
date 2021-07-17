@@ -1,0 +1,39 @@
+@import url('./color.css');
+
+.img-section{
+    background-color: var(--forgot-background-color);
+    height: 100vh;
+    padding-top: 5em;
+}
+
+.main{
+    height:100vh;
+   align-items: center;
+}
+
+.check{
+    color: #89A6F3;
+    font-size: 7rem;
+}
+
+.text-section{
+    line-height: 4em;
+    word-spacing: .25em;
+}
+
+@media screen and (max-width:800px){
+    .check{
+        display: none;
+    }
+    .img-section{
+        height: 50vh;
+        background-color: inherit;
+        text-align: center;
+    }
+    img{
+        height: 300px;
+    }
+    .text-section{
+        margin-top: 3em;
+    }
+}
