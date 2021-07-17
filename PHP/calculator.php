@@ -336,24 +336,22 @@ function calculateFine($lastRenew, $taxAmount){
 
 if(isset($_POST['taxCalculate'])){
     $vType = $_POST['wheeler'];
-    $vName = $_POST['Name'];
-    $radio = "none";
-    $engCC = "none";
-    if(isset($_POST['pp'])){
-        $radio = $_POST['pp'];
-    }
-    if(isset($_POST['engineCC'])){
-        $engCC = $_POST['engineCC'];
-    }
-    $lastRenew = $_POST['lastRenewDate'];
-    $province = $_POST['pro'];
+    $vName = $_POST['v-name'];
+    $radio = $_POST['public-private'];
+    $engCC = $_POST['engine-cc'];
+    $lastRenew = $_POST['renew-date'];
+    $province = $_POST['province'];
 
     // * obtaining the tax amount
     $taxAmount = calculateTax($vName, $engCC, $province, $radio);
 
     // * obtaining the fine amount
     $fine = calculateFine($lastRenew, $taxAmount);
+
+    list($finepercentage, $fineamount, $totaldays) = array_pad(explode('|', $fine, 3), 3, 0);
     
-    header("location: ../PAGES/taxCalculator.php?calculated&wt=$vType&vn=$vName&e=$engCC&lr=$lastRenew&pr=$province&ta=$taxAmount&f=$fine");
+    $totalAmount = $taxAmount + ($finepercentage/100 * $taxAmount);
+
+    header("location: ../PAGES/taxCalculator.php?calculated&wt=$vType&vn=$vName&e=$engCC&lr=$lastRenew&pr=$province&ta=$taxAmount&fp=$finepercentage&fa=$fineamount&toa=$totalAmount");
 
 }
