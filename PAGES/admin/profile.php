@@ -68,7 +68,7 @@
                 </div>
                 <div class="information-holder col-2">
                     <h2>Personal Information</h2>
-                    <hr>
+                    <hr class="hr">
                     <div class="info">
                         <p>
                             <b>Name:  </b> <?= $row[$username_column] ?>
