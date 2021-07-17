@@ -14,7 +14,14 @@
                             <button class="btn btn-primary btn-rounded nav-btn">Log Out</button>
                         </a>
                     <?php } else {?>
-                        <a href="#form-wrapper">
+                        <?php 
+                            if($pageName == 'taxCalculator.php' || $pageName == 'information.php'){
+                                $link = 'http://localhost/MINOR_PROJECT_SBR/index.php#form-wrapper';
+                            }else{
+                                $link = '#form-wrapper';
+                            } 
+                        ?>
+                        <a href="<?= $link ?>">
                             <button class="btn btn-primary btn-rounded nav-btn">Log In</button>
                         </a>
                     <?php } ?>
