@@ -26,9 +26,9 @@
                     </div>
             </div>
             <div class="forgot-password-image">
-                <h2 class="form-title mobile-title">Forgot Your Password?</h2>
                 <img src="../ASSETS/IMAGES/undraw/forgot-password.png" alt="forgot-password" class="feature-img">
             </div>
+            <h2 class="form-title mobile-title">Forgot Your Password?</h2>
         </div>
     </main>
     <script src="../JS/new-js/mobile-menu.js"></script>

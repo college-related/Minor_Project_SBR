@@ -35,9 +35,9 @@ $uId = $_GET['uId'];
                 </div>
             </div>
             <div class=" reset-password-image side-div">
-                <h2 class="form-title mobile-title">Reset Password</h2>
                 <img src="../ASSETS/IMAGES/undraw/reset-password.png" alt="reset-password" class="feature-img">    
             </div> 
+            <h2 class="form-title mobile-title">Reset Password</h2>
         </div> 
         <script src="../JS/new-js/mobile-menu.js"></script>
         <script src="../JS/new-js/theme.js"></script>
