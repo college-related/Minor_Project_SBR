@@ -2,7 +2,7 @@
 let icon = document.getElementsByClassName("icon");
 let i;
 
-for(i = 0 ; i < holder.length ; i++){
+for(i = 0 ; i < icon.length ; i++){
     icon[i].addEventListener('click',function(e){
         this.classList.toggle("active")
         const holder = e.currentTarget.parentElement;

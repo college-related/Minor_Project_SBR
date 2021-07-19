@@ -16,12 +16,12 @@
         $successMssg = $_GET['mssg'];
         $title = "Hurray!";
 
-        if($successMssg == 'CheckEmail'){
+        if($successMssg == 'Verified'){
             $icon = "<i class='far fa-grin-beam fa-2x'></i>";
-            $mssg = "Please check your email for verification";
+            $mssg = "Your email is verified, you can log in.";
         }else if($successMssg == 'AlreadyVerified'){
             $icon = "<i class='far fa-laugh-wink fa-2x'></i>";
-            $mssg = "User already verified";
+            $mssg = "Your email is already verified, you can log in.";
         }
     }
 
@@ -153,6 +153,7 @@
         </div>
     </main>
 
+    <?php include('repeated_section/mobile-header.php') ?>
     <?php include('repeated_section/footer.html') ?>
 
     <script>
