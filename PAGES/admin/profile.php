@@ -98,6 +98,8 @@
         </div>
     </main>
 
+    <?php include('../../repeated_section/mobile-header.php') ?>
+
     <script>
         function submitForm()
         {
