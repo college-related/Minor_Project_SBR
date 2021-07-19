@@ -14,16 +14,16 @@ if(isset($_GET['activation_code'])){
         $query_update = mysqli_query($connect,$sql_update);
 
         if(mysqli_affected_rows($connect)){
-            header("location: ../PAGES/verifiedEmail.html");
+            header("location: ../index.php?mssg=Verified#form-wrapper");
         }else{
-            header("location: ../index.php?mssg=AlreadyVerified#loginForm");
+            header("location: ../index.php?mssg=AlreadyVerified#form-wrapper");
         }
     }else{
-        header("location: ../index.php?error=NotActivationCode#signupForm");
+        header("location: ../index.php?error=NotActivationCode");
     }
 
 }else{
-    header("location: ../index.php?error=WrongLink#signupForm");
+    header("location: ../index.php?error=WrongLink");
 }
 
 ?>
