@@ -2,7 +2,7 @@
     min-width: 50%;
     border: 1px solid var(--border-color);
     margin: 1.5rem 2rem; 
-    height: 50px;  
+    height: 50px;
     overflow: hidden;
     box-sizing: border-box;
 }
@@ -11,8 +11,8 @@
     border-bottom:1px solid var(--border-color);
 }
 .info-body-holder{
-    padding: 1rem;
     text-align: justify;
+    padding: 1em;
 }
 .icon {
     padding: 0.8rem 0.8rem;
@@ -23,7 +23,6 @@
     text-align: left;
     font-size: 16px;
     border: none;
-    transition: 0.4s;
 }
 .main-div-holder{
     margin:3rem 0rem 5rem 0rem;
@@ -37,5 +36,5 @@
     content: "\2212";
 }
 .show{
-    height: max-content;
+    height: fit-content;
 }

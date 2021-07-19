@@ -1,8 +1,10 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Information</title>
     <link rel="stylesheet" href="../CSS/new-css/color.css">
     <link rel="stylesheet" href="../CSS/new-css/style.css">
@@ -11,12 +13,12 @@
     <script defer src="../JS/new-js/info_height.js"></script>
 </head>
 <body>
-<?php include("../repeated_section/header.php") ?>
+    <?php include("../repeated_section/header.php") ?>
     <main class="container ">
         <div class="row-2 main-div-holder">
             <div class="info-holder col-1 show">
                 <div class="info-title-holder">
-                    <button class="font-bold icon">Vehicle Tax </button>
+                    <button class="font-bold icon active">Vehicle Tax </button>
                 </div>
                 <div class="info-body-holder">
                     The tax you have to pay to government for using the 
@@ -26,7 +28,7 @@
             </div>
             <div class="info-holder col-1 show">
                 <div class="info-title-holder">
-                    <button class="font-bold icon">Engine CC</button>
+                    <button class="font-bold icon active">Engine CC</button>
                 </div>
                 <div class="info-body-holder">
                     The tax you have to pay to government for using the 
@@ -36,7 +38,7 @@
             </div>
             <div class="info-holder col-1 show" >
                 <div class="info-title-holder">
-                    <button class="font-bold icon">Vehicle Type</button>
+                    <button class="font-bold icon active">Vehicle Type</button>
                 </div>
                 <div class="info-body-holder ">
                 There are various types of vehicles.Our website include two of them:  <b>Two Wheeler</b> and <b>Four Wheeler</b>.We have to choose of it give some information about our vehicle.
@@ -108,8 +110,10 @@
             </div>
         </div>
     </main>
+    
     <?php include('../repeated_section/footer.html') ?>
     <?php include('../repeated_section/mobile-header.php')?>
+    
     <script src="../JS/new-js/mobile-menu.js"></script>
     <script src="../JS/new-js/theme.js"></script>
     
