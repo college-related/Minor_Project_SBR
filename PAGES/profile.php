@@ -39,6 +39,9 @@
     $enginecc = $infoarray[0][$engineCC_column];
 
     $taxHistoryPaginate = count($taxArray) - 4;
+    if($taxHistoryPaginate < 0){
+        $taxHistoryPaginate = 0;
+    }
     if(isset($_GET['thp'])){$taxHistoryPaginate = $_GET['thp'];}
     if(isset($_GET['pagination']))
     {
