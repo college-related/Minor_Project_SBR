@@ -1,5 +1,5 @@
 <?php
-    
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,11 +27,11 @@
                                 <label for="">Type: </label>
                             </div>
                             <div class="col-5">
-                                <input type="radio" value="2-wheeler" name="wheeler" id="2-wheeler" checked><label for="2-wheeler" class="tax-radio">Two Wheeler</label>
-                                <input type="radio" value="3-wheeler" name="wheeler" id="3-wheeler"><label for="3-wheeler" class="tax-radio">Three Wheeler</label>
-                                <input type="radio" value="4-wheeler" name="wheeler" id="4-wheeler"><label for="4-wheeler" class="tax-radio">Four Wheeler</label>
-                                <input type="radio" value="6-wheeler" name="wheeler" id="6-wheeler"><label for="6-wheeler" class="tax-radio">Six Wheeler</label>
-                                <input type="radio" value="8-wheeler" name="wheeler" id="8-wheeler"><label for="8-wheeler" class="tax-radio">Eight Wheeler</label>
+                                <input type="radio" value="2-wheeler" name="wheeler" class="wheeler-radio" id="2-wheeler" checked><label for="2-wheeler" class="tax-radio">Two Wheeler</label>
+                                <input type="radio" value="3-wheeler" name="wheeler" class="wheeler-radio" id="3-wheeler"><label for="3-wheeler" class="tax-radio">Three Wheeler</label>
+                                <input type="radio" value="4-wheeler" name="wheeler" class="wheeler-radio" id="4-wheeler"><label for="4-wheeler" class="tax-radio">Four Wheeler</label>
+                                <input type="radio" value="6-wheeler" name="wheeler" class="wheeler-radio" id="6-wheeler"><label for="6-wheeler" class="tax-radio">Six Wheeler</label>
+                                <input type="radio" value="8-wheeler" name="wheeler" class="wheeler-radio" id="8-wheeler"><label for="8-wheeler" class="tax-radio">Eight Wheeler</label>
                             </div>
                         </div>
                         <div class="row-6 justify-center">
@@ -39,9 +39,9 @@
                                 <label for="">Name: </label>
                             </div>
                             <div class="col-5 name-div">
-                                <input type="radio" value="Motorcycle" name="v-name" id="motorcycle" checked><label for="motorcycle" class="tax-radio">MotorCycle</label>
-                                <input type="radio" value="Scooter" name="v-name" id="sccoter"><label for="sccoter" class="tax-radio">Scooter</label>
-                                <input type="radio" value="Moped" name="v-name" id="moped"><label for="moped" class="tax-radio">Moped</label>
+                                <input type="radio" value="Motorcycle" name="v-name" id="motorcycle" checked><label for="motorcycle" class="tax-radio tax-radio--vname">MotorCycle</label>
+                                <input type="radio" value="Scooter" name="v-name" id="sccoter"><label for="sccoter" class="tax-radio tax-radio--vname">Scooter</label>
+                                <input type="radio" value="Moped" name="v-name" id="moped"><label for="moped" class="tax-radio tax-radio--vname">Moped</label>
                             </div>
                         </div>
                         <div class="row-6 justify-center">
@@ -50,7 +50,7 @@
                             </div>
                             <div class="col-5">
                                 <input type="radio" value="private" name="public-private" id="private" checked><label for="private" class="tax-radio">Private</label>
-                                <input type="radio" value="public" name="public-private" id="public" disabled><label for="public" class="tax-radio disabled-radio">Public</label>
+                                <input type="radio" value="public" name="public-private" id="public" disabled><label for="public" class="tax-radio disabled-radio" id="public-label">Public</label>
                             </div>
                         </div>
                         <div class="row-6 justify-center">
@@ -58,7 +58,7 @@
                                 <label for="">Engine CC: </label>
                             </div>
                             <div class="col-5">
-                                <select name="engine-cc" id="" class="form-field">
+                                <select name="engine-cc" id="eng-cc" class="form-field">
                                     <option value="0-125CC">0cc - 125cc</option>
                                     <option value="126CC-250CC">126cc - 250cc</option>
                                     <option value="251CC-400CC">251cc - 400cc</option>
@@ -112,9 +112,10 @@
         </div>
     </main>
 
+    <?php include('../repeated_section/mobile-header.php') ?>
     <?php include('../repeated_section/footer.html') ?>
 
-    
+    <script src="../JS/new-js/calculator.js"></script>
     <script src="../JS/new-js/mobile-menu.js"></script>
     <script src="../JS/new-js/theme.js"></script>
 </body>

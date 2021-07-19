@@ -64,7 +64,8 @@ select, option, .result-holder {
     padding: 1em 2em;
     background-image: url('../../ASSETS/test.svg');
     background-repeat: no-repeat;
-    background-position: right;
+    background-origin: border-box;
+    background-position: top -100px right -100px;
     background-size: contain;
     margin: auto;
 }
