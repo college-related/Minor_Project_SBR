@@ -82,13 +82,13 @@
                     </div>
                     <h2>Password</h2>
                     <div class="reset-form--holder">
-                        <form action="#" method="POST">
+                        <form action="../../PHP/admin/resetPassword.php" method="POST">
                             <div class="row-5">
                                 <div class="col-2">
                                     <input type="password" name="password" class="form-field" placeholder="Leave to keep the current password">
                                 </div>
                                 <div class="col-3">
-                                    <input type="submit" value="Reset Password" class="btn btn-secondary btn-reset">
+                                    <input type="submit" value="Reset Password" name="reset-pass" class="btn btn-secondary btn-reset">
                                 </div>
                             </div>
                         </form>
