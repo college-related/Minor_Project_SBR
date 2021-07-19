@@ -208,6 +208,7 @@
             <h2>Taxes</h2>
             <hr class="hr">
             <div class="profile-detail-section tax-detail info">
+                <?php if(count($taxArray > 0)){  ?>
                 <div id="tax-h" class="tax-history">
                     
                     <?php for($i=count($taxArray) - 1; $i >= $taxHistoryPaginate; $i--) { ?>
@@ -230,6 +231,11 @@
                         <button class="btn btn-secondary btn-mobile btn-reset">Load More</button>
                     </a> <?php } 
                 ?>
+                <?php } else { ?>
+                <div class="text-center"> 
+                    <h3>No Tax History</h3> 
+                </div>
+                <?php } ?>
             </div>
         </div>
         </div>
