@@ -208,7 +208,7 @@
             <h2>Taxes</h2>
             <hr class="hr">
             <div class="profile-detail-section tax-detail info">
-                <?php if(count($taxArray > 0)){  ?>
+                <?php if(count($taxArray) > 0){  ?>
                 <div id="tax-h" class="tax-history">
                     
                     <?php for($i=count($taxArray) - 1; $i >= $taxHistoryPaginate; $i--) { ?>
