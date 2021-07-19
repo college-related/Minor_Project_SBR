@@ -1,0 +1,69 @@
+@import url('color.css');
+
+.main-holder{
+    margin-bottom: 6em;
+}
+
+.btn{
+    width: 100%;
+}
+
+.photo-section{
+    position: relative;
+}
+
+.mobile-edit--btn{
+    display: none;
+    font-size: 1.5rem; 
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.editBtn{
+    margin-top: 1em;
+}
+
+.tax-holder{
+    background-color: var(--tax-bg-color);
+    /* color: black; */
+    border: 1px solid var(--border-color);
+    min-width: 300px;
+    padding: .2em 1em;
+    margin-right: 2em;
+    margin-bottom: 1em;
+}
+
+.fine-amount-holder,.tax-history{
+    display: flex;
+}
+
+.tax-history{
+    flex-wrap: wrap;
+}
+
+.fine-amount-holder{
+    justify-content: space-between;
+}
+
+.year-amount{
+    font-size: 1.25rem;
+}
+
+.fine{
+    font-size: 1.1rem;
+}
+
+.btn-reset{
+    margin-left: 0;
+}
+
+@media screen and (max-width: 800px){
+    .desktop-edit--btn{
+        display: none;
+    }
+
+    .mobile-edit--btn{
+        display: block;
+    }
+}

@@ -11,7 +11,8 @@ let lightThemeColors = {
     'scrollColor': '#89A6F3',
     'reverseBgColor': '#fff',
     'borderColor': '#000',
-    'forgotBackgroundColor':'#ECECEC'
+    'forgotBackgroundColor':'#ECECEC',
+    'taxBgColor': '#FCFCFC'
 }
 let darkThemeColors = {
     'bgColor': '#252525',
@@ -20,7 +21,8 @@ let darkThemeColors = {
     'scrollColor': '#CAD8FC',
     'reverseBgColor': '#000',
     'borderColor': '#CCC',
-    'forgotBackgroundColor': '#1C1C1C'
+    'forgotBackgroundColor': '#1C1C1C',
+    'taxBgColor': '#2D2D2D'
 }
 
 if(theme == null){
@@ -38,6 +40,7 @@ root.setProperty('--scroll-color', themeColor.scrollColor);
 root.setProperty('--reverse-bg-color', themeColor.reverseBgColor);
 root.setProperty('--border-color', themeColor.borderColor);
 root.setProperty('--forgot-background-color', themeColor.forgotBackgroundColor);
+root.setProperty('--tax-bg-color' , themeColor.taxBgColor);
 themeChanger.innerHTML = localStorage.getItem('themeIcon')
 
 function darkMode(){
@@ -47,6 +50,7 @@ function darkMode(){
     root.setProperty('--scroll-color', '#CAD8FC');
     root.setProperty('--reverse-bg-color', '#000');
     root.setProperty('--border-color', '#CCC');
+    root.setProperty('--tax-bg-color' , '#2D2D2D');
 
     root.setProperty('--forgot-background-color', '#1C1C1C');
     localStorage.setItem('theme', 'dark')
@@ -62,7 +66,7 @@ function lightMode(){
     root.setProperty('--scroll-color', '#89A6F3');
     root.setProperty('--reverse-bg-color', '#fff');
     root.setProperty('--border-color', '#000');
-
+    root.setProperty('--tax-bg-color' , '#FCFCFC');
     root.setProperty('--forgot-background-color', '#ECECEC');
     localStorage.setItem('theme', 'light')
     localStorage.setItem('themeColors', JSON.stringify(lightThemeColors))
