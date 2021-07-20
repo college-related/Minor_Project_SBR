@@ -52,6 +52,12 @@
                             </div>
                         </form>
                     </div>
+                    <div class="col-2"></div>
+                    <div class="col-2 justify-center">
+                        <?php if(isset($users)){ ?>
+                            <h3 class="font-bold">Search result for <q><?=$_GET['keyword']?></q></h3>
+                        <?php }?>
+                    </div>
                 </div>
             </div>
 
