@@ -5,7 +5,11 @@
 <div class="container">
     <header class="flex">
         <div class="flex">
-            <span class="logo">SBR</span>
+            <span class="logo">
+                <a href="http://localhost/MINOR_PROJECT_SBR/index.php">
+                    SBR
+                </a>
+            </span>
             <nav class="nav">
                 <ul class="nav-list">
                     <?php include('navMenu.php'); ?>

@@ -31,7 +31,7 @@ $uId = $_GET['uId'];
                 </div>
                 <div class="form-footer">
                     <span>Got Password? </span>
-                    <a href="Landing.php#loginForm" class="link-primary">Log in</a>
+                    <a href="../index.php#form-wrapper" class="link-primary">Log in</a>
                 </div>
             </div>
             <div class=" reset-password-image side-div">

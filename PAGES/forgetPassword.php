@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-footer">
                         <span>Got Password?</span>
-                        <a href="../index.php#loginForm" class="link-primary">Log in</a>
+                        <a href="../index.php#form-wrapper" class="link-primary">Log in</a>
                     </div>
             </div>
             <div class="forgot-password-image">
