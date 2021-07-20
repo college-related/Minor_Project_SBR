@@ -8,7 +8,7 @@ let publicRadio = document.querySelector('#public')
 let privateRadio = document.querySelector('#private')
 let publicLabel = document.querySelector('#public-label')
 let vWheelerRadios = document.querySelectorAll('.tax-radio')
-let vNames = document.querySelectorAll('.tax-radio--name')
+let vNames;
 
 function addLabels(options, name)
 {
@@ -35,8 +35,8 @@ function addOptions(options, name){
     for(let j = 0; j < options.length; j++)
     {
         let newOption = document.createElement('option')
-        newOption.value = options[i]
-        newOption.innerHTML = options[i].toLowerCase()
+        newOption.value = options[j]
+        newOption.innerHTML = options[j].toLowerCase()
 
         name.appendChild(newOption)
     }
@@ -73,6 +73,8 @@ function generateVNames() {
 function generateEngCC()
 {
     engineCCSelect.innerHTML = ""
+    engineCCSelect.disabled = false
+    engineCCSelect.classList.remove('disabled-radio')
 
     if(selectedVName == 'Motorcycle' || selectedVName == 'Scooter' || selectedVName == 'Moped'){
         optArry = ["0-125CC", "126CC-250CC", "251CC-400CC", "401CC-Greater"]
@@ -86,6 +88,9 @@ function generateEngCC()
                 "2501CC-2900CC", "2901CC-Greater"]
         }
         addOptions(optArry, engineCCSelect)
+    }else{
+        engineCCSelect.disabled = true
+        engineCCSelect.classList.add('disabled-radio')
     }
 }
 
@@ -106,6 +111,7 @@ for(let i = 0; i < 5; i++){
         selectedWheeler = vWheelers[i].value
         enableDisablePP()
         generateVNames()
+        vNames = document.querySelectorAll('.tax-radio--vname')
         addListenerToNames()
     })
 }
@@ -113,8 +119,8 @@ for(let i = 0; i < 5; i++){
 function addListenerToNames()
 {
     for(let k = 0; k < vNames.length; k++){
-        vNames[i].addEventListener('click', () => {
-            selectedVName = vNames[i].value
+        vNames[k].addEventListener('click', () => {
+            selectedVName = vNames[k].previousElementSibling.value
             console.log(selectedVName)
             generateEngCC()
         })

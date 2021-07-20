@@ -36,21 +36,21 @@
                         </div>
                         <div class="row-6 justify-center">
                             <div class="font-bold">
+                                <label for="">Public<br/>/Private: </label>
+                            </div>
+                            <div class="col-5">
+                                <input type="radio" value="private" name="public-private" id="private" checked><label for="private" class="tax-radio">Private</label>
+                                <input type="radio" value="public" name="public-private" id="public" disabled><label for="public" class="tax-radio disabled-radio" id="public-label">Public</label>
+                            </div>
+                        </div>
+                        <div class="row-6 justify-center">
+                            <div class="font-bold">
                                 <label for="">Name: </label>
                             </div>
                             <div class="col-5 name-div">
                                 <input type="radio" value="Motorcycle" name="v-name" id="motorcycle" checked><label for="motorcycle" class="tax-radio tax-radio--vname">MotorCycle</label>
                                 <input type="radio" value="Scooter" name="v-name" id="sccoter"><label for="sccoter" class="tax-radio tax-radio--vname">Scooter</label>
                                 <input type="radio" value="Moped" name="v-name" id="moped"><label for="moped" class="tax-radio tax-radio--vname">Moped</label>
-                            </div>
-                        </div>
-                        <div class="row-6 justify-center">
-                            <div class="font-bold">
-                                <label for="">Public<br/>/Private: </label>
-                            </div>
-                            <div class="col-5">
-                                <input type="radio" value="private" name="public-private" id="private" checked><label for="private" class="tax-radio">Private</label>
-                                <input type="radio" value="public" name="public-private" id="public" disabled><label for="public" class="tax-radio disabled-radio" id="public-label">Public</label>
                             </div>
                         </div>
                         <div class="row-6 justify-center">
