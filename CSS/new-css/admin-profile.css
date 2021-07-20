@@ -111,3 +111,10 @@ label[for='image-remover']:hover #delete-image{
     right: 7px;
     left: 50%;
 }
+
+@media screen and (max-width: 800px) {
+    .btn-reset {
+        margin-top: 1em;
+        margin-left: 0;
+    }
+}
