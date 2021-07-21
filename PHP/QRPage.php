@@ -32,95 +32,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Page</title>
 
-    <link rel="stylesheet" href="../CSS/QRPage.css">
+    <!-- <link rel="stylesheet" href="../CSS/QRPage.css"> -->
+    <link rel="stylesheet" href="../CSS/new-css/style.css">
+    <link rel="stylesheet" href="../CSS/new-css/admin-details.css">
+    <link rel="stylesheet" href="../CSS/new-css/qr.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
 </head>
 <body>
+    <?php include('../repeated_section/header.php') ?>
+
     <main>
-    <!-- main wrapper div for qr page-->
-        <div class="wrapper">
-        <!-- div containing the qr image -->
-            <div id="QrCode">
-                <?php echo "<img src='QR.php?amount=$tAmount&fine=$finePer&mssg=$insMssg'>" ?>
-            </div>
-            <!-- div containing the form details -->
-            <div id="form">
-                <h4>Form Details</h4>
-                <div id="table">
-                    <table>
-                        <tr>
-                            <td> Name: </td>
-                            <td>
-                                <?= $data[0][$username_column] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> Phone no:</td>
-                            <td>
-                                <?= decryptData($data[0][$phoneNumber_column], $key); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Citizenship Number:</td>
-                            <td>
-                                <?= decryptData($data[0][$citizenship_column], $key); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> Vehicle type:</td>
-                            <td>
-                                <?= $data[0][$vehicleType_column] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Engine CC:</td>
-                            <td>
-                                <?= $data[0][$engineCC_column] ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> Registration number:</td>
-                            <td>
-                                <?= decryptData($data[0][$vehicleRegistration_column], $key); ?>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Last renew date:</td>
-                            <td>
-                                <?= $data[0][$renewDate_column] ?>
-                            </td>
-                        </tr>
-                    </table>
-            </div>
-            </div>
-            <!-- div containing the fine details -->
-            <div id="fine-detail">
-                <h4>Amount Details</h4>
-                <p>Your total amount will be Rs.<?= $tAmount ?></p>
-                <p>You have <?= $finePer ?> fine, which is Rs.<?= $fineAmount ?></p>
-            </div>
-            <!-- div containing the insurance message -->
-            <!-- TODO: make it more useful -->
-            <div id="insurance-detail">
-                <h4>Insurance Detail</h4>
-                <p class="imp-insurance">
-                    <?php 
-                    // as the INS_SLIP column is in 10th index
-                        if($data[0][$insurance_column] == 'yes'){
-                            echo "You must take the insurance slip with you.";
-                        }else{
-                            echo "You can either pay your insurance in any company or right outside the office.";
-                        }
-                    ?>
-                </p>
-            </div>
-            <!-- Button div for going back to profile page -->
-            <div id="button-layout">
-            <!-- TODO: add a download system -->
-                <!--<a href="<?php echo $urlPath; ?>"><button id="download-btn">Download</button></a>-->
-                <a href="../PAGES/profile.php?Logged"><button id="goback-btn">Go Home</button></a>
+        <div class="container">
+            <div class="main-holder">
+                <div class="row-3">
+                    <div class="qr-holder text-center">
+                        <?php echo "<img src='QR.php?amount=$tAmount&fine=$fineAmount&mssg=$insMssg'>"; ?>
+                        <?php if($data[0][$insurance_column] == 'yes'){ ?>
+                            <div class="ins-mssg text-success">
+                                Please take your insurance slip with you.
+                            </div>
+                        <?php }else{ ?>
+                            <div class="ins-mssg text-danger">
+                                Please clear your insurance first.
+                            </div>
+                        <?php } ?>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-info--holder">
+                            <h2>Form Data</h2>
+                            <hr class="hr">
+                            <div class="row-2 more-holder">
+                                <div class="info-holders">
+                                    <p><b>Name: </b><?=$data[0][$username_column]?></p>
+                                    <p><b>Phone Number: </b><?=decryptData($data[0][$phoneNumber_column], $key)?></p>
+                                    <p><b>Citizenship Number: </b><?=decryptData($data[0][$citizenship_column], $key)?></p>
+                                    <p><b>Last Renew Date: </b><?=$data[0][$renewDate_column]?></p>
+                                </div>
+                                <div class="info-holders">
+                                    <p><b>Vehicle Registration Number: </b><?=decryptData($data[0][$vehicleRegistration_column], $key)?></p>
+                                    <p><b>Vehicle Type: </b><?=$data[0][$vehicleType_column]?></p>
+                                    <p><b>Vehicle Category: </b><?=$data[0][$vehicleCategory_column]?></p>
+                                    <p><b>Engine CC: </b><?=$data[0][$engineCC_column]?></p>
+                                </div>
+                            </div>
+                            <h3>Did mistake? <a href="../PAGES/form.php?fId=<?=$data[0]['fId']?>">Resubmit</a></h3>
+                        </div>
+                        <div id="button-layout">
+                        <!-- TODO: add a download system -->
+                            <!--<a href="<?php echo $urlPath; ?>"><button id="download-btn">Download</button></a>-->
+                            <a href="../PAGES/profile.php"><button class="btn btn-secondary btn-reset">Go Home</button></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+
+    <?php include('../repeated_section/mobile-header.php') ?>
+
+    <script src="../JS/new-js/theme.js"></script>
+    <script src="../JS/new-js/mobile-menu.js"></script>
 </body>
 </html>

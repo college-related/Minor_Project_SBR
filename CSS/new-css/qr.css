@@ -1,0 +1,26 @@
+@import url('color.css');
+
+h3 {
+    margin: 2em 0;
+}
+
+h3 a {
+    color: #89A6F3;
+    text-decoration: underline;
+}
+
+.qr-holder {
+    margin: auto;
+}
+
+.ins-mssg {
+    margin: 2em 3em;
+    padding: 1em;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--tax-bg-color);
+}
+
+.text-success {
+    color: #22D906;
+}
