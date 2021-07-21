@@ -44,7 +44,7 @@
                         <form action="" method="get" autocomplete="off">
                             <div class="form-holder justify-center">
                                 <div class="input-holder">
-                                    <input type="text" name="keyword" placeholder="Search" class="form-field">
+                                    <input type="text" name="keyword" placeholder="Search" class="form-field" value="<?php if(isset($users)){echo $_GET['keyword'];} ?>">
                                 </div>
                                 <div class="text-center justify-center">
                                     <button type="submit" class="btn btn-primary btn-rounded">Search <i class="fas fa-search"></i></button>
@@ -95,7 +95,7 @@
                                 </table>
                             </div>
                             <div class="more-holder text-center">
-                                <a href="#">
+                                <a href="./user-detail.php?uId=<?=$user['uId']?>">
                                     <button class="btn btn-secondary btn-reset">More Info</button>
                                 </a>
                             </div>
