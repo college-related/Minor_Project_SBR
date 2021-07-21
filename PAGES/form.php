@@ -96,7 +96,7 @@
             <div class="btns">
                 <div class="option justify-center">
                     <span id="check" onclick="reveal()" <?php if(isset($_GET['reset'])){echo "checked";} ?> >
-                        Are you filing form for others? Check Here
+                        Are you filling form for others? Check Here
                         <i class="far fa-check-circle"></i>
                     </span>
                 
