@@ -9,10 +9,9 @@ if( isset($_POST['savebtn'])){
    session_start();
 
    $uId=$_SESSION['uId'];
-
    $vType=protect($_POST['vType']);
    $vCat=protect($_POST['vCategory']);
-   $vReg=protect($_POST['regNo']);
+   $vReg=protect($_POST['vReg']);
    $engineCC=protect($_POST['ECC']);
    $phn = protect($_POST['Phn']);
 
@@ -28,7 +27,7 @@ if( isset($_POST['savebtn'])){
       $query = mysqli_query($connect,$sql);
 
       if(mysqli_affected_rows($connect)){
-          mysqli_query($connect, "UPDATE users SET $phoneNumber_column='$phn' WHERE uId=$uId");
+          mysqli_query($connect, "UPDATE users SET  $phoneNumber_column='$phn' WHERE uId=$uId");
           header("location: ../PAGES/profile.php?Logged&Updated");
       }else{
         mysqli_query($connect, "UPDATE users SET $phoneNumber_column='$phn' WHERE uId=$uId");
