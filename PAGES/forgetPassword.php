@@ -16,7 +16,7 @@
                     <span >We got you.<br>Enter the email you want to reset the password</span>
                     <div class="form-body">
                         <form action="../PHP/passwordResetLink.php" method="post" >
-                            <input type="email" name="email" id="Email" placeholder="Your Email" class="form-field form-group"/><br><br>
+                            <input type="email" name="email" id="Email" placeholder="Your Email" class="form-field form-group" required/><br><br>
                             <input type="submit" value="Send Reset Link" name="resetLink" class="btn btn-accent  form-group">
                         </form>
                     </div>

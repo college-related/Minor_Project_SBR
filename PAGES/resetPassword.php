@@ -23,9 +23,9 @@ $uId = $_GET['uId'];
                     <form action="../PHP/changePass.php" method="post">
                         <input type="hidden" name="uId" value="<?=$uId?>"/>
                         <!-- <label for="Pass">New password:</label><br><br> -->
-                        <input type="password" name="pass" id="Pass" placeholder="New password" class="form-field form-group"/><br><br>
+                        <input type="password" name="pass" id="Pass" placeholder="New password" class="form-field form-group" required/><br><br>
                         <!-- <label for="Repass">Confirm new password:</label><br><br> -->
-                        <input type="password" name="rePass" id="Repass" placeholder="Confirm New Password" class="form-field form-group"/><br><br>
+                        <input type="password" name="rePass" id="Repass" placeholder="Confirm New Password" class="form-field form-group" required/><br><br>
                         <input type="submit" value="Reset Password" name="changePass" class="btn btn-accent btn-rounded form-group"/>
                     </form>
                 </div>
