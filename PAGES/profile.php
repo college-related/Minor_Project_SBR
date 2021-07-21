@@ -109,12 +109,12 @@
                         </div>
                     </div> -->
                 </div>
-                <div class="editBtn">
-                    <a href="#" class="desktop-edit--btn"><input type="button" value="Edit Profile" class="btn btn-secondary btn-mobile btn-reset" ></a>
+                <div class="editBtn row-">
+                    <a href="./profileEdit.php" class="desktop-edit--btn"><input type="button" value="Edit Profile" class="btn btn-secondary btn-mobile btn-reset" ></a>
                 </div>
             </div>
-            <a href="#" class="mobile-edit--btn"> <i class="far fa-edit"></i></a>
-        </div>
+                <a href="./profileEdit.php" class="mobile-edit--btn"> <i class="far fa-edit"></i></a>
+            </div>
     <div class="col-2 ">
         <div class="information-holder">
             <h2>Personal Information</h2>
