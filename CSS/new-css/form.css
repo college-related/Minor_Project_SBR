@@ -1,0 +1,49 @@
+.secondary{
+    background-color: var(--secondary-button-color); 
+}
+
+.fa-check-circle{
+    font-size: 1.5em;
+}
+
+.option{
+    text-align: right;
+    line-height: 2.5em;
+}
+
+.message{
+    color: var(--scroll-color);
+}
+
+.primary{
+    border-radius: 10px;
+    background-color: var(--scroll-color);
+}
+
+.details{
+    padding: 2em 1em;
+}
+
+.details div{
+    margin: 1em 0;
+}
+
+.form-flex label{
+    margin-right: .5em;
+}
+
+select, option{
+    background-color: var(--reverse-bg-color);
+}
+
+@media screen and (max-width:800px){
+    
+    .form-flex{
+        flex-direction: column;
+    }
+
+    .option input{
+        width: 100%;
+    }
+    
+}
