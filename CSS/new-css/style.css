@@ -27,7 +27,7 @@ body {
     border-radius: 10px;
 }
 
-.row-3, .row-5, .row-2, .row-6 {display: grid;}
+.row-3, .row-5, .row-2, .row-6 {display: grid; gap: 1em;}
 .flex {display: flex;}
 
 .row-2 {grid-template-columns: repeat(2, 1fr);}
