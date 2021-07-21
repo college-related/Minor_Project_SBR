@@ -114,20 +114,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-2  ">
+                <div class="col-2">
                     <div class="information-holder">
                         <h2>Edit Information</h2>
                         <hr class="hr">
-                        <div class="row-2  ">
-                            <div class=" col-1 form-body">
-                                <form action="../PHP/handleBasicdata.php" method="POST">
-                                    <input type="text" name="name" class="form-field form-group" value="<?=($infoarray[0][$username_column]); ?>">
+                        <form action="../PHP/handleBasicdata.php" method="POST">
+                            <div class="row-2">
+                                <div class="col-1 form-body">
                                     <input type="text"  name="Phn" class="form-field form-group" value="<?=decryptData($infoarray[0][$phoneNumber_column],$key); ?>">
                                     <input type="text"  name="vReg" class="form-field form-group" value="<?=decryptData($infoarray[0][$vehicleRegistration_column],$key); ?>">
-                                
-                            </div>
-                            <div class=" col-1 form-body form-body-part2">
-                                
+                                </div>
+                                <div class="col-1 form-body form-body-part2">
                                     <select name="vType" id="type" class="form-field form-group">
                                         <option value="two wheeler" <?php if($infoarray[0][$vehicleType_column] == "two wheeler")?>>Two wheeler</option>
                                         <option value="four wheeler" <?php if($infoarray[0][$vehicleType_column] == "four wheeler")?>>Four wheeler</option>
@@ -150,10 +147,9 @@
                                             <input type="submit" name="savebtn"  value="Edit Profile" class="btn btn-secondary edit-btn editsavebtn" >
                                         </div> 
                                     </div>
-                                </form>
-                                
-                            </div> 
-                        </div>                        
+                                </div>
+                            </div>                        
+                        </form>
                     </div>
                 </div>
             </div>          
