@@ -1,15 +1,16 @@
 <?php
 
     include("../PHP/includes/encryption.php");
+    
+    session_start();
 
-    if(!isset($_GET['Logged'])){
+    if(!isset($_SESSION['uId'])){
         header("location: ../index.php?NotLogged");
+        session_destroy();
     }
 
     require "../PHP/includes/connection.php";
     include("../PHP/includes/table_columns_name.php");
-
-    session_start();
 
     $uId = $_SESSION['uId'];
 

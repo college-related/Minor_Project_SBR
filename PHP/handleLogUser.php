@@ -37,7 +37,7 @@ if(isset($_POST['login'])){
                     header("location: ../PAGES/admin/profile.php");
                     die();
                 }else{
-                    header("location: ../PAGES/profile.php?Logged");
+                    header("location: ../PAGES/profile.php");
                     die();
                 }
             }else{
