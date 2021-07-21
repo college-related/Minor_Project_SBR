@@ -42,8 +42,12 @@ select, option{
         flex-direction: column;
     }
 
-    .option input{
+    .option .primary{
         width: 100%;
+    }
+
+    .message-holder{
+        margin-top: -3em;
     }
     
 }

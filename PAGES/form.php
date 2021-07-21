@@ -240,7 +240,7 @@
                     </fieldset>
                 </div> -->
                 <!-- submit button section -->
-                <div class="row-2 details">
+                <div class="row-2 details message-holder">
                     <div>
                         <h4 class="message">Please check all the information thoroughly before submitting</h4>
                         <h4>Thank You</h4>
