@@ -344,8 +344,8 @@ main {
     }
 }
 
-/* error pop up style start */
-.error-popup {
+/* error and success pop up style start */
+.error-popup, .success-popup {
     width: 30%;
     position: fixed;
     top: 20px;
@@ -353,14 +353,22 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #F8D7DA;
-    color: #721C24;
     padding: 1em;
     border-radius: 10px;
     animation: sweep 1s ease-in-out;
 }
 
-#errorCloseMark {
+.error-popup {
+    background-color: #F8D7DA;
+    color: #721C24;
+}
+
+.success-popup {
+    background-color: #DFF2BF;
+    color: #4F8A10;
+}
+
+#errorCloseMark, #successCloseMark {
     cursor: pointer;
     font-size: 1.5rem;
 }

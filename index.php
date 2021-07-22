@@ -22,6 +22,9 @@
         }else if($successMssg == 'AlreadyVerified'){
             $icon = "<i class='far fa-laugh-wink fa-2x'></i>";
             $mssg = "Your email is already verified, you can log in.";
+        }else if($successMssg == 'PassChanged'){
+            $icon = "<i class='far fa-grin-beam fa-2x'></i>";
+            $mssg = "Your password has been changed.";
         }
     }
 
@@ -59,6 +62,9 @@
     <?php 
         if(isset($_GET['error'])) {
             include("./repeated_section/error.php");
+        }
+        if(isset($_GET['mssg'])) {
+            include("./repeated_section/success.php");
         }
     ?>
    
@@ -159,6 +165,9 @@
     <script>
         function closeErrorPopUp(){
             document.getElementsByClassName('error-popup')[0].style.display = 'none';
+        }
+        function closesuccessPopUp(){
+            document.getElementsByClassName('success-popup')[0].style.display = 'none';
         }
     </script>
     <script src="./JS/new-js/mobile-menu.js"></script>
