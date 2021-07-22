@@ -35,6 +35,12 @@
 select, option{
     background-color: var(--reverse-bg-color);
 }
+#display{
+    display: none;
+}
+#check{
+    cursor: pointer;
+}
 
 @media screen and (max-width:800px){
     
