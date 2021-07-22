@@ -83,7 +83,6 @@
     <link rel="stylesheet" href="../CSS/new-css/style.css">
     <link rel="stylesheet" href="../CSS/new-css/form.css">
 
-
     <script defer src="../JS/category_type.js"></script>
     <script defer src="../js/others.js"></script>
 
@@ -114,33 +113,32 @@
                     <h3>Information of the person you are filling the form of:</h3>
                 </div> -->
                 <!-- personal details section -->
-
-                <h3 class="form-title">Personal Information</h3>
-                <hr class="hr">
-                <div class="details">
-                    <div class="row-2">
-                        <div class="flex form-flex">
-                            <label for="name">Name:</label>
-                            <input type="text" name="Name" id="name" class="form-field" placeholder="Name" value='<?=$name?>' required/>
+                <div>
+                    <h3 class="form-title">Personal Information</h3>
+                    <hr class="hr">
+                    <div class="details">
+                        <div class="row-2">
+                            <div class="flex form-flex">
+                                <label for="name">Name:</label>
+                                <input type="text" name="Name" id="name" class="form-field" placeholder="Name" value='<?=$name?>' required/>
+                            </div>
+                            <div class="flex form-flex">
+                                <label for="phn">Phone Number:</label>
+                                <input type="number" name="Phn" id="phn" class="form-field" placeholder="Phone number" value='<?=$phn?>' required/>
+                            </div>
                         </div>
-                        <div class="flex form-flex">
-                            <label for="phn">Phone Number:</label>
-                            <input type="number" name="Phn" id="phn" class="form-field" placeholder="Phone number" value='<?=$phn?>' required/>
-                        </div>
+                        <div class="row-2">
+                            <div class="flex form-flex col-2">
+                                <label for="citizen">Citizenship number:</label>
+                                <input type="text" name="Citizen" id="citizen" class="form-field" placeholder="Citizenship number"  value='<?=$citizen?>' required/>
+                            </div>
+                        </div>  
                     </div>
-                    <div class="row-2">
-                        <div class="flex form-flex col-2">
-                            <label for="citizen">Citizenship number:</label>
-                            <input type="text" name="Citizen" id="citizen" class="form-field" placeholder="Citizenship number"  value='<?=$citizen?>' required/>
-                        </div>
-                    </div>  
-                </div>
-                <!-- Vechile details section -->
-                <h3 class="form-title">Vechile Information</h3>
-                <hr class="hr"> 
-                <div class="details">
-                    <div class="row-2">
-                        
+                    <!-- Vechile details section -->
+                    <h3 class="form-title">Vehicle Information</h3>
+                    <hr class="hr"> 
+                    <div class="details">
+                        <div class="row-2">
                             <div class="flex form-flex">
                                 <label for="type">Vehicle Type:</label>
                                 <select name="Vtype" id="type" class="form-field" required>
@@ -159,8 +157,6 @@
                                     ?>
                                 </select>
                             </div>
-                        
-                        
                             <div class="flex form-flex">
                                 <label for="engine">Engine CC:</label>
                                 <select name="EngineCC" id="engCC" class="form-field" required>
@@ -182,65 +178,58 @@
                                     </option>
                                 </select>
                             </div>
-                    </div>
-                    <div class="row-2">
-                        <div class="col-2 flex form-flex">
-                            <label for="vehicleReg">Vehicle Registration no:</label>
-                            <input type="text" name="VehicleReg" id="vehicleReg" class="form-field" placeholder="Ex: GA 16 PA 4381" value='<?=$vehicleReg?>' required/>
+                        </div>
+                        <div class="row-2">
+                            <div class="col-2 flex form-flex">
+                                <label for="vehicleReg">Vehicle Registration no:</label>
+                                <input type="text" name="VehicleReg" id="vehicleReg" class="form-field" placeholder="Ex: GA 16 PA 4381" value='<?=$vehicleReg?>' required/>
+                            </div>
                         </div>
                     </div>
+                    <!-- Bluebook / insurance section -->
+                    <h3 class="form-title">BlueBook Information</h3>
+                    <hr class="hr">
+                    <div class="details">
+                        <div class="row-2">
+                            <div class="flex form-flex">
+                                <label for="renewDate">Last Renew Date:</label>
+                                <input type="date" name="RenewDate" id="renewDate" class="form-field"/>
+                            </div>
+                            <div class="flex form-flex">
+                                <label for="insuranceSlip"><h4>Have you paid insurance? :</h4></label>
+                                <select class="form-field" name="insuranceSlip" required>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- hidden section for others -->
+                    <!-- Here we fill the users data -->
+                    <div  id="display">
+                        <h3 class="form-title">Please fill you information  for security purposes</h3>
+                        <hr class="hr">
+                        <div class="details ">
+                            <div class="row-2">
+                                <div class="flex form-flex">
+                                    <label for="name1">Name:</label>
+                                    <input type="text" name="Name1" id="name1" class="form-field" value='<?=$name1?>' />
+                                </div>
+                                <div class="flex form-flex">
+                                    <label for="phn1">Phone Number:</label>
+                                    <input type="number" name="Phn1" id="phn1" value="<?=$phn1?>" class="form-field"  value='<?=$phn1?>' />
+                                </div>
+                            </div>
+                            <div class="row-2">
+                                <div class="flex form-flex col-2">
+                                <label  for="vehicleReg1">Vehicle Registration no:</label>
+                                <input type="text" name="VehicleReg1" id="vehicleReg1"  class="form-field" value="<?=$vehicleReg1?>" />
+                            </div>  
+                        </div>
+                    </div>
+                    <!-- submit button section -->
                 </div>
-                <!-- Bluebook / insurance section -->
-                <h3 class="form-title">BlueBook Information</h3>
-                <hr class="hr">
-                <div class="details">
-                    <div class="row-2">
-                        <div class="flex form-flex">
-                            <label for="renewDate">Last Renew Date:</label>
-                            <input type="date" name="RenewDate" id="renewDate" class="form-field"/>
-                        </div>
-                        <div class="flex form-flex">
-                            <label for="insuranceSlip"><h4>Have you paid insurance? :</h4></label>
-                            <select class="form-field" name="insuranceSlip" required>
-                                <option value="yes">Yes</option>
-                                <option value="no">No</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!-- hidden section for others -->
-                <!-- Here we fill the users data -->
-                <!-- <div class="others-info">
-                    <h3>Your information:</h3>
-                    <fieldset>
-                        <legend>Personal data:</legend>
-                        <table>
-                            <tr>
-                                <td><label for="name1">Name:</label></td>
-                                <td><input type="text" name="Name1" id="name1" value="<?=$name1?>"/></td>
-                            </tr>
-                            <tr>
-                                <td><label for="phn1">Phone Number:</label></td>
-                                <td><input type="number" name="Phn1" id="phn1" value="<?=$phn1?>"/></td>
-                            </tr>
-                            <tr>
-                                <td><label for="citizen1">Citizenship number:</label></td>
-                                <td><input type="text" name="Citizen1" id="citizen1" value="<?=$citizen1?>"/></td>
-                            </tr>
-                        </table>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Vechile data:</legend>
-                        <table>
-                            <tr>
-                                <td><label for="vehicleReg1">Vehicle Registration no:</label></td>
-                                <td><input type="text" name="VehicleReg1" id="vehicleReg1" placeholder="GA 16 PA 4382" value="<?=$vehicleReg1?>"/></td>
-                            </tr>
-                        </table>
-                    </fieldset>
-                </div> -->
-                <!-- submit button section -->
-                <div class="row-2 details message-holder">
+                <div class=" row-2 message-holder">
                     <div>
                         <h4 class="message">Please check all the information thoroughly before submitting</h4>
                         <h4>Thank You</h4>
