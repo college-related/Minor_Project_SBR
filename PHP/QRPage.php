@@ -76,6 +76,18 @@
                                     <p><b>Engine CC: </b><?=$data[0][$engineCC_column]?></p>
                                 </div>
                             </div>
+                            <h2>Tax Information</h2>
+                            <hr class="hr">
+                            <div class="row-2 more-holder">
+                                <div class="info-holders">
+                                    <p><b>Tax Amount: </b> <?=$_GET['amount']?></p>
+                                    <p><b>Fine Percentage: </b><?=$_GET['fine']?></p>
+                                </div>
+                                <div class="info-holders">
+                                    <p><b>Fine Amount: </b><?=$_GET['fineAmount']?></p>
+                                    <p><b>Total Amount: </b><?=$_GET['amount']+$_GET['fineAmount']?></p>
+                                </div>
+                            </div>
                             <h3>Did mistake? <a href="../PAGES/form.php?fId=<?=$data[0]['fId']?>">Resubmit</a></h3>
                         </div>
                         <div id="button-layout">
