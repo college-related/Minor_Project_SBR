@@ -13,11 +13,11 @@
         <div class="mobile-close-mark">&times;</div>
         <?php include('navMenu.php'); ?>
         <?php if(isset($_SESSION['uId'])) {?>
-            <a href="http://localhost/MINOR_PROJECT_SBR/PHP/logout.php" class="btn-mobile">
+            <a href="http://localhost/MINOR_PROJECT_SBR/PHP/logout.php" class="btn-mobile mobile-log">
                 Log Out
             </a>
         <?php } else {?>
-            <a href="#form-wrapper" class="btn-mobile" id="mobile-log">
+            <a href="#form-wrapper" class="btn-mobile" class="mobile-log">
                 Log In
             </a>
         <?php } ?>
