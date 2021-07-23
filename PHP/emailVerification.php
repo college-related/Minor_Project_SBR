@@ -72,7 +72,7 @@ if(mysqli_num_rows($query)){
 
     // * sending the email and checking error
     if($mail->send()){
-        header("location: ../register.php?mssg=CheckEmail");
+        header("location: ../PAGES/sendEmail.html");
     }else{
         header("location: ../register.php?error=SendMailError&infoBack=full&nameB=$username&phoneB=$phonenumber&emailB=$email&addressB=$address&citizenB=$citizenshipNo&vRegB=$vehicleReg&engCCB=$engineCC&vTypeB=$vehicleType&vCatB=$vehicleCategory&pp=$pp");
     }
