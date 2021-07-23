@@ -13,6 +13,10 @@ h3 a {
     margin: auto;
 }
 
+.qr-holder img {
+    border: 1px solid var(--border-color);
+}
+
 .ins-mssg {
     margin: 2em 3em;
     padding: 1em;
