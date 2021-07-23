@@ -9,7 +9,7 @@
 */
 function calculateTax($type,$engicc){
 
-    $taxAmount;
+    $taxAmount = "";
     if($type=="two wheeler"){
         if($engicc=="0-125CC"){
             $taxAmount=2500;
@@ -61,7 +61,7 @@ function calculateTax($type,$engicc){
 function calculateFine($currentTaxAmount,$totalDays){
     // $finePercent;
     // $fineDays= $totalDays;
-    $fineAmount;
+    $fineAmount = "";
 
     if($totalDays<=0){
         $fineAmount=0;
@@ -92,7 +92,7 @@ function calculateFine($currentTaxAmount,$totalDays){
 
 */
 function calculatePercentageFine($totalDays){
-    $finePercent;
+    $finePercent = "";
 
     if($totalDays<=0){
         $finePercent = "0%";
@@ -115,7 +115,7 @@ function calculatePercentageFine($totalDays){
     return $finePercent;
 }
 
-if(isset($_GET['savedForm'])){
+if(isset($_GET['savedForm']) || isset($_GET['updatedForm'])){
 
     require "./includes/connection.php";
     require("./includes/table_columns_name.php");
@@ -179,14 +179,44 @@ if(isset($_GET['savedForm'])){
         $uId = 0;
     }
 
-    $sql_add = "INSERT INTO tax_details($fillerId_column,uId,$createdAt_column,$fineAmount_column,$taxAmount_column,$finePercentage_column,$paidIn_column,$totalAmount_column) VALUES ('$fillerId','$uId',null,'$fAmount','$tAmount','$fineper','$fineInDB','$totalAmount');";
-    $query_add=mysqli_query($connect, $sql_add);
+    if(isset($_GET['tId'])){
+        $sql_add = "UPDATE tax_details SET $fillerId_column='$fillerId', uId='$uId', $createdAt_column=null, $fineAmount_column='$fAmount', $taxAmount_column='$tAmount', $finePercentage_column='$fineper', $paidIn_column='$fineInDB', $totalAmount_column='$totalAmount';";
+        $query_add=mysqli_query($connect, $sql_add);
 
-    if(mysqli_affected_rows($connect)){
-        header("location: ./QRPage.php?amount=$tAmount&fine=$fineper&mssg=$insMssg&fineAmount=$fAmount");
-    }
-    else{
-        header("location: ../PAGES/form.html?error=NotInserted");
+        if(mysqli_affected_rows($connect)){
+            $command = "SELECT $formID_column FROM forms_data WHERE $formFillerId_column='$fillerId' ORDER BY $formID_column DESC";
+            $execute = mysqli_query($connect, $command);
+            $row = mysqli_fetch_all($execute, MYSQLI_ASSOC);
+            $fId = $row[0][$formID_column];
+
+            $command2 = "SELECT tId FROM tax_details WHERE $fillerId_column='$fillerId' ORDER BY tId DESC";
+            $execute2 = mysqli_query($connect, $command2);
+            $row2 = mysqli_fetch_all($execute2, MYSQLI_ASSOC);
+            $tId = $row2[0]['tId'];
+
+            header("location: ./QRPage.php?amount=$tAmount&fine=$fineper&mssg=$insMssg&fineAmount=$fAmount&fId=$fId&tId=$tId&updated");
+        }else{
+            header("location: ../PAGES/form.html?error=NotInserted");
+        }
+    }else{
+        $sql_add = "INSERT INTO tax_details($fillerId_column,uId,$createdAt_column,$fineAmount_column,$taxAmount_column,$finePercentage_column,$paidIn_column,$totalAmount_column) VALUES ('$fillerId','$uId',null,'$fAmount','$tAmount','$fineper','$fineInDB','$totalAmount');";
+        $query_add=mysqli_query($connect, $sql_add);
+
+        if(mysqli_affected_rows($connect)){
+            $command = "SELECT $formID_column FROM forms_data WHERE $formFillerId_column='$fillerId' ORDER BY $formID_column DESC";
+            $execute = mysqli_query($connect, $command);
+            $row = mysqli_fetch_all($execute, MYSQLI_ASSOC);
+            $fId = $row[0][$formID_column];
+
+            $command2 = "SELECT tId FROM tax_details WHERE $fillerId_column='$fillerId' ORDER BY tId DESC";
+            $execute2 = mysqli_query($connect, $command2);
+            $row2 = mysqli_fetch_all($execute2, MYSQLI_ASSOC);
+            $tId = $row2[0]['tId'];
+
+            header("location: ./QRPage.php?amount=$tAmount&fine=$fineper&mssg=$insMssg&fineAmount=$fAmount&fId=$fId&tId=$tId");
+        }else{
+            header("location: ../PAGES/form.html?error=NotInserted");
+        }
     }
 
 }

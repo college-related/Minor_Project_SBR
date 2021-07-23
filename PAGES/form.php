@@ -14,12 +14,11 @@
     $phn1 = "";
     $vehicleReg1 = "";
 
+    require "../PHP/includes/connection.php";
+    include("../PHP/includes/table_columns_name.php");
     include("../PHP/includes/encryption.php");
 
     if(isset($_GET['autoFill'])){
-        require "../PHP/includes/connection.php";
-        include("../PHP/includes/table_columns_name.php");
-
         $info = mysqli_fetch_all(
             mysqli_query(
                 $connect,
@@ -48,10 +47,7 @@
         $vehicleReg1 = $vehicleReg;
     }
 
-    if(isset($_GET['reset'])){
-        require "../PHP/includes/connection.php";
-        include("../PHP/includes/table_columns_name.php");
-
+    if(isset($_GET['autoOtherFill'])){
         $info = mysqli_fetch_all(
             mysqli_query(
                 $connect,
@@ -68,6 +64,39 @@
         $phn1 = decryptData($info[0][$phoneNumber_column], $key);
         $vehicleReg1 = decryptData($info[0][$vehicleRegistration_column], $key);
     }
+
+    if(isset($_GET['fId'])){
+        $fId = $_GET['fId'];
+        $taxId = $_GET['tId'];
+
+        $form = mysqli_fetch_all(
+            mysqli_query(
+                $connect,
+                "SELECT * FROM forms_data WHERE $formID_column=$fId"
+            ),
+            MYSQLI_ASSOC
+        );
+    
+        $str = "j-{b\b{Prd(.w4:Zj-{b\b{Prd(.w4:Z";
+        $key = md5($str);
+
+        $name = $form[0][$username_column];
+        $citizen = decryptData($form[0][$citizenship_column], $key);
+        $phn = decryptData($form[0][$phoneNumber_column], $key);
+        $vehicleType = $form[0][$vehicleType_column];
+        $vehicleCategory = $form[0][$vehicleCategory_column];
+        $vehicleReg = decryptData($form[0][$vehicleRegistration_column], $key);
+        $engineCC = $form[0][$engineCC_column];
+        $pp = $form[0][$pp_column];
+        $name1 = $form[0][$formFillerName_column];
+        // $citizen1 = $citizen;
+        $phn1 = decryptData($form[0][$formFillerPhn_column], $key);
+        $vehicleReg1 = decryptData($form[0][$formFillerVehicleReg_column], $key);
+
+        $lastRenew = $form[0][$renewDate_column];
+        $insurance = $form[0][$insurance_column];
+        $formId = $form[0][$formID_column];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -82,10 +111,6 @@
 
     <link rel="stylesheet" href="../CSS/new-css/style.css">
     <link rel="stylesheet" href="../CSS/new-css/form.css">
-
-    <script defer src="../JS/category_type.js"></script>
-    <script defer src="../js/others.js"></script>
-
 </head>
 <body>
     <?php include('../repeated_section/header.php')?>
@@ -94,26 +119,55 @@
             <!-- checkbox to check if the form is for others -->
             <div class="btns">
                 <div class="option justify-center">
-                    <span id="check" onclick="reveal()" <?php if(isset($_GET['reset'])){echo "checked";} ?> >
+                    <span>
                         Are you filling form for others? Check Here
-                        <i class="far fa-check-circle"></i>
+                        <span id="check" onclick="reveal()">
+                        <?php if(isset($_GET['autoOtherFill']) || isset($_GET['fId'])) { ?>
+                            <i class="fas fa-check-circle"></i>
+                        <?php }else{ ?>
+                            <i class="far fa-check-circle"></i>
+                        <?php } ?>
+                        </span>
                     </span>
-                
-                    <form action="" method="get">
-                        <input type="submit" value="Auto-Fill" class="btn secondary btn-rounded" name="autoFill" id="autofill" <?php if(isset($_GET['reset'])){echo "disabled";} ?>/>
+                    <form action="" method="get" id="autoFill" <?php if(isset($_GET['autoOtherFill']) || isset($_GET['fId'])) {echo "style='display:none'"; }?>>
+                        <input type="submit" value="Auto-Fill" class="btn secondary btn-rounded" name="autoFill"/>
+                    </form>
+                    <form action="" method="get" id="autoOtherFill" style="display: <?php if(isset($_GET['autoOtherFill']) || isset($_GET['fId'])) {echo "block"; }else{echo "none";}?>;">
+                        <input type="submit" value="Auto-Fill" class="btn secondary btn-rounded" name="autoOtherFill"/>
                     </form>
                 </div>
-                <!-- <form action="" method="get">
-                    <input type="submit" value="Auto-Fill For others" name="reset" id="resetBtn" disabled/>
-                </form> -->
             </div>
             <form action="../PHP/handleForm.php" method="POST">
-                <!-- hidden div for others -->
-                <!-- <div class="others-info">
-                    <h3>Information of the person you are filling the form of:</h3>
-                </div> -->
+                <?php if(isset($formId)) {?>
+                    <input type="hidden" name="fId" value="<?=$formId?>">
+                    <input type="hidden" name="tId" value="<?=$taxId?>">
+                <?php } ?>
                 <!-- personal details section -->
                 <div>
+                    <!-- hidden section for others -->
+                    <!-- Here we fill the users data -->
+                    <div id="display" <?php if(isset($_GET['autoOtherFill']) || isset($_GET['fId'])) {echo "style='display:block'"; }?>>
+                        <h3 class="form-title">Please fill you information  for security purposes</h3>
+                        <hr class="hr">
+                        <div class="details">
+                            <div class="row-2">
+                                <div class="flex form-flex">
+                                    <label for="name1">Name:</label>
+                                    <input type="text" name="Name1" id="name1" class="form-field" value='<?=$name1?>' placeholder="Your Name" required />
+                                </div>
+                                <div class="flex form-flex">
+                                    <label for="phn1">Phone Number:</label>
+                                    <input type="number" name="Phn1" id="phn1" value="<?=$phn1?>" class="form-field"  value='<?=$phn1?>' placeholder="Your Phone Number" required/>
+                                </div>
+                            </div>
+                            <div class="row-2">
+                                <div class="flex form-flex col-2">
+                                    <label  for="vehicleReg1">Vehicle Registration no:</label>
+                                    <input type="text" name="VehicleReg1" id="vehicleReg1"  class="form-field" value="<?=$vehicleReg1?>" placeholder="Your Vehicle Registration Number" required/>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
                     <h3 class="form-title">Personal Information</h3>
                     <hr class="hr">
                     <div class="details">
@@ -143,15 +197,15 @@
                                 <label for="type">Vehicle Type:</label>
                                 <select name="Vtype" id="type" class="form-field" required>
                                     <option value="none"></option>
-                                    <option value="two Wheeler" <?php if(isset($_GET['autoFill'])){if($vehicleType == "two wheeler"){echo "selected";}} ?>>Two wheeler</option>
-                                    <option value="four Wheeler" <?php if(isset($_GET['autoFill'])){if($vehicleType == "four wheeler"){echo "selected";}} ?>>Four wheeler</option>
+                                    <option value="two Wheeler" <?php if($vehicleType != ""){if($vehicleType == "two wheeler"){echo "selected";}} ?>>Two wheeler</option>
+                                    <option value="four Wheeler" <?php if($vehicleType != ""){if($vehicleType == "four wheeler"){echo "selected";}} ?>>Four wheeler</option>
                                 </select>
                             </div>
                             <div class="flex form-flex">
                                 <label for="category">Vehicle Category:</label>
                                 <select name="Vcategory" id="category" class="form-field" required>
                                     <?php
-                                        if(isset($_GET['autoFill'])){
+                                        if($vehicleCategory != ""){
                                             echo "<option value='$vehicleCategory'>$vehicleCategory</option>";
                                         }
                                     ?>
@@ -161,7 +215,7 @@
                                 <label for="engine">Engine CC:</label>
                                 <select name="EngineCC" id="engCC" class="form-field" required>
                                         <?php
-                                            if(isset($_GET['autoFill'])){
+                                            if($engineCC != ""){
                                                 echo "<option value='$engineCC'>$engineCC</option>";
                                             }
                                         ?>
@@ -193,41 +247,18 @@
                         <div class="row-2">
                             <div class="flex form-flex">
                                 <label for="renewDate">Last Renew Date:</label>
-                                <input type="date" name="RenewDate" id="renewDate" class="form-field"/>
+                                <input type="date" name="RenewDate" id="renewDate" class="form-field" required <?php if(isset($lastRenew)){echo "value='$lastRenew'";} ?>/>
                             </div>
                             <div class="flex form-flex">
                                 <label for="insuranceSlip"><h4>Have you paid insurance? :</h4></label>
                                 <select class="form-field" name="insuranceSlip" required>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option value="">-Select an option-</option>
+                                    <option value="yes" <?php if(isset($insurance) && $insurance == 'yes'){echo "selected";} ?>>Yes</option>
+                                    <option value="no" <?php if(isset($insurance) && $insurance == 'no'){echo "selected";} ?>>No</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <!-- hidden section for others -->
-                    <!-- Here we fill the users data -->
-                    <div  id="display">
-                        <h3 class="form-title">Please fill you information  for security purposes</h3>
-                        <hr class="hr">
-                        <div class="details ">
-                            <div class="row-2">
-                                <div class="flex form-flex">
-                                    <label for="name1">Name:</label>
-                                    <input type="text" name="Name1" id="name1" class="form-field" value='<?=$name1?>' />
-                                </div>
-                                <div class="flex form-flex">
-                                    <label for="phn1">Phone Number:</label>
-                                    <input type="number" name="Phn1" id="phn1" value="<?=$phn1?>" class="form-field"  value='<?=$phn1?>' />
-                                </div>
-                            </div>
-                            <div class="row-2">
-                                <div class="flex form-flex col-2">
-                                <label  for="vehicleReg1">Vehicle Registration no:</label>
-                                <input type="text" name="VehicleReg1" id="vehicleReg1"  class="form-field" value="<?=$vehicleReg1?>" />
-                            </div>  
-                        </div>
-                    </div>
-                    <!-- submit button section -->
                 </div>
                 <div class=" row-2 message-holder">
                     <div>
@@ -244,8 +275,10 @@
     <!-- foot of the website -->
     <?php include('../repeated_section/mobile-header.php')?>
     <?php include '../repeated_section/footer.html' ?>
+
     <script src="../JS/new-js/theme.js"></script>
     <script src="../JS/new-js/mobile-menu.js"></script>
-
+    <script src="../JS/new-js/others.js"></script>
+    <script src="../JS/category_type.js"></script>
 </body>
 </html>

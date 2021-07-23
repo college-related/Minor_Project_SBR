@@ -23,6 +23,12 @@
     // * Generating key for encryption
     $str = "j-{b\b{Prd(.w4:Zj-{b\b{Prd(.w4:Z";
     $key = md5($str);
+
+    if(isset($_GET['updated'])){
+        $title = 'Updated';
+        $icon = '<i class="far fa-grin-beam fa-2x"></i>';
+        $mssg = 'Your data is updated successfully';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +47,12 @@
 </head>
 <body>
     <?php include('../repeated_section/header.php') ?>
+
+    <?php
+        if(isset($_GET['updated'])){
+            include('../repeated_section/success.php');
+        }
+    ?>
 
     <main>
         <div class="container">
@@ -88,7 +100,7 @@
                                     <p><b>Total Amount: </b><?=$_GET['amount']+$_GET['fineAmount']?></p>
                                 </div>
                             </div>
-                            <h3>Did mistake? <a href="../PAGES/form.php?fId=<?=$data[0]['fId']?>">Resubmit</a></h3>
+                            <h3>Did mistake? <a href="../PAGES/form.php?fId=<?=$data[0]['fId']?>&tId=<?=$_GET['tId']?>">Resubmit</a></h3>
                         </div>
                         <div id="button-layout">
                         <!-- TODO: add a download system -->
@@ -103,6 +115,14 @@
 
     <?php include('../repeated_section/mobile-header.php') ?>
 
+    <script>
+        // function closeErrorPopUp(){
+        //     document.getElementsByClassName('error-popup')[0].style.display = 'none';
+        // }
+        function closesuccessPopUp(){
+            document.getElementsByClassName('success-popup')[0].style.display = 'none';
+        }
+    </script>
     <script src="../JS/new-js/theme.js"></script>
     <script src="../JS/new-js/mobile-menu.js"></script>
 </body>

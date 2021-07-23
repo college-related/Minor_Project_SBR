@@ -26,6 +26,11 @@ if(isset($_POST['saveForm'])) {
     $vehicleReg1 = $_POST['VehicleReg1'];
     $uId = 0;
 
+    if(isset($_POST['fId']) && isset($_POST['tId'])){
+        $fId = $_POST['fId'];
+        $tId = $_POST['tId'];
+    }
+
     // * making the uId filed same as the form filler id if the filler is 
     // * filling the form for themselves
     if($vehicleReg1 == $vehicleReg){
@@ -44,14 +49,26 @@ if(isset($_POST['saveForm'])) {
         $vehicleReg1 = encryptData($vehicleReg1, $key, $str);
         $citizen = encryptData($citizen, $key, $str);
 
-        $sql = "INSERT INTO forms_data(uId, $phoneNumber_column, $username_column, $vehicleType_column, $vehicleCategory_column, $engineCC_column, $vehicleRegistration_column, $renewDate_column, $formFillerName_column, $formFillerPhn_column, $formFillerVehicleReg_column, $insurance_column, $formFillerId_column, $citizenship_column, $pp_column) VALUES('$uId', '$phn', '$name', '$vehicleType', '$vehicleCat', '$engineCC', '$vehicleReg', '$renewDate', '$name1', '$phn1', '$vehicleReg1', '$insSlip', '$fillerId', '$citizen', '$pp');";
-    
-        mysqli_query($connect, $sql);
+        if(isset($fId)){
+            $sql = "UPDATE forms_data SET uId=$uId, $phoneNumber_column='$phn', $username_column='$name', $vehicleType_column='$vehicleType', $vehicleCategory_column='$vehicleCat', $engineCC_column='$engineCC', $vehicleRegistration_column='$vehicleReg', $renewDate_column='$renewDate', $formFillerName_column='$name1', $formFillerPhn_column='$phn1' , $formFillerVehicleReg_column='$vehicleReg1', $insurance_column='$insSlip', $formFillerId_column='$fillerId', $citizenship_column='$citizen', $pp_column='$pp' WHERE $formID_column=$fId;";
 
-        if(mysqli_affected_rows($connect)){
-            header("location: ./calculateTax.php?savedForm");
+            mysqli_query($connect, $sql);
+
+            if(mysqli_affected_rows($connect)){
+                header("location: ./calculateTax.php?updatedForm&tId=$tId");
+            }else{
+                header("location: ../PAGES/form.html?error=NotInserted");
+            }
         }else{
-            header("location: ../PAGES/form.html?error=NotInserted");
+            $sql = "INSERT INTO forms_data(uId, $phoneNumber_column, $username_column, $vehicleType_column, $vehicleCategory_column, $engineCC_column, $vehicleRegistration_column, $renewDate_column, $formFillerName_column, $formFillerPhn_column, $formFillerVehicleReg_column, $insurance_column, $formFillerId_column, $citizenship_column, $pp_column) VALUES('$uId', '$phn', '$name', '$vehicleType', '$vehicleCat', '$engineCC', '$vehicleReg', '$renewDate', '$name1', '$phn1', '$vehicleReg1', '$insSlip', '$fillerId', '$citizen', '$pp');";
+    
+            mysqli_query($connect, $sql);
+
+            if(mysqli_affected_rows($connect)){
+                header("location: ./calculateTax.php?savedForm");
+            }else{
+                header("location: ../PAGES/form.html?error=NotInserted");
+            }
         }
 
 }else{
