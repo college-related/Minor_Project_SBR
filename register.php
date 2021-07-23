@@ -84,42 +84,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
 
-    <link rel="stylesheet" href="./CSS/error.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
     <style>
-        <?php
-            if(isset($_GET['error'])){
-                echo ".error-popup{
-                    background-color:rgba(226,154,154,0.116);
-                    color:rgb(185,14,14);
-                    animation: animateFromTop 1s ease-in-out;
-                    top: 50px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                }";
-            }else if(isset($_GET['mssg'])){
-                echo ".error-popup{
-                    background-color:#DFF2BF;
-                    color:#4F8A10;
-                    animation: animateFromBottom 1s ease-in-out;
-                    bottom: 20px;
-                    right: 30%;
-                    transform: translateX(30%);
-                }";
-            }
-
-        ?>
-
-        <?php
-            if(!isset($_GET['error']) && !isset($_GET['mssg'])){
-                echo ".error-popup{
-                    display:none;
-                }";
-            }
-
-        ?>
-
         <?php
             if($inputError == 'AlreadyUserEmail'){
                 echo "input[type='email']{
@@ -133,107 +100,120 @@
                 echo "input[type='number']{
                         border:1px solid red;
                 }";
+            }else if($inputError == 'AlreadyVReg'){
+                echo "input[name='vReg']{
+                    border:1px solid red;
+                }";
+            }else if($inputError == 'AlreadyCitizen'){
+                echo "input[name='citizenshipNumber']{
+                    border:1px solid red;
+                }";
             }
         ?>
     </style>
 
     <script defer src="./JS/category_type.js"></script>
-    <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/register_page.css">
+    <link rel="stylesheet" href="./CSS/new-css/style.css">
+    <link rel="stylesheet" href="./CSS/new-css/register_page.css">
+    
 </head>
 <body>
-    <?php include './repeated_section/error.php'; ?>
+    <?php if(isset($_GET['error'])){include './repeated_section/error.php';} ?>
 
     <main>
-        <div class="main">
-            <div id="info">
-            <form action="./PHP/handleUser.php" method="post">
-            <h6>Swift Bluebook Renew</h6>
-            <h1>Welcome</h1>
-            <div class="form-wrapper">
-            <div class="flex-form">
-            <div>
-            <input type="text" required placeholder="Full name" name="username" <?php if(isset($_GET['infoBack'])){echo "value='$name'";} ?>>
-            </div>
-            <div>
-            <input type="text" required placeholder="Phone number" name="phoneNumber" <?php if(isset($_GET['infoBack'])){echo "value='$phone'";} ?>>
-            </div>
-            </div>
-                       
-                    
-            <div class="flex-form">
-                <div>
-                        <input type="email" required placeholder="Email" name="email" <?php if(isset($_GET['infoBack'])){echo "value='$email'";} ?>>
-                    </div>
+        <div class="container flex">
+            <div class="register">
+                <form action="./PHP/handleUser.php" method="post">
+                    <h1 class="web-title">Register</h1>
                     <div>
-                        <input type="text" required placeholder="Citizenship Number" name="citizenshipNumber" <?php if(isset($_GET['infoBack'])){echo "value='$citizenNo'";} ?>>
-                   </div>
-                   </div>
-                <div class="flex-form">
-                <div>
-                <input type="text" required placeholder="Vehicle Registration Number" name="vReg" <?php if(isset($_GET['infoBack'])){echo "value='$vReg'";} ?>> 
-                       </div>
-                       <div>
-                        <select name="vType" id="type">
-                            <option value="none">--Vehicle Type--</option>
-                            <option value="two wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "two wheeler"){echo "selected";}} ?>>Two Wheeler</option>
-                            <option value="four wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "four wheeler"){echo "selected";}} ?>>Four Wheeler</option>
-                        </select>
-                   </div>
-                </div>
-               <div class="flex-form">
-                        <div>
-                        <select name="vCategory" id="category">
-                            <?php
-                                if(isset($_GET['infoBack'])){
-                                    echo "<option value='$vCategory'>$vCategory</option>";
-                                }
-                            ?>
-                            <option value="none">--Vehicle Category--</option>
-                        </select>
+                        <div class="row-2">
+                            <div>
+                                <input class="form-field" type="text" required placeholder="Full name" name="username" required <?php if(isset($_GET['infoBack'])){echo "value='$name'";} ?>>
+                            </div>
+                            <div>
+                                <input class="form-field" type="number" required placeholder="Phone number" name="phoneNumber" required <?php if(isset($_GET['infoBack'])){echo "value='$phone'";} ?>><br>
+                                <?php if(isset($_GET['inputError']) && $inputError == 'AlreadyUserPhone'){ echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> This phone number already exists </span>"; } ?>
+                            </div>
                         </div>
-                        <div>
-                        <select name="engineCC" id="engCC">
-                            <?php
-                                if(isset($_GET['infoBack'])){
-                                    echo "<option value='$engineCC'>$engineCC</option>";
-                                }
-                            ?>
-                            <option value="none">--Engine CC--</option>
-                        </select>
+                        <div class="row-2">
+                            <div>
+                                    <input class="form-field" type="email" required placeholder="Email" name="email" required <?php if(isset($_GET['infoBack'])){echo "value='$email'";} ?>> <br>
+                                    <?php if(isset($_GET['inputError']) && $inputError == 'AlreadyUserEmail'){ echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> This Email already exists</span>"; } ?>
+                                </div>
+                                <div>
+                                    <input class="form-field" type="text" required placeholder="Citizenship Number" name="citizenshipNumber" required <?php if(isset($_GET['infoBack'])){echo "value='$citizenNo'";} ?>><br>
+                                    <?php if(isset($_GET['inputError']) && $inputError == 'AlreadyCitizen'){ echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> This citizenship number already exists</span>"; } ?>
+                                </div>
                         </div>
-                   </div>
-                <div class="flex-form">
-                <div>
-                        <input type="radio" name="public_or_private" value="private" id="privateP" checked><label for="privateP">Private</label>
-                     </div>
-                     <div>
-                        <input type="radio" name="public_or_private" value="public" id="publicP" <?php if(isset($_GET['infoBack'])){if($pp == 'public'){echo "checked";}} ?> ><label for="publicP">Public</label>
-                    </div>
-                    </div>
-                <div class="flex-form">
-                <div>
-                        <input type="password" required placeholder="Password" name="password" id="pass">
-                   </div>
-                   <div>
-                        <input type="password" required placeholder="Confirm Password" name="repassword" id="rePass">
-                  </div>
-                  </div>
-                <div >
-                
-                        <input class="btn" type="submit" value="Register" name="signup">
-                   </div>
-                   </form>
-                   <div>
-                        <h5>Already have an account?<a href="index.php#loginForm">Log in</a></h5>
-                        <h5><a href="./PAGES/forgetPassword.php">Forgot Password?</a></h5>
-                    </div>
-                </div>
-       </div>
-        <div id="illustration"></div>
-    </div>
-    </main>
+                        <div class="row-2">
+                            
+                            <div>
+                                <select class="form-field" name="vType" id="type" required>
+                                    <option value="none">--Vehicle Type--</option>
+                                    <option value="two wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "two wheeler"){echo "selected";}} ?>>Two Wheeler</option>
+                                    <option value="four wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "four wheeler"){echo "selected";}} ?>>Four Wheeler</option>
+                                </select>
+                            </div>
+                            <div>
+                                <select class="form-field" name="vCategory" id="category" required>
+                                    <?php
+                                        if(isset($_GET['infoBack'])){
+                                            echo "<option value='$vCategory'>$vCategory</option>";
+                                        }
+                                    ?>
+                                    <option value="none">--Vehicle Category--</option>
+                                </select>
+                            </div>
 
+                        </div>
+                        <div class="row-2">
+                                <div class="row-2">
+                                    <select class="form-field" name="engineCC" id="engCC" required>
+                                        <?php
+                                            if(isset($_GET['infoBack'])){
+                                                echo "<option value='$engineCC'>$engineCC</option>";
+                                            }
+                                        ?>
+                                        <option value="none">--Engine CC--</option>
+                                    </select>
+                                    <div class="row-2 public-private-wrapper">
+                                        <input class="" type="radio" name="public_or_private" value="private" id="privateP" required checked><label class="text-center private-public" for="privateP">Private</label>
+                                        <input class="" type="radio" name="public_or_private" value="public" id="publicP" <?php if(isset($_GET['infoBack'])){if($pp == 'public'){echo "checked";}} ?> ><label class=" text-center private-public" for="publicP">Public</label>   
+                                    </div>
+                                </div>
+                            <div>
+                                <input class="form-field" type="text" required placeholder="Vehicle Registration Number" name="vReg" required <?php if(isset($_GET['infoBack'])){echo "value='$vReg'";} ?>><br> 
+                                <?php if(isset($_GET['inputError']) && $inputError == 'AlreadyVReg'){ echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> It is already registered</span>"; } ?>
+                            </div>
+                        </div>
+                        <div class="row-2">
+                            <div>
+                                <input class="form-field" type="password" required placeholder="Password" name="password" id="pass" required><br>
+                                <?php if(isset($_GET['inputError']) && $inputError == 'PasswordNotSame'){ echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> Password should match</span>"; } ?>
+                            </div>
+                            <div>
+                                <input class="form-field" type="password" required placeholder="Confirm Password" name="repassword" id="rePass" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <input class="btn btn-accent" type="submit" value="Register" name="signup">
+                    </div>
+                </form>
+                <div class="text-center links">
+                    <h5>Already have an account?<a href="index.php#loginForm" class="link-primary">Log in</a></h5>
+                    <h5><a href="./PAGES/forgetPassword.php" class="link-underline">Forgot Password?</a></h5>
+                </div>
+            </div>
+            <div class="img-background">
+            <div class="image-holder">
+                <img src="./ASSETS/IMAGES/undraw/welcome.png" alt="welcome image">
+            </div>
+            </div>
+            <h1 class="mobile-title">Register</h1>
+        </div>
+    </main>
+    
     <script>
         function closeErrorPopUp(){
             document.getElementsByClassName('error-popup')[0].style.display = 'none';
@@ -247,5 +227,6 @@
             }
         });
     </script>
+    <script src="./JS/new-js/theme.js"></script>
 </body>
 </html>
