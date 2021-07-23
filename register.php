@@ -201,7 +201,7 @@
                     </div>
                 </form>
                 <div class="text-center links">
-                    <h5>Already have an account?<a href="index.php#loginForm" class="link-primary">Log in</a></h5>
+                    <h5>Already have an account?<a href="index.php#form-wrapper" class="link-primary">Log in</a></h5>
                     <h5><a href="./PAGES/forgetPassword.php" class="link-underline">Forgot Password?</a></h5>
                 </div>
             </div>
