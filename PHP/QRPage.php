@@ -100,7 +100,7 @@
                                     <p><b>Total Amount: </b><?=$_GET['amount']+$_GET['fineAmount']?></p>
                                 </div>
                             </div>
-                            <h3>Did mistake? <a href="../PAGES/form.php?fId=<?=$data[0]['fId']?>&tId=<?=$_GET['tId']?>">Resubmit</a></h3>
+                            <h3>Did mistake? <a href="../PAGES/form.php?fId=<?=$data[0]['fId']?>&tId=<?=$_GET['tId']?>&others=<?=$_GET['other']?>">Resubmit</a></h3>
                         </div>
                         <div id="button-layout">
                         <!-- TODO: add a download system -->

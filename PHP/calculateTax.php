@@ -184,36 +184,48 @@ if(isset($_GET['savedForm']) || isset($_GET['updatedForm'])){
         $query_add=mysqli_query($connect, $sql_add);
 
         if(mysqli_affected_rows($connect)){
-            $command = "SELECT $formID_column FROM forms_data WHERE $formFillerId_column='$fillerId' ORDER BY $formID_column DESC";
+            $command = "SELECT * FROM forms_data WHERE $formFillerId_column='$fillerId' ORDER BY $formID_column DESC";
             $execute = mysqli_query($connect, $command);
             $row = mysqli_fetch_all($execute, MYSQLI_ASSOC);
             $fId = $row[0][$formID_column];
+
+            if($row[0]['uId'] == $row[0][$formFillerId_column]){
+                $other = 'no';
+            }else{
+                $other = 'yes';
+            }
 
             $command2 = "SELECT tId FROM tax_details WHERE $fillerId_column='$fillerId' ORDER BY tId DESC";
             $execute2 = mysqli_query($connect, $command2);
             $row2 = mysqli_fetch_all($execute2, MYSQLI_ASSOC);
             $tId = $row2[0]['tId'];
 
-            header("location: ./QRPage.php?amount=$tAmount&fine=$fineper&mssg=$insMssg&fineAmount=$fAmount&fId=$fId&tId=$tId&updated");
+            header("location: ./QRPage.php?amount=$tAmount&fine=$fineper&mssg=$insMssg&fineAmount=$fAmount&fId=$fId&tId=$tId&other=$other&updated");
         }else{
-            header("location: ../PAGES/form.html?error=NotInserted");
+            header("location: ../PAGES/form.php?error=NotInserted");
         }
     }else{
         $sql_add = "INSERT INTO tax_details($fillerId_column,uId,$createdAt_column,$fineAmount_column,$taxAmount_column,$finePercentage_column,$paidIn_column,$totalAmount_column) VALUES ('$fillerId','$uId',null,'$fAmount','$tAmount','$fineper','$fineInDB','$totalAmount');";
         $query_add=mysqli_query($connect, $sql_add);
 
         if(mysqli_affected_rows($connect)){
-            $command = "SELECT $formID_column FROM forms_data WHERE $formFillerId_column='$fillerId' ORDER BY $formID_column DESC";
+            $command = "SELECT * FROM forms_data WHERE $formFillerId_column='$fillerId' ORDER BY $formID_column DESC";
             $execute = mysqli_query($connect, $command);
             $row = mysqli_fetch_all($execute, MYSQLI_ASSOC);
             $fId = $row[0][$formID_column];
+
+            if($row[0]['uId'] == $row[0][$formFillerId_column]){
+                $other = 'no';
+            }else{
+                $other = 'yes';
+            }
 
             $command2 = "SELECT tId FROM tax_details WHERE $fillerId_column='$fillerId' ORDER BY tId DESC";
             $execute2 = mysqli_query($connect, $command2);
             $row2 = mysqli_fetch_all($execute2, MYSQLI_ASSOC);
             $tId = $row2[0]['tId'];
 
-            header("location: ./QRPage.php?amount=$tAmount&fine=$fineper&mssg=$insMssg&fineAmount=$fAmount&fId=$fId&tId=$tId");
+            header("location: ./QRPage.php?amount=$tAmount&fine=$fineper&mssg=$insMssg&fineAmount=$fAmount&fId=$fId&tId=$tId&other=$other");
         }else{
             header("location: ../PAGES/form.html?error=NotInserted");
         }

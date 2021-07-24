@@ -132,7 +132,7 @@
                     <form action="" method="get" id="autoFill" <?php if(isset($_GET['autoOtherFill']) || isset($_GET['fId'])) {echo "style='display:none'"; }?>>
                         <input type="submit" value="Auto-Fill" class="btn secondary btn-rounded" name="autoFill"/>
                     </form>
-                    <form action="" method="get" id="autoOtherFill" style="display: <?php if(isset($_GET['autoOtherFill']) || isset($_GET['fId'])) {echo "block"; }else{echo "none";}?>;">
+                    <form action="" method="get" id="autoOtherFill" style="display: <?php if(isset($_GET['autoOtherFill']) || (isset($_GET['other']) && $_GET['other'] == 'yes')) {echo "block"; }else{echo "none";}?>;">
                         <input type="submit" value="Auto-Fill" class="btn secondary btn-rounded" name="autoOtherFill"/>
                     </form>
                 </div>
@@ -146,7 +146,7 @@
                 <div>
                     <!-- hidden section for others -->
                     <!-- Here we fill the users data -->
-                    <div id="display" <?php if(isset($_GET['autoOtherFill']) || isset($_GET['fId'])) {echo "style='display:block'"; }?>>
+                    <div id="display" <?php if(isset($_GET['autoOtherFill']) || (isset($_GET['other']) && $_GET['other'] == 'yes')) {echo "style='display:block'"; }?>>
                         <h3 class="form-title">Please fill you information  for security purposes</h3>
                         <hr class="hr">
                         <div class="details">
