@@ -1,5 +1,5 @@
 <?php
-
+ob_start();
 require "./includes/connection.php";
 
 include('./includes/table_columns_name.php');
@@ -34,7 +34,20 @@ if(mysqli_num_rows($query)){
     <p>Thank you for registeration</p>
     <p>
         Click this link to verify and log in into your account
-        $url
+        <br><br>
+        <table width='100%' border='0' cellspacing='0' cellpadding='0'>
+            <tr>
+                <td>
+                <table border='0' cellspacing='0' cellpadding='0'>
+                    <tr>
+                    <td>
+                        <a href='$url' target='_blank' style='font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #000; text-decoration: none; border-radius: 3px; background-color: #89A6F3; border-top: 12px solid #89A6F3; border-bottom: 12px solid #89A6F3; border-right: 18px solid #89A6F3; border-left: 18px solid #89A6F3; display: inline-block;'>Verify Your Account</a>
+                    </td>
+                    </tr>
+                </table>
+                </td>
+            </tr>
+        </table>
     </p>
     ";
 
@@ -50,7 +63,9 @@ if(mysqli_num_rows($query)){
     $mail->SMTPSecure = 'tls';
     $mail->Port = 587;
 
-    include("./includes/phpMailer_fix.php");
+    if(file_exists("./includes/phpMailer_fix.php")){
+        include("./includes/phpMailer_fix.php");
+    }
 
     // * setting the email address and name of sender
     $mail->setFrom($adminEmail, 'Swift Bluebook');
