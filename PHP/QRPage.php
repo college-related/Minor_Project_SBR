@@ -106,7 +106,7 @@
                         </div>
                         <div id="button-layout">
                         <!-- TODO: add a download system -->
-                            <!--<a href="<?php echo $urlPath; ?>"><button id="download-btn">Download</button></a>-->
+                            <a href="<?php echo 'QR.php?amount='.$tAmount.'&fine='.$fineAmount.'&mssg='.$insMssg; ?>" download="QR"><button class="btn btn-secondary btn-reset">Download <i class="fas fa-download"></i></button></a>
                             <a href="../PAGES/profile.php"><button class="btn btn-secondary btn-reset"><?=$lang['qr-page']['btn-text']?></button></a>
                         </div>
                     </div>
