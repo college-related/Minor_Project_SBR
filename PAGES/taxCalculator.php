@@ -100,11 +100,15 @@
                                     <h2>RS. <?php if(isset($_GET['ta'])){echo $_GET['toa'];}else{echo '0';} ?></h2>
                                 </div>
                                 <div class="result-details">
-                                    <p>
-                                        <b><?=$lang['taxCal-page'][8]?>: </b> Rs <?php if(isset($_GET['ta'])){echo $_GET['ta'];}else{echo '0';} ?>
-                                    </p>
-                                    <p><b><?=$lang['taxCal-page'][9]?>: </b> <?php if(isset($_GET['ta'])){echo $_GET['fp'];}else{echo '0%';} ?></p>
-                                    <p><b><?=$lang['taxCal-page'][10]?>:</b> Rs <?php if(isset($_GET['ta'])){echo $_GET['fa'];}else{echo '0';} ?></p>
+                                    <?php if(isset($_GET['fa']) && $_GET['fa'] == -1){ ?>
+                                        <p><b><?=$lang['taxCal-page'][11]?></b></p>
+                                    <?php }else{ ?> 
+                                        <p>
+                                            <b><?=$lang['taxCal-page'][8]?>: </b> Rs <?php if(isset($_GET['ta'])){echo $_GET['ta'];}else{echo '0';} ?>
+                                        </p>
+                                        <p><b><?=$lang['taxCal-page'][9]?>: </b> <?php if(isset($_GET['ta'])){echo $_GET['fp'];}else{echo '0';} ?>%</p>
+                                        <p><b><?=$lang['taxCal-page'][10]?>:</b> Rs <?php if(isset($_GET['ta'])){echo $_GET['fa'];}else{echo '0';} ?></p>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>

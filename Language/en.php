@@ -115,7 +115,8 @@ $lang = array(
         'top-text' => 'Calculate the tax according to the criteria',
         'Type', 'Public/Private', 'Name', 'Engine CC', 'Province',
         'Last Renew Date', 'Calculate', 'Your Tax',
-        'Tax amount', 'Fine Percentage', 'Fine amount'
+        'Tax amount', 'Fine Percentage', 'Fine amount',
+        'Please Contact Main Office',
     ),
     'info-page' => array(
         'titles' => array(
