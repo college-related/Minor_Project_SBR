@@ -13,7 +13,7 @@ $lang = array(
     'index-page' => array(
         'hero-text' => 'स्विफ्ट ब्लूबुक नवीकरण',
         'slogon-text' => 'कम लाइन कम प्रतिक्षा',
-        'hero-btn--text' => 'Get Started',
+        'hero-btn--text' => 'सुरू गर्नुहोस्',
         'features' => array(
             [
                 'title' => 'सुरक्षित',
@@ -25,7 +25,7 @@ $lang = array(
             ],
             [
                 'title' => 'अनुस्मारक',
-                'description' => "Link your email account and the next time its time to pay the bill you got our back we will remind you on time."
+                'description' => "तपाईको इ-मेल खाता लिंक गर्नुहोस् र अर्को चोटि बिल भुक्तान गर्न समय भयो तब हामी तपाईंलाई समयमै सम्झाउने छौं।"
             ]
         ),
         'log-box' => array(
