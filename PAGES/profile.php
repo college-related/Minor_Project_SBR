@@ -53,6 +53,7 @@
         $paginate = 2;
     }
 
+    include('../repeated_section/language.php');
 ?>
 
 <!DOCTYPE html>
@@ -65,7 +66,6 @@
     <link rel="stylesheet" href="../CSS/new-css/style.css">
     <link rel="stylesheet" href="../CSS/new-css/admin-profile.css">
     <link rel="stylesheet" href="../CSS/new-css/profile.css">
-    <!-- <link rel="stylesheet" href="../CSS/profile.css"> -->
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
    
@@ -88,47 +88,27 @@
                             }
                         ?>
                     </div>
-                    <!-- <div class="image-adder-btn">
-                        <div>
-                            <form action='../PHP/handleImage.php' method='POST' enctype='multipart/form-data'>
-                                <input type='file' name='img' onchange='this.form.submit();' id='image_adder'>
-                                <label for='image_adder'>
-                                    <i class='far fa-image'> </i> 
-                                    <span class="tooltip" id="add-image">Upload image</span> 
-                                <lable>
-                            </form>
-                        </div>
-                        <div>
-                            <form action="../PHP/deleteImage.php" id="delete-image-form" method="POST">
-                                <label for="image-remover" onclick="submitForm()">
-                                    <i class="fas fa-user-times"></i>
-                                    <span class="tooltip" id="delete-image">Delete image</span>
-                                </label>
-                            <input type="hidden" value="delete" name="delete-btn">
-                            </form>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="editBtn row-">
-                    <a href="./profileEdit.php" class="desktop-edit--btn"><input type="button" value="Edit Profile" class="btn btn-secondary btn-mobile btn-reset" ></a>
+                    <a href="./profileEdit.php" class="desktop-edit--btn"><input type="button" value="<?=$lang['profile-page']['btn-text-two']?>" class="btn btn-secondary btn-mobile btn-reset" ></a>
                 </div>
             </div>
                 <a href="./profileEdit.php" class="mobile-edit--btn"> <i class="far fa-edit"></i></a>
             </div>
     <div class="col-2 ">
         <div class="information-holder">
-            <h2>Personal Information</h2>
+            <h2><?=$lang['profile-page']['h1-text']?></h2>
             <hr class="hr">
             <div class="row-2 info">
                 <div>
                     <p>
-                        <b>Name:  </b> 
+                        <b><?=$lang['profile-page']['form-texts'][0]?>:  </b> 
                         <?php
                             echo $infoarray[0][$username_column]; 
                         ?>
                     </p>
                     <p>
-                        <b>Email: </b>
+                        <b><?=$lang['profile-page']['form-texts'][1]?>: </b>
                         <?php 
                             
                             if(empty($infoarray)){
@@ -140,7 +120,7 @@
                             ?>
                     </p>
                     <p>
-                        <b>Phone number: </b> 
+                        <b><?=$lang['profile-page']['form-texts'][2]?>: </b> 
                         <?php 
                             
                             if(empty($infoarray)){
@@ -152,7 +132,7 @@
                             ?>
                     </p>
                     <p>
-                        <b>Citizenship Number:  </b>  
+                        <b><?=$lang['profile-page']['form-texts'][3]?>:  </b>  
                         <?php
                                     if(empty($infoarray)){
                                         echo "???";
@@ -165,7 +145,7 @@
                 </div>
                 <div>
                 <p>
-                    <b>Vehicle Registration Number:  </b>  
+                    <b><?=$lang['profile-page']['form-texts'][4]?>:  </b>  
                     <?php
                                  if(empty($infoarray) || $infoarray[0][$vehicleRegistration_column] == ""){
                                     echo "???";
@@ -175,7 +155,7 @@
                             ?>
                 </p>
                 <p>
-                    <b>Vehicle Type:  </b> 
+                    <b><?=$lang['profile-page']['form-texts'][5]?>:  </b> 
                     <?php    
                                 if(empty($infoarray) || $infoarray[0][$vehicleType_column] == ""){
                                     echo "???";
@@ -185,7 +165,7 @@
                             ?>
                 </p>
                 <p>
-                    <b>Vehicle Category:  </b>  
+                    <b><?=$lang['profile-page']['form-texts'][6]?>:  </b>  
                     <?php
                                 if(empty($infoarray) || $infoarray[0][$vehicleCategory_column] == ""){
                                     echo "???";
@@ -195,7 +175,7 @@
                             ?>
                 </p>
                 <p>
-                    <b>Engine CC:  </b>  
+                    <b><?=$lang['profile-page']['form-texts'][7]?>:  </b>  
                     <?php
                                  if(empty($infoarray) || $infoarray[0][$engineCC_column] == ""){
                                     echo "???";
@@ -209,7 +189,7 @@
             
         </div>
         <div class="information-holder">
-            <h2>Taxes</h2>
+            <h2><?=$lang['profile-page']['h1-text-two']?></h2>
             <hr class="hr">
             <div class="profile-detail-section tax-detail info">
                 <?php if(count($taxArray) > 0){  ?>
@@ -232,7 +212,7 @@
                 </div>
                 <?php if($paginate >= 1){ ?> 
                     <a href="http://localhost/MINOR_PROJECT_SBR/PAGES/profile.php?Logged&pagination=<?=$paginate ?>&thp=<?=$taxHistoryPaginate ?>#tax-h">
-                        <button class="btn btn-secondary btn-mobile btn-reset">Load More</button>
+                        <button class="btn btn-secondary btn-mobile btn-reset"><?=$lang['profile-page']['btn-text-one']?></button>
                     </a> <?php } 
                 ?>
                 <?php } else { ?>

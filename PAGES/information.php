@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+    include('../repeated_section/language.php');    
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,94 +21,82 @@
         <div class="row-2 main-div-holder">
             <div class="info-holder col-1 show">
                 <div class="info-title-holder">
-                    <button class="font-bold icon active">Vehicle Tax </button>
+                    <button class="font-bold icon active"><?=$lang['info-page']['titles'][0]?></button>
                 </div>
                 <div class="info-body-holder">
-                    The tax you have to pay to government for using the 
-                    vehicle and road every year. The tax varies according 
-                    to the vehicle type and engine cc of your vehicle.
+                    <?=$lang['info-page']['descriptions'][0]?>
                 </div>
             </div>
             <div class="info-holder col-1 show">
                 <div class="info-title-holder">
-                    <button class="font-bold icon active">Engine CC</button>
+                    <button class="font-bold icon active"><?=$lang['info-page']['titles'][1]?></button>
                 </div>
                 <div class="info-body-holder">
-                    The tax you have to pay to government for using the 
-                    vehicle and road every year. The tax varies according 
-                    to the vehicle type and engine cc of your vehicle.
+                    <?=$lang['info-page']['descriptions'][1]?>
                 </div>
             </div>
             <div class="info-holder col-1 show" >
                 <div class="info-title-holder">
-                    <button class="font-bold icon active">Vehicle Type</button>
+                    <button class="font-bold icon active"><?=$lang['info-page']['titles'][2]?></button>
                 </div>
                 <div class="info-body-holder ">
-                There are various types of vehicles.Our website include two of them:  <b>Two Wheeler</b> and <b>Four Wheeler</b>.We have to choose of it give some information about our vehicle.
+                    <?=$lang['info-page']['descriptions'][2]?>
                 </div>
             </div>
             <div class="info-holder col-1 ">
                 <div class="info-title-holder">
-                    <button class="font-bold icon">Vehicle Registration </button>                          
+                    <button class="font-bold icon"><?=$lang['info-page']['titles'][3]?></button>                          
                 </div>
                 <div class="info-body-holder">
-                    All road vehicles with or without a motor (except bicycles) are tagged with a registration number.Licence plates are commonly known as number plates. 
-                    The licence plate number is issued by the state-level Transport Management Office, a government agency under the Department of Transport Management.
-                    For the purpose of vehicle registration Vehicle & Transport Management Act, 2049 (1992) and Vehicle & Transport Management Rule, 2054 (1997) of Nepal, classifies vehicles into the following 5 main categories on the basis of size and capacity.
-                    Those classifications of vehicles are indicated by the color of their license plates. 
-                    So,<b>Vehicle Registration</b> number means the lisence plate number which have to be provided by users to confirm their own vehicle.
+                    <?=$lang['info-page']['descriptions'][3]?>
                 </div>
             </div>
             <div class="info-holder col-1 ">
                 <div class="info-title-holder">
-                    <button class="font-bold icon">Insurance</button>                            
+                    <button class="font-bold icon"><?=$lang['info-page']['titles'][4]?></button>                            
                 </div>
                 <div class="info-body-holder">
-                    We include insurance details question because if you had not paid insurance when you visit with our details to the main office.You have to pay more than our road tax payment slip.
+                    <?=$lang['info-page']['descriptions'][4]?>
                 </div>
             </div>
             <div class="info-holder col-1">
                 <div class="info-title-holder">
-                    <button class="font-bold icon">Why QR code?</button>      
+                    <button class="font-bold icon"><?=$lang['info-page']['titles'][5]?>?</button>      
                 </div>
                 <div class="info-body-holder">
-                    Its for the easiest method for you to take details to the main office.It makes you data turn to the QR code and after scanned in the main office to will be fast to do your transiction.
+                    <?=$lang['info-page']['descriptions'][5]?>                
                 </div>
             </div>
             <div class="info-holder col-1">
                 <div class="info-title-holder">
-                    <button class="font-bold icon">First party insurance</button>                 
+                    <button class="font-bold icon"><?=$lang['info-page']['titles'][6]?></button>                 
                 </div>
                 <div class="info-body-holder">
-                    <b>First Party Insurance </b>is obtained for the policyholder to cover losses or damages to the policyholder’s property or themselves.
+                    <?=$lang['info-page']['descriptions'][6]?>                
                 </div>
             </div>
             <div class="info-holder col-1">
                 <div class="info-title-holder">
-                    <button class="font-bold icon">Third party insurance</button>                  
+                    <button class="font-bold icon"><?=$lang['info-page']['titles'][7]?></button>                  
                 </div>
                 <div class="info-body-holder">
-                    <b>Third PartyInsurance </b> is purchased to protect the insured against liability for losses or damages the insured causes to another individual or their property.
+                    <?=$lang['info-page']['descriptions'][7]?>                
                 </div>                
             </div>
             <div class="info-holder col-1">
                 <div class="info-title-holder">
-                    <button class="font-bold icon">Road Tax Payment</button>                 
+                    <button class="font-bold icon"><?=$lang['info-page']['titles'][8]?></button>                 
                 </div>
                 <div class="info-body-holder">
-                    Its is the payment that should be paid by every individual to the goverment  as Road tax.Some of the vehicle types,catagories have its own road tax assigned by goverment.
+                    <?=$lang['info-page']['descriptions'][8]?>                
                 </div>                
             </div>
             <div class="info-holder col-1">
                 <div class="info-title-holder">
-                    <button class="font-bold icon">Vehicle categories</button>                 
+                    <button class="font-bold icon"><?=$lang['info-page']['titles'][9]?></button>                 
                 </div>
                 <div class="info-body-holder">
-                    Different types of vehicle are covered by different licence categories, and have varying minimum age restrictions.</br>
-                    Such as:</br>
-                    Category fo car is 'B',</br>
-                    Category fo scoter is 'k',</br>
-                    Category fo bike is 'A' and so on.
+                    <?=$lang['info-page']['descriptions'][9]?>                 
                 </div>                
             </div>
         </div>

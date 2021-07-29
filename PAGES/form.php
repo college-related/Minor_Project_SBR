@@ -97,6 +97,8 @@
         $insurance = $form[0][$insurance_column];
         $formId = $form[0][$formID_column];
     }
+
+    include('../repeated_section/language.php');
 ?>
 
 <!DOCTYPE html>
@@ -120,7 +122,7 @@
             <div class="btns">
                 <div class="option justify-center">
                     <span>
-                        Are you filling form for others? Check Here
+                        <?=$lang['form-page']['top-text']?>
                         <span id="check" onclick="reveal()">
                         <?php if(isset($_GET['autoOtherFill']) || isset($_GET['fId'])) { ?>
                             <i class="fas fa-check-circle"></i>
@@ -130,10 +132,10 @@
                         </span>
                     </span>
                     <form action="" method="get" id="autoFill" <?php if(isset($_GET['autoOtherFill']) || isset($_GET['fId'])) {echo "style='display:none'"; }?>>
-                        <input type="submit" value="Auto-Fill" class="btn secondary btn-rounded" name="autoFill"/>
+                        <input type="submit" value="<?=$lang['form-page']['btn-text-1']?>" class="btn secondary btn-rounded" name="autoFill"/>
                     </form>
                     <form action="" method="get" id="autoOtherFill" style="display: <?php if(isset($_GET['autoOtherFill']) || (isset($_GET['other']) && $_GET['other'] == 'yes')) {echo "block"; }else{echo "none";}?>;">
-                        <input type="submit" value="Auto-Fill" class="btn secondary btn-rounded" name="autoOtherFill"/>
+                        <input type="submit" value="<?=$lang['form-page']['btn-text-1']?>" class="btn secondary btn-rounded" name="autoOtherFill"/>
                     </form>
                 </div>
             </div>
@@ -147,54 +149,54 @@
                     <!-- hidden section for others -->
                     <!-- Here we fill the users data -->
                     <div id="display" <?php if(isset($_GET['autoOtherFill']) || (isset($_GET['other']) && $_GET['other'] == 'yes')) {echo "style='display:block'"; }?>>
-                        <h3 class="form-title">Please fill you information  for security purposes</h3>
+                        <h3 class="form-title"><?=$lang['form-page']['h1-text-4']?></h3>
                         <hr class="hr">
                         <div class="details">
                             <div class="row-2">
                                 <div class="flex form-flex">
-                                    <label for="name1">Name:</label>
-                                    <input type="text" name="Name1" id="name1" class="form-field" value='<?=$name1?>' placeholder="Your Name" required />
+                                    <label for="name1"><?=$lang['form-page']['form-texts'][0]?>:</label>
+                                    <input type="text" name="Name1" id="name1" class="form-field" value='<?=$name1?>' placeholder="<?=$lang['form-page']['form-texts'][2]?>" required />
                                 </div>
                                 <div class="flex form-flex">
-                                    <label for="phn1">Phone Number:</label>
-                                    <input type="number" name="Phn1" id="phn1" value="<?=$phn1?>" class="form-field"  value='<?=$phn1?>' placeholder="Your Phone Number" required/>
+                                    <label for="phn1"><?=$lang['form-page']['form-texts'][1]?>:</label>
+                                    <input type="number" name="Phn1" id="phn1" value="<?=$phn1?>" class="form-field"  value='<?=$phn1?>' placeholder="<?=$lang['form-page']['form-texts'][3]?>" required/>
                                 </div>
                             </div>
                             <div class="row-2">
                                 <div class="flex form-flex col-2">
-                                    <label  for="vehicleReg1">Vehicle Registration no:</label>
-                                    <input type="text" name="VehicleReg1" id="vehicleReg1"  class="form-field" value="<?=$vehicleReg1?>" placeholder="Your Vehicle Registration Number" required/>
+                                    <label  for="vehicleReg1"><?=$lang['form-page']['form-texts'][5]?>:</label>
+                                    <input type="text" name="VehicleReg1" id="vehicleReg1"  class="form-field" value="<?=$vehicleReg1?>" placeholder="<?=$lang['form-page']['form-texts'][6]?>" required/>
                                 </div>
                             </div>  
                         </div>
                     </div>
-                    <h3 class="form-title">Personal Information</h3>
+                    <h3 class="form-title"><?=$lang['form-page']['h1-text-1']?></h3>
                     <hr class="hr">
                     <div class="details">
                         <div class="row-2">
                             <div class="flex form-flex">
-                                <label for="name">Name:</label>
-                                <input type="text" name="Name" id="name" class="form-field" placeholder="Name" value='<?=$name?>' required/>
+                                <label for="name"><?=$lang['form-page']['form-texts'][0]?>:</label>
+                                <input type="text" name="Name" id="name" class="form-field" placeholder="<?=$lang['form-page']['form-texts'][0]?>" value='<?=$name?>' required/>
                             </div>
                             <div class="flex form-flex">
-                                <label for="phn">Phone Number:</label>
-                                <input type="number" name="Phn" id="phn" class="form-field" placeholder="Phone number" value='<?=$phn?>' required/>
+                                <label for="phn"><?=$lang['form-page']['form-texts'][1]?>:</label>
+                                <input type="number" name="Phn" id="phn" class="form-field" placeholder="<?=$lang['form-page']['form-texts'][1]?>" value='<?=$phn?>' required/>
                             </div>
                         </div>
                         <div class="row-2">
                             <div class="flex form-flex col-2">
-                                <label for="citizen">Citizenship number:</label>
-                                <input type="text" name="Citizen" id="citizen" class="form-field" placeholder="Citizenship number"  value='<?=$citizen?>' required/>
+                                <label for="citizen"><?=$lang['form-page']['form-texts'][4]?>:</label>
+                                <input type="text" name="Citizen" id="citizen" class="form-field" placeholder="<?=$lang['form-page']['form-texts'][4]?>"  value='<?=$citizen?>' required/>
                             </div>
                         </div>  
                     </div>
                     <!-- Vechile details section -->
-                    <h3 class="form-title">Vehicle Information</h3>
+                    <h3 class="form-title"><?=$lang['form-page']['h1-text-2']?></h3>
                     <hr class="hr"> 
                     <div class="details">
                         <div class="row-2">
                             <div class="flex form-flex">
-                                <label for="type">Vehicle Type:</label>
+                                <label for="type"><?=$lang['form-page']['form-texts'][7]?>:</label>
                                 <select name="Vtype" id="type" class="form-field" required>
                                     <option value="none"></option>
                                     <option value="two Wheeler" <?php if($vehicleType != ""){if($vehicleType == "two wheeler"){echo "selected";}} ?>>Two wheeler</option>
@@ -202,7 +204,7 @@
                                 </select>
                             </div>
                             <div class="flex form-flex">
-                                <label for="category">Vehicle Category:</label>
+                                <label for="category"><?=$lang['form-page']['form-texts'][8]?>:</label>
                                 <select name="Vcategory" id="category" class="form-field" required>
                                     <?php
                                         if($vehicleCategory != ""){
@@ -212,7 +214,7 @@
                                 </select>
                             </div>
                             <div class="flex form-flex">
-                                <label for="engine">Engine CC:</label>
+                                <label for="engine"><?=$lang['form-page']['form-texts'][9]?>:</label>
                                 <select name="EngineCC" id="engCC" class="form-field" required>
                                         <?php
                                             if($engineCC != ""){
@@ -222,39 +224,39 @@
                                 </select>
                             </div>
                             <div class="flex form-flex">
-                                <label for="publicOrPrivate">Public/Private:</label>
+                                <label for="publicOrPrivate"><?=$lang['form-page']['form-texts'][10]?>:</label>
                                 <select class="form-field" name="pp" required>
                                     <option value="private" selected>
-                                        Private
+                                        <?=$lang['form-page']['form-texts'][11]?>
                                     </option>
                                     <option value="public" <?php if(isset($_GET['autoFill'])){if($pp == 'public'){echo "selected";}} ?> >
-                                        Public
+                                        <?=$lang['form-page']['form-texts'][12]?>
                                     </option>
                                 </select>
                             </div>
                         </div>
                         <div class="row-2">
                             <div class="col-2 flex form-flex">
-                                <label for="vehicleReg">Vehicle Registration no:</label>
+                                <label for="vehicleReg"><?=$lang['form-page']['form-texts'][5]?>:</label>
                                 <input type="text" name="VehicleReg" id="vehicleReg" class="form-field" placeholder="Ex: GA 16 PA 4381" value='<?=$vehicleReg?>' required/>
                             </div>
                         </div>
                     </div>
                     <!-- Bluebook / insurance section -->
-                    <h3 class="form-title">BlueBook Information</h3>
+                    <h3 class="form-title"><?=$lang['form-page']['h1-text-3']?></h3>
                     <hr class="hr">
                     <div class="details">
                         <div class="row-2">
                             <div class="flex form-flex">
-                                <label for="renewDate">Last Renew Date:</label>
+                                <label for="renewDate"><?=$lang['form-page']['form-texts'][13]?>:</label>
                                 <input type="date" name="RenewDate" id="renewDate" class="form-field" required <?php if(isset($lastRenew)){echo "value='$lastRenew'";} ?>/>
                             </div>
                             <div class="flex form-flex">
-                                <label for="insuranceSlip"><h4>Have you paid insurance? :</h4></label>
+                                <label for="insuranceSlip"><h4><?=$lang['form-page']['form-texts'][14]?>? :</h4></label>
                                 <select class="form-field" name="insuranceSlip" required>
                                     <option value="">-Select an option-</option>
-                                    <option value="yes" <?php if(isset($insurance) && $insurance == 'yes'){echo "selected";} ?>>Yes</option>
-                                    <option value="no" <?php if(isset($insurance) && $insurance == 'no'){echo "selected";} ?>>No</option>
+                                    <option value="yes" <?php if(isset($insurance) && $insurance == 'yes'){echo "selected";} ?>><?=$lang['form-page']['form-texts'][15]?></option>
+                                    <option value="no" <?php if(isset($insurance) && $insurance == 'no'){echo "selected";} ?>><?=$lang['form-page']['form-texts'][16]?></option>
                                 </select>
                             </div>
                         </div>
@@ -262,11 +264,11 @@
                 </div>
                 <div class=" row-2 message-holder">
                     <div>
-                        <h4 class="message">Please check all the information thoroughly before submitting</h4>
-                        <h4>Thank You</h4>
+                        <h4 class="message"><?=$lang['form-page']['check-text']?></h4>
+                        <h4><?=$lang['form-page']['thank-text']?></h4>
                     </div>   
                     <div class="option">
-                        <input type="submit" value="Save Form" name="saveForm" class="btn btn-secondary primary" formaction="../PHP/handleForm.php"/>
+                        <input type="submit" value="<?=$lang['form-page']['btn-text-2']?>" name="saveForm" class="btn btn-secondary primary" formaction="../PHP/handleForm.php"/>
                     </div>
                 </div>
             </form>

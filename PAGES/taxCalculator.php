@@ -1,5 +1,7 @@
 <?php
     session_start();
+
+    include('../repeated_section/language.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,12 +21,12 @@
     <main>
         <div class="container">
             <div class="main-holder">
-                <h2>Calculate the tax according to the criteria</h2>
+                <h2><?=$lang['taxCal-page']['top-text']?></h2>
                 <div class="calculator-div row-2">
                     <form action="../PHP/calculator.php" method="post">
                         <div class="row-6 justify-center">
                             <div class="font-bold">
-                                <label for="">Type: </label>
+                                <label for=""><?=$lang['taxCal-page'][0]?>: </label>
                             </div>
                             <div class="col-5">
                                 <input type="radio" value="2-wheeler" name="wheeler" class="wheeler-radio" id="2-wheeler" checked><label for="2-wheeler" class="tax-radio">Two Wheeler</label>
@@ -36,7 +38,7 @@
                         </div>
                         <div class="row-6 justify-center">
                             <div class="font-bold">
-                                <label for="">Public<br/>/Private: </label>
+                                <label for=""><?=$lang['taxCal-page'][1]?>: </label>
                             </div>
                             <div class="col-5">
                                 <input type="radio" value="private" name="public-private" id="private" checked><label for="private" class="tax-radio">Private</label>
@@ -45,7 +47,7 @@
                         </div>
                         <div class="row-6 justify-center">
                             <div class="font-bold">
-                                <label for="">Name: </label>
+                                <label for=""><?=$lang['taxCal-page'][2]?>: </label>
                             </div>
                             <div class="col-5 name-div">
                                 <input type="radio" value="Motorcycle" name="v-name" id="motorcycle" checked><label for="motorcycle" class="tax-radio tax-radio--vname">MotorCycle</label>
@@ -55,7 +57,7 @@
                         </div>
                         <div class="row-6 justify-center">
                             <div class="font-bold">
-                                <label for="">Engine CC: </label>
+                                <label for=""><?=$lang['taxCal-page'][3]?>: </label>
                             </div>
                             <div class="col-5">
                                 <select name="engine-cc" id="eng-cc" class="form-field">
@@ -68,7 +70,7 @@
                         </div>
                         <div class="row-6 justify-center">
                             <div class="font-bold">
-                                <label for="">Province: </label>
+                                <label for=""><?=$lang['taxCal-page'][4]?>: </label>
                             </div>
                             <div class="col-5">
                                 <input type="radio" value="1" name="province" id="1" required checked><label for="1" class="tax-radio tax-radio--rounded">1</label>
@@ -82,27 +84,27 @@
                         </div>
                         <div class="row-6 justify-center">
                             <div class="font-bold">
-                                <label for="">Last Renew Date: </label>
+                                <label for=""><?=$lang['taxCal-page'][5]?>: </label>
                             </div>
                             <div class="col-5">
                                 <input type="date" name="renew-date" class="form-field" required>
                             </div>
                         </div>
-                        <input type="submit" name="taxCalculate" value="Calculate" class="btn btn-primary" style="float: right;">
+                        <input type="submit" name="taxCalculate" value="<?=$lang['taxCal-page'][6]?>" class="btn btn-primary" style="float: right;">
                     </form>
                     <div class="result">
                         <div class="result-holder">
-                            <h3>Your Tax</h3>
+                            <h3><?=$lang['taxCal-page'][7]?></h3>
                             <div class="row-2">
                                 <div class="tax-amount">
                                     <h2>RS. <?php if(isset($_GET['ta'])){echo $_GET['toa'];}else{echo '0';} ?></h2>
                                 </div>
                                 <div class="result-details">
                                     <p>
-                                        <b>Tax amount: </b> Rs <?php if(isset($_GET['ta'])){echo $_GET['ta'];}else{echo '0';} ?>
+                                        <b><?=$lang['taxCal-page'][8]?>: </b> Rs <?php if(isset($_GET['ta'])){echo $_GET['ta'];}else{echo '0';} ?>
                                     </p>
-                                    <p><b>Fine percentage: </b> <?php if(isset($_GET['ta'])){echo $_GET['fp'];}else{echo '0';} ?></p>
-                                    <p><b>Fine amount:</b> Rs <?php if(isset($_GET['ta'])){echo $_GET['fa'];}else{echo '0';} ?></p>
+                                    <p><b><?=$lang['taxCal-page'][9]?>: </b> <?php if(isset($_GET['ta'])){echo $_GET['fp'];}else{echo '0%';} ?></p>
+                                    <p><b><?=$lang['taxCal-page'][10]?>:</b> Rs <?php if(isset($_GET['ta'])){echo $_GET['fa'];}else{echo '0';} ?></p>
                                 </div>
                             </div>
                         </div>

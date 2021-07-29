@@ -15,6 +15,8 @@
 
         $users = mysqli_fetch_all($execute, MYSQLI_ASSOC);
     }
+
+    include('../../repeated_section/language.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +37,7 @@
     <main>
         <div class="container">
             <div class="top-title">
-                <h1>Search User Details</h1>
+                <h1><?=$lang['admin-pages'][3]?></h1>
                 <hr class="hr">
             </div>
             <div class="search-holder">
@@ -44,10 +46,10 @@
                         <form action="" method="get" autocomplete="off">
                             <div class="form-holder justify-center">
                                 <div class="input-holder">
-                                    <input type="text" name="keyword" placeholder="Search" class="form-field" value="<?php if(isset($users)){echo $_GET['keyword'];} ?>">
+                                    <input type="text" name="keyword" placeholder="<?=$lang['admin-pages'][4]?>" class="form-field" value="<?php if(isset($users)){echo $_GET['keyword'];} ?>">
                                 </div>
                                 <div class="text-center justify-center">
-                                    <button type="submit" class="btn btn-primary btn-rounded">Search <i class="fas fa-search"></i></button>
+                                    <button type="submit" class="btn btn-primary btn-rounded"><?=$lang['admin-pages'][4]?> <i class="fas fa-search"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -55,7 +57,7 @@
                     <div class="col-2"></div>
                     <div class="col-2 justify-center">
                         <?php if(isset($users)){ ?>
-                            <h3 class="font-bold">Search result for <q><?=$_GET['keyword']?></q></h3>
+                            <h3 class="font-bold"><?=$lang['admin-pages'][5]?> <q><?=$_GET['keyword']?></q></h3>
                         <?php }?>
                     </div>
                 </div>
@@ -81,22 +83,22 @@
                             <div class="user-details">
                                 <table>
                                     <tr>
-                                        <th>Email:</th>
+                                        <th><?=$lang['admin-pages'][6]?>:</th>
                                         <td><?=decryptData($user[$email_column], $key)?></td>
                                     </tr>
                                     <tr>
-                                        <th>Phone:</th>
+                                        <th><?=$lang['admin-pages'][7]?>:</th>
                                         <td><?=decryptData($user[$phoneNumber_column], $key)?></td>
                                     </tr>
                                     <tr>
-                                        <th>Citizenship:</th>
+                                        <th><?=$lang['admin-pages'][8]?>:</th>
                                         <td><?=decryptData($user[$citizenship_column], $key)?></td>
                                     </tr>
                                 </table>
                             </div>
                             <div class="more-holder text-center">
                                 <a href="./user-detail.php?uId=<?=$user['uId']?>">
-                                    <button class="btn btn-secondary btn-reset">More Info</button>
+                                    <button class="btn btn-secondary btn-reset"><?=$lang['admin-pages'][9]?></button>
                                 </a>
                             </div>
                         </div>

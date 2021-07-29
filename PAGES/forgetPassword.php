@@ -4,6 +4,9 @@
         $title = "Send reset link";
         $mssg = "Please check your email";
     }
+
+    session_start();
+    include('../repeated_section/language.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,24 +36,24 @@
     <main  class="container form" >
         <div class="flex main-div">
             <div class="detail">
-                    <h2 class="form-title web-title">Forgot Your Password?</h2>
-                    <span >We got you.<br>Enter the email you want to reset the password</span>
+                    <h2 class="form-title web-title"><?=$lang['forgot-password-page']['title']?></h2>
+                    <span ><?=$lang['forgot-password-page']['info-text']?><br><?=$lang['forgot-password-page']['info-text-two']?></span>
                     <div class="form-body">
                         <form action="../PHP/passwordResetLink.php" method="post" >
-                            <input type="email" name="email" id="Email" placeholder="Your Email" class="form-field form-group" required/>
+                            <input type="email" name="email" id="Email" placeholder="<?=$lang['forgot-password-page']['placeholder']?>" class="form-field form-group" required/>
                             <?php if(isset($_GET['error'])){echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> No such email found</span>";} ?><br><br>
-                            <input type="submit" value="Send Reset Link" name="resetLink" class="btn btn-accent  form-group">
+                            <input type="submit" value="<?=$lang['forgot-password-page']['btn-text']?>" name="resetLink" class="btn btn-accent  form-group">
                         </form>
                     </div>
                     <div class="form-footer">
-                        <span>Got Password?</span>
-                        <a href="../index.php#form-wrapper" class="link-primary">Log in</a>
+                        <span><?=$lang['forgot-password-page']['already-text']?></span>
+                        <a href="../index.php#form-wrapper" class="link-primary"><?=$lang['forgot-password-page']['already-link']?></a>
                     </div>
             </div>
             <div class="forgot-password-image">
                 <img src="../ASSETS/IMAGES/undraw/forgot-password.png" alt="forgot-password" class="feature-img">
             </div>
-            <h2 class="form-title mobile-title">Forgot Your Password?</h2>
+            <h2 class="form-title mobile-title"><?=$lang['forgot-password-page']['title']?></h2>
         </div>
     </main>
 

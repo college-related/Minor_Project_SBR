@@ -16,6 +16,9 @@ if(isset($_GET['error'])){
     }
 }
 
+session_start();
+include('../repeated_section/language.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -46,27 +49,27 @@ if(isset($_GET['error'])){
     <main class="container form" >
         <div class="flex main-div">
             <div class=" detail">
-                <h2 class="form-title web-title">Reset Password</h2>
+                <h2 class="form-title web-title"><?=$lang['reset-password-page']['title']?></h2>
                 <div class="form-body">
                     <form action="../PHP/changePass.php" method="post">
                         <input type="hidden" name="uId" value="<?=$uId?>"/>
                         <!-- <label for="Pass">New password:</label><br><br> -->
-                        <input type="password" name="pass" id="Pass" placeholder="New password" class="form-field form-group" required/>
+                        <input type="password" name="pass" id="Pass" placeholder="<?=$lang['reset-password-page']['pass-placeholder']?>" class="form-field form-group" required/>
                         <?php if(isset($_GET['error']) && $_GET['error'] == 'NotSamePass') {echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> New Password not matched</span>";}?><br><br>
                         <!-- <label for="Repass">Confirm new password:</label><br><br> -->
-                        <input type="password" name="rePass" id="Repass" placeholder="Confirm New Password" class="form-field form-group" required/><br><br>
-                        <input type="submit" value="Reset Password" name="changePass" class="btn btn-accent btn-rounded form-group"/>
+                        <input type="password" name="rePass" id="Repass" placeholder="<?=$lang['reset-password-page']['pass-re-placeholder']?>" class="form-field form-group" required/><br><br>
+                        <input type="submit" value="<?=$lang['reset-password-page']['title']?>" name="changePass" class="btn btn-accent btn-rounded form-group"/>
                     </form>
                 </div>
                 <div class="form-footer">
-                    <span>Got Password? </span>
-                    <a href="../index.php#form-wrapper" class="link-primary">Log in</a>
+                    <span><?=$lang['reset-password-page']['already-text']?> </span>
+                    <a href="../index.php#form-wrapper" class="link-primary"><?=$lang['reset-password-page']['already-link']?></a>
                 </div>
             </div>
             <div class=" reset-password-image side-div">
                 <img src="../ASSETS/IMAGES/undraw/reset-password.png" alt="reset-password" class="feature-img">    
             </div> 
-            <h2 class="form-title mobile-title">Reset Password</h2>
+            <h2 class="form-title mobile-title"><?=$lang['reset-password-page']['title']?></h2>
         </div> 
 
         <script>

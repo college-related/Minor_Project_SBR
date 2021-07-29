@@ -14,11 +14,11 @@
         <?php include('navMenu.php'); ?>
         <?php if(isset($_SESSION['uId'])) {?>
             <a href="http://localhost/MINOR_PROJECT_SBR/PHP/logout.php" class="btn-mobile mobile-log">
-                Log Out
+                <?=$lang['header']['log-out-text']?>
             </a>
         <?php } else {?>
             <a href="#form-wrapper" class="btn-mobile" class="mobile-log">
-                Log In
+                <?=$lang['header']['log-in-text']?>
             </a>
         <?php } ?>
     </div>

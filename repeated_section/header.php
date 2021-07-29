@@ -15,7 +15,7 @@
                     <?php include('navMenu.php'); ?>
                     <?php if(isset($_SESSION['uId'])) {?>
                         <a href="http://localhost/MINOR_PROJECT_SBR/PHP/logout.php">
-                            <button class="btn btn-primary btn-rounded nav-btn">Log Out</button>
+                            <button class="btn btn-primary btn-rounded nav-btn"><?=$lang['header']['log-out-text']?></button>
                         </a>
                     <?php } else {?>
                         <?php 
@@ -26,14 +26,14 @@
                             } 
                         ?>
                         <a href="<?= $link ?>">
-                            <button class="btn btn-primary btn-rounded nav-btn">Log In</button>
+                            <button class="btn btn-primary btn-rounded nav-btn"><?=$lang['header']['log-in-text']?></button>
                         </a>
                     <?php } ?>
                 </ul>
             </nav>
         </div>
         <div class="settings-widget">
-            <span class="language-setting">EN | NP</span>
+            <span class="language-setting"><a href="?lang=en">EN</a> | <a href="?lang=np">ने</a></span>
             <span class="theme-setting">
                 <i class="far fa-moon"></i>
             </span>

@@ -12,6 +12,8 @@
     $command = "SELECT users.*, vehicles_data.* FROM users JOIN vehicles_data ON users.uId=vehicles_data.uId WHERE users.uId='$uId' && vehicles_data.uId='$uId'";
     $execute = mysqli_query($connect, $command);
     $row = mysqli_fetch_all($execute, MYSQLI_ASSOC);
+
+    include('../../repeated_section/language.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +43,7 @@
                                     if($row[0][$image_column] == null){
                                         echo "";
                                     }else{
-                                        echo "<img src='../../ASSETS/upload/$row[0][$image_column]' alt='profile picture' id='profile_picture'>";
+                                        echo "<img src='../../ASSETS/upload/".$row[0][$image_column]."' alt='profile picture' id='profile_picture'>";
                                     }
                                 ?>
                             </div>

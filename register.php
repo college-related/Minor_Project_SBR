@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
     if(isset($_GET['error'])){
         $error = $_GET['error'];
@@ -75,6 +76,7 @@
             }
     }
 
+    include('./repeated_section/language.php');
 ?>
 
 <!DOCTYPE html>
@@ -124,24 +126,24 @@
         <div class="container flex">
             <div class="register">
                 <form action="./PHP/handleUser.php" method="post">
-                    <h1 class="web-title">Register</h1>
+                    <h1 class="web-title"><?=$lang['register-page']['title']?></h1>
                     <div>
                         <div class="row-2">
                             <div>
-                                <input class="form-field" type="text" required placeholder="Full name" name="username" required <?php if(isset($_GET['infoBack'])){echo "value='$name'";} ?>>
+                                <input class="form-field" type="text" required placeholder="<?=$lang['register-page']['name-placeholder']?>" name="username" required <?php if(isset($_GET['infoBack'])){echo "value='$name'";} ?>>
                             </div>
                             <div>
-                                <input class="form-field" type="number" required placeholder="Phone number" name="phoneNumber" required <?php if(isset($_GET['infoBack'])){echo "value='$phone'";} ?>><br>
+                                <input class="form-field" type="number" required placeholder="<?=$lang['register-page']['phone-placeholder']?>" name="phoneNumber" required <?php if(isset($_GET['infoBack'])){echo "value='$phone'";} ?>><br>
                                 <?php if(isset($_GET['inputError']) && $inputError == 'AlreadyUserPhone'){ echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> This phone number already exists </span>"; } ?>
                             </div>
                         </div>
                         <div class="row-2">
                             <div>
-                                    <input class="form-field" type="email" required placeholder="Email" name="email" required <?php if(isset($_GET['infoBack'])){echo "value='$email'";} ?>> <br>
+                                    <input class="form-field" type="email" required placeholder="<?=$lang['register-page']['email-placeholder']?>" name="email" required <?php if(isset($_GET['infoBack'])){echo "value='$email'";} ?>> <br>
                                     <?php if(isset($_GET['inputError']) && $inputError == 'AlreadyUserEmail'){ echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> This Email already exists</span>"; } ?>
                                 </div>
                                 <div>
-                                    <input class="form-field" type="text" required placeholder="Citizenship Number" name="citizenshipNumber" required <?php if(isset($_GET['infoBack'])){echo "value='$citizenNo'";} ?>><br>
+                                    <input class="form-field" type="text" required placeholder="<?=$lang['register-page']['citizen-placeholder']?>" name="citizenshipNumber" required <?php if(isset($_GET['infoBack'])){echo "value='$citizenNo'";} ?>><br>
                                     <?php if(isset($_GET['inputError']) && $inputError == 'AlreadyCitizen'){ echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> This citizenship number already exists</span>"; } ?>
                                 </div>
                         </div>
@@ -149,7 +151,7 @@
                             
                             <div>
                                 <select class="form-field" name="vType" id="type" required>
-                                    <option value="none">--Vehicle Type--</option>
+                                    <option value="none"><?=$lang['register-page']['vType-placeholder']?></option>
                                     <option value="two wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "two wheeler"){echo "selected";}} ?>>Two Wheeler</option>
                                     <option value="four wheeler" <?php if(isset($_GET['infoBack'])){if($vType == "four wheeler"){echo "selected";}} ?>>Four Wheeler</option>
                                 </select>
@@ -161,7 +163,7 @@
                                             echo "<option value='$vCategory'>$vCategory</option>";
                                         }
                                     ?>
-                                    <option value="none">--Vehicle Category--</option>
+                                    <option value="none"><?=$lang['register-page']['vCat-placeholder']?></option>
                                 </select>
                             </div>
 
@@ -174,35 +176,35 @@
                                                 echo "<option value='$engineCC'>$engineCC</option>";
                                             }
                                         ?>
-                                        <option value="none">--Engine CC--</option>
+                                        <option value="none"><?=$lang['register-page']['eng-placeholder']?></option>
                                     </select>
                                     <div class="row-2 public-private-wrapper">
-                                        <input class="" type="radio" name="public_or_private" value="private" id="privateP" required checked><label class="text-center private-public" for="privateP">Private</label>
-                                        <input class="" type="radio" name="public_or_private" value="public" id="publicP" <?php if(isset($_GET['infoBack'])){if($pp == 'public'){echo "checked";}} ?> ><label class=" text-center private-public" for="publicP">Public</label>   
+                                        <input class="" type="radio" name="public_or_private" value="private" id="privateP" required checked><label class="text-center private-public" for="privateP"><?=$lang['register-page']['private-radio']?></label>
+                                        <input class="" type="radio" name="public_or_private" value="public" id="publicP" <?php if(isset($_GET['infoBack'])){if($pp == 'public'){echo "checked";}} ?> ><label class=" text-center private-public" for="publicP"><?=$lang['register-page']['public-radio']?></label>   
                                     </div>
                                 </div>
                             <div>
-                                <input class="form-field" type="text" required placeholder="Vehicle Registration Number" name="vReg" required <?php if(isset($_GET['infoBack'])){echo "value='$vReg'";} ?>><br> 
+                                <input class="form-field" type="text" required placeholder="<?=$lang['register-page']['vReg-placeholder']?>" name="vReg" required <?php if(isset($_GET['infoBack'])){echo "value='$vReg'";} ?>><br> 
                                 <?php if(isset($_GET['inputError']) && $inputError == 'AlreadyVReg'){ echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> It is already registered</span>"; } ?>
                             </div>
                         </div>
                         <div class="row-2">
                             <div>
-                                <input class="form-field" type="password" required placeholder="Password" name="password" id="pass" required><br>
+                                <input class="form-field" type="password" required placeholder="<?=$lang['register-page']['password-placeholder']?>" name="password" id="pass" required><br>
                                 <?php if(isset($_GET['inputError']) && $inputError == 'PasswordNotSame'){ echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> Password should match</span>"; } ?>
                             </div>
                             <div>
-                                <input class="form-field" type="password" required placeholder="Confirm Password" name="repassword" id="rePass" required>
+                                <input class="form-field" type="password" required placeholder="<?=$lang['register-page']['confirmPass-placeholder']?>" name="repassword" id="rePass" required>
                             </div>
                         </div>
                     </div>
                     <div class="text-center">
-                        <input class="btn btn-accent" type="submit" value="Register" name="signup">
+                        <input class="btn btn-accent" type="submit" value="<?=$lang['register-page']['title']?>" name="signup">
                     </div>
                 </form>
                 <div class="text-center links">
-                    <h5>Already have an account?<a href="index.php#form-wrapper" class="link-primary">Log in</a></h5>
-                    <h5><a href="./PAGES/forgetPassword.php" class="link-underline">Forgot Password?</a></h5>
+                    <h5><?=$lang['register-page']['already-text']?>  <a href="index.php#form-wrapper" class="link-primary"><?=$lang['register-page']['already-link']?></a></h5>
+                    <h5><a href="./PAGES/forgetPassword.php" class="link-underline"><?=$lang['register-page']['forgot-text']?></a></h5>
                 </div>
             </div>
             <div class="img-background">
@@ -210,7 +212,7 @@
                 <img src="./ASSETS/IMAGES/undraw/welcome.png" alt="welcome image">
             </div>
             </div>
-            <h1 class="mobile-title">Register</h1>
+            <h1 class="mobile-title"><?=$lang['register-page']['title']?></h1>
         </div>
     </main>
     

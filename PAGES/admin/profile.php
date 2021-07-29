@@ -13,6 +13,8 @@
 
     $str = '/6G6F;WvK7;s{au/6G6F;WvK7;s{au';
     $key = md5($str);
+
+    include('../../repeated_section/language.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +52,7 @@
                                     <input type='file' name='img' onchange='this.form.submit();' id='image_adder'>
                                     <label for='image_adder'>
                                         <i class='far fa-image'> </i> 
-                                        <span class="tooltip" id="add-image">Upload image</span> 
+                                        <span class="tooltip" id="add-image"><?=$lang['profile-edit-page']['img-text-one']?></span> 
                                     <lable>
                                 </form>
                             </div>
@@ -58,7 +60,7 @@
                                 <form action="../../PHP/deleteImage.php" id="delete-image-form" method="POST">
                                     <label for="image-remover" onclick="submitForm()">
                                         <i class="fas fa-user-times"></i>
-                                        <span class="tooltip" id="delete-image">Delete image</span>
+                                        <span class="tooltip" id="delete-image"><?=$lang['profile-edit-page']['img-text-two']?></span>
                                     </label>
                                 <input type="hidden" value="delete" name="delete-btn">
                                 </form>
@@ -67,28 +69,28 @@
                     </div>
                 </div>
                 <div class="information-holder col-2">
-                    <h2>Personal Information</h2>
+                    <h2><?=$lang['profile-page']['h1-text']?></h2>
                     <hr class="hr">
                     <div class="info">
                         <p>
-                            <b>Name:  </b> <?= $row[$username_column] ?>
+                            <b><?=$lang['profile-page']['form-texts'][0]?>:  </b> <?= $row[$username_column] ?>
                         </p>
                         <p>
-                            <b>Email: </b> <?= decryptData($row[$email_column], $key) ?>
+                            <b><?=$lang['profile-page']['form-texts'][1]?>: </b> <?= decryptData($row[$email_column], $key) ?>
                         </p>
                         <p>
-                            <b>Phone Number: </b> <?= $row[$phoneNumber_column] ?>
+                            <b><?=$lang['profile-page']['form-texts'][2]?>: </b> <?= $row[$phoneNumber_column] ?>
                         </p>
                     </div>
-                    <h2>Password</h2>
+                    <h2><?=$lang['admin-pages'][0]?></h2>
                     <div class="reset-form--holder">
                         <form action="../../PHP/admin/resetPassword.php" method="POST">
                             <div class="row-5">
                                 <div class="col-2">
-                                    <input type="password" name="password" class="form-field" placeholder="Leave to keep the current password">
+                                    <input type="password" name="password" class="form-field" placeholder="<?=$lang['admin-pages'][1]?>">
                                 </div>
                                 <div class="col-3">
-                                    <input type="submit" value="Reset Password" name="reset-pass" class="btn btn-secondary btn-reset">
+                                    <input type="submit" value="<?=$lang['admin-pages'][2]?>" name="reset-pass" class="btn btn-secondary btn-reset">
                                 </div>
                             </div>
                         </form>

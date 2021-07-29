@@ -29,6 +29,8 @@
     }
 
     session_start();
+
+    include('./repeated_section/language.php');
 ?>
 
 <!DOCTYPE html>
@@ -72,10 +74,10 @@
     <main class="container">
         <div class="row-2 hero-holder">
             <div class="col-1 hero-div text-center">
-                <h1>Swift BlueBook Renew</h1>
-                <h3>Less Line Less Waiting</h3>
+                <h1><?=$lang['index-page']['hero-text']?></h1>
+                <h3><?=$lang['index-page']['slogon-text']?></h3>
                 <a href="./register.php">
-                    <button class="btn btn-primary btn-hero">Get Started</button>
+                    <button class="btn btn-primary btn-hero"><?=$lang['index-page']['hero-btn--text']?></button>
                 </a>
             </div>
             <div class="col-1" class="feature-img">
@@ -88,14 +90,8 @@
                     <img src="./ASSETS/IMAGES/undraw/secure.png" alt="secure and safe" class="feature-img">
                 </div>
                 <div class="feature-description">
-                    <h4 class="text-center">Secure and Safe</h4>
-                    <p>
-                        Don't Worry your data are safe
-                        and secure through our database
-                        level encryption and email based
-                        authentication. You are the only 
-                        one who can access them.
-                    </p>
+                    <h4 class="text-center"><?=$lang['index-page']['features'][0]['title']?></h4>
+                    <p><?=$lang['index-page']['features'][0]['description']?></p>
                 </div>
             </div>
             <div class="col-1">
@@ -103,14 +99,8 @@
                     <img src="./ASSETS/IMAGES/undraw/digitalized.png" alt="digitalized" class="feature-img">
                 </div>
                 <div class="feature-description">
-                    <h4 class="text-center">Digitalized</h4>
-                    <p>
-                        By Digitalizing the data we are
-                        not only making the data reliable
-                        and safe but also fast. All you 
-                        need is few minutes to fill the 
-                        form and its done.
-                    </p>
+                    <h4 class="text-center"><?=$lang['index-page']['features'][1]['title']?></h4>
+                    <p><?=$lang['index-page']['features'][1]['description']?></p>
                 </div>
             </div>
             <div class="col-1">
@@ -118,13 +108,8 @@
                     <img src="./ASSETS//IMAGES/undraw/reminder.png" alt="reminder" class="feature-img">
                 </div>
                 <div class="feature-description">
-                    <h4 class="text-center">Reminders</h4>
-                    <p>
-                        Link your email account and the
-                        next time its time to pay the bill
-                        you got our back we will remind
-                        you on time. 
-                    </p>
+                    <h4 class="text-center"><?=$lang['index-page']['features'][2]['title']?></h4>
+                    <p><?=$lang['index-page']['features'][2]['description']?></p>
                 </div>
             </div>
         </div>
@@ -134,25 +119,25 @@
             </div>
             <div class="col-1">
                 <div class="form" >
-                    <h2 class="form-title">Log In</h2>
+                    <h2 class="form-title"><?=$lang['index-page']['log-box']['title']?></h2>
                     <div class="form-body">
                         <form action="./PHP/handleLogUser.php" method="POST">
                             <div class="form-group">
-                                <input class="form-field" type="text" placeholder="UserName or Email" name="user" id="name-field" required/>
+                                <input class="form-field" type="text" placeholder="<?=$lang['index-page']['log-box']['user-placeholder']?>" name="user" id="name-field" required/>
                                 <?php if(isset($_GET['inputError']) && $_GET['inputError'] == 'WrongEmailOrUser') { echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> The credential is not correct</span>"; } ?>
                             </div>
                             <div class="form-group">
-                                <input class="form-field" type="password" placeholder="Password" name="Password" id="password-field" required/>
+                                <input class="form-field" type="password" placeholder="<?=$lang['index-page']['log-box']['password-placeholder']?>" name="Password" id="password-field" required/>
                                 <?php if(isset($_GET['inputError']) && $_GET['inputError'] == 'WrongPass') { echo "<span class='text-danger'><i class='fas fa-exclamation-circle'></i> The password is incorrect</span>"; } ?>
                             </div>
                             <div class="form-group text-center">
-                                <input type="submit" value="Log In" name="login" class="btn btn-accent"/>
+                                <input type="submit" value="<?=$lang['index-page']['log-box']['title']?>" name="login" class="btn btn-accent"/>
                             </div>
                         </form>
                     </div>
                     <div class="form-footer text-center">
-                        <p>Don't have a account? <a href="./register.php" class="link-primary">Create one</a></p>
-                        <a href="./PAGES/forgetPassword.php" class="link-underline">Forgot Password?</a>
+                        <p><?=$lang['index-page']['log-box']['new-text']?> <a href="./register.php" class="link-primary"><?=$lang['index-page']['log-box']['new-link--text']?></a></p>
+                        <a href="./PAGES/forgetPassword.php" class="link-underline"><?=$lang['index-page']['log-box']['forgot-text']?></a>
                     </div>
                 </div>
             </div>

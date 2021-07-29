@@ -38,6 +38,7 @@
     $vcat = $infoarray[0][$vehicleCategory_column];
     $enginecc = $infoarray[0][$engineCC_column];
 
+    include('../repeated_section/language.php');
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +99,7 @@
                                     <input type='file' name='img' onchange='this.form.submit();' id='image_adder'>
                                     <label for='image_adder'>
                                         <i class='far fa-image'> </i> 
-                                        <span class="tooltip" id="add-image">Upload image</span> 
+                                        <span class="tooltip" id="add-image"><?=$lang['profile-edit-page']['img-text-one']?></span> 
                                     <lable>
                                 </form>
                             </div>
@@ -106,7 +107,7 @@
                                 <form action="../PHP/deleteImage.php" id="delete-image-form" method="POST">
                                     <label for="image-remover" onclick="submitForm()">
                                         <i class="fas fa-user-times"></i>
-                                        <span class="tooltip" id="delete-image">Delete image</span>
+                                        <span class="tooltip" id="delete-image"><?=$lang['profile-edit-page']['img-text-two']?></span>
                                     </label>
                                 <input type="hidden" value="delete" name="delete-btn">
                                 </form>
@@ -116,13 +117,13 @@
                 </div>
                 <div class="col-2">
                     <div class="information-holder">
-                        <h2>Edit Information</h2>
+                        <h2><?=$lang['profile-edit-page']['h1-text']?></h2>
                         <hr class="hr">
                         <form action="../PHP/handleBasicdata.php" method="POST">
                             <div class="row-2">
                                 <div class="col-1 form-body">
-                                    <input type="text"  name="Phn" class="form-field form-group" value="<?=decryptData($infoarray[0][$phoneNumber_column],$key); ?>">
-                                    <input type="text"  name="vReg" class="form-field form-group" value="<?=decryptData($infoarray[0][$vehicleRegistration_column],$key); ?>">
+                                    <input type="text" placeholder="<?=$lang['profile-edit-page']['form-texts'][0]?>" name="Phn" class="form-field form-group" value="<?=decryptData($infoarray[0][$phoneNumber_column],$key); ?>">
+                                    <input type="text" placeholder="<?=$lang['profile-edit-page']['form-texts'][1]?>" name="vReg" class="form-field form-group" value="<?=decryptData($infoarray[0][$vehicleRegistration_column],$key); ?>">
                                 </div>
                                 <div class="col-1 form-body form-body-part2">
                                     <select name="vType" id="type" class="form-field form-group">
@@ -141,10 +142,10 @@
                                     </select>
                                     <div class="row-2">
                                         <div class="cancel-btn col-1">
-                                            <a href="./profile.php"><input type="submit" name="canclebtn" value="Cancle" class="btn btn-secondary edit-btn btn-bgdanger" ></a>
+                                            <a href="./profile.php"><input type="submit" name="canclebtn" value="<?=$lang['profile-edit-page']['btn-text-one']?>" class="btn btn-secondary edit-btn btn-bgdanger" ></a>
                                         </div>
                                         <div class="btn-edit btn-td col-1">
-                                            <input type="submit" name="savebtn"  value="Edit Profile" class="btn btn-secondary edit-btn editsavebtn" >
+                                            <input type="submit" name="savebtn"  value="<?=$lang['profile-edit-page']['btn-text-two']?>" class="btn btn-secondary edit-btn editsavebtn" >
                                         </div> 
                                     </div>
                                 </div>
