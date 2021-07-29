@@ -118,6 +118,23 @@ $lang = array(
         'Tax amount', 'Fine Percentage', 'Fine amount',
         'Please Contact Main Office',
     ),
+    'qr-page' => array(
+        'h1-text-1' => 'Form Data',
+        'h1-text-2' => 'Tax Information',
+        'slip-text-1' => 'Please take your insurance slip with you.',
+        'slip-text-2' => 'Please clear your insurance first.',
+        'info-texts' => array(
+            'Name', 'Phone Number', 'Citizenship Number',
+            'Last Renew Date', 'Vehicle Registration Number',
+            'Vehicle Type', 'Vehicle Category', 'Engine CC',
+        ),
+        'form-texts' => array(
+            'Tax Amount', 'Fine Percentage', 'Fine Amount', 'Total Amount'
+        ),
+        'miss-text' => 'Did Mistake',
+        'link-text' => 'Resubmit',
+        'btn-text' => 'Go Home',
+    ),
     'info-page' => array(
         'titles' => array(
             'Vehicle Tax',

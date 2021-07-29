@@ -17,7 +17,7 @@ if($pageName == 'index.php' || $pageName == 'register.php'){
 }elseif($pageName == 'forgetPassword.php' || $pageName == 'resetPassword.php'
          || $pageName == 'profileEdit.php' ||
         $pageName == 'taxCalculator.php' || $pageName == 'information.php'
-        || $pageName == 'form.php'){
+        || $pageName == 'form.php' || $pageName == 'QRPage.php'){
     $path = '../';
 }elseif($pageName == 'details.php' || $pageName == 'user-detail.php'){
     $path = "../../";

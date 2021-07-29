@@ -29,6 +29,8 @@
         $icon = '<i class="far fa-grin-beam fa-2x"></i>';
         $mssg = 'Your data is updated successfully';
     }
+
+    include('../repeated_section/language.php');
 ?>
 
 <!DOCTYPE html>
@@ -62,50 +64,50 @@
                         <?php echo "<img src='QR.php?amount=$tAmount&fine=$fineAmount&mssg=$insMssg'>"; ?>
                         <?php if($data[0][$insurance_column] == 'yes'){ ?>
                             <div class="ins-mssg text-success">
-                                Please take your insurance slip with you.
+                                <?=$lang['qr-page']['slip-text-1']?>
                             </div>
                         <?php }else{ ?>
                             <div class="ins-mssg text-danger">
-                                Please clear your insurance first.
+                                <?=$lang['qr-page']['slip-text-2']?>
                             </div>
                         <?php } ?>
                     </div>
                     <div class="col-2">
                         <div class="form-info--holder">
-                            <h2>Form Data</h2>
+                            <h2><?=$lang['qr-page']['h1-text-1']?></h2>
                             <hr class="hr">
                             <div class="row-2 more-holder">
                                 <div class="info-holders">
-                                    <p><b>Name: </b><?=$data[0][$username_column]?></p>
-                                    <p><b>Phone Number: </b><?=decryptData($data[0][$phoneNumber_column], $key)?></p>
-                                    <p><b>Citizenship Number: </b><?=decryptData($data[0][$citizenship_column], $key)?></p>
-                                    <p><b>Last Renew Date: </b><?=$data[0][$renewDate_column]?></p>
+                                    <p><b><?=$lang['qr-page']['info-texts'][0]?>: </b><?=$data[0][$username_column]?></p>
+                                    <p><b><?=$lang['qr-page']['info-texts'][1]?>: </b><?=decryptData($data[0][$phoneNumber_column], $key)?></p>
+                                    <p><b><?=$lang['qr-page']['info-texts'][2]?>: </b><?=decryptData($data[0][$citizenship_column], $key)?></p>
+                                    <p><b><?=$lang['qr-page']['info-texts'][3]?>: </b><?=$data[0][$renewDate_column]?></p>
                                 </div>
                                 <div class="info-holders">
-                                    <p><b>Vehicle Registration Number: </b><?=decryptData($data[0][$vehicleRegistration_column], $key)?></p>
-                                    <p><b>Vehicle Type: </b><?=$data[0][$vehicleType_column]?></p>
-                                    <p><b>Vehicle Category: </b><?=$data[0][$vehicleCategory_column]?></p>
-                                    <p><b>Engine CC: </b><?=$data[0][$engineCC_column]?></p>
+                                    <p><b><?=$lang['qr-page']['info-texts'][4]?>: </b><?=decryptData($data[0][$vehicleRegistration_column], $key)?></p>
+                                    <p><b><?=$lang['qr-page']['info-texts'][5]?>: </b><?=$data[0][$vehicleType_column]?></p>
+                                    <p><b><?=$lang['qr-page']['info-texts'][6]?>: </b><?=$data[0][$vehicleCategory_column]?></p>
+                                    <p><b><?=$lang['qr-page']['info-texts'][7]?>: </b><?=$data[0][$engineCC_column]?></p>
                                 </div>
                             </div>
-                            <h2>Tax Information</h2>
+                            <h2><?=$lang['qr-page']['h1-text-2']?></h2>
                             <hr class="hr">
                             <div class="row-2 more-holder">
                                 <div class="info-holders">
-                                    <p><b>Tax Amount: </b> <?=$_GET['amount']?></p>
-                                    <p><b>Fine Percentage: </b><?=$_GET['fine']?></p>
+                                    <p><b><?=$lang['qr-page']['form-texts'][0]?>: </b> <?=$_GET['amount']?></p>
+                                    <p><b><?=$lang['qr-page']['form-texts'][1]?>: </b><?=$_GET['fine']?></p>
                                 </div>
                                 <div class="info-holders">
-                                    <p><b>Fine Amount: </b><?=$_GET['fineAmount']?></p>
-                                    <p><b>Total Amount: </b><?=$_GET['amount']+$_GET['fineAmount']?></p>
+                                    <p><b><?=$lang['qr-page']['form-texts'][2]?>: </b><?=$_GET['fineAmount']?></p>
+                                    <p><b><?=$lang['qr-page']['form-texts'][3]?>: </b><?=$_GET['amount']+$_GET['fineAmount']?></p>
                                 </div>
                             </div>
-                            <h3>Did mistake? <a href="../PAGES/form.php?fId=<?=$data[0]['fId']?>&tId=<?=$_GET['tId']?>&others=<?=$_GET['other']?>">Resubmit</a></h3>
+                            <h3><?=$lang['qr-page']['miss-text']?>? <a href="../PAGES/form.php?fId=<?=$data[0]['fId']?>&tId=<?=$_GET['tId']?>&others=<?=$_GET['other']?>"><?=$lang['qr-page']['link-text']?></a></h3>
                         </div>
                         <div id="button-layout">
                         <!-- TODO: add a download system -->
                             <!--<a href="<?php echo $urlPath; ?>"><button id="download-btn">Download</button></a>-->
-                            <a href="../PAGES/profile.php"><button class="btn btn-secondary btn-reset">Go Home</button></a>
+                            <a href="../PAGES/profile.php"><button class="btn btn-secondary btn-reset"><?=$lang['qr-page']['btn-text']?></button></a>
                         </div>
                     </div>
                 </div>
