@@ -117,15 +117,19 @@
     <script defer src="./JS/category_type.js"></script>
     <link rel="stylesheet" href="./CSS/new-css/style.css">
     <link rel="stylesheet" href="./CSS/new-css/register_page.css">
+    <link rel="stylesheet" href="./CSS/new-css/loader.css">
     
 </head>
 <body>
     <?php if(isset($_GET['error'])){include './repeated_section/error.php';} ?>
 
+    <div class="loader-wrapper"></div>
+    <div class="loader"></div>
+
     <main>
         <div class="container flex">
             <div class="register">
-                <form action="./PHP/handleUser.php" method="post">
+                <form action="./PHP/handleUser.php" method="post" onsubmit="getLoader()">
                     <h1 class="web-title"><?=$lang['register-page']['title']?></h1>
                     <div>
                         <div class="row-2">
@@ -219,6 +223,11 @@
     <script>
         function closeErrorPopUp(){
             document.getElementsByClassName('error-popup')[0].style.display = 'none';
+        }
+
+        function getLoader(){
+            document.querySelector('.loader-wrapper').style.display = "block"
+            document.querySelector('.loader').style.display = "block"
         }
 
         var input = document.getElementsByClassName('form-input');

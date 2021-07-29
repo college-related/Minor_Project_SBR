@@ -40,7 +40,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Page</title>
 
-    <!-- <link rel="stylesheet" href="../CSS/QRPage.css"> -->
     <link rel="stylesheet" href="../CSS/new-css/style.css">
     <link rel="stylesheet" href="../CSS/new-css/admin-details.css">
     <link rel="stylesheet" href="../CSS/new-css/qr.css">
@@ -105,7 +104,6 @@
                             <h3><?=$lang['qr-page']['miss-text']?>? <a href="../PAGES/form.php?fId=<?=$data[0]['fId']?>&tId=<?=$_GET['tId']?>&others=<?=$_GET['other']?>"><?=$lang['qr-page']['link-text']?></a></h3>
                         </div>
                         <div id="button-layout">
-                        <!-- TODO: add a download system -->
                             <a href="<?php echo 'QR.php?amount='.$tAmount.'&fine='.$fineAmount.'&mssg='.$insMssg; ?>" download="QR"><button class="btn btn-secondary btn-reset">Download <i class="fas fa-download"></i></button></a>
                             <a href="../PAGES/profile.php"><button class="btn btn-secondary btn-reset"><?=$lang['qr-page']['btn-text']?></button></a>
                         </div>
