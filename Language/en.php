@@ -145,30 +145,61 @@ $lang = array(
             'Why QR code',
             'First party insurance',
             'Third party insurance',
-            'Road Tax Payment',
+            'Tax Payment',
             'Vehicle categories',
         ),
         'descriptions' => array(
-            'The tax you have to pay to government for using the 
-            vehicle and road every year. The tax varies according 
-            to the vehicle type and engine cc.',
-            '',
-            'There are various types of vehicles.Our website include two of them:  <b>Two Wheeler</b> and <b>Four Wheeler</b>.We have to choose of it give some information about our vehicle.',
-            'All road vehicles with or without a motor (except bicycles) are tagged with a registration number.Licence plates are commonly known as number plates. 
-            The licence plate number is issued by the state-level Transport Management Office, a government agency under the Department of Transport Management.
-            For the purpose of vehicle registration Vehicle & Transport Management Act, 2049 (1992) and Vehicle & Transport Management Rule, 2054 (1997) of Nepal, classifies vehicles into the following 5 main categories on the basis of size and capacity.
-            Those classifications of vehicles are indicated by the color of their license plates. 
-            So,<b>Vehicle Registration</b> number means the lisence plate number which have to be provided by users to confirm their own vehicle.',
-            'We include insurance details question because if you had not paid insurance when you visit with our details to the main office.You have to pay more than our road tax payment slip.',
-            'Its for the easiest method for you to take details to the main office.It makes you data turn to the QR code and after scanned in the main office to will be fast to do your transiction.',
-            '<b>First Party Insurance </b>is obtained for the policyholder to cover losses or damages to the policyholder’s property or themselves.',
-            '<b>Third PartyInsurance </b> is purchased to protect the insured against liability for losses or damages the insured causes to another individual or their property.',
-            'Its is the payment that should be paid by every individual to the goverment  as Road tax.Some of the vehicle types,catagories have its own road tax assigned by goverment.',
-            "Different types of vehicle are covered by different licence categories, and have varying minimum age restrictions.</br>
-            Such as:</br>
-            Category fo car is 'B',</br>
-            Category fo scoter is 'k',</br>
-            Category fo bike is 'A' and so on."
+            'Vehicle tax is a state tax which is generally utilized by the state govt for the purpose of development and maintenance of road within the cities and villages of the state.<br>
+            In Nepal, vehicle tax is collected by Transport Management Offices and Transport Management Service Offices. These offices come under Province governments. Hence vehicle tax is charged 
+            in different provinces in different rates. However, the basic criteria is set by federal law, which is same for all provinces. Owner has to pay tax in every fiscal year as per the rates determined in fiscal act passed by Province Assembly for that fiscal year.',
+            'An engine’s CC refers  to the total volume of air and fuel being pushed through the engine by the cylinders. More air means more fuel and therefore the engine’s volume will greatly affect its power output and fuel usage. 
+            It’s more often simply referred to as “capacity” or “volume”. It is measured in cubic centimetres (cc). For example, a 1,000cc engine can displace one litre (1,000 cubic centimetres) of this air-fuel mixture.',
+            "There are various types of vehicles. Our website include two of them :<br><b>Two Wheeler</b>-This includes vehicle having two wheels like motor cycle, scooter etc. <br> <b>Four Wheeler</b>-This includes car, SUV, van, pick-up, micro bus etc. having the capacity to carry less than 24 people or less than 4 tons. <br>We have to choose one of them which gives range and information about the vehicle's engine cc and vehicle category accordingly.",
+            'Vehicle registration is the compulsory registration of a vehicle with a government authority. The purpose of vehicle registration is to establish clear ownership and to tax motorists or vehicle owners. While almost all vehicles are uniquely identified by a vehicle identification number only registered vehicles display a vehicle registration plate and carry a vehicle registration certificate.<br>
+            The current system was introduced on 25 October 2018. The new system is based on 3 lines format. Line 1: L-N, Line 2: NNNL Line 3: NNNN. This format is based on province name and district codes.<br>
+            L-N is the state/province name followed by district code,<br>
+            NNN is a "counter" comprising three numbers, which increments after the vehicle sequence number reaches 9999. L is a indication for the class of vehicle like two-wheeler, four-wheeler, heavy and medium-sized vehicle etc.<br>
+            NNNN is a sequence number from 0001 to 9999 which increments with the vehicle registrations.Example:GANDAKI 01 001 PA 1234 ',
+            'Motor Insurance is insurance purchased for cars, trucks, motorcycles, and other road vehicles. Its primary use is to provide financial protection against physical damage and/or bodily injury resulting from vehicle accidents. 
+            This Insurance covers both the damage of the vehicles and the Third Party Liability under Comprehensive Vehicle Policy. It covers the loss or damage to the motor vehicles and/or its accessories while they are on land or in transit. 
+            This insurance additionally offers financial protection against theft of the vehicle. This Insurance covers damage of the vehicle and the Third Party Liability under Comprehensive Vehicle Policy. It also covers the Personal Accident of the driver, 
+            helper, staff and the passengers.For many of us vehicle is still a luxury and damage or loss to the vehicle would mean huge investment loss that will take years to recover. If one buys the vehicle on loan, the loss would be enormous. To avoid unpleasant situation, apply for Vehicle Insurance Policy and make the most out of it.',
+            'The QR, which stands for “quick response” – code is basically a barcode on steroids. While the barcode holds information horizontally, the QR code does so both horizontally and vertically. This enables the QR code to hold 
+            over a hundred times more information. QR Codes are faster and convenient for the user. With QR Codes, we can give admin a easy way to access unlimited information of users as well as the user can easily save the data on their smartphones.',
+            'First-party insurance is insurance that covers the losses of the person named on the policy. The policyholder may be a company, an individual, or a group of individuals of a particular class such as employees of a company, a person’s family, or occupants of a particular vehicle. A first-party claim is when the policyholder makes a claim against their own insurance policy.
+            Some examples of first-party insurance are:<br> - Personal injury protection coverage under an automobile insurance policy<br>
+            - Medical or health insurance<br>
+            - Medical payment coverage under an automobile or homeowner’s policy<br>
+            - Uninsured or underinsured motorist coverage under an automobile policy<br>
+            - Damage to covered personal or business property for wind, storm, hail, fire, flood, or other disasters
+            Renter’s wall-in insurance coverage',
+            'Third-party insurance is insurance that is purchased to protect a person against liability for damages or losses that they caused. The policyholder may be a company, an individual, or a group of individuals of a particular 
+            class (such as employees of a company, a person’s family, or occupants of a particular vehicle). A third-party claim is when someone makes a claim against someone else’s insurance policy. Some examples of third-party insurance are:<br>
+            - Liability insurance coverage under an automobile policy<br>
+            - General commercial liability coverage<br>
+            - Homeowner’s liability coverage for personal injury caused by the insured<br>
+            - Umbrella insurance policies<br>
+            - Commercial motor vehicle liability coverage<br>
+            - Animal or canine liability insurance<br>
+            - Professional liability insurance<br>
+            - Public liability insurance<br>
+            - Product liability insurance<br>
+            - Directors’ and officers’ liability insurance',
+            'The tax leviable for a fiscal year shall be recovered from the
+            person in whose name a motor vehicle stands registered pursuant to the prevailing
+            law on the first day of the month of Sharwan of each year. <br>Provided that, in the case of a motor vehicle transmitted prior to completion
+            of a fiscal year, the leviable tax shall be recovered pro-rata from the previous
+            owner of the motor vehicle for up to the month in which such transmission is
+            effected and from the person to whom the vehicle is transmitted for the month
+            thereafter. <br> Each tax payer has to pay the tax leviable on a motor vehicle registered
+            in his/her name within the last day of the month of Chaitra of each fiscal year or
+            within the time-limit for its renewal, whichever occurs earlier.<br>In the case of a motor vehicle to be registered initially, the tax leviable
+            from the month in which the motor vehicle has been got released upon payment of
+            customs duty prior to registration of such motor vehicle has to be paid on prorata basis. ',
+            "A vehicle category classifies a land vehicle or trailer for regulatory purposes. Different types of vehicle are covered by different licence categories, and have varying minimum age restrictions.
+             There are many categories of driving licence, from A to K with subtypes, but the 
+             most useful for personal use are categories ‘A’ (for both motorcycles and scooters), 
+             ‘B’ (light four-wheelers), and ‘K’ (scooters). You can also apply for both Category A and B.<br>"
         ),
     ),
     'admin-pages' => array(
