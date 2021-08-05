@@ -34,7 +34,7 @@ if(isset($_POST['login'])){
 
                 if($data[$role_column] == 'admin'){
                     $_SESSION['role'] = 'admin';
-                    header("location: ../PAGES/admin/profile.php");
+                    header("location: ../PAGES/admin/admin-profile.php");
                     die();
                 }else{
                     header("location: ../PAGES/profile.php");
@@ -66,7 +66,7 @@ if(isset($_POST['login'])){
                 
                 if($row[$role_column] == 'admin'){
                     $_SESSION['role'] = 'admin';
-                    header("location: ../PAGES/admin/profile.php");
+                    header("location: ../PAGES/admin/admin-profile.php");
                     die();
                 }else{
                     header("location: ../PAGES/profile.php?Logged");
