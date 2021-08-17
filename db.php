@@ -99,7 +99,7 @@ if($conn->connect_error){
                 $pp_column enum('public', 'private') not null,
                 $insurance_column enum('yes', 'no') not null,
                 $vehicleRegistration_column text not null,
-                $renewDate_column date not null,
+                $renewDate_column text not null,
                 $createdAt_column timestamp,
                 $formFillerName_column varchar(50) not null,
                 $formFillerVehicleReg_column text not null,
@@ -136,6 +136,8 @@ if($conn->connect_error){
             die("Error while creating tax table");
         }
     }
+
+    echo "All tables created!!!";
 }
 
 ?>
