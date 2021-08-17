@@ -113,6 +113,8 @@
 
     <link rel="stylesheet" href="../CSS/new-css/style.css">
     <link rel="stylesheet" href="../CSS/new-css/form.css">
+
+    <link rel="stylesheet" href="../JS/dist/mc-calendar.min.css" />
 </head>
 <body>
     <?php include('../repeated_section/header.php')?>
@@ -249,7 +251,8 @@
                         <div class="row-2">
                             <div class="flex form-flex">
                                 <label for="renewDate"><?=$lang['form-page']['form-texts'][13]?>:</label>
-                                <input type="date" name="RenewDate" id="renewDate" class="form-field" required <?php if(isset($lastRenew)){echo "value='$lastRenew'";} ?>/>
+                                <!-- <input type="date" name="RenewDate" id="renewDate" class="form-field" required <?php if(isset($lastRenew)){echo "value='$lastRenew'";} ?>/> -->
+                                <input type="text" name="RenewDate" id="date-field" class="form-field" placeholder="Date" <?php if(isset($lastRenew)){echo "value='$lastRenew'";} ?>/>
                             </div>
                             <div class="flex form-flex">
                                 <label for="insuranceSlip"><h4><?=$lang['form-page']['form-texts'][14]?>? :</h4></label>
@@ -282,5 +285,15 @@
     <script src="../JS/new-js/mobile-menu.js"></script>
     <script src="../JS/new-js/others.js"></script>
     <script src="../JS/category_type.js"></script>
+    <script src="../JS/dist/mc-calendar.min.js"></script>
+
+    <script>
+        const myDatePicker = MCDatepicker.create({ 
+            el: '#date-field',
+            dateFormat: 'YYYY-MM-DD',
+            bodyType: 'inline',
+            maxDate: new Date(),
+        })
+    </script>
 </body>
 </html>

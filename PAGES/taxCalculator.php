@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../CSS/new-css/tax-calculator.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../JS/dist/mc-calendar.min.css">
 </head>
 <body>
     <?php include('../repeated_section/header.php') ?>
@@ -87,7 +88,7 @@
                                 <label for=""><?=$lang['taxCal-page'][5]?>: </label>
                             </div>
                             <div class="col-5">
-                                <input type="date" name="renew-date" class="form-field" required>
+                                <input type="text" placeholder="Last Renew Date" name="renew-date" id="date-field" class="form-field" required>
                             </div>
                         </div>
                         <input type="submit" name="taxCalculate" value="<?=$lang['taxCal-page'][6]?>" class="btn btn-primary" style="float: right;">
@@ -124,5 +125,14 @@
     <script src="../JS/new-js/calculator.js"></script>
     <script src="../JS/new-js/mobile-menu.js"></script>
     <script src="../JS/new-js/theme.js"></script>
+    <script src="../JS/dist/mc-calendar.min.js"></script>
+    <script>
+        const myDatePicker = MCDatepicker.create({ 
+            el: '#date-field',
+            dateFormat: 'YYYY-MM-DD',
+            bodyType: 'inline',
+            maxDate: new Date(),
+        })
+    </script>
 </body>
 </html>
