@@ -1,38 +1,22 @@
-# A minor project on SWIFT BLUEBOOK RENEW
+<h1 align="center">SWIFT BLUEBOOK RENEW</h1>
 
+<p align="center">
    Website for hassle-less and quick Bluebook renew process.
    
    Ever felt the impatient:rage: while waiting for the line infront of you to move
    ahead and you can finish your bluebook renew process as soon as possible.
-   
    Worry no more:relieved: with **Swift bluebook renew** its only a matter of miniutes
    for your information to be recorded and you can go to your daily life quickly.
+</p>
 
 ---
    
-## Some of the features of our website
-   <div align="left">
-               <img src="https://github.com/GCES-Batch-2018-Minor-project-group/Minor_Project_SBR/blob/master/ASSETS/IMAGES/git-images/email_remainder.png" alt="email remainder" width="400" height="300">
-            <h3 align="left">Email Remainder:email:</h3>
-            <p align="left">
-Link your email account and the <br/>
-next time its time to pay the bill <br/>
-you got our back we will remind <br/>
-you on time. 
-            </p> 
-   </div>
-   <div align="right">
-               <img src="https://github.com/GCES-Batch-2018-Minor-project-group/Minor_Project_SBR/blob/master/ASSETS/IMAGES/git-images/digitalized_and_fast.png" alt="digitalized and fast" width="400" height="300">
-            <h3 align="right">Digitalized and fast:computer:</h3>
-            <p align="right">
-               By Digitalizing the data we are <br/>
-               not only making the data reliable <br/>
-               and safe but also fast. All you <br/>
-               need is few minutes to fill the <br/>
-               form and its done. <br/>
-            </p>
-   </div>
-   
+# 🔑 Some of the features of our website
+
+- __Email Reminder__ - Get Email reminders when its time to renew bluebook 
+- __Digitalized and fast__:+ - Using Digital means it is alot faster to renew your bluebook
+- __QR__ - With QR feature its faster to scan and create
+           
 ---
 
 ## Sneak Peak:eyes:
@@ -42,15 +26,24 @@ you on time.
 
 ---
 
-### Steps to clone our project
+# ⚡ Steps to clone our project
+
 1. Open git bash in your localhost specified folder `(example: htdocs folder for xampp)`
 
    ⋅Follow the step according to your localhost provider
 
-3. Run `git clone https://github.com/GCES-Batch-2018-Minor-project-group/Minor_Project_SBR.git`
-4. Run `cd Minor_Project_SBR`
-5. Run `php db.php`
-
+3. Clone 
+```
+git clone https://github.com/GCES-Batch-2018-Minor-project-group/Minor_Project_SBR.git
+```
+3. Move to the folder
+```
+cd Minor_Project_SBR
+```
+4. Run 
+```
+php db.php
+```
    ⋅Run this for _automatically creating database and required tables_ in your localhost
    
    If you encounter this error `**bash: php: command not found**` then follow the following steps
@@ -63,6 +56,7 @@ you on time.
    6. Copy and paste your file path to php folder, example: `C:\xampp\php`<br/>
    </details>
 
-7. Now open your localhost and navigate to the project
+5. Now open your localhost and navigate to the project
+<br /><br /><br />
 
-**_Thank you for using our product:smile:_**
+<p align="center"><b>Thank you for using our product:smile:</b></p>
