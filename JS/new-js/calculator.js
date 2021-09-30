@@ -84,7 +84,7 @@ function generateEngCC()
             optArry = ["0-1300CC", "1301CC-2000CC", "2001CC-2900CC", 
                 "2901CC-4000CC", "4001CC-Greater"]
         }else{
-            optArry = ["0-1000CC", "1001CC-1500CC", "15001CC-2000CC", "2001CC-2500CC",
+            optArry = ["0-1000CC", "1001CC-1500CC", "1501CC-2000CC", "2001CC-2500CC",
                 "2501CC-2900CC", "2901CC-Greater"]
         }
         addOptions(optArry, engineCCSelect)
