@@ -65,7 +65,7 @@
                                     <option value="0-125CC">0cc - 125cc</option>
                                     <option value="126CC-250CC">126cc - 250cc</option>
                                     <option value="251CC-400CC">251cc - 400cc</option>
-                                    <option value="400CC-Greater">401cc - greater</option>
+                                    <option value="401CC-Greater">401cc - greater</option>
                                 </select>
                             </div>
                         </div>
