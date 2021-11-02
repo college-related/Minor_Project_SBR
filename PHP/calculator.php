@@ -95,7 +95,7 @@ function calculateTax($name, $engCC, $province, $radio){
                 }else if($province == "3"){
                     $taxAmount = 35200;
                 }
-            }else if($engCC == "2501CC-2900"){
+            }else if($engCC == "2501CC-2900CC"){
                 if($province == "2" || $province == "4" || $province == "5" || $province == "6"){
                     $taxAmount = 37000;
                 }else if($province == "1"){
@@ -176,7 +176,7 @@ function calculateTax($name, $engCC, $province, $radio){
             }else if($province == "3" || $province == "7"){
                 $taxAmount = 5000;
             }
-        }else if($name == "public"){
+        }else if($radio == "public"){
             if($province == "1"){
                 $taxAmount = 2700;
             }else if($province == "4" || $province == "5" || $province == "6"){
@@ -200,7 +200,7 @@ function calculateTax($name, $engCC, $province, $radio){
             }else if($province == "7"){
                 $taxAmount = 3500;
             }
-        }else if($name == "public"){
+        }else if($radio == "public"){
             if($province == "1"){
                 $taxAmount = 0;
             }else if($province == "2" || $province == "4" || $province == "5" || $province == "6"){
@@ -224,7 +224,7 @@ function calculateTax($name, $engCC, $province, $radio){
             }else if($province == "7"){
                 $taxAmount = 27000;
             }
-        }else if($name == "public"){
+        }else if($radio == "public"){
             if($province == "1"){
                 $taxAmount = 12500;
             }else if($province == "2" || $province == "4" || $province == "5" || $province == "6"){
