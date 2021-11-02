@@ -316,15 +316,15 @@ function calculateFine($lastRenew, $taxAmount){
     $fineAmount = 0;
 
     $totalDays = (($newDateArr[0]-$oldDateArr[0])*365+($newDateArr[1]-$oldDateArr[1])*30+($newDateArr[2]-$oldDateArr[2]))-364;
-    if($totalDays <= 0){
+    if($totalDays <= 90){
         $fine = "0%|$fineAmount|$totalDays";
-    }elseif($totalDays <= 30){
+    }elseif($totalDays <= 120){
         $fineAmount  = $taxAmount * 0.05;
         $fine = "5%|$fineAmount|$totalDays";
-    }elseif($totalDays <= 45){
+    }elseif($totalDays <= 135){
         $fineAmount = $taxAmount * 0.1;
         $fine = "10%|$fineAmount|$totalDays";
-    }elseif($totalDays <= 365){
+    }elseif($totalDays <= 455){
         $fineAmount = $taxAmount * 0.2;
         $fine = "20%|$fineAmount|$totalDays";
     }else{
