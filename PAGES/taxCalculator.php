@@ -128,11 +128,13 @@
     <script src="../JS/new-js/theme.js"></script>
     <script src="../JS/dist/mc-calendar.min.js"></script>
     <script>
+        const d = new Date();
+        d.setDate(d.getDate() - 365)
         const myDatePicker = MCDatepicker.create({ 
             el: '#date-field',
             dateFormat: 'YYYY-MM-DD',
             bodyType: 'inline',
-            maxDate: new Date(),
+            maxDate: d,
         })
     </script>
 </body>
