@@ -13,6 +13,24 @@
     $execute = mysqli_query($connect, $command);
     $row = mysqli_fetch_all($execute, MYSQLI_ASSOC);
 
+    $sql_tax="SELECT * FROM tax_details WHERE $fillerId_column ='$uId';";
+    $tax_result=mysqli_query($connect,$sql_tax);
+    $taxArray = mysqli_fetch_all($tax_result,MYSQLI_ASSOC);
+
+    $taxHistoryPaginate = count($taxArray) - 4;
+    if($taxHistoryPaginate < 0){
+        $taxHistoryPaginate = 0;
+    }
+    if(isset($_GET['thp'])){$taxHistoryPaginate = $_GET['thp'];}
+    if(isset($_GET['pagination']))
+    {
+        $taxHistoryPaginate = $taxHistoryPaginate - $_GET['pagination'];
+    }
+    $paginate =  $taxHistoryPaginate;
+    if($paginate > 2){
+        $paginate = 2;
+    }
+
     include('../../repeated_section/language.php');
 ?>
 <!DOCTYPE html>
@@ -74,6 +92,41 @@
                             <p><b>Engine CC: </b> <?=$row[0][$engineCC_column]?></p>
                             <p><b>Public/Private: </b> <?=$row[0][$pp_column]?></p>
                         </div>
+                    </div>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-3 main-holder">
+                    <h2>Tax Details</h2>
+                    <hr class="hr">
+                    <div class="profile-detail-section tax-detail info">
+                        <?php if(count($taxArray) > 0){  ?>
+                        <div id="tax-h" class="tax-history">
+                            
+                            <?php for($i=count($taxArray) - 1; $i >= $taxHistoryPaginate; $i--) { ?>
+                                <div class="main-holder tax-holder">
+                                    <div class="year-amount">
+                                        <?= strtok($taxArray[$i][$createdAt_column],'-') ?>
+                                    </div>
+                                    <div class="fine-amount-holder">
+                                        <div class="fine <?php if($taxArray[$i][$finePercentage_column] != '0%'){ echo 'text-danger';} ?>">
+                                            <?= $taxArray[$i][$finePercentage_column] ?> Fine</div>
+                                        <div class="year-amount">Rs 
+                                            <?= $taxArray[$i][$taxAmount_column] ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                        <?php if($paginate >= 1){ ?> 
+                            <a href="http://localhost/MINOR_PROJECT_SBR/PAGES/profile.php?Logged&pagination=<?=$paginate ?>&thp=<?=$taxHistoryPaginate ?>#tax-h">
+                                <button class="btn btn-secondary btn-mobile btn-reset"><?=$lang['profile-page']['btn-text-one']?></button>
+                            </a> <?php } 
+                        ?>
+                        <?php } else { ?>
+                        <div class="text-center"> 
+                            <h3>No Tax History</h3> 
+                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
