@@ -4,7 +4,12 @@ $pageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+
 
 if(!isset($_SESSION['lang']))
     $_SESSION['lang'] = "en";
-elseif(isset($_GET['lang']) && !empty($_GET['lang']) && $_SESSION['lang'] != $_GET['lang']){
+elseif(
+    isset($_GET['lang'])
+    && !empty($_GET['lang'])
+    && $_SESSION['lang'] != $_GET['lang']
+    && ($_GET['lang'] == "en" || $_GET['lang'] == "np")
+){
     $_SESSION['lang'] = $_GET['lang'];
 }
 
