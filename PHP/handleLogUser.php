@@ -21,14 +21,15 @@ if(isset($_POST['login'])){
         $row = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
         foreach($row as $data){
-            // * checking if the email is verified or not
-            if($data[$emailVerification_column] == "not verified"){
-                header("location: ../index.php?error=EmailNotVerified#form-wrapper");
-                die();
-            }
-
             // * cheking if the password is correct or not
             if(password_verify($Password,$data[$password_column])){
+
+                // * checking if the email is verified or not
+                if($data[$emailVerification_column] == "not verified"){
+                    header("location: ../index.php?error=EmailNotVerified#form-wrapper");
+                    die();
+                }
+
                 session_start();
                 $_SESSION['uId'] = $data['uId'];
 
