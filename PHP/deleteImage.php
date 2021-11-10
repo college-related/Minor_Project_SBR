@@ -28,14 +28,14 @@ if(isset($_POST['delete-btn'])){
         unlink("../ASSETS/upload/".$imageName);
 
         if($role){
-            header("location: ../PAGES/admin/profile.php?deleted");
+            header("location: ../PAGES/admin/admin-profile.php?deleted");
             die();
         }
         
         header("location: ../PAGES/profile.php?Logged&deleted");
     }else{
         if($role){
-            header("location: ../PAGES/admin/profile.php?error3");
+            header("location: ../PAGES/admin/admin-profile.php?error3");
             die();
         }
 
@@ -43,7 +43,7 @@ if(isset($_POST['delete-btn'])){
     }
 }else{
     if($role){
-        header("location: ../PAGES/admin/profile.php?error=IllegalWay");
+        header("location: ../PAGES/admin/admin-profile.php?error=IllegalWay");
         die();
     }
     header("location: ../PAGES/profile.php?Logged&error=IllegalWay");

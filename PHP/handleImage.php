@@ -43,7 +43,7 @@ if(isset($_FILES['img']['name'])){
                 move_uploaded_file($_FILES['img']['tmp_name'], $target_dir.$name);
                 
                 if($role){
-                    header("location: ../PAGES/admin/profile.php?updated");
+                    header("location: ../PAGES/admin/admin-profile.php?updated");
                     die();
                 }
                 
@@ -51,7 +51,7 @@ if(isset($_FILES['img']['name'])){
             }else{
 
                 if($role){
-                    header("location: ../PAGES/admin/profile.php?error2");
+                    header("location: ../PAGES/admin/admin-profile.php?error2");
                     die();
                 }
                 
@@ -59,7 +59,7 @@ if(isset($_FILES['img']['name'])){
             }
         }else{
             if($role){
-                header("location: ../PAGES/admin/profile.php?error1");
+                header("location: ../PAGES/admin/admin-profile.php?error1");
                 die();
             }
 
@@ -68,7 +68,7 @@ if(isset($_FILES['img']['name'])){
 
     }else{
         if($role){
-            header("location: ../PAGES/admin/profile.php?nottheextension");
+            header("location: ../PAGES/admin/admin-profile.php?nottheextension");
             die();
         }
 
@@ -76,7 +76,7 @@ if(isset($_FILES['img']['name'])){
     }
 }else{
     if($role){
-        header("location: ../PAGES/admin/profile.php?error=IllegalWay");
+        header("location: ../PAGES/admin/admin-profile.php?error=IllegalWay");
         die();
     }
     header("location: ../PAGES/profile.php?Logged&error=IllegalWay");
